@@ -6,14 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Topic 2 Evaluating Regression Models | STAT 253: Statistical Machine Learning</title>
   <meta name="description" content="This is the class website for Statistical Machine Learning at Macalester College." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Topic 2 Evaluating Regression Models | STAT 253: Statistical Machine Learning" />
   <meta property="og:type" content="book" />
   
-  
   <meta property="og:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
-  <meta name="github-repo" content="lmyint/253_spring_2021" />
+  <meta name="github-repo" content="JamesNormington/253_spring_2023" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Topic 2 Evaluating Regression Models | STAT 253: Statistical Machine Learning" />
@@ -31,8 +30,8 @@
   
 <link rel="prev" href="introductions.html"/>
 <link rel="next" href="overfitting-cross-validation.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +47,16 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -90,7 +90,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -103,7 +103,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -163,14 +163,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html"><i class="fa fa-check"></i><b>3</b> Overfitting &amp; Cross-validation</a>
 <ul>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="overfitting-cross-validation.html#the-caret-package">The <code>caret</code> package</a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#the-caret-package"><i class="fa fa-check"></i>The <code>caret</code> package</a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercises-1"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#context-1"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-1-4-models"><i class="fa fa-check"></i>Exercise 1: 4 models</a></li>
-<li><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret">Exercise 2: Cross-validation with <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
-<li><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k">Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
@@ -183,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-1-backward-stepwise-selection-by-hand"><i class="fa fa-check"></i>Exercise 1: Backward stepwise selection: by hand</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-2-interpreting-the-results"><i class="fa fa-check"></i>Exercise 2: Interpreting the results</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-3-planning-forward-selection-using-cv"><i class="fa fa-check"></i>Exercise 3: Planning forward selection using CV</a></li>
-<li><a href="variable-subset-selection.html#exercise-4-stepwise-selection-in-caret">Exercise 4: Stepwise selection in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-4-stepwise-selection-in-caret"><i class="fa fa-check"></i>Exercise 4: Stepwise selection in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-5-exploring-the-results"><i class="fa fa-check"></i>Exercise 5: Exploring the results</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#digging-deeper-1"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
@@ -191,13 +191,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html"><i class="fa fa-check"></i><b>5</b> LASSO: Shrinkage/Regularization</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#learning-goals-3"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="lasso-shrinkageregularization.html#lasso-models-in-caret">LASSO models in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#lasso-models-in-caret"><i class="fa fa-check"></i>LASSO models in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercises-3"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-1-a-least-squares-model"><i class="fa fa-check"></i>Exercise 1: A least squares model</a></li>
-<li><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret">Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret"><i class="fa fa-check"></i>Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-3-examining-output-plot-of-coefficient-paths"><i class="fa fa-check"></i>Exercise 3: Examining output: plot of coefficient paths</a></li>
-<li><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda">Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda"><i class="fa fa-check"></i>Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-5-examining-and-evaluating-the-best-lasso-model"><i class="fa fa-check"></i>Exercise 5: Examining and evaluating the best LASSO model</a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#digging-deeper-2"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
@@ -206,13 +206,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html"><i class="fa fa-check"></i><b>6</b> KNN Regression and the Bias-Variance Tradeoff</a>
 <ul>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#learning-goals-4"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret">KNN models in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret"><i class="fa fa-check"></i>KNN models in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#hello-how-are-things"><i class="fa fa-check"></i>Hello, how are things?</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-1-bias-variance-tradeoff-warmup"><i class="fa fa-check"></i>Exercise 1: Bias-variance tradeoff warmup</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-2-impact-of-distance-metric"><i class="fa fa-check"></i>Exercise 2: Impact of distance metric</a></li>
-<li><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret">Exercise 3: Implementing KNN in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret"><i class="fa fa-check"></i>Exercise 3: Implementing KNN in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-4-inspecting-the-results"><i class="fa fa-check"></i>Exercise 4: Inspecting the results</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-5-curse-of-dimensionality"><i class="fa fa-check"></i>Exercise 5: Curse of dimensionality</a></li>
 </ul></li>
@@ -220,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>7</b> Splines</a>
 <ul>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#learning-goals-5"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="splines.html#splines-in-caret">Splines in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#splines-in-caret"><i class="fa fa-check"></i>Splines in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercises-5"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-1-evaluating-a-fully-linear-model"><i class="fa fa-check"></i>Exercise 1: Evaluating a fully linear model</a></li>
@@ -231,11 +231,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="local-regression-gams.html"><a href="local-regression-gams.html"><i class="fa fa-check"></i><b>8</b> Local Regression &amp; GAMs</a>
 <ul>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#learning-goals-6"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="local-regression-gams.html#gams-in-caret">GAMs in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#gams-in-caret"><i class="fa fa-check"></i>GAMs in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercises-6"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-1-conceptual-warmup"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret">Exercise 2: Building a GAM in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret"><i class="fa fa-check"></i>Exercise 2: Building a GAM in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-3-identifying-the-best-gam"><i class="fa fa-check"></i>Exercise 3: Identifying the “best” GAM</a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-4-interpreting-the-gam"><i class="fa fa-check"></i>Exercise 4: Interpreting the GAM</a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-5-comparison-of-methods"><i class="fa fa-check"></i>Exercise 5: Comparison of methods</a></li>
@@ -246,13 +246,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic Regression</a>
 <ul>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#learning-goals-7"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="logistic-regression.html#logistic-regression-in-caret">Logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression-in-caret"><i class="fa fa-check"></i>Logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercises-7"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#context-2"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#hello-how-are-things-1"><i class="fa fa-check"></i>Hello, how are things?</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-1-visualization-warmup"><i class="fa fa-check"></i>Exercise 1: Visualization warmup</a></li>
-<li><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret">Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-3-interpreting-the-model"><i class="fa fa-check"></i>Exercise 3: Interpreting the model</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-4-making-predictions"><i class="fa fa-check"></i>Exercise 4: Making predictions</a></li>
 </ul></li>
@@ -260,12 +260,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html"><i class="fa fa-check"></i><b>10</b> Evaluating Classification Models</a>
 <ul>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#learning-goals-8"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret">LASSO for logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret"><i class="fa fa-check"></i>LASSO for logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercises-8"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#context-3"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-1-conceptual-warmup-1"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret">Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-3-inspecting-the-model"><i class="fa fa-check"></i>Exercise 3: Inspecting the model</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-4-interpreting-evaluation-metrics"><i class="fa fa-check"></i>Exercise 4: Interpreting evaluation metrics</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-5-algorithmic-understanding-for-evaluation-metrics"><i class="fa fa-check"></i>Exercise 5: Algorithmic understanding for evaluation metrics</a></li>
@@ -274,13 +274,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="trees-part-1.html"><a href="trees-part-1.html"><i class="fa fa-check"></i><b>11</b> Trees (Part 1)</a>
 <ul>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#learning-goals-9"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="trees-part-1.html#trees-in-caret">Trees in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#trees-in-caret"><i class="fa fa-check"></i>Trees in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercises-9"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#context-4"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-1-core-theme-parametricnonparametric"><i class="fa fa-check"></i>Exercise 1: Core theme: parametric/nonparametric</a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-2-core-theme-tuning-parameters-and-the-bvt"><i class="fa fa-check"></i>Exercise 2: Core theme: Tuning parameters and the BVT</a></li>
-<li><a href="trees-part-1.html#exercise-3-building-trees-in-caret">Exercise 3: Building trees in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-3-building-trees-in-caret"><i class="fa fa-check"></i>Exercise 3: Building trees in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-4-visualizing-trees"><i class="fa fa-check"></i>Exercise 4: Visualizing trees</a></li>
 </ul></li>
 </ul></li>
@@ -321,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-3-addressing-variable-scale"><i class="fa fa-check"></i>Exercise 3: Addressing variable scale</a></li>
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-4-clustering-on-more-variables"><i class="fa fa-check"></i>Exercise 4: Clustering on more variables</a></li>
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-5-interpreting-the-clusters"><i class="fa fa-check"></i>Exercise 5: Interpreting the clusters</a></li>
-<li><a href="k-means-clustering.html#exercise-6-picking-k">Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-6-picking-k"><i class="fa fa-check"></i>Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i><b>15</b> Hierarchical Clustering</a>
@@ -410,10 +410,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="evaluating-regression-models" class="section level1" number="2">
-<h1><span class="header-section-number">Topic 2</span> Evaluating Regression Models</h1>
-<div id="learning-goals" class="section level2 unnumbered">
-<h2>Learning Goals</h2>
+<div id="evaluating-regression-models" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Topic 2</span> Evaluating Regression Models<a href="evaluating-regression-models.html#evaluating-regression-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="evaluating-regression-models.html#learning-goals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Create and interpret residuals vs. fitted, residuals vs. predictor plots to identify improvements in modeling and address ethical concerns</li>
 <li>Interpret MSE, RMSE, MAE, and R-squared in a contextually meaningful way</li>
@@ -423,11 +423,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Slides from today are available <a href="https://docs.google.com/presentation/d/1i3VayaOluBpsSci6rDT0IiURw5DsEnsp-CS4FZ91BBU/edit?usp=sharing">here</a>.</p>
 <p><br><br><br></p>
 </div>
-<div id="exercises" class="section level2 unnumbered">
-<h2>Exercises</h2>
+<div id="exercises" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="evaluating-regression-models.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/02-evaluating-regression.Rmd">here</a>.</strong></p>
-<div id="context" class="section level3 unnumbered">
-<h3>Context</h3>
+<div id="context" class="section level3 unnumbered hasAnchor">
+<h3>Context<a href="evaluating-regression-models.html#context" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We’ll be working with a dataset containing physical measurements on 80 adult males. These measurements include body fat percentage estimates as well as body circumference measurements.</p>
 <ul>
 <li><code>fatBrozek</code>: Percent body fat using Brozek’s equation: 457/Density - 414.2</li>
@@ -448,124 +448,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>wrist</code>: Wrist circumference (cm)</li>
 </ul>
 <p>It takes a lot of effort to estimate body fat percentage accurately through underwater weighing. The goal is to build the best predictive model for <code>fatSiri</code> using just circumference measurements, which are more easily attainable. (We won’t use <code>fatBrozek</code> or <code>density</code> as predictors because they’re other outcome variables.)</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="evaluating-regression-models.html#cb2-1" aria-hidden="true"></a><span class="kw">library</span>(readr)</span>
-<span id="cb2-2"><a href="evaluating-regression-models.html#cb2-2" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb2-3"><a href="evaluating-regression-models.html#cb2-3" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb2-4"><a href="evaluating-regression-models.html#cb2-4" aria-hidden="true"></a><span class="kw">library</span>(broom)</span>
-<span id="cb2-5"><a href="evaluating-regression-models.html#cb2-5" aria-hidden="true"></a>bodyfat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/js2gxnazybokbzh/bodyfat_train.csv?dl=1&quot;</span>)</span>
-<span id="cb2-6"><a href="evaluating-regression-models.html#cb2-6" aria-hidden="true"></a></span>
-<span id="cb2-7"><a href="evaluating-regression-models.html#cb2-7" aria-hidden="true"></a><span class="co"># Remove the fatBrozek and density variables</span></span>
-<span id="cb2-8"><a href="evaluating-regression-models.html#cb2-8" aria-hidden="true"></a>bodyfat &lt;-<span class="st"> </span>bodyfat <span class="op">%&gt;%</span></span>
-<span id="cb2-9"><a href="evaluating-regression-models.html#cb2-9" aria-hidden="true"></a><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>fatBrozek, <span class="op">-</span>density)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="evaluating-regression-models.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2-2"><a href="evaluating-regression-models.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="evaluating-regression-models.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-4"><a href="evaluating-regression-models.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb2-5"><a href="evaluating-regression-models.html#cb2-5" aria-hidden="true" tabindex="-1"></a>bodyfat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/js2gxnazybokbzh/bodyfat_train.csv?dl=1&quot;</span>)</span>
+<span id="cb2-6"><a href="evaluating-regression-models.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="evaluating-regression-models.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the fatBrozek and density variables</span></span>
+<span id="cb2-8"><a href="evaluating-regression-models.html#cb2-8" aria-hidden="true" tabindex="-1"></a>bodyfat <span class="ot">&lt;-</span> bodyfat <span class="sc">%&gt;%</span></span>
+<span id="cb2-9"><a href="evaluating-regression-models.html#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>fatBrozek, <span class="sc">-</span>density)</span></code></pre></div>
 </div>
-<div id="class-investigations" class="section level3 unnumbered">
-<h3>Class investigations</h3>
+<div id="class-investigations" class="section level3 unnumbered hasAnchor">
+<h3>Class investigations<a href="evaluating-regression-models.html#class-investigations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We’ll work through this section together to review concepts and code. You’ll then work on the remainder of the exercises in your groups.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="evaluating-regression-models.html#cb3-1" aria-hidden="true"></a><span class="co"># Exploratory plots</span></span>
-<span id="cb3-2"><a href="evaluating-regression-models.html#cb3-2" aria-hidden="true"></a><span class="co"># Univariate distribution of outcome</span></span>
-<span id="cb3-3"><a href="evaluating-regression-models.html#cb3-3" aria-hidden="true"></a><span class="kw">ggplot</span>(bodyfat, <span class="kw">aes</span>(???)) <span class="op">+</span></span>
-<span id="cb3-4"><a href="evaluating-regression-models.html#cb3-4" aria-hidden="true"></a><span class="st">    </span>geom_???()</span>
-<span id="cb3-5"><a href="evaluating-regression-models.html#cb3-5" aria-hidden="true"></a></span>
-<span id="cb3-6"><a href="evaluating-regression-models.html#cb3-6" aria-hidden="true"></a><span class="co"># Scatterplot of fatSiri vs. weight</span></span>
-<span id="cb3-7"><a href="evaluating-regression-models.html#cb3-7" aria-hidden="true"></a><span class="kw">ggplot</span>(bodyfat, <span class="kw">aes</span>(???)) <span class="op">+</span></span>
-<span id="cb3-8"><a href="evaluating-regression-models.html#cb3-8" aria-hidden="true"></a><span class="st">    </span>geom_???()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="evaluating-regression-models.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploratory plots</span></span>
+<span id="cb3-2"><a href="evaluating-regression-models.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Univariate distribution of outcome</span></span>
+<span id="cb3-3"><a href="evaluating-regression-models.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bodyfat, <span class="fu">aes</span>(???)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="evaluating-regression-models.html#cb3-4" aria-hidden="true" tabindex="-1"></a>    geom_???()</span>
+<span id="cb3-5"><a href="evaluating-regression-models.html#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="evaluating-regression-models.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of fatSiri vs. weight</span></span>
+<span id="cb3-7"><a href="evaluating-regression-models.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bodyfat, <span class="fu">aes</span>(???)) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="evaluating-regression-models.html#cb3-8" aria-hidden="true" tabindex="-1"></a>    geom_???()</span></code></pre></div>
 <p>Let’s fit a linear regression model to predict body fat percentage from weight.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="evaluating-regression-models.html#cb4-1" aria-hidden="true"></a>mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(??? <span class="op">~</span><span class="st"> </span>???, <span class="dt">data =</span> bodyfat)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="evaluating-regression-models.html#cb4-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(??? <span class="sc">~</span> ???, <span class="at">data =</span> bodyfat)</span></code></pre></div>
 <p>We can use the <code>augment()</code> function from the <code>broom</code> package to <em>augment</em> our original data with useful information from the model fitting. In particular, residuals are stored in the <code>.fitted</code> column, and fitted (predicted) values for the cases supplied in <code>newdata</code> are stored in the <code>.fitted</code> column.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="evaluating-regression-models.html#cb5-1" aria-hidden="true"></a>mod1_output &lt;-<span class="st"> </span>broom<span class="op">::</span><span class="kw">augment</span>(mod1, <span class="dt">newdata =</span> bodyfat)</span>
-<span id="cb5-2"><a href="evaluating-regression-models.html#cb5-2" aria-hidden="true"></a><span class="kw">head</span>(mod1_output)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="evaluating-regression-models.html#cb5-1" aria-hidden="true" tabindex="-1"></a>mod1_output <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(mod1, <span class="at">newdata =</span> bodyfat)</span>
+<span id="cb5-2"><a href="evaluating-regression-models.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mod1_output)</span></code></pre></div>
 <p>We can use the <code>augment()</code> output to compute error metrics…</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="evaluating-regression-models.html#cb6-1" aria-hidden="true"></a><span class="co"># MSE - what is the interpretation with units?</span></span>
-<span id="cb6-2"><a href="evaluating-regression-models.html#cb6-2" aria-hidden="true"></a><span class="kw">mean</span>(mod1_output<span class="op">$</span>.resid<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb6-3"><a href="evaluating-regression-models.html#cb6-3" aria-hidden="true"></a></span>
-<span id="cb6-4"><a href="evaluating-regression-models.html#cb6-4" aria-hidden="true"></a><span class="co"># RMSE - what is the interpretation with units?</span></span>
-<span id="cb6-5"><a href="evaluating-regression-models.html#cb6-5" aria-hidden="true"></a><span class="kw">mean</span>(mod1_output<span class="op">$</span>.resid<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sqrt</span>()</span>
-<span id="cb6-6"><a href="evaluating-regression-models.html#cb6-6" aria-hidden="true"></a></span>
-<span id="cb6-7"><a href="evaluating-regression-models.html#cb6-7" aria-hidden="true"></a><span class="co"># MAE - what is the interpretation with units?</span></span>
-<span id="cb6-8"><a href="evaluating-regression-models.html#cb6-8" aria-hidden="true"></a><span class="kw">mean</span>(<span class="kw">abs</span>(mod1_output<span class="op">$</span>.resid))</span>
-<span id="cb6-9"><a href="evaluating-regression-models.html#cb6-9" aria-hidden="true"></a></span>
-<span id="cb6-10"><a href="evaluating-regression-models.html#cb6-10" aria-hidden="true"></a><span class="co"># R-squared - interpretation? (unit-less)</span></span>
-<span id="cb6-11"><a href="evaluating-regression-models.html#cb6-11" aria-hidden="true"></a><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="kw">var</span>(mod1_output<span class="op">$</span>.resid) <span class="op">/</span><span class="st"> </span><span class="kw">var</span>(mod1_output<span class="op">$</span>fatSiri))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="evaluating-regression-models.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE - what is the interpretation with units?</span></span>
+<span id="cb6-2"><a href="evaluating-regression-models.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mod1_output<span class="sc">$</span>.resid<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb6-3"><a href="evaluating-regression-models.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="evaluating-regression-models.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSE - what is the interpretation with units?</span></span>
+<span id="cb6-5"><a href="evaluating-regression-models.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mod1_output<span class="sc">$</span>.resid<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">sqrt</span>()</span>
+<span id="cb6-6"><a href="evaluating-regression-models.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="evaluating-regression-models.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># MAE - what is the interpretation with units?</span></span>
+<span id="cb6-8"><a href="evaluating-regression-models.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(mod1_output<span class="sc">$</span>.resid))</span>
+<span id="cb6-9"><a href="evaluating-regression-models.html#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="evaluating-regression-models.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># R-squared - interpretation? (unit-less)</span></span>
+<span id="cb6-11"><a href="evaluating-regression-models.html#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> (<span class="fu">var</span>(mod1_output<span class="sc">$</span>.resid) <span class="sc">/</span> <span class="fu">var</span>(mod1_output<span class="sc">$</span>fatSiri))</span></code></pre></div>
 <p>…and to create residual plots:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="evaluating-regression-models.html#cb7-1" aria-hidden="true"></a><span class="co"># Quick plot</span></span>
-<span id="cb7-2"><a href="evaluating-regression-models.html#cb7-2" aria-hidden="true"></a><span class="kw">ggplot</span>(mod1_output, <span class="kw">aes</span>(<span class="dt">x =</span> .fitted, <span class="dt">y =</span> .resid)) <span class="op">+</span></span>
-<span id="cb7-3"><a href="evaluating-regression-models.html#cb7-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb7-4"><a href="evaluating-regression-models.html#cb7-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></span>
-<span id="cb7-5"><a href="evaluating-regression-models.html#cb7-5" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb7-6"><a href="evaluating-regression-models.html#cb7-6" aria-hidden="true"></a></span>
-<span id="cb7-7"><a href="evaluating-regression-models.html#cb7-7" aria-hidden="true"></a><span class="co"># Residuals vs. predictors</span></span>
-<span id="cb7-8"><a href="evaluating-regression-models.html#cb7-8" aria-hidden="true"></a><span class="kw">ggplot</span>(mod1_output, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> .resid)) <span class="op">+</span></span>
-<span id="cb7-9"><a href="evaluating-regression-models.html#cb7-9" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb7-10"><a href="evaluating-regression-models.html#cb7-10" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></span>
-<span id="cb7-11"><a href="evaluating-regression-models.html#cb7-11" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="evaluating-regression-models.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick plot</span></span>
+<span id="cb7-2"><a href="evaluating-regression-models.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mod1_output, <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="evaluating-regression-models.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href="evaluating-regression-models.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb7-5"><a href="evaluating-regression-models.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb7-6"><a href="evaluating-regression-models.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="evaluating-regression-models.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals vs. predictors</span></span>
+<span id="cb7-8"><a href="evaluating-regression-models.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mod1_output, <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> .resid)) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="evaluating-regression-models.html#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-10"><a href="evaluating-regression-models.html#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb7-11"><a href="evaluating-regression-models.html#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 </div>
-<div id="exercise-1" class="section level3 unnumbered">
-<h3>Exercise 1</h3>
+<div id="exercise-1" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 1<a href="evaluating-regression-models.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First decide on what you think would be a good model by picking variables based on context. Fit this model, calling it <code>mod_initial</code>. (Remember that you can include several predictors with a <code>+</code> in the model formula - like <code>y ~ x1+x2</code>.)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="evaluating-regression-models.html#cb8-1" aria-hidden="true"></a><span class="co"># Code to fit initial model</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="evaluating-regression-models.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to fit initial model</span></span></code></pre></div>
 <p>Use residual plot explorations to check if you need to update your model.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="evaluating-regression-models.html#cb9-1" aria-hidden="true"></a><span class="co"># Residual plot explorations</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="evaluating-regression-models.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual plot explorations</span></span></code></pre></div>
 <p>Fit your updated model, and call it <code>model_updated</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="evaluating-regression-models.html#cb10-1" aria-hidden="true"></a><span class="co"># Code to fit updated model</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="evaluating-regression-models.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to fit updated model</span></span></code></pre></div>
 </div>
-<div id="exercise-2" class="section level3 unnumbered">
-<h3>Exercise 2</h3>
+<div id="exercise-2" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 2<a href="evaluating-regression-models.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Compute and contextually interpret relevant evaluation metrics for your model.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="evaluating-regression-models.html#cb11-1" aria-hidden="true"></a><span class="co"># Code to compute evaluation metrics</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="evaluating-regression-models.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to compute evaluation metrics</span></span></code></pre></div>
 </div>
-<div id="exercise-3" class="section level3 unnumbered">
-<h3>Exercise 3</h3>
+<div id="exercise-3" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 3<a href="evaluating-regression-models.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now that you’ve selected your best model, deploy it in the real world by applying it to a new set of 172 adult males. You’ll need to update the <code>newdata</code> argument of the <code>broom::augment()</code> code to use <code>bodyfat_test</code> instead of <code>bodyfat</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="evaluating-regression-models.html#cb12-1" aria-hidden="true"></a>bodyfat_test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/7gizws208u0oywq/bodyfat_test.csv?dl=1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="evaluating-regression-models.html#cb12-1" aria-hidden="true" tabindex="-1"></a>bodyfat_test <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/7gizws208u0oywq/bodyfat_test.csv?dl=1&quot;</span>)</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Compare your evaluation metrics from Exercise 2 the metrics here. What do you notice? (Note: this observation is just based on your one particular fitted model. You’ll make some more comprehensive observations in the next exercise.)</p></li>
 <li><p>In general, do you think that models with more or less variables would perform better in this comparison? Explain.</p></li>
 </ol>
 </div>
-<div id="exercise-4" class="section level3 unnumbered">
-<h3>Exercise 4</h3>
+<div id="exercise-4" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 4<a href="evaluating-regression-models.html#exercise-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The code below systematically looks at the same comparison that you made in Exercise 3 but for every possible linear regression model formed from inclusion/exclusion of the predictors (without transformations or interactions).</p>
 <p>Run the code to make a plot of the results of this systematic investigation. (Feel free to inspect the code if you’re curious, but otherwise, don’t worry about understanding it fully.)</p>
 <p>What do you notice? What do you wonder?</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="evaluating-regression-models.html#cb13-1" aria-hidden="true"></a>get_maes &lt;-<span class="st"> </span><span class="cf">function</span>(mod, train_data, test_data) {</span>
-<span id="cb13-2"><a href="evaluating-regression-models.html#cb13-2" aria-hidden="true"></a>    mod_output_train &lt;-<span class="st"> </span>broom<span class="op">::</span><span class="kw">augment</span>(mod, <span class="dt">newdata =</span> train_data)</span>
-<span id="cb13-3"><a href="evaluating-regression-models.html#cb13-3" aria-hidden="true"></a>    mod_output_test &lt;-<span class="st"> </span>broom<span class="op">::</span><span class="kw">augment</span>(mod, <span class="dt">newdata =</span> test_data)</span>
-<span id="cb13-4"><a href="evaluating-regression-models.html#cb13-4" aria-hidden="true"></a>    train_mae &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">abs</span>(mod_output_train<span class="op">$</span>.resid))</span>
-<span id="cb13-5"><a href="evaluating-regression-models.html#cb13-5" aria-hidden="true"></a>    test_mae &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">abs</span>(mod_output_test<span class="op">$</span>.resid))</span>
-<span id="cb13-6"><a href="evaluating-regression-models.html#cb13-6" aria-hidden="true"></a>    <span class="kw">c</span>(train_mae, test_mae)</span>
-<span id="cb13-7"><a href="evaluating-regression-models.html#cb13-7" aria-hidden="true"></a>}</span>
-<span id="cb13-8"><a href="evaluating-regression-models.html#cb13-8" aria-hidden="true"></a></span>
-<span id="cb13-9"><a href="evaluating-regression-models.html#cb13-9" aria-hidden="true"></a></span>
-<span id="cb13-10"><a href="evaluating-regression-models.html#cb13-10" aria-hidden="true"></a>possible_predictors &lt;-<span class="st"> </span><span class="kw">setdiff</span>(<span class="kw">colnames</span>(bodyfat), <span class="kw">c</span>(<span class="st">&quot;fatSiri&quot;</span>, <span class="st">&quot;hipin&quot;</span>))</span>
-<span id="cb13-11"><a href="evaluating-regression-models.html#cb13-11" aria-hidden="true"></a>results &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">13</span>, <span class="cf">function</span>(i) {</span>
-<span id="cb13-12"><a href="evaluating-regression-models.html#cb13-12" aria-hidden="true"></a>    combos &lt;-<span class="st"> </span><span class="kw">combn</span>(possible_predictors, i)</span>
-<span id="cb13-13"><a href="evaluating-regression-models.html#cb13-13" aria-hidden="true"></a>    <span class="kw">bind_rows</span>(<span class="kw">lapply</span>(<span class="kw">seq_len</span>(<span class="kw">ncol</span>(combos)), <span class="cf">function</span>(j) {</span>
-<span id="cb13-14"><a href="evaluating-regression-models.html#cb13-14" aria-hidden="true"></a>        formula &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;fatSiri ~&quot;</span>, <span class="kw">paste</span>(combos[,j], <span class="dt">collapse =</span> <span class="st">&quot;+&quot;</span>))</span>
-<span id="cb13-15"><a href="evaluating-regression-models.html#cb13-15" aria-hidden="true"></a>        mod &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">as.formula</span>(formula), <span class="dt">data =</span> bodyfat)</span>
-<span id="cb13-16"><a href="evaluating-regression-models.html#cb13-16" aria-hidden="true"></a>        maes &lt;-<span class="st"> </span><span class="kw">get_maes</span>(<span class="dt">mod =</span> mod, <span class="dt">train_data =</span> bodyfat, <span class="dt">test_data =</span> bodyfat_test)</span>
-<span id="cb13-17"><a href="evaluating-regression-models.html#cb13-17" aria-hidden="true"></a>        <span class="kw">tibble</span>(</span>
-<span id="cb13-18"><a href="evaluating-regression-models.html#cb13-18" aria-hidden="true"></a>            <span class="dt">form =</span> formula,</span>
-<span id="cb13-19"><a href="evaluating-regression-models.html#cb13-19" aria-hidden="true"></a>            <span class="dt">train_mae =</span> maes[<span class="dv">1</span>],</span>
-<span id="cb13-20"><a href="evaluating-regression-models.html#cb13-20" aria-hidden="true"></a>            <span class="dt">test_mae =</span> maes[<span class="dv">2</span>],</span>
-<span id="cb13-21"><a href="evaluating-regression-models.html#cb13-21" aria-hidden="true"></a>            <span class="dt">num_predictors =</span> i</span>
-<span id="cb13-22"><a href="evaluating-regression-models.html#cb13-22" aria-hidden="true"></a>        )</span>
-<span id="cb13-23"><a href="evaluating-regression-models.html#cb13-23" aria-hidden="true"></a>    }))</span>
-<span id="cb13-24"><a href="evaluating-regression-models.html#cb13-24" aria-hidden="true"></a>}))</span>
-<span id="cb13-25"><a href="evaluating-regression-models.html#cb13-25" aria-hidden="true"></a></span>
-<span id="cb13-26"><a href="evaluating-regression-models.html#cb13-26" aria-hidden="true"></a><span class="co"># Relabel the num_predictors variable</span></span>
-<span id="cb13-27"><a href="evaluating-regression-models.html#cb13-27" aria-hidden="true"></a>results &lt;-<span class="st"> </span>results <span class="op">%&gt;%</span></span>
-<span id="cb13-28"><a href="evaluating-regression-models.html#cb13-28" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">num_predictors =</span> <span class="kw">paste</span>(<span class="st">&quot;# predictors:&quot;</span>, num_predictors)) <span class="op">%&gt;%</span></span>
-<span id="cb13-29"><a href="evaluating-regression-models.html#cb13-29" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">num_predictors =</span> <span class="kw">factor</span>(num_predictors, <span class="dt">levels =</span> <span class="kw">paste</span>(<span class="st">&quot;# predictors:&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">13</span>)))</span>
-<span id="cb13-30"><a href="evaluating-regression-models.html#cb13-30" aria-hidden="true"></a></span>
-<span id="cb13-31"><a href="evaluating-regression-models.html#cb13-31" aria-hidden="true"></a><span class="co"># Plot results</span></span>
-<span id="cb13-32"><a href="evaluating-regression-models.html#cb13-32" aria-hidden="true"></a><span class="kw">ggplot</span>(results, <span class="kw">aes</span>(<span class="dt">x =</span> train_mae, <span class="dt">y =</span> test_mae, <span class="dt">color =</span> num_predictors)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb13-33"><a href="evaluating-regression-models.html#cb13-33" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb13-34"><a href="evaluating-regression-models.html#cb13-34" aria-hidden="true"></a><span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">7.5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">7.5</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb13-35"><a href="evaluating-regression-models.html#cb13-35" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">1</span>, <span class="dt">intercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb13-36"><a href="evaluating-regression-models.html#cb13-36" aria-hidden="true"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>num_predictors) <span class="op">+</span></span>
-<span id="cb13-37"><a href="evaluating-regression-models.html#cb13-37" aria-hidden="true"></a><span class="st">    </span><span class="kw">guides</span>(<span class="dt">color =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb13-38"><a href="evaluating-regression-models.html#cb13-38" aria-hidden="true"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;MAE on original data&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;MAE on new data on 172 men&quot;</span>) <span class="op">+</span></span>
-<span id="cb13-39"><a href="evaluating-regression-models.html#cb13-39" aria-hidden="true"></a><span class="st">    </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="evaluating-regression-models.html#cb13-1" aria-hidden="true" tabindex="-1"></a>get_maes <span class="ot">&lt;-</span> <span class="cf">function</span>(mod, train_data, test_data) {</span>
+<span id="cb13-2"><a href="evaluating-regression-models.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    mod_output_train <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(mod, <span class="at">newdata =</span> train_data)</span>
+<span id="cb13-3"><a href="evaluating-regression-models.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    mod_output_test <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(mod, <span class="at">newdata =</span> test_data)</span>
+<span id="cb13-4"><a href="evaluating-regression-models.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    train_mae <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(mod_output_train<span class="sc">$</span>.resid))</span>
+<span id="cb13-5"><a href="evaluating-regression-models.html#cb13-5" aria-hidden="true" tabindex="-1"></a>    test_mae <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(mod_output_test<span class="sc">$</span>.resid))</span>
+<span id="cb13-6"><a href="evaluating-regression-models.html#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(train_mae, test_mae)</span>
+<span id="cb13-7"><a href="evaluating-regression-models.html#cb13-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-8"><a href="evaluating-regression-models.html#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="evaluating-regression-models.html#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="evaluating-regression-models.html#cb13-10" aria-hidden="true" tabindex="-1"></a>possible_predictors <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">colnames</span>(bodyfat), <span class="fu">c</span>(<span class="st">&quot;fatSiri&quot;</span>, <span class="st">&quot;hipin&quot;</span>))</span>
+<span id="cb13-11"><a href="evaluating-regression-models.html#cb13-11" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>, <span class="cf">function</span>(i) {</span>
+<span id="cb13-12"><a href="evaluating-regression-models.html#cb13-12" aria-hidden="true" tabindex="-1"></a>    combos <span class="ot">&lt;-</span> <span class="fu">combn</span>(possible_predictors, i)</span>
+<span id="cb13-13"><a href="evaluating-regression-models.html#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>(<span class="fu">lapply</span>(<span class="fu">seq_len</span>(<span class="fu">ncol</span>(combos)), <span class="cf">function</span>(j) {</span>
+<span id="cb13-14"><a href="evaluating-regression-models.html#cb13-14" aria-hidden="true" tabindex="-1"></a>        formula <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;fatSiri ~&quot;</span>, <span class="fu">paste</span>(combos[,j], <span class="at">collapse =</span> <span class="st">&quot;+&quot;</span>))</span>
+<span id="cb13-15"><a href="evaluating-regression-models.html#cb13-15" aria-hidden="true" tabindex="-1"></a>        mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.formula</span>(formula), <span class="at">data =</span> bodyfat)</span>
+<span id="cb13-16"><a href="evaluating-regression-models.html#cb13-16" aria-hidden="true" tabindex="-1"></a>        maes <span class="ot">&lt;-</span> <span class="fu">get_maes</span>(<span class="at">mod =</span> mod, <span class="at">train_data =</span> bodyfat, <span class="at">test_data =</span> bodyfat_test)</span>
+<span id="cb13-17"><a href="evaluating-regression-models.html#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">tibble</span>(</span>
+<span id="cb13-18"><a href="evaluating-regression-models.html#cb13-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">form =</span> formula,</span>
+<span id="cb13-19"><a href="evaluating-regression-models.html#cb13-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">train_mae =</span> maes[<span class="dv">1</span>],</span>
+<span id="cb13-20"><a href="evaluating-regression-models.html#cb13-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">test_mae =</span> maes[<span class="dv">2</span>],</span>
+<span id="cb13-21"><a href="evaluating-regression-models.html#cb13-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">num_predictors =</span> i</span>
+<span id="cb13-22"><a href="evaluating-regression-models.html#cb13-22" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb13-23"><a href="evaluating-regression-models.html#cb13-23" aria-hidden="true" tabindex="-1"></a>    }))</span>
+<span id="cb13-24"><a href="evaluating-regression-models.html#cb13-24" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb13-25"><a href="evaluating-regression-models.html#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="evaluating-regression-models.html#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Relabel the num_predictors variable</span></span>
+<span id="cb13-27"><a href="evaluating-regression-models.html#cb13-27" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> results <span class="sc">%&gt;%</span></span>
+<span id="cb13-28"><a href="evaluating-regression-models.html#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">num_predictors =</span> <span class="fu">paste</span>(<span class="st">&quot;# predictors:&quot;</span>, num_predictors)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-29"><a href="evaluating-regression-models.html#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">num_predictors =</span> <span class="fu">factor</span>(num_predictors, <span class="at">levels =</span> <span class="fu">paste</span>(<span class="st">&quot;# predictors:&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>)))</span>
+<span id="cb13-30"><a href="evaluating-regression-models.html#cb13-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-31"><a href="evaluating-regression-models.html#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot results</span></span>
+<span id="cb13-32"><a href="evaluating-regression-models.html#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(results, <span class="fu">aes</span>(<span class="at">x =</span> train_mae, <span class="at">y =</span> test_mae, <span class="at">color =</span> num_predictors)) <span class="sc">+</span> </span>
+<span id="cb13-33"><a href="evaluating-regression-models.html#cb13-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb13-34"><a href="evaluating-regression-models.html#cb13-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">7.5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">7.5</span>)) <span class="sc">+</span> </span>
+<span id="cb13-35"><a href="evaluating-regression-models.html#cb13-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb13-36"><a href="evaluating-regression-models.html#cb13-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>num_predictors) <span class="sc">+</span></span>
+<span id="cb13-37"><a href="evaluating-regression-models.html#cb13-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">color =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-38"><a href="evaluating-regression-models.html#cb13-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;MAE on original data&quot;</span>, <span class="at">y =</span> <span class="st">&quot;MAE on new data on 172 men&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-39"><a href="evaluating-regression-models.html#cb13-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
 
 </div>
 </div>
@@ -580,7 +580,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -599,6 +598,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -619,6 +619,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
@@ -632,7 +636,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

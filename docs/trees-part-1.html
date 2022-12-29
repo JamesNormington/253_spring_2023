@@ -6,14 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Topic 11 Trees (Part 1) | STAT 253: Statistical Machine Learning</title>
   <meta name="description" content="This is the class website for Statistical Machine Learning at Macalester College." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Topic 11 Trees (Part 1) | STAT 253: Statistical Machine Learning" />
   <meta property="og:type" content="book" />
   
-  
   <meta property="og:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
-  <meta name="github-repo" content="lmyint/253_spring_2021" />
+  <meta name="github-repo" content="JamesNormington/253_spring_2023" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Topic 11 Trees (Part 1) | STAT 253: Statistical Machine Learning" />
@@ -31,8 +30,8 @@
   
 <link rel="prev" href="evaluating-classification-models.html"/>
 <link rel="next" href="trees-part-2.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +47,16 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -90,7 +90,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -103,7 +103,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -163,14 +163,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html"><i class="fa fa-check"></i><b>3</b> Overfitting &amp; Cross-validation</a>
 <ul>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="overfitting-cross-validation.html#the-caret-package">The <code>caret</code> package</a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#the-caret-package"><i class="fa fa-check"></i>The <code>caret</code> package</a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercises-1"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#context-1"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-1-4-models"><i class="fa fa-check"></i>Exercise 1: 4 models</a></li>
-<li><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret">Exercise 2: Cross-validation with <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
-<li><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k">Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
@@ -183,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-1-backward-stepwise-selection-by-hand"><i class="fa fa-check"></i>Exercise 1: Backward stepwise selection: by hand</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-2-interpreting-the-results"><i class="fa fa-check"></i>Exercise 2: Interpreting the results</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-3-planning-forward-selection-using-cv"><i class="fa fa-check"></i>Exercise 3: Planning forward selection using CV</a></li>
-<li><a href="variable-subset-selection.html#exercise-4-stepwise-selection-in-caret">Exercise 4: Stepwise selection in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-4-stepwise-selection-in-caret"><i class="fa fa-check"></i>Exercise 4: Stepwise selection in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-5-exploring-the-results"><i class="fa fa-check"></i>Exercise 5: Exploring the results</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#digging-deeper-1"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
@@ -191,13 +191,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html"><i class="fa fa-check"></i><b>5</b> LASSO: Shrinkage/Regularization</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#learning-goals-3"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="lasso-shrinkageregularization.html#lasso-models-in-caret">LASSO models in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#lasso-models-in-caret"><i class="fa fa-check"></i>LASSO models in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercises-3"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-1-a-least-squares-model"><i class="fa fa-check"></i>Exercise 1: A least squares model</a></li>
-<li><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret">Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret"><i class="fa fa-check"></i>Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-3-examining-output-plot-of-coefficient-paths"><i class="fa fa-check"></i>Exercise 3: Examining output: plot of coefficient paths</a></li>
-<li><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda">Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda"><i class="fa fa-check"></i>Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-5-examining-and-evaluating-the-best-lasso-model"><i class="fa fa-check"></i>Exercise 5: Examining and evaluating the best LASSO model</a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#digging-deeper-2"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
@@ -206,13 +206,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html"><i class="fa fa-check"></i><b>6</b> KNN Regression and the Bias-Variance Tradeoff</a>
 <ul>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#learning-goals-4"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret">KNN models in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret"><i class="fa fa-check"></i>KNN models in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#hello-how-are-things"><i class="fa fa-check"></i>Hello, how are things?</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-1-bias-variance-tradeoff-warmup"><i class="fa fa-check"></i>Exercise 1: Bias-variance tradeoff warmup</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-2-impact-of-distance-metric"><i class="fa fa-check"></i>Exercise 2: Impact of distance metric</a></li>
-<li><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret">Exercise 3: Implementing KNN in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret"><i class="fa fa-check"></i>Exercise 3: Implementing KNN in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-4-inspecting-the-results"><i class="fa fa-check"></i>Exercise 4: Inspecting the results</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-5-curse-of-dimensionality"><i class="fa fa-check"></i>Exercise 5: Curse of dimensionality</a></li>
 </ul></li>
@@ -220,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>7</b> Splines</a>
 <ul>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#learning-goals-5"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="splines.html#splines-in-caret">Splines in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#splines-in-caret"><i class="fa fa-check"></i>Splines in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercises-5"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-1-evaluating-a-fully-linear-model"><i class="fa fa-check"></i>Exercise 1: Evaluating a fully linear model</a></li>
@@ -231,11 +231,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="local-regression-gams.html"><a href="local-regression-gams.html"><i class="fa fa-check"></i><b>8</b> Local Regression &amp; GAMs</a>
 <ul>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#learning-goals-6"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="local-regression-gams.html#gams-in-caret">GAMs in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#gams-in-caret"><i class="fa fa-check"></i>GAMs in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercises-6"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-1-conceptual-warmup"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret">Exercise 2: Building a GAM in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret"><i class="fa fa-check"></i>Exercise 2: Building a GAM in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-3-identifying-the-best-gam"><i class="fa fa-check"></i>Exercise 3: Identifying the “best” GAM</a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-4-interpreting-the-gam"><i class="fa fa-check"></i>Exercise 4: Interpreting the GAM</a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-5-comparison-of-methods"><i class="fa fa-check"></i>Exercise 5: Comparison of methods</a></li>
@@ -246,13 +246,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic Regression</a>
 <ul>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#learning-goals-7"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="logistic-regression.html#logistic-regression-in-caret">Logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression-in-caret"><i class="fa fa-check"></i>Logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercises-7"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#context-2"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#hello-how-are-things-1"><i class="fa fa-check"></i>Hello, how are things?</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-1-visualization-warmup"><i class="fa fa-check"></i>Exercise 1: Visualization warmup</a></li>
-<li><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret">Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-3-interpreting-the-model"><i class="fa fa-check"></i>Exercise 3: Interpreting the model</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-4-making-predictions"><i class="fa fa-check"></i>Exercise 4: Making predictions</a></li>
 </ul></li>
@@ -260,12 +260,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html"><i class="fa fa-check"></i><b>10</b> Evaluating Classification Models</a>
 <ul>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#learning-goals-8"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret">LASSO for logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret"><i class="fa fa-check"></i>LASSO for logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercises-8"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#context-3"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-1-conceptual-warmup-1"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret">Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-3-inspecting-the-model"><i class="fa fa-check"></i>Exercise 3: Inspecting the model</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-4-interpreting-evaluation-metrics"><i class="fa fa-check"></i>Exercise 4: Interpreting evaluation metrics</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-5-algorithmic-understanding-for-evaluation-metrics"><i class="fa fa-check"></i>Exercise 5: Algorithmic understanding for evaluation metrics</a></li>
@@ -274,13 +274,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="trees-part-1.html"><a href="trees-part-1.html"><i class="fa fa-check"></i><b>11</b> Trees (Part 1)</a>
 <ul>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#learning-goals-9"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="trees-part-1.html#trees-in-caret">Trees in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#trees-in-caret"><i class="fa fa-check"></i>Trees in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercises-9"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#context-4"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-1-core-theme-parametricnonparametric"><i class="fa fa-check"></i>Exercise 1: Core theme: parametric/nonparametric</a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-2-core-theme-tuning-parameters-and-the-bvt"><i class="fa fa-check"></i>Exercise 2: Core theme: Tuning parameters and the BVT</a></li>
-<li><a href="trees-part-1.html#exercise-3-building-trees-in-caret">Exercise 3: Building trees in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-3-building-trees-in-caret"><i class="fa fa-check"></i>Exercise 3: Building trees in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-4-visualizing-trees"><i class="fa fa-check"></i>Exercise 4: Visualizing trees</a></li>
 </ul></li>
 </ul></li>
@@ -321,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-3-addressing-variable-scale"><i class="fa fa-check"></i>Exercise 3: Addressing variable scale</a></li>
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-4-clustering-on-more-variables"><i class="fa fa-check"></i>Exercise 4: Clustering on more variables</a></li>
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-5-interpreting-the-clusters"><i class="fa fa-check"></i>Exercise 5: Interpreting the clusters</a></li>
-<li><a href="k-means-clustering.html#exercise-6-picking-k">Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-6-picking-k"><i class="fa fa-check"></i>Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i><b>15</b> Hierarchical Clustering</a>
@@ -410,10 +410,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="trees-part-1" class="section level1" number="11">
-<h1><span class="header-section-number">Topic 11</span> Trees (Part 1)</h1>
-<div id="learning-goals-9" class="section level2 unnumbered">
-<h2>Learning Goals</h2>
+<div id="trees-part-1" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Topic 11</span> Trees (Part 1)<a href="trees-part-1.html#trees-part-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-9" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="trees-part-1.html#learning-goals-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Clearly describe the recursive binary splitting algorithm for tree building for both regression and classification</li>
 <li>Compute the weighted average Gini index to measure the quality of a classification tree split</li>
@@ -425,21 +425,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Slides from today are available <a href="https://docs.google.com/presentation/d/1h7Abe8JVxKvTcpPFo5OdR8XuWkiVU4mevYtZao00VJ0/edit?usp=sharing">here</a>.</p>
 <p><br><br><br></p>
 </div>
-<div id="trees-in-caret" class="section level2 unnumbered">
-<h2>Trees in <code>caret</code></h2>
+<div id="trees-in-caret" class="section level2 unnumbered hasAnchor">
+<h2>Trees in <code>caret</code><a href="trees-part-1.html#trees-in-caret" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To build tree models in <code>caret</code>, first load the package and set the seed for the random number generator to ensure reproducible results:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="trees-part-1.html#cb81-1" aria-hidden="true"></a><span class="kw">library</span>(caret)</span>
-<span id="cb81-2"><a href="trees-part-1.html#cb81-2" aria-hidden="true"></a><span class="kw">set.seed</span>(___) <span class="co"># Pick your favorite number to fill in the parentheses</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="trees-part-1.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb81-2"><a href="trees-part-1.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___) <span class="co"># Pick your favorite number to fill in the parentheses</span></span></code></pre></div>
 <p>If we would like to use estimates of test (overall) accuracy to choose our final model (based on a hard predictions resulting from majority classification), we can adapt the following:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="trees-part-1.html#cb82-1" aria-hidden="true"></a>tree_mod &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb82-2"><a href="trees-part-1.html#cb82-2" aria-hidden="true"></a>    y <span class="op">~</span><span class="st"> </span>x,</span>
-<span id="cb82-3"><a href="trees-part-1.html#cb82-3" aria-hidden="true"></a>    <span class="dt">data =</span> ___,</span>
-<span id="cb82-4"><a href="trees-part-1.html#cb82-4" aria-hidden="true"></a>    <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>,</span>
-<span id="cb82-5"><a href="trees-part-1.html#cb82-5" aria-hidden="true"></a>    <span class="dt">tuneGrid =</span> <span class="kw">data.frame</span>(<span class="dt">cp =</span> <span class="kw">seq</span>(___, ___, <span class="dt">length.out =</span> ___)),</span>
-<span id="cb82-6"><a href="trees-part-1.html#cb82-6" aria-hidden="true"></a>    <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dt">number =</span> ___, <span class="dt">selectionFunction =</span> ___),</span>
-<span id="cb82-7"><a href="trees-part-1.html#cb82-7" aria-hidden="true"></a>    <span class="dt">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
-<span id="cb82-8"><a href="trees-part-1.html#cb82-8" aria-hidden="true"></a>    <span class="dt">na.action =</span> na.omit</span>
-<span id="cb82-9"><a href="trees-part-1.html#cb82-9" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="trees-part-1.html#cb82-1" aria-hidden="true" tabindex="-1"></a>tree_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb82-2"><a href="trees-part-1.html#cb82-2" aria-hidden="true" tabindex="-1"></a>    y <span class="sc">~</span> x,</span>
+<span id="cb82-3"><a href="trees-part-1.html#cb82-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ___,</span>
+<span id="cb82-4"><a href="trees-part-1.html#cb82-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;rpart&quot;</span>,</span>
+<span id="cb82-5"><a href="trees-part-1.html#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">tuneGrid =</span> <span class="fu">data.frame</span>(<span class="at">cp =</span> <span class="fu">seq</span>(___, ___, <span class="at">length.out =</span> ___)),</span>
+<span id="cb82-6"><a href="trees-part-1.html#cb82-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> ___, <span class="at">selectionFunction =</span> ___),</span>
+<span id="cb82-7"><a href="trees-part-1.html#cb82-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
+<span id="cb82-8"><a href="trees-part-1.html#cb82-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.action =</span> na.omit</span>
+<span id="cb82-9"><a href="trees-part-1.html#cb82-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -482,46 +482,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If we would like to choose our final model based on estimates of test sensitivity, specificity, or AUC, we can amend the arguments of <code>trainControl()</code> as described in <a href="evaluating-classification-models.html#evaluating-classification-models">Evaluating Classification Models</a>.</p>
 <p><br></p>
 <p><strong>Visualizing and interpreting the “best” tree</strong></p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="trees-part-1.html#cb83-1" aria-hidden="true"></a><span class="co"># Plot the tree (make sure to load the rpart.plot package first)</span></span>
-<span id="cb83-2"><a href="trees-part-1.html#cb83-2" aria-hidden="true"></a><span class="kw">rpart.plot</span>(tree_mod<span class="op">$</span>finalModel)</span>
-<span id="cb83-3"><a href="trees-part-1.html#cb83-3" aria-hidden="true"></a></span>
-<span id="cb83-4"><a href="trees-part-1.html#cb83-4" aria-hidden="true"></a><span class="co"># Get variable importance metrics </span></span>
-<span id="cb83-5"><a href="trees-part-1.html#cb83-5" aria-hidden="true"></a>tree_mod<span class="op">$</span>finalModel<span class="op">$</span>variable.importance</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="trees-part-1.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the tree (make sure to load the rpart.plot package first)</span></span>
+<span id="cb83-2"><a href="trees-part-1.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree_mod<span class="sc">$</span>finalModel)</span>
+<span id="cb83-3"><a href="trees-part-1.html#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="trees-part-1.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get variable importance metrics </span></span>
+<span id="cb83-5"><a href="trees-part-1.html#cb83-5" aria-hidden="true" tabindex="-1"></a>tree_mod<span class="sc">$</span>finalModel<span class="sc">$</span>variable.importance</span></code></pre></div>
 <p><br><br><br></p>
 </div>
-<div id="exercises-9" class="section level2 unnumbered">
-<h2>Exercises</h2>
+<div id="exercises-9" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="trees-part-1.html#exercises-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/11-trees-part1.Rmd">here</a>.</strong></p>
-<div id="context-4" class="section level3 unnumbered">
-<h3>Context</h3>
+<div id="context-4" class="section level3 unnumbered hasAnchor">
+<h3>Context<a href="trees-part-1.html#context-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before proceeding, install the <code>rpart</code> and <code>rpart.plot</code> packages (for building and plotting decision trees) by entering <code>install.packages(c("rpart", "rpart.plot"))</code> in the Console.</p>
 <p>Our goal will be to classify types of urban land cover in small subregions within a high resolution aerial image of a land region. Data from the <a href="https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover">UCI Machine Learning Repository</a> include the observed type of land cover (determined by human eye) and “spectral, size, shape, and texture information” computed from the image. See <a href="https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover">this page</a> for the data codebook.</p>
 <center>
 <img src="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg"><br>
 Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" class="uri">https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg</a>
 </center>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="trees-part-1.html#cb84-1" aria-hidden="true"></a><span class="kw">library</span>(readr)</span>
-<span id="cb84-2"><a href="trees-part-1.html#cb84-2" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb84-3"><a href="trees-part-1.html#cb84-3" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb84-4"><a href="trees-part-1.html#cb84-4" aria-hidden="true"></a><span class="kw">library</span>(caret)</span>
-<span id="cb84-5"><a href="trees-part-1.html#cb84-5" aria-hidden="true"></a><span class="kw">library</span>(rpart.plot)</span>
-<span id="cb84-6"><a href="trees-part-1.html#cb84-6" aria-hidden="true"></a></span>
-<span id="cb84-7"><a href="trees-part-1.html#cb84-7" aria-hidden="true"></a><span class="co"># Read in the data</span></span>
-<span id="cb84-8"><a href="trees-part-1.html#cb84-8" aria-hidden="true"></a>land &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://www.macalester.edu/~ajohns24/data/land_cover.csv&quot;</span>)</span>
-<span id="cb84-9"><a href="trees-part-1.html#cb84-9" aria-hidden="true"></a></span>
-<span id="cb84-10"><a href="trees-part-1.html#cb84-10" aria-hidden="true"></a><span class="co"># There are 9 land types, but we&#39;ll focus on 3 of them</span></span>
-<span id="cb84-11"><a href="trees-part-1.html#cb84-11" aria-hidden="true"></a>land &lt;-<span class="st"> </span>land <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb84-12"><a href="trees-part-1.html#cb84-12" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(class <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;asphalt&quot;</span>, <span class="st">&quot;grass&quot;</span>, <span class="st">&quot;tree&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="trees-part-1.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb84-2"><a href="trees-part-1.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb84-3"><a href="trees-part-1.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb84-4"><a href="trees-part-1.html#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb84-5"><a href="trees-part-1.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb84-6"><a href="trees-part-1.html#cb84-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-7"><a href="trees-part-1.html#cb84-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb84-8"><a href="trees-part-1.html#cb84-8" aria-hidden="true" tabindex="-1"></a>land <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.macalester.edu/~ajohns24/data/land_cover.csv&quot;</span>)</span>
+<span id="cb84-9"><a href="trees-part-1.html#cb84-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-10"><a href="trees-part-1.html#cb84-10" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 9 land types, but we&#39;ll focus on 3 of them</span></span>
+<span id="cb84-11"><a href="trees-part-1.html#cb84-11" aria-hidden="true" tabindex="-1"></a>land <span class="ot">&lt;-</span> land <span class="sc">%&gt;%</span> </span>
+<span id="cb84-12"><a href="trees-part-1.html#cb84-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(class <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;asphalt&quot;</span>, <span class="st">&quot;grass&quot;</span>, <span class="st">&quot;tree&quot;</span>))</span></code></pre></div>
 </div>
-<div id="exercise-1-core-theme-parametricnonparametric" class="section level3 unnumbered">
-<h3>Exercise 1: Core theme: parametric/nonparametric</h3>
+<div id="exercise-1-core-theme-parametricnonparametric" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 1: Core theme: parametric/nonparametric<a href="trees-part-1.html#exercise-1-core-theme-parametricnonparametric" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: lower-alpha">
 <li><p>What does it mean for a method to be nonparametric? In general, when might we prefer nonparametric to parametric methods? When might we not?</p></li>
 <li><p>Where do you think trees fall on the parametric/nonparametric spectrum?</p></li>
 </ol>
 </div>
-<div id="exercise-2-core-theme-tuning-parameters-and-the-bvt" class="section level3 unnumbered">
-<h3>Exercise 2: Core theme: Tuning parameters and the BVT</h3>
+<div id="exercise-2-core-theme-tuning-parameters-and-the-bvt" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 2: Core theme: Tuning parameters and the BVT<a href="trees-part-1.html#exercise-2-core-theme-tuning-parameters-and-the-bvt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The key feature governing complexity of a tree model is the number of splits used in the tree. How is the number of splits related to model complexity, bias, and variance?</p>
 <p>In practice, the number of splits is controlled indirectly through the following tuning parameters. For each, discuss how low/high parameter settings would affect the number of tree splits.</p>
 <ul>
@@ -531,8 +531,8 @@ Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" clas
 <li><p><code>maxdepth</code>: Set the maximum <strong>depth</strong> of any node of the final tree. The <strong>depth</strong> of a node is the number of branches that need to be followed to get to a given node from the root node. (The root node has depth 0.)</p></li>
 </ul>
 </div>
-<div id="exercise-3-building-trees-in-caret" class="section level3 unnumbered">
-<h3>Exercise 3: Building trees in <code>caret</code></h3>
+<div id="exercise-3-building-trees-in-caret" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 3: Building trees in <code>caret</code><a href="trees-part-1.html#exercise-3-building-trees-in-caret" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Fit a tree model for the <code>class</code> outcome (land type), and allow all possible predictors to be considered (<code>~ .</code> in the model formula).</p>
 <ul>
 <li>Use 10-fold CV.</li>
@@ -540,39 +540,39 @@ Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" clas
 <li>The Gini index impurity measure can be a minimum of zero and has an upper bound of 1. Thus, we’ll try a sequence of 50 <code>cp</code> values from 0 to 0.5.</li>
 </ul>
 <p>Make a plot of test performance versus the <code>cp</code> tuning parameter. Does it look as you expected?</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="trees-part-1.html#cb85-1" aria-hidden="true"></a><span class="kw">set.seed</span>(___)</span>
-<span id="cb85-2"><a href="trees-part-1.html#cb85-2" aria-hidden="true"></a>tree_mod &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb85-3"><a href="trees-part-1.html#cb85-3" aria-hidden="true"></a></span>
-<span id="cb85-4"><a href="trees-part-1.html#cb85-4" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="trees-part-1.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___)</span>
+<span id="cb85-2"><a href="trees-part-1.html#cb85-2" aria-hidden="true" tabindex="-1"></a>tree_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb85-3"><a href="trees-part-1.html#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="trees-part-1.html#cb85-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<div id="exercise-4-visualizing-trees" class="section level3 unnumbered">
-<h3>Exercise 4: Visualizing trees</h3>
+<div id="exercise-4-visualizing-trees" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 4: Visualizing trees<a href="trees-part-1.html#exercise-4-visualizing-trees" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s visualize the difference between the trees learned under <code>cp</code> parameters. The code below fits a tree for a lower than optimal <code>cp</code> value (<code>tree_mod_lowcp</code>) and a higher than optimal <code>cp</code> (<code>tree_mod_highcp</code>). We then plot these trees (1st and 3rd) along with our best tree (2nd).</p>
 <p>Look at page 3 of the <code>rpart.plot</code> <a href="http://www.milbo.org/doc/prp.pdf">package vignette</a> (an example-heavy manual) to understand what the plot components mean.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="trees-part-1.html#cb86-1" aria-hidden="true"></a>tree_mod_lowcp &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb86-2"><a href="trees-part-1.html#cb86-2" aria-hidden="true"></a>    class <span class="op">~</span><span class="st"> </span>.,</span>
-<span id="cb86-3"><a href="trees-part-1.html#cb86-3" aria-hidden="true"></a>    <span class="dt">data =</span> land,</span>
-<span id="cb86-4"><a href="trees-part-1.html#cb86-4" aria-hidden="true"></a>    <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>,</span>
-<span id="cb86-5"><a href="trees-part-1.html#cb86-5" aria-hidden="true"></a>    <span class="dt">tuneGrid =</span> <span class="kw">data.frame</span>(<span class="dt">cp =</span> <span class="dv">0</span>),</span>
-<span id="cb86-6"><a href="trees-part-1.html#cb86-6" aria-hidden="true"></a>    <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dt">number =</span> <span class="dv">10</span>),</span>
-<span id="cb86-7"><a href="trees-part-1.html#cb86-7" aria-hidden="true"></a>    <span class="dt">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
-<span id="cb86-8"><a href="trees-part-1.html#cb86-8" aria-hidden="true"></a>    <span class="dt">na.action =</span> na.omit</span>
-<span id="cb86-9"><a href="trees-part-1.html#cb86-9" aria-hidden="true"></a>)</span>
-<span id="cb86-10"><a href="trees-part-1.html#cb86-10" aria-hidden="true"></a>tree_mod_highcp &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb86-11"><a href="trees-part-1.html#cb86-11" aria-hidden="true"></a>    class <span class="op">~</span><span class="st"> </span>.,</span>
-<span id="cb86-12"><a href="trees-part-1.html#cb86-12" aria-hidden="true"></a>    <span class="dt">data =</span> land,</span>
-<span id="cb86-13"><a href="trees-part-1.html#cb86-13" aria-hidden="true"></a>    <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>,</span>
-<span id="cb86-14"><a href="trees-part-1.html#cb86-14" aria-hidden="true"></a>    <span class="dt">tuneGrid =</span> <span class="kw">data.frame</span>(<span class="dt">cp =</span> <span class="fl">0.1</span>),</span>
-<span id="cb86-15"><a href="trees-part-1.html#cb86-15" aria-hidden="true"></a>    <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dt">number =</span> <span class="dv">10</span>),</span>
-<span id="cb86-16"><a href="trees-part-1.html#cb86-16" aria-hidden="true"></a>    <span class="dt">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
-<span id="cb86-17"><a href="trees-part-1.html#cb86-17" aria-hidden="true"></a>    <span class="dt">na.action =</span> na.omit</span>
-<span id="cb86-18"><a href="trees-part-1.html#cb86-18" aria-hidden="true"></a>)</span>
-<span id="cb86-19"><a href="trees-part-1.html#cb86-19" aria-hidden="true"></a></span>
-<span id="cb86-20"><a href="trees-part-1.html#cb86-20" aria-hidden="true"></a><span class="co"># Plot all 3 trees in a row</span></span>
-<span id="cb86-21"><a href="trees-part-1.html#cb86-21" aria-hidden="true"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb86-22"><a href="trees-part-1.html#cb86-22" aria-hidden="true"></a><span class="kw">rpart.plot</span>(tree_mod_lowcp<span class="op">$</span>finalModel)</span>
-<span id="cb86-23"><a href="trees-part-1.html#cb86-23" aria-hidden="true"></a><span class="kw">rpart.plot</span>(tree_mod<span class="op">$</span>finalModel)</span>
-<span id="cb86-24"><a href="trees-part-1.html#cb86-24" aria-hidden="true"></a><span class="kw">rpart.plot</span>(tree_mod_highcp<span class="op">$</span>finalModel)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="trees-part-1.html#cb86-1" aria-hidden="true" tabindex="-1"></a>tree_mod_lowcp <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb86-2"><a href="trees-part-1.html#cb86-2" aria-hidden="true" tabindex="-1"></a>    class <span class="sc">~</span> .,</span>
+<span id="cb86-3"><a href="trees-part-1.html#cb86-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> land,</span>
+<span id="cb86-4"><a href="trees-part-1.html#cb86-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;rpart&quot;</span>,</span>
+<span id="cb86-5"><a href="trees-part-1.html#cb86-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">tuneGrid =</span> <span class="fu">data.frame</span>(<span class="at">cp =</span> <span class="dv">0</span>),</span>
+<span id="cb86-6"><a href="trees-part-1.html#cb86-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">10</span>),</span>
+<span id="cb86-7"><a href="trees-part-1.html#cb86-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
+<span id="cb86-8"><a href="trees-part-1.html#cb86-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.action =</span> na.omit</span>
+<span id="cb86-9"><a href="trees-part-1.html#cb86-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-10"><a href="trees-part-1.html#cb86-10" aria-hidden="true" tabindex="-1"></a>tree_mod_highcp <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb86-11"><a href="trees-part-1.html#cb86-11" aria-hidden="true" tabindex="-1"></a>    class <span class="sc">~</span> .,</span>
+<span id="cb86-12"><a href="trees-part-1.html#cb86-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> land,</span>
+<span id="cb86-13"><a href="trees-part-1.html#cb86-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;rpart&quot;</span>,</span>
+<span id="cb86-14"><a href="trees-part-1.html#cb86-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">tuneGrid =</span> <span class="fu">data.frame</span>(<span class="at">cp =</span> <span class="fl">0.1</span>),</span>
+<span id="cb86-15"><a href="trees-part-1.html#cb86-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">10</span>),</span>
+<span id="cb86-16"><a href="trees-part-1.html#cb86-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
+<span id="cb86-17"><a href="trees-part-1.html#cb86-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.action =</span> na.omit</span>
+<span id="cb86-18"><a href="trees-part-1.html#cb86-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb86-19"><a href="trees-part-1.html#cb86-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-20"><a href="trees-part-1.html#cb86-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot all 3 trees in a row</span></span>
+<span id="cb86-21"><a href="trees-part-1.html#cb86-21" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb86-22"><a href="trees-part-1.html#cb86-22" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree_mod_lowcp<span class="sc">$</span>finalModel)</span>
+<span id="cb86-23"><a href="trees-part-1.html#cb86-23" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree_mod<span class="sc">$</span>finalModel)</span>
+<span id="cb86-24"><a href="trees-part-1.html#cb86-24" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree_mod_highcp<span class="sc">$</span>finalModel)</span></code></pre></div>
 <ul>
 <li><p>Verify for a couple of splits the idea of increasing node purity/homogeneity in tree-building. (How is this idea reflected in the numbers in the plot output?)</p></li>
 <li><p>Tuning classification trees (like with the <code>cp</code> parameter) is also referred to as <strong>“pruning”</strong>. Why does this make sense? NOTE: If “pruning” is a new word to you, first Google it.</p></li>
@@ -591,7 +591,6 @@ Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" clas
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -610,6 +609,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -630,6 +630,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
@@ -643,7 +647,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

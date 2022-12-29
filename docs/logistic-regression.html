@@ -6,14 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Topic 9 Logistic Regression | STAT 253: Statistical Machine Learning</title>
   <meta name="description" content="This is the class website for Statistical Machine Learning at Macalester College." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Topic 9 Logistic Regression | STAT 253: Statistical Machine Learning" />
   <meta property="og:type" content="book" />
   
-  
   <meta property="og:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
-  <meta name="github-repo" content="lmyint/253_spring_2021" />
+  <meta name="github-repo" content="JamesNormington/253_spring_2023" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Topic 9 Logistic Regression | STAT 253: Statistical Machine Learning" />
@@ -31,8 +30,8 @@
   
 <link rel="prev" href="local-regression-gams.html"/>
 <link rel="next" href="evaluating-classification-models.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +47,16 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -90,7 +90,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -103,7 +103,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -163,14 +163,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html"><i class="fa fa-check"></i><b>3</b> Overfitting &amp; Cross-validation</a>
 <ul>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="overfitting-cross-validation.html#the-caret-package">The <code>caret</code> package</a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#the-caret-package"><i class="fa fa-check"></i>The <code>caret</code> package</a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercises-1"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#context-1"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-1-4-models"><i class="fa fa-check"></i>Exercise 1: 4 models</a></li>
-<li><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret">Exercise 2: Cross-validation with <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
-<li><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k">Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
@@ -183,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-1-backward-stepwise-selection-by-hand"><i class="fa fa-check"></i>Exercise 1: Backward stepwise selection: by hand</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-2-interpreting-the-results"><i class="fa fa-check"></i>Exercise 2: Interpreting the results</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-3-planning-forward-selection-using-cv"><i class="fa fa-check"></i>Exercise 3: Planning forward selection using CV</a></li>
-<li><a href="variable-subset-selection.html#exercise-4-stepwise-selection-in-caret">Exercise 4: Stepwise selection in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-4-stepwise-selection-in-caret"><i class="fa fa-check"></i>Exercise 4: Stepwise selection in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-5-exploring-the-results"><i class="fa fa-check"></i>Exercise 5: Exploring the results</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#digging-deeper-1"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
@@ -191,13 +191,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html"><i class="fa fa-check"></i><b>5</b> LASSO: Shrinkage/Regularization</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#learning-goals-3"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="lasso-shrinkageregularization.html#lasso-models-in-caret">LASSO models in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#lasso-models-in-caret"><i class="fa fa-check"></i>LASSO models in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercises-3"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-1-a-least-squares-model"><i class="fa fa-check"></i>Exercise 1: A least squares model</a></li>
-<li><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret">Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret"><i class="fa fa-check"></i>Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-3-examining-output-plot-of-coefficient-paths"><i class="fa fa-check"></i>Exercise 3: Examining output: plot of coefficient paths</a></li>
-<li><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda">Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda"><i class="fa fa-check"></i>Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-5-examining-and-evaluating-the-best-lasso-model"><i class="fa fa-check"></i>Exercise 5: Examining and evaluating the best LASSO model</a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#digging-deeper-2"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
@@ -206,13 +206,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html"><i class="fa fa-check"></i><b>6</b> KNN Regression and the Bias-Variance Tradeoff</a>
 <ul>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#learning-goals-4"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret">KNN models in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret"><i class="fa fa-check"></i>KNN models in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#hello-how-are-things"><i class="fa fa-check"></i>Hello, how are things?</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-1-bias-variance-tradeoff-warmup"><i class="fa fa-check"></i>Exercise 1: Bias-variance tradeoff warmup</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-2-impact-of-distance-metric"><i class="fa fa-check"></i>Exercise 2: Impact of distance metric</a></li>
-<li><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret">Exercise 3: Implementing KNN in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret"><i class="fa fa-check"></i>Exercise 3: Implementing KNN in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-4-inspecting-the-results"><i class="fa fa-check"></i>Exercise 4: Inspecting the results</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-5-curse-of-dimensionality"><i class="fa fa-check"></i>Exercise 5: Curse of dimensionality</a></li>
 </ul></li>
@@ -220,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>7</b> Splines</a>
 <ul>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#learning-goals-5"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="splines.html#splines-in-caret">Splines in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#splines-in-caret"><i class="fa fa-check"></i>Splines in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercises-5"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-1-evaluating-a-fully-linear-model"><i class="fa fa-check"></i>Exercise 1: Evaluating a fully linear model</a></li>
@@ -231,11 +231,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="local-regression-gams.html"><a href="local-regression-gams.html"><i class="fa fa-check"></i><b>8</b> Local Regression &amp; GAMs</a>
 <ul>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#learning-goals-6"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="local-regression-gams.html#gams-in-caret">GAMs in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#gams-in-caret"><i class="fa fa-check"></i>GAMs in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercises-6"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-1-conceptual-warmup"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret">Exercise 2: Building a GAM in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret"><i class="fa fa-check"></i>Exercise 2: Building a GAM in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-3-identifying-the-best-gam"><i class="fa fa-check"></i>Exercise 3: Identifying the “best” GAM</a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-4-interpreting-the-gam"><i class="fa fa-check"></i>Exercise 4: Interpreting the GAM</a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-5-comparison-of-methods"><i class="fa fa-check"></i>Exercise 5: Comparison of methods</a></li>
@@ -246,13 +246,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic Regression</a>
 <ul>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#learning-goals-7"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="logistic-regression.html#logistic-regression-in-caret">Logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression-in-caret"><i class="fa fa-check"></i>Logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercises-7"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#context-2"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#hello-how-are-things-1"><i class="fa fa-check"></i>Hello, how are things?</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-1-visualization-warmup"><i class="fa fa-check"></i>Exercise 1: Visualization warmup</a></li>
-<li><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret">Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-3-interpreting-the-model"><i class="fa fa-check"></i>Exercise 3: Interpreting the model</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-4-making-predictions"><i class="fa fa-check"></i>Exercise 4: Making predictions</a></li>
 </ul></li>
@@ -260,12 +260,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html"><i class="fa fa-check"></i><b>10</b> Evaluating Classification Models</a>
 <ul>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#learning-goals-8"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret">LASSO for logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret"><i class="fa fa-check"></i>LASSO for logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercises-8"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#context-3"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-1-conceptual-warmup-1"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret">Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-3-inspecting-the-model"><i class="fa fa-check"></i>Exercise 3: Inspecting the model</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-4-interpreting-evaluation-metrics"><i class="fa fa-check"></i>Exercise 4: Interpreting evaluation metrics</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-5-algorithmic-understanding-for-evaluation-metrics"><i class="fa fa-check"></i>Exercise 5: Algorithmic understanding for evaluation metrics</a></li>
@@ -274,13 +274,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="trees-part-1.html"><a href="trees-part-1.html"><i class="fa fa-check"></i><b>11</b> Trees (Part 1)</a>
 <ul>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#learning-goals-9"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="trees-part-1.html#trees-in-caret">Trees in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#trees-in-caret"><i class="fa fa-check"></i>Trees in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercises-9"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#context-4"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-1-core-theme-parametricnonparametric"><i class="fa fa-check"></i>Exercise 1: Core theme: parametric/nonparametric</a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-2-core-theme-tuning-parameters-and-the-bvt"><i class="fa fa-check"></i>Exercise 2: Core theme: Tuning parameters and the BVT</a></li>
-<li><a href="trees-part-1.html#exercise-3-building-trees-in-caret">Exercise 3: Building trees in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-3-building-trees-in-caret"><i class="fa fa-check"></i>Exercise 3: Building trees in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-4-visualizing-trees"><i class="fa fa-check"></i>Exercise 4: Visualizing trees</a></li>
 </ul></li>
 </ul></li>
@@ -321,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-3-addressing-variable-scale"><i class="fa fa-check"></i>Exercise 3: Addressing variable scale</a></li>
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-4-clustering-on-more-variables"><i class="fa fa-check"></i>Exercise 4: Clustering on more variables</a></li>
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-5-interpreting-the-clusters"><i class="fa fa-check"></i>Exercise 5: Interpreting the clusters</a></li>
-<li><a href="k-means-clustering.html#exercise-6-picking-k">Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-6-picking-k"><i class="fa fa-check"></i>Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i><b>15</b> Hierarchical Clustering</a>
@@ -410,10 +410,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="logistic-regression" class="section level1" number="9">
-<h1><span class="header-section-number">Topic 9</span> Logistic Regression</h1>
-<div id="learning-goals-7" class="section level2 unnumbered">
-<h2>Learning Goals</h2>
+<div id="logistic-regression" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Topic 9</span> Logistic Regression<a href="logistic-regression.html#logistic-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-7" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="logistic-regression.html#learning-goals-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Use a logistic regression model to make hard (class) and soft (probability) predictions</li>
 <li>Interpret non-intercept coefficients from logistic regression models in the data context</li>
@@ -422,21 +422,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Slides from today are available <a href="https://docs.google.com/presentation/d/1_i_iDhSdVTbGm6Tw4z-gnJ6kN0qEC0HZ3F8R_Nl83zw/edit?usp=sharing">here</a>.</p>
 <p><br><br><br></p>
 </div>
-<div id="logistic-regression-in-caret" class="section level2 unnumbered">
-<h2>Logistic regression in <code>caret</code></h2>
+<div id="logistic-regression-in-caret" class="section level2 unnumbered hasAnchor">
+<h2>Logistic regression in <code>caret</code><a href="logistic-regression.html#logistic-regression-in-caret" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To build logistic regression models in <code>caret</code>, first load the package and set the seed for the random number generator to ensure reproducible results:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="logistic-regression.html#cb65-1" aria-hidden="true"></a><span class="kw">library</span>(caret)</span>
-<span id="cb65-2"><a href="logistic-regression.html#cb65-2" aria-hidden="true"></a><span class="kw">set.seed</span>(___) <span class="co"># Pick your favorite number to fill in the parentheses</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="logistic-regression.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb65-2"><a href="logistic-regression.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___) <span class="co"># Pick your favorite number to fill in the parentheses</span></span></code></pre></div>
 <p>Then adapt the following code:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="logistic-regression.html#cb66-1" aria-hidden="true"></a>logistic_mod &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb66-2"><a href="logistic-regression.html#cb66-2" aria-hidden="true"></a>    y <span class="op">~</span><span class="st"> </span>x,</span>
-<span id="cb66-3"><a href="logistic-regression.html#cb66-3" aria-hidden="true"></a>    <span class="dt">data =</span> ___,</span>
-<span id="cb66-4"><a href="logistic-regression.html#cb66-4" aria-hidden="true"></a>    <span class="dt">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
-<span id="cb66-5"><a href="logistic-regression.html#cb66-5" aria-hidden="true"></a>    <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>,</span>
-<span id="cb66-6"><a href="logistic-regression.html#cb66-6" aria-hidden="true"></a>    <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dt">number =</span> ___),</span>
-<span id="cb66-7"><a href="logistic-regression.html#cb66-7" aria-hidden="true"></a>    <span class="dt">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
-<span id="cb66-8"><a href="logistic-regression.html#cb66-8" aria-hidden="true"></a>    <span class="dt">na.action =</span> na.omit</span>
-<span id="cb66-9"><a href="logistic-regression.html#cb66-9" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="logistic-regression.html#cb66-1" aria-hidden="true" tabindex="-1"></a>logistic_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb66-2"><a href="logistic-regression.html#cb66-2" aria-hidden="true" tabindex="-1"></a>    y <span class="sc">~</span> x,</span>
+<span id="cb66-3"><a href="logistic-regression.html#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ___,</span>
+<span id="cb66-4"><a href="logistic-regression.html#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
+<span id="cb66-5"><a href="logistic-regression.html#cb66-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>,</span>
+<span id="cb66-6"><a href="logistic-regression.html#cb66-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> ___),</span>
+<span id="cb66-7"><a href="logistic-regression.html#cb66-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
+<span id="cb66-8"><a href="logistic-regression.html#cb66-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.action =</span> na.omit</span>
+<span id="cb66-9"><a href="logistic-regression.html#cb66-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -473,31 +473,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p><br></p>
 <p><strong>Examining the logistic model</strong></p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="logistic-regression.html#cb67-1" aria-hidden="true"></a><span class="co"># Model summary table</span></span>
-<span id="cb67-2"><a href="logistic-regression.html#cb67-2" aria-hidden="true"></a><span class="kw">summary</span>(logistic_mod)</span>
-<span id="cb67-3"><a href="logistic-regression.html#cb67-3" aria-hidden="true"></a></span>
-<span id="cb67-4"><a href="logistic-regression.html#cb67-4" aria-hidden="true"></a><span class="co"># Coefficients</span></span>
-<span id="cb67-5"><a href="logistic-regression.html#cb67-5" aria-hidden="true"></a><span class="kw">coef</span>(logistic_mod<span class="op">$</span>finalModel)</span>
-<span id="cb67-6"><a href="logistic-regression.html#cb67-6" aria-hidden="true"></a></span>
-<span id="cb67-7"><a href="logistic-regression.html#cb67-7" aria-hidden="true"></a><span class="co"># Exponentiated coefficients</span></span>
-<span id="cb67-8"><a href="logistic-regression.html#cb67-8" aria-hidden="true"></a><span class="kw">coef</span>(logistic_mod<span class="op">$</span>finalModel) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">exp</span>()</span>
-<span id="cb67-9"><a href="logistic-regression.html#cb67-9" aria-hidden="true"></a></span>
-<span id="cb67-10"><a href="logistic-regression.html#cb67-10" aria-hidden="true"></a><span class="co"># CV accuracy metrics</span></span>
-<span id="cb67-11"><a href="logistic-regression.html#cb67-11" aria-hidden="true"></a>logistic_mod<span class="op">$</span>results</span>
-<span id="cb67-12"><a href="logistic-regression.html#cb67-12" aria-hidden="true"></a>logistic_mod<span class="op">$</span>resample</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="logistic-regression.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model summary table</span></span>
+<span id="cb67-2"><a href="logistic-regression.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logistic_mod)</span>
+<span id="cb67-3"><a href="logistic-regression.html#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="logistic-regression.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients</span></span>
+<span id="cb67-5"><a href="logistic-regression.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(logistic_mod<span class="sc">$</span>finalModel)</span>
+<span id="cb67-6"><a href="logistic-regression.html#cb67-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-7"><a href="logistic-regression.html#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Exponentiated coefficients</span></span>
+<span id="cb67-8"><a href="logistic-regression.html#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(logistic_mod<span class="sc">$</span>finalModel) <span class="sc">%&gt;%</span> <span class="fu">exp</span>()</span>
+<span id="cb67-9"><a href="logistic-regression.html#cb67-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-10"><a href="logistic-regression.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="co"># CV accuracy metrics</span></span>
+<span id="cb67-11"><a href="logistic-regression.html#cb67-11" aria-hidden="true" tabindex="-1"></a>logistic_mod<span class="sc">$</span>results</span>
+<span id="cb67-12"><a href="logistic-regression.html#cb67-12" aria-hidden="true" tabindex="-1"></a>logistic_mod<span class="sc">$</span>resample</span></code></pre></div>
 <p><strong>Making predictions from the logistic model</strong></p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="logistic-regression.html#cb68-1" aria-hidden="true"></a><span class="co"># Make soft (probability) predictions</span></span>
-<span id="cb68-2"><a href="logistic-regression.html#cb68-2" aria-hidden="true"></a><span class="kw">predict</span>(logistic_mod, <span class="dt">newdata =</span> ___, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>)</span>
-<span id="cb68-3"><a href="logistic-regression.html#cb68-3" aria-hidden="true"></a></span>
-<span id="cb68-4"><a href="logistic-regression.html#cb68-4" aria-hidden="true"></a><span class="co"># Make hard (class) predictions (using a default 0.5 probability threshold)</span></span>
-<span id="cb68-5"><a href="logistic-regression.html#cb68-5" aria-hidden="true"></a><span class="kw">predict</span>(logistic_mod, <span class="dt">newdata =</span> ___, <span class="dt">type =</span> <span class="st">&quot;raw&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="logistic-regression.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make soft (probability) predictions</span></span>
+<span id="cb68-2"><a href="logistic-regression.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(logistic_mod, <span class="at">newdata =</span> ___, <span class="at">type =</span> <span class="st">&quot;prob&quot;</span>)</span>
+<span id="cb68-3"><a href="logistic-regression.html#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="logistic-regression.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Make hard (class) predictions (using a default 0.5 probability threshold)</span></span>
+<span id="cb68-5"><a href="logistic-regression.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(logistic_mod, <span class="at">newdata =</span> ___, <span class="at">type =</span> <span class="st">&quot;raw&quot;</span>)</span></code></pre></div>
 <p><br><br><br></p>
 </div>
-<div id="exercises-7" class="section level2 unnumbered">
-<h2>Exercises</h2>
+<div id="exercises-7" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="logistic-regression.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/09-logistic-regression.Rmd">here</a>.</strong></p>
-<div id="context-2" class="section level3 unnumbered">
-<h3>Context</h3>
+<div id="context-2" class="section level3 unnumbered hasAnchor">
+<h3>Context<a href="logistic-regression.html#context-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before proceeding, install the <code>e1071</code> package (utilities for evaluating classification models) by entering <code>install.packages("e1071")</code> in the Console.</p>
 <p>We’ll be working with a <a href="https://archive.ics.uci.edu/ml/datasets/Spambase">spam dataset</a> that contains information on different features of emails and whether or not the email was spam. The variables are as follows:</p>
 <ul>
@@ -509,55 +509,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>capital_run_length_total</code>: sum of length of uninterrupted sequences of capital letters</li>
 </ul>
 <p>Our goal will be to use email features to predict whether or not an email is spam - essentially, to build a spam filter!</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="logistic-regression.html#cb69-1" aria-hidden="true"></a><span class="kw">library</span>(readr)</span>
-<span id="cb69-2"><a href="logistic-regression.html#cb69-2" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb69-3"><a href="logistic-regression.html#cb69-3" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb69-4"><a href="logistic-regression.html#cb69-4" aria-hidden="true"></a><span class="kw">library</span>(caret)</span>
-<span id="cb69-5"><a href="logistic-regression.html#cb69-5" aria-hidden="true"></a></span>
-<span id="cb69-6"><a href="logistic-regression.html#cb69-6" aria-hidden="true"></a>spam &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/leurr6a30f4l32a/spambase.csv?dl=1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="logistic-regression.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb69-2"><a href="logistic-regression.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb69-3"><a href="logistic-regression.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb69-4"><a href="logistic-regression.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb69-5"><a href="logistic-regression.html#cb69-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-6"><a href="logistic-regression.html#cb69-6" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/leurr6a30f4l32a/spambase.csv?dl=1&quot;</span>)</span></code></pre></div>
 </div>
-<div id="hello-how-are-things-1" class="section level3 unnumbered">
-<h3>Hello, how are things?</h3>
+<div id="hello-how-are-things-1" class="section level3 unnumbered hasAnchor">
+<h3>Hello, how are things?<a href="logistic-regression.html#hello-how-are-things-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We’re nearing the halfway point of the module - how are you holding up?</p>
 </div>
-<div id="exercise-1-visualization-warmup" class="section level3 unnumbered">
-<h3>Exercise 1: Visualization warmup</h3>
+<div id="exercise-1-visualization-warmup" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 1: Visualization warmup<a href="logistic-regression.html#exercise-1-visualization-warmup" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s take a look at the frequency of the word “George” (the email recipient’s name is George) (<code>word_freq_george</code>) and the frequency of exclamation points (<code>char_freq_exclam</code>).</p>
 <p>Create appropriate visualizations to assess the predictive ability of these two predictors.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="logistic-regression.html#cb70-1" aria-hidden="true"></a><span class="co"># If you want to adjust the axis limits, you can add the following to your plot:</span></span>
-<span id="cb70-2"><a href="logistic-regression.html#cb70-2" aria-hidden="true"></a><span class="co"># + coord_cartesian(ylim = c(0,1))</span></span>
-<span id="cb70-3"><a href="logistic-regression.html#cb70-3" aria-hidden="true"></a><span class="co"># + coord_cartesian(xlim = c(0,1))</span></span>
-<span id="cb70-4"><a href="logistic-regression.html#cb70-4" aria-hidden="true"></a></span>
-<span id="cb70-5"><a href="logistic-regression.html#cb70-5" aria-hidden="true"></a><span class="kw">ggplot</span>(spam, <span class="kw">aes</span>(<span class="dt">x =</span> ___, <span class="dt">y =</span> ___)) <span class="op">+</span></span>
-<span id="cb70-6"><a href="logistic-regression.html#cb70-6" aria-hidden="true"></a><span class="st">    </span>geom_???()</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="logistic-regression.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you want to adjust the axis limits, you can add the following to your plot:</span></span>
+<span id="cb70-2"><a href="logistic-regression.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co"># + coord_cartesian(ylim = c(0,1))</span></span>
+<span id="cb70-3"><a href="logistic-regression.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co"># + coord_cartesian(xlim = c(0,1))</span></span>
+<span id="cb70-4"><a href="logistic-regression.html#cb70-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-5"><a href="logistic-regression.html#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(spam, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb70-6"><a href="logistic-regression.html#cb70-6" aria-hidden="true" tabindex="-1"></a>    geom_???()</span></code></pre></div>
 </div>
-<div id="exercise-2-implementing-logistic-regression-in-caret" class="section level3 unnumbered">
-<h3>Exercise 2: Implementing logistic regression in <code>caret</code></h3>
+<div id="exercise-2-implementing-logistic-regression-in-caret" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 2: Implementing logistic regression in <code>caret</code><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Our goal is to fit a logistic regression model with <code>word_freq_george</code> and <code>char_freq_exclam</code> as predictors.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Write down the corresponding logistic regression model formula using general notation.</p></li>
 <li><p>Use <code>caret</code> to fit this logistic regression model. Use 10-fold CV to estimate test accuracy. (We’ll focus more on interpreting model evaluation metrics next time.)</p></li>
 </ol>
 <p><em>Note:</em> If you get warning (not error) messages like <code>fitted probabilities numerically 0 or 1 occurred</code>, this means that in some of the CV iterations, one or more of the predictors perfectly predicted spam classification.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="logistic-regression.html#cb71-1" aria-hidden="true"></a><span class="kw">set.seed</span>(___)</span>
-<span id="cb71-2"><a href="logistic-regression.html#cb71-2" aria-hidden="true"></a>logistic_mod &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb71-3"><a href="logistic-regression.html#cb71-3" aria-hidden="true"></a>    </span>
-<span id="cb71-4"><a href="logistic-regression.html#cb71-4" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="logistic-regression.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___)</span>
+<span id="cb71-2"><a href="logistic-regression.html#cb71-2" aria-hidden="true" tabindex="-1"></a>logistic_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb71-3"><a href="logistic-regression.html#cb71-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb71-4"><a href="logistic-regression.html#cb71-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<div id="exercise-3-interpreting-the-model" class="section level3 unnumbered">
-<h3>Exercise 3: Interpreting the model</h3>
+<div id="exercise-3-interpreting-the-model" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 3: Interpreting the model<a href="logistic-regression.html#exercise-3-interpreting-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: lower-alpha">
 <li><p>Take a look at the log-scale coefficients with <code>summary(logistic_mod)</code>. Do the signs of the coefficients for the 2 predictors agree with your visual inspection from Exercise 1?</p></li>
 <li><p>Display the exponentiated coefficients, and provide contextual interpretations for them (not the intercept).</p></li>
 </ol>
 </div>
-<div id="exercise-4-making-predictions" class="section level3 unnumbered">
-<h3>Exercise 4: Making predictions</h3>
+<div id="exercise-4-making-predictions" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 4: Making predictions<a href="logistic-regression.html#exercise-4-making-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Consider a new email where the frequency of “George” is 0.25% and the frequency of exclamation points is 1%.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Use the model summary to make both a soft (probability) and hard (class) prediction for this test case <strong>by hand</strong>. Use a default probability threshold of 0.5. (You can use math expressions to use R as a calculator. The <code>exp()</code> function exponentiates a number.)</p></li>
 <li><p>Check your work from part a by using <code>predict()</code>.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="logistic-regression.html#cb72-1" aria-hidden="true"></a><span class="kw">predict</span>(___, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">word_freq_george =</span> <span class="fl">0.25</span>, <span class="dt">char_freq_exclam =</span> <span class="dv">1</span>), ___)</span></code></pre></div></li>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="logistic-regression.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(___, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">word_freq_george =</span> <span class="fl">0.25</span>, <span class="at">char_freq_exclam =</span> <span class="dv">1</span>), ___)</span></code></pre></div></li>
 </ol>
 
 </div>
@@ -573,7 +573,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -592,6 +591,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -612,6 +612,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
@@ -625,7 +629,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

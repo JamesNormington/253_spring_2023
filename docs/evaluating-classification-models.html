@@ -6,14 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Topic 10 Evaluating Classification Models | STAT 253: Statistical Machine Learning</title>
   <meta name="description" content="This is the class website for Statistical Machine Learning at Macalester College." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Topic 10 Evaluating Classification Models | STAT 253: Statistical Machine Learning" />
   <meta property="og:type" content="book" />
   
-  
   <meta property="og:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
-  <meta name="github-repo" content="lmyint/253_spring_2021" />
+  <meta name="github-repo" content="JamesNormington/253_spring_2023" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Topic 10 Evaluating Classification Models | STAT 253: Statistical Machine Learning" />
@@ -31,8 +30,8 @@
   
 <link rel="prev" href="logistic-regression.html"/>
 <link rel="next" href="trees-part-1.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,15 +47,16 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -90,7 +90,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -103,7 +103,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -163,14 +163,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html"><i class="fa fa-check"></i><b>3</b> Overfitting &amp; Cross-validation</a>
 <ul>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="overfitting-cross-validation.html#the-caret-package">The <code>caret</code> package</a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#the-caret-package"><i class="fa fa-check"></i>The <code>caret</code> package</a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercises-1"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#context-1"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-1-4-models"><i class="fa fa-check"></i>Exercise 1: 4 models</a></li>
-<li><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret">Exercise 2: Cross-validation with <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
-<li><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k">Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
 <li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
@@ -183,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-1-backward-stepwise-selection-by-hand"><i class="fa fa-check"></i>Exercise 1: Backward stepwise selection: by hand</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-2-interpreting-the-results"><i class="fa fa-check"></i>Exercise 2: Interpreting the results</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-3-planning-forward-selection-using-cv"><i class="fa fa-check"></i>Exercise 3: Planning forward selection using CV</a></li>
-<li><a href="variable-subset-selection.html#exercise-4-stepwise-selection-in-caret">Exercise 4: Stepwise selection in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-4-stepwise-selection-in-caret"><i class="fa fa-check"></i>Exercise 4: Stepwise selection in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-5-exploring-the-results"><i class="fa fa-check"></i>Exercise 5: Exploring the results</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#digging-deeper-1"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
@@ -191,13 +191,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html"><i class="fa fa-check"></i><b>5</b> LASSO: Shrinkage/Regularization</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#learning-goals-3"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="lasso-shrinkageregularization.html#lasso-models-in-caret">LASSO models in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#lasso-models-in-caret"><i class="fa fa-check"></i>LASSO models in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercises-3"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-1-a-least-squares-model"><i class="fa fa-check"></i>Exercise 1: A least squares model</a></li>
-<li><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret">Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret"><i class="fa fa-check"></i>Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-3-examining-output-plot-of-coefficient-paths"><i class="fa fa-check"></i>Exercise 3: Examining output: plot of coefficient paths</a></li>
-<li><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda">Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda"><i class="fa fa-check"></i>Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-5-examining-and-evaluating-the-best-lasso-model"><i class="fa fa-check"></i>Exercise 5: Examining and evaluating the best LASSO model</a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#digging-deeper-2"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
@@ -206,13 +206,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html"><i class="fa fa-check"></i><b>6</b> KNN Regression and the Bias-Variance Tradeoff</a>
 <ul>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#learning-goals-4"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret">KNN models in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret"><i class="fa fa-check"></i>KNN models in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#hello-how-are-things"><i class="fa fa-check"></i>Hello, how are things?</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-1-bias-variance-tradeoff-warmup"><i class="fa fa-check"></i>Exercise 1: Bias-variance tradeoff warmup</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-2-impact-of-distance-metric"><i class="fa fa-check"></i>Exercise 2: Impact of distance metric</a></li>
-<li><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret">Exercise 3: Implementing KNN in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret"><i class="fa fa-check"></i>Exercise 3: Implementing KNN in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-4-inspecting-the-results"><i class="fa fa-check"></i>Exercise 4: Inspecting the results</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-5-curse-of-dimensionality"><i class="fa fa-check"></i>Exercise 5: Curse of dimensionality</a></li>
 </ul></li>
@@ -220,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>7</b> Splines</a>
 <ul>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#learning-goals-5"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="splines.html#splines-in-caret">Splines in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#splines-in-caret"><i class="fa fa-check"></i>Splines in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercises-5"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-1-evaluating-a-fully-linear-model"><i class="fa fa-check"></i>Exercise 1: Evaluating a fully linear model</a></li>
@@ -231,11 +231,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="local-regression-gams.html"><a href="local-regression-gams.html"><i class="fa fa-check"></i><b>8</b> Local Regression &amp; GAMs</a>
 <ul>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#learning-goals-6"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="local-regression-gams.html#gams-in-caret">GAMs in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#gams-in-caret"><i class="fa fa-check"></i>GAMs in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercises-6"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-1-conceptual-warmup"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret">Exercise 2: Building a GAM in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret"><i class="fa fa-check"></i>Exercise 2: Building a GAM in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-3-identifying-the-best-gam"><i class="fa fa-check"></i>Exercise 3: Identifying the “best” GAM</a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-4-interpreting-the-gam"><i class="fa fa-check"></i>Exercise 4: Interpreting the GAM</a></li>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-5-comparison-of-methods"><i class="fa fa-check"></i>Exercise 5: Comparison of methods</a></li>
@@ -246,13 +246,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic Regression</a>
 <ul>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#learning-goals-7"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="logistic-regression.html#logistic-regression-in-caret">Logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression-in-caret"><i class="fa fa-check"></i>Logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercises-7"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#context-2"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#hello-how-are-things-1"><i class="fa fa-check"></i>Hello, how are things?</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-1-visualization-warmup"><i class="fa fa-check"></i>Exercise 1: Visualization warmup</a></li>
-<li><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret">Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-3-interpreting-the-model"><i class="fa fa-check"></i>Exercise 3: Interpreting the model</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-4-making-predictions"><i class="fa fa-check"></i>Exercise 4: Making predictions</a></li>
 </ul></li>
@@ -260,12 +260,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html"><i class="fa fa-check"></i><b>10</b> Evaluating Classification Models</a>
 <ul>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#learning-goals-8"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret">LASSO for logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret"><i class="fa fa-check"></i>LASSO for logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercises-8"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#context-3"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-1-conceptual-warmup-1"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret">Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-3-inspecting-the-model"><i class="fa fa-check"></i>Exercise 3: Inspecting the model</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-4-interpreting-evaluation-metrics"><i class="fa fa-check"></i>Exercise 4: Interpreting evaluation metrics</a></li>
 <li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-5-algorithmic-understanding-for-evaluation-metrics"><i class="fa fa-check"></i>Exercise 5: Algorithmic understanding for evaluation metrics</a></li>
@@ -274,13 +274,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="trees-part-1.html"><a href="trees-part-1.html"><i class="fa fa-check"></i><b>11</b> Trees (Part 1)</a>
 <ul>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#learning-goals-9"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li><a href="trees-part-1.html#trees-in-caret">Trees in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#trees-in-caret"><i class="fa fa-check"></i>Trees in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercises-9"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#context-4"><i class="fa fa-check"></i>Context</a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-1-core-theme-parametricnonparametric"><i class="fa fa-check"></i>Exercise 1: Core theme: parametric/nonparametric</a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-2-core-theme-tuning-parameters-and-the-bvt"><i class="fa fa-check"></i>Exercise 2: Core theme: Tuning parameters and the BVT</a></li>
-<li><a href="trees-part-1.html#exercise-3-building-trees-in-caret">Exercise 3: Building trees in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-3-building-trees-in-caret"><i class="fa fa-check"></i>Exercise 3: Building trees in <code>caret</code></a></li>
 <li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-4-visualizing-trees"><i class="fa fa-check"></i>Exercise 4: Visualizing trees</a></li>
 </ul></li>
 </ul></li>
@@ -321,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-3-addressing-variable-scale"><i class="fa fa-check"></i>Exercise 3: Addressing variable scale</a></li>
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-4-clustering-on-more-variables"><i class="fa fa-check"></i>Exercise 4: Clustering on more variables</a></li>
 <li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-5-interpreting-the-clusters"><i class="fa fa-check"></i>Exercise 5: Interpreting the clusters</a></li>
-<li><a href="k-means-clustering.html#exercise-6-picking-k">Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-6-picking-k"><i class="fa fa-check"></i>Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i><b>15</b> Hierarchical Clustering</a>
@@ -410,10 +410,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="evaluating-classification-models" class="section level1" number="10">
-<h1><span class="header-section-number">Topic 10</span> Evaluating Classification Models</h1>
-<div id="learning-goals-8" class="section level2 unnumbered">
-<h2>Learning Goals</h2>
+<div id="evaluating-classification-models" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Topic 10</span> Evaluating Classification Models<a href="evaluating-classification-models.html#evaluating-classification-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-8" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="evaluating-classification-models.html#learning-goals-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Calculate (by hand from confusion matrices) and contextually interpret overall accuracy, sensitivity, and specificity</li>
 <li>Construct and interpret plots of predicted probabilities across classes</li>
@@ -424,22 +424,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Slides from today are available <a href="https://docs.google.com/presentation/d/1Ssof1lK7yOwh3b0Xuu2FTw6Rmw0rccFrRsDXwV56ZFo/edit?usp=sharing">here</a>.</p>
 <p><br><br><br></p>
 </div>
-<div id="lasso-for-logistic-regression-in-caret" class="section level2 unnumbered">
-<h2>LASSO for logistic regression in <code>caret</code></h2>
+<div id="lasso-for-logistic-regression-in-caret" class="section level2 unnumbered hasAnchor">
+<h2>LASSO for logistic regression in <code>caret</code><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To build LASSO models for logistic regression in <code>caret</code>, first load the package and set the seed for the random number generator to ensure reproducible results:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="evaluating-classification-models.html#cb73-1" aria-hidden="true"></a><span class="kw">library</span>(caret)</span>
-<span id="cb73-2"><a href="evaluating-classification-models.html#cb73-2" aria-hidden="true"></a><span class="kw">set.seed</span>(___) <span class="co"># Pick your favorite number to fill in the parentheses</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="evaluating-classification-models.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb73-2"><a href="evaluating-classification-models.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___) <span class="co"># Pick your favorite number to fill in the parentheses</span></span></code></pre></div>
 <p>If we would like to use estimates of test (overall) accuracy to choose our final model (based on a probability threshold of 0.5), we can adapt the following:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="evaluating-classification-models.html#cb74-1" aria-hidden="true"></a>lasso_logistic_mod &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb74-2"><a href="evaluating-classification-models.html#cb74-2" aria-hidden="true"></a>    y <span class="op">~</span><span class="st"> </span>x,</span>
-<span id="cb74-3"><a href="evaluating-classification-models.html#cb74-3" aria-hidden="true"></a>    <span class="dt">data =</span> ___,</span>
-<span id="cb74-4"><a href="evaluating-classification-models.html#cb74-4" aria-hidden="true"></a>    <span class="dt">method =</span> <span class="st">&quot;glmnet&quot;</span>,</span>
-<span id="cb74-5"><a href="evaluating-classification-models.html#cb74-5" aria-hidden="true"></a>    <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>,</span>
-<span id="cb74-6"><a href="evaluating-classification-models.html#cb74-6" aria-hidden="true"></a>    <span class="dt">tuneGrid =</span> <span class="kw">data.frame</span>(<span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">lambda =</span> <span class="kw">seq</span>(___, ___, <span class="dt">length.out =</span> ___)),</span>
-<span id="cb74-7"><a href="evaluating-classification-models.html#cb74-7" aria-hidden="true"></a>    <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dt">number =</span> ___, <span class="dt">selectionFunction =</span> ___),</span>
-<span id="cb74-8"><a href="evaluating-classification-models.html#cb74-8" aria-hidden="true"></a>    <span class="dt">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
-<span id="cb74-9"><a href="evaluating-classification-models.html#cb74-9" aria-hidden="true"></a>    <span class="dt">na.action =</span> na.omit</span>
-<span id="cb74-10"><a href="evaluating-classification-models.html#cb74-10" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="evaluating-classification-models.html#cb74-1" aria-hidden="true" tabindex="-1"></a>lasso_logistic_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb74-2"><a href="evaluating-classification-models.html#cb74-2" aria-hidden="true" tabindex="-1"></a>    y <span class="sc">~</span> x,</span>
+<span id="cb74-3"><a href="evaluating-classification-models.html#cb74-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ___,</span>
+<span id="cb74-4"><a href="evaluating-classification-models.html#cb74-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;glmnet&quot;</span>,</span>
+<span id="cb74-5"><a href="evaluating-classification-models.html#cb74-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>,</span>
+<span id="cb74-6"><a href="evaluating-classification-models.html#cb74-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">tuneGrid =</span> <span class="fu">data.frame</span>(<span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="fu">seq</span>(___, ___, <span class="at">length.out =</span> ___)),</span>
+<span id="cb74-7"><a href="evaluating-classification-models.html#cb74-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> ___, <span class="at">selectionFunction =</span> ___),</span>
+<span id="cb74-8"><a href="evaluating-classification-models.html#cb74-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;Accuracy&quot;</span>,</span>
+<span id="cb74-9"><a href="evaluating-classification-models.html#cb74-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.action =</span> na.omit</span>
+<span id="cb74-10"><a href="evaluating-classification-models.html#cb74-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -480,16 +480,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p><br></p>
 <p>If we would like to choose our final model based on estimates of test sensitivity, specificity, or AUC, we can adapt the following:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="evaluating-classification-models.html#cb75-1" aria-hidden="true"></a>lasso_logistic_mod &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb75-2"><a href="evaluating-classification-models.html#cb75-2" aria-hidden="true"></a>    y <span class="op">~</span><span class="st"> </span>x,</span>
-<span id="cb75-3"><a href="evaluating-classification-models.html#cb75-3" aria-hidden="true"></a>    <span class="dt">data =</span> ___,</span>
-<span id="cb75-4"><a href="evaluating-classification-models.html#cb75-4" aria-hidden="true"></a>    <span class="dt">method =</span> <span class="st">&quot;glmnet&quot;</span>,</span>
-<span id="cb75-5"><a href="evaluating-classification-models.html#cb75-5" aria-hidden="true"></a>    <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>,</span>
-<span id="cb75-6"><a href="evaluating-classification-models.html#cb75-6" aria-hidden="true"></a>    <span class="dt">tuneGrid =</span> <span class="kw">data.frame</span>(<span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">lambda =</span> <span class="kw">seq</span>(___, ___, <span class="dt">length.out =</span> ___)),</span>
-<span id="cb75-7"><a href="evaluating-classification-models.html#cb75-7" aria-hidden="true"></a>    <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dt">number =</span> ___, <span class="dt">selectionFunction =</span> ___, <span class="dt">classProbs =</span> <span class="ot">TRUE</span>, <span class="dt">summaryFunction =</span> twoClassSummaryCustom),</span>
-<span id="cb75-8"><a href="evaluating-classification-models.html#cb75-8" aria-hidden="true"></a>    <span class="dt">metric =</span> <span class="st">&quot;AUC&quot;</span>,</span>
-<span id="cb75-9"><a href="evaluating-classification-models.html#cb75-9" aria-hidden="true"></a>    <span class="dt">na.action =</span> na.omit</span>
-<span id="cb75-10"><a href="evaluating-classification-models.html#cb75-10" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="evaluating-classification-models.html#cb75-1" aria-hidden="true" tabindex="-1"></a>lasso_logistic_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb75-2"><a href="evaluating-classification-models.html#cb75-2" aria-hidden="true" tabindex="-1"></a>    y <span class="sc">~</span> x,</span>
+<span id="cb75-3"><a href="evaluating-classification-models.html#cb75-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ___,</span>
+<span id="cb75-4"><a href="evaluating-classification-models.html#cb75-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;glmnet&quot;</span>,</span>
+<span id="cb75-5"><a href="evaluating-classification-models.html#cb75-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>,</span>
+<span id="cb75-6"><a href="evaluating-classification-models.html#cb75-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">tuneGrid =</span> <span class="fu">data.frame</span>(<span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="fu">seq</span>(___, ___, <span class="at">length.out =</span> ___)),</span>
+<span id="cb75-7"><a href="evaluating-classification-models.html#cb75-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> ___, <span class="at">selectionFunction =</span> ___, <span class="at">classProbs =</span> <span class="cn">TRUE</span>, <span class="at">summaryFunction =</span> twoClassSummaryCustom),</span>
+<span id="cb75-8"><a href="evaluating-classification-models.html#cb75-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;AUC&quot;</span>,</span>
+<span id="cb75-9"><a href="evaluating-classification-models.html#cb75-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.action =</span> na.omit</span>
+<span id="cb75-10"><a href="evaluating-classification-models.html#cb75-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>The two new arguments to <code>trainControl()</code> are as follows:</p>
 <ul>
 <li><code>classProbs</code>: Set to true if soft (probability) predictions should be computed</li>
@@ -503,33 +503,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>"Accuracy"</code>: Compute overall accuracy</li>
 </ul>
 <p>You’ll need to run the code below to create the <code>twoClassSummaryCustom</code> function (don’t worry about how this is written):</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="evaluating-classification-models.html#cb76-1" aria-hidden="true"></a>twoClassSummaryCustom &lt;-<span class="st"> </span><span class="cf">function</span> (data, <span class="dt">lev =</span> <span class="ot">NULL</span>, <span class="dt">model =</span> <span class="ot">NULL</span>) {</span>
-<span id="cb76-2"><a href="evaluating-classification-models.html#cb76-2" aria-hidden="true"></a>    <span class="cf">if</span> (<span class="kw">length</span>(lev) <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>) {</span>
-<span id="cb76-3"><a href="evaluating-classification-models.html#cb76-3" aria-hidden="true"></a>        <span class="kw">stop</span>(<span class="kw">paste</span>(<span class="st">&quot;Your outcome has&quot;</span>, <span class="kw">length</span>(lev), <span class="st">&quot;levels. The twoClassSummary() function isn&#39;t appropriate.&quot;</span>))</span>
-<span id="cb76-4"><a href="evaluating-classification-models.html#cb76-4" aria-hidden="true"></a>    }</span>
-<span id="cb76-5"><a href="evaluating-classification-models.html#cb76-5" aria-hidden="true"></a>    caret<span class="op">:::</span><span class="kw">requireNamespaceQuietStop</span>(<span class="st">&quot;pROC&quot;</span>)</span>
-<span id="cb76-6"><a href="evaluating-classification-models.html#cb76-6" aria-hidden="true"></a>    <span class="cf">if</span> (<span class="op">!</span><span class="kw">all</span>(<span class="kw">levels</span>(data[, <span class="st">&quot;pred&quot;</span>]) <span class="op">==</span><span class="st"> </span>lev)) {</span>
-<span id="cb76-7"><a href="evaluating-classification-models.html#cb76-7" aria-hidden="true"></a>        <span class="kw">stop</span>(<span class="st">&quot;levels of observed and predicted data do not match&quot;</span>)</span>
-<span id="cb76-8"><a href="evaluating-classification-models.html#cb76-8" aria-hidden="true"></a>    }</span>
-<span id="cb76-9"><a href="evaluating-classification-models.html#cb76-9" aria-hidden="true"></a>    rocObject &lt;-<span class="st"> </span><span class="kw">try</span>(pROC<span class="op">::</span><span class="kw">roc</span>(data<span class="op">$</span>obs, data[, lev[<span class="dv">1</span>]], <span class="dt">direction =</span> <span class="st">&quot;&gt;&quot;</span>, </span>
-<span id="cb76-10"><a href="evaluating-classification-models.html#cb76-10" aria-hidden="true"></a>        <span class="dt">quiet =</span> <span class="ot">TRUE</span>), <span class="dt">silent =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb76-11"><a href="evaluating-classification-models.html#cb76-11" aria-hidden="true"></a>    rocAUC &lt;-<span class="st"> </span><span class="cf">if</span> (<span class="kw">inherits</span>(rocObject, <span class="st">&quot;try-error&quot;</span>)) </span>
-<span id="cb76-12"><a href="evaluating-classification-models.html#cb76-12" aria-hidden="true"></a>        <span class="ot">NA</span></span>
-<span id="cb76-13"><a href="evaluating-classification-models.html#cb76-13" aria-hidden="true"></a>    <span class="cf">else</span> rocObject<span class="op">$</span>auc</span>
-<span id="cb76-14"><a href="evaluating-classification-models.html#cb76-14" aria-hidden="true"></a>    out &lt;-<span class="st"> </span><span class="kw">c</span>(rocAUC, <span class="kw">sensitivity</span>(data[, <span class="st">&quot;pred&quot;</span>], data[, <span class="st">&quot;obs&quot;</span>], </span>
-<span id="cb76-15"><a href="evaluating-classification-models.html#cb76-15" aria-hidden="true"></a>        lev[<span class="dv">1</span>]), <span class="kw">specificity</span>(data[, <span class="st">&quot;pred&quot;</span>], data[, <span class="st">&quot;obs&quot;</span>], lev[<span class="dv">2</span>]))</span>
-<span id="cb76-16"><a href="evaluating-classification-models.html#cb76-16" aria-hidden="true"></a>    out2 &lt;-<span class="st"> </span><span class="kw">postResample</span>(data[, <span class="st">&quot;pred&quot;</span>], data[, <span class="st">&quot;obs&quot;</span>])</span>
-<span id="cb76-17"><a href="evaluating-classification-models.html#cb76-17" aria-hidden="true"></a>    out &lt;-<span class="st"> </span><span class="kw">c</span>(out, out2[<span class="dv">1</span>])</span>
-<span id="cb76-18"><a href="evaluating-classification-models.html#cb76-18" aria-hidden="true"></a>    <span class="kw">names</span>(out) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;AUC&quot;</span>, <span class="st">&quot;Sens&quot;</span>, <span class="st">&quot;Spec&quot;</span>, <span class="st">&quot;Accuracy&quot;</span>)</span>
-<span id="cb76-19"><a href="evaluating-classification-models.html#cb76-19" aria-hidden="true"></a>    out</span>
-<span id="cb76-20"><a href="evaluating-classification-models.html#cb76-20" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="evaluating-classification-models.html#cb76-1" aria-hidden="true" tabindex="-1"></a>twoClassSummaryCustom <span class="ot">&lt;-</span> <span class="cf">function</span> (data, <span class="at">lev =</span> <span class="cn">NULL</span>, <span class="at">model =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb76-2"><a href="evaluating-classification-models.html#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(lev) <span class="sc">&gt;</span> <span class="dv">2</span>) {</span>
+<span id="cb76-3"><a href="evaluating-classification-models.html#cb76-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="fu">paste</span>(<span class="st">&quot;Your outcome has&quot;</span>, <span class="fu">length</span>(lev), <span class="st">&quot;levels. The twoClassSummary() function isn&#39;t appropriate.&quot;</span>))</span>
+<span id="cb76-4"><a href="evaluating-classification-models.html#cb76-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb76-5"><a href="evaluating-classification-models.html#cb76-5" aria-hidden="true" tabindex="-1"></a>    caret<span class="sc">:::</span><span class="fu">requireNamespaceQuietStop</span>(<span class="st">&quot;pROC&quot;</span>)</span>
+<span id="cb76-6"><a href="evaluating-classification-models.html#cb76-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">all</span>(<span class="fu">levels</span>(data[, <span class="st">&quot;pred&quot;</span>]) <span class="sc">==</span> lev)) {</span>
+<span id="cb76-7"><a href="evaluating-classification-models.html#cb76-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">&quot;levels of observed and predicted data do not match&quot;</span>)</span>
+<span id="cb76-8"><a href="evaluating-classification-models.html#cb76-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb76-9"><a href="evaluating-classification-models.html#cb76-9" aria-hidden="true" tabindex="-1"></a>    rocObject <span class="ot">&lt;-</span> <span class="fu">try</span>(pROC<span class="sc">::</span><span class="fu">roc</span>(data<span class="sc">$</span>obs, data[, lev[<span class="dv">1</span>]], <span class="at">direction =</span> <span class="st">&quot;&gt;&quot;</span>, </span>
+<span id="cb76-10"><a href="evaluating-classification-models.html#cb76-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">quiet =</span> <span class="cn">TRUE</span>), <span class="at">silent =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb76-11"><a href="evaluating-classification-models.html#cb76-11" aria-hidden="true" tabindex="-1"></a>    rocAUC <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">inherits</span>(rocObject, <span class="st">&quot;try-error&quot;</span>)) </span>
+<span id="cb76-12"><a href="evaluating-classification-models.html#cb76-12" aria-hidden="true" tabindex="-1"></a>        <span class="cn">NA</span></span>
+<span id="cb76-13"><a href="evaluating-classification-models.html#cb76-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> rocObject<span class="sc">$</span>auc</span>
+<span id="cb76-14"><a href="evaluating-classification-models.html#cb76-14" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">c</span>(rocAUC, <span class="fu">sensitivity</span>(data[, <span class="st">&quot;pred&quot;</span>], data[, <span class="st">&quot;obs&quot;</span>], </span>
+<span id="cb76-15"><a href="evaluating-classification-models.html#cb76-15" aria-hidden="true" tabindex="-1"></a>        lev[<span class="dv">1</span>]), <span class="fu">specificity</span>(data[, <span class="st">&quot;pred&quot;</span>], data[, <span class="st">&quot;obs&quot;</span>], lev[<span class="dv">2</span>]))</span>
+<span id="cb76-16"><a href="evaluating-classification-models.html#cb76-16" aria-hidden="true" tabindex="-1"></a>    out2 <span class="ot">&lt;-</span> <span class="fu">postResample</span>(data[, <span class="st">&quot;pred&quot;</span>], data[, <span class="st">&quot;obs&quot;</span>])</span>
+<span id="cb76-17"><a href="evaluating-classification-models.html#cb76-17" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">c</span>(out, out2[<span class="dv">1</span>])</span>
+<span id="cb76-18"><a href="evaluating-classification-models.html#cb76-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AUC&quot;</span>, <span class="st">&quot;Sens&quot;</span>, <span class="st">&quot;Spec&quot;</span>, <span class="st">&quot;Accuracy&quot;</span>)</span>
+<span id="cb76-19"><a href="evaluating-classification-models.html#cb76-19" aria-hidden="true" tabindex="-1"></a>    out</span>
+<span id="cb76-20"><a href="evaluating-classification-models.html#cb76-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><br><br><br></p>
 </div>
-<div id="exercises-8" class="section level2 unnumbered">
-<h2>Exercises</h2>
+<div id="exercises-8" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="evaluating-classification-models.html#exercises-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/10-evaluating-classification.Rmd">here</a>.</strong></p>
-<div id="context-3" class="section level3 unnumbered">
-<h3>Context</h3>
+<div id="context-3" class="section level3 unnumbered hasAnchor">
+<h3>Context<a href="evaluating-classification-models.html#context-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before proceeding, install the <code>pROC</code> package (utilities for evaluating classification models with ROC curves) by entering <code>install.packages("pROC")</code> in the Console.</p>
 <p>We’ll continue working with the <a href="https://archive.ics.uci.edu/ml/datasets/Spambase">spam dataset</a> from last time.</p>
 <ul>
@@ -541,23 +541,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>capital_run_length_total</code>: sum of length of uninterrupted sequences of capital letters</li>
 </ul>
 <p>Our goal will be to use email features to predict whether or not an email is spam - essentially, to build a spam filter!</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="evaluating-classification-models.html#cb77-1" aria-hidden="true"></a><span class="kw">library</span>(readr)</span>
-<span id="cb77-2"><a href="evaluating-classification-models.html#cb77-2" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb77-3"><a href="evaluating-classification-models.html#cb77-3" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb77-4"><a href="evaluating-classification-models.html#cb77-4" aria-hidden="true"></a><span class="kw">library</span>(caret)</span>
-<span id="cb77-5"><a href="evaluating-classification-models.html#cb77-5" aria-hidden="true"></a></span>
-<span id="cb77-6"><a href="evaluating-classification-models.html#cb77-6" aria-hidden="true"></a>spam &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/leurr6a30f4l32a/spambase.csv?dl=1&quot;</span>)</span>
-<span id="cb77-7"><a href="evaluating-classification-models.html#cb77-7" aria-hidden="true"></a></span>
-<span id="cb77-8"><a href="evaluating-classification-models.html#cb77-8" aria-hidden="true"></a><span class="co"># A little data cleaning to remove the space in &quot;not spam&quot;</span></span>
-<span id="cb77-9"><a href="evaluating-classification-models.html#cb77-9" aria-hidden="true"></a>spam &lt;-<span class="st"> </span>spam <span class="op">%&gt;%</span></span>
-<span id="cb77-10"><a href="evaluating-classification-models.html#cb77-10" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">spam =</span> <span class="kw">ifelse</span>(spam<span class="op">==</span><span class="st">&quot;spam&quot;</span>, <span class="st">&quot;spam&quot;</span>, <span class="st">&quot;not_spam&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="evaluating-classification-models.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb77-2"><a href="evaluating-classification-models.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb77-3"><a href="evaluating-classification-models.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb77-4"><a href="evaluating-classification-models.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb77-5"><a href="evaluating-classification-models.html#cb77-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-6"><a href="evaluating-classification-models.html#cb77-6" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/leurr6a30f4l32a/spambase.csv?dl=1&quot;</span>)</span>
+<span id="cb77-7"><a href="evaluating-classification-models.html#cb77-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-8"><a href="evaluating-classification-models.html#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="co"># A little data cleaning to remove the space in &quot;not spam&quot;</span></span>
+<span id="cb77-9"><a href="evaluating-classification-models.html#cb77-9" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> spam <span class="sc">%&gt;%</span></span>
+<span id="cb77-10"><a href="evaluating-classification-models.html#cb77-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">spam =</span> <span class="fu">ifelse</span>(spam<span class="sc">==</span><span class="st">&quot;spam&quot;</span>, <span class="st">&quot;spam&quot;</span>, <span class="st">&quot;not_spam&quot;</span>))</span></code></pre></div>
 </div>
-<div id="exercise-1-conceptual-warmup-1" class="section level3 unnumbered">
-<h3>Exercise 1: Conceptual warmup</h3>
+<div id="exercise-1-conceptual-warmup-1" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 1: Conceptual warmup<a href="evaluating-classification-models.html#exercise-1-conceptual-warmup-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>LASSO for the logistic regression setting works analogously to the regression setting. How would you expect a plot of test <strong>accuracy</strong> vs. <span class="math inline">\(\lambda\)</span> to look, and why? (Draw it!)</p>
 </div>
-<div id="exercise-2-implementing-lasso-logistic-regression-in-caret" class="section level3 unnumbered">
-<h3>Exercise 2: Implementing LASSO logistic regression in <code>caret</code></h3>
+<div id="exercise-2-implementing-lasso-logistic-regression-in-caret" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 2: Implementing LASSO logistic regression in <code>caret</code><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Fit a LASSO logistic regression model for the <code>spam</code> outcome, and allow all possible predictors to be considered (<code>~ .</code> in the model formula).</p>
 <ul>
 <li>Use 10-fold CV.</li>
@@ -568,38 +568,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>If needed, adjust the max value in the sequence up or down by a factor of 10. (You’ll be able to determine from the plot whether to adjust up or down.)</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="evaluating-classification-models.html#cb78-1" aria-hidden="true"></a><span class="kw">set.seed</span>(___)</span>
-<span id="cb78-2"><a href="evaluating-classification-models.html#cb78-2" aria-hidden="true"></a>lasso_logistic_mod &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb78-3"><a href="evaluating-classification-models.html#cb78-3" aria-hidden="true"></a>    </span>
-<span id="cb78-4"><a href="evaluating-classification-models.html#cb78-4" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="evaluating-classification-models.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___)</span>
+<span id="cb78-2"><a href="evaluating-classification-models.html#cb78-2" aria-hidden="true" tabindex="-1"></a>lasso_logistic_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb78-3"><a href="evaluating-classification-models.html#cb78-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb78-4"><a href="evaluating-classification-models.html#cb78-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<div id="exercise-3-inspecting-the-model" class="section level3 unnumbered">
-<h3>Exercise 3: Inspecting the model</h3>
+<div id="exercise-3-inspecting-the-model" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 3: Inspecting the model<a href="evaluating-classification-models.html#exercise-3-inspecting-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Inspect the <code>$bestTune</code> part of your fitted <code>lasso_logistic_mod</code> in conjunction with the plot of test AUC vs. <span class="math inline">\(\lambda\)</span>.</p>
 <p>Is anything surprising about the results relative to your expectations from Exercise 1? Brainstorm some possible explanations in consideration of the data context.</p>
 </div>
-<div id="exercise-4-interpreting-evaluation-metrics" class="section level3 unnumbered">
-<h3>Exercise 4: Interpreting evaluation metrics</h3>
+<div id="exercise-4-interpreting-evaluation-metrics" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 4: Interpreting evaluation metrics<a href="evaluating-classification-models.html#exercise-4-interpreting-evaluation-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Inspect the overall CV results for the “best” <span class="math inline">\(\lambda\)</span>, and compute the no-information rate (NIR):</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="evaluating-classification-models.html#cb79-1" aria-hidden="true"></a><span class="co"># CV results for &quot;best lambda&quot;</span></span>
-<span id="cb79-2"><a href="evaluating-classification-models.html#cb79-2" aria-hidden="true"></a>lasso_logistic_mod<span class="op">$</span>results <span class="op">%&gt;%</span></span>
-<span id="cb79-3"><a href="evaluating-classification-models.html#cb79-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">filter</span>(lambda<span class="op">==</span>lasso_logistic_mod<span class="op">$</span>bestTune<span class="op">$</span>lambda)</span>
-<span id="cb79-4"><a href="evaluating-classification-models.html#cb79-4" aria-hidden="true"></a></span>
-<span id="cb79-5"><a href="evaluating-classification-models.html#cb79-5" aria-hidden="true"></a><span class="co"># Count up number of spam and not_spam emails in the training data</span></span>
-<span id="cb79-6"><a href="evaluating-classification-models.html#cb79-6" aria-hidden="true"></a>spam <span class="op">%&gt;%</span></span>
-<span id="cb79-7"><a href="evaluating-classification-models.html#cb79-7" aria-hidden="true"></a><span class="st">    </span><span class="kw">count</span>(spam) <span class="co"># Name of the outcome variable goes inside count()</span></span>
-<span id="cb79-8"><a href="evaluating-classification-models.html#cb79-8" aria-hidden="true"></a></span>
-<span id="cb79-9"><a href="evaluating-classification-models.html#cb79-9" aria-hidden="true"></a><span class="co"># Compute the NIR</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="evaluating-classification-models.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CV results for &quot;best lambda&quot;</span></span>
+<span id="cb79-2"><a href="evaluating-classification-models.html#cb79-2" aria-hidden="true" tabindex="-1"></a>lasso_logistic_mod<span class="sc">$</span>results <span class="sc">%&gt;%</span></span>
+<span id="cb79-3"><a href="evaluating-classification-models.html#cb79-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(lambda<span class="sc">==</span>lasso_logistic_mod<span class="sc">$</span>bestTune<span class="sc">$</span>lambda)</span>
+<span id="cb79-4"><a href="evaluating-classification-models.html#cb79-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-5"><a href="evaluating-classification-models.html#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Count up number of spam and not_spam emails in the training data</span></span>
+<span id="cb79-6"><a href="evaluating-classification-models.html#cb79-6" aria-hidden="true" tabindex="-1"></a>spam <span class="sc">%&gt;%</span></span>
+<span id="cb79-7"><a href="evaluating-classification-models.html#cb79-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(spam) <span class="co"># Name of the outcome variable goes inside count()</span></span>
+<span id="cb79-8"><a href="evaluating-classification-models.html#cb79-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-9"><a href="evaluating-classification-models.html#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the NIR</span></span></code></pre></div>
 <ul>
 <li>Interpret the estimates of test sensitivity and specificity - what do these numbers mean? Do you think higher sensitivity or specificity would be more important in designing a spam filter?</li>
 <li>Interpret overall accuracy - does this seem high? How can the no-information rate (NIR) help us interpret the overall accuracy?</li>
 <li>Why is an AUC of 1 the best possible value for this metric? How does the AUC for our spam model look relative to this best value?</li>
 </ul>
 </div>
-<div id="exercise-5-algorithmic-understanding-for-evaluation-metrics" class="section level3 unnumbered">
-<h3>Exercise 5: Algorithmic understanding for evaluation metrics</h3>
+<div id="exercise-5-algorithmic-understanding-for-evaluation-metrics" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 5: Algorithmic understanding for evaluation metrics<a href="evaluating-classification-models.html#exercise-5-algorithmic-understanding-for-evaluation-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Inspect the iteration specific information from CV for the “best” <span class="math inline">\(\lambda\)</span>:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="evaluating-classification-models.html#cb80-1" aria-hidden="true"></a>lasso_logistic_mod<span class="op">$</span>resample</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="evaluating-classification-models.html#cb80-1" aria-hidden="true" tabindex="-1"></a>lasso_logistic_mod<span class="sc">$</span>resample</span></code></pre></div>
 <p>How is one row of information computed? Carefully describe the CV process for a single iteration to estimate each of <code>AUC</code>, <code>Sens</code>, <code>Spec</code>, and <code>Accuracy</code> (overall accuracy). Use a generic confusion matrix (filled with variables instead of hard numbers) to illustrate the underlying computations.</p>
 
 </div>
@@ -615,7 +615,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -634,6 +633,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -654,6 +654,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
@@ -667,7 +671,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
