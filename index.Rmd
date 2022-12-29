@@ -24,9 +24,9 @@ description: "This is the class website for Statistical Machine Learning at Maca
 <br>
 <br>
 
-This is the class manual for Statistical Machine Learning (STAT 253) at Macalester College for Spring 2023. The content here is maintained by Professor [James Normington](https://jamesnormington.github.io) and draws upon our class textbook, [An Introduction to Statistical Learning with Applications in R](https://www.statlearning.com/s/ISLR-Seventh-Printing-xwa7.pdf).
+This is the class manual for Statistical Machine Learning (STAT 253) at Macalester College for Spring 2023, taught by Professor [James Normington](https://jamesnormington.github.io/). The content largely draws upon our class textbook, [An Introduction to Statistical Learning with Applications in R](https://www.statlearning.com/s/ISLR-Seventh-Printing-xwa7.pdf). In addition, much of this site's content was created by Professor [Alicia Johnson](https://ajohns24.github.io), Professor [Brianna Heggeseth](https://bcheggeseth.github.io/), and Professor [Leslie Myint](https://lmyint.github.io/).
 
-The vast majority of course content presented here draws from materials prepared by Professor [Alicia Johnson](https://ajohns24.github.io), Professor [Brianna Heggeseth](https://bcheggeseth.github.io/), and Professor [Leslie Myint](https://lmyint.github.io/).
+This bookdown website was constructed by Professor [Brianna Heggeseth](https://bcheggeseth.github.io/).  
 
 <br>
 
