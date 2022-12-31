@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 # Homework 1 {-}
 
 <center>
-**Due Friday, March 26 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=46844)**
+**Submit by Wednesday, Feb 1 at 11:59am to Moodle.
 
 Please turn in a **single PDF document** containing (1) your responses for the Project Work and Course Engagement sections and (2) a LINK to the Google Doc with your responses for the Portfolio Work section.
 </center>
@@ -48,6 +48,8 @@ Also make sure that you can read the data into R. You don't need to do any analy
 
 <br><br><br>
 
+## Ethics in ML {-}
+Read the article [Amazon scraps secret AI recruiting tool that showed bias against women](https://www.reuters.com/article/us-amazon-com-jobs-automation-insight/amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women-idUSKCN1MK08G). Write a short (roughly 250 words), thoughtful response about the themes and cautions that the article brings forth.
 
 
 ## Portfolio Work {-}
@@ -86,30 +88,6 @@ Also make sure that you can read the data into R. You don't need to do any analy
 
 
 <br><br><br>
-
-
-
-## Course Engagement {-}
-
-The **Ethics** component below is the only required piece. The others are optional depending on the modes of engagement you wish to pursue consistently throughout the module.
-
-<br>
-
-**Ethics: (REQUIRED)** Read the article [Amazon scraps secret AI recruiting tool that showed bias against women](https://www.reuters.com/article/us-amazon-com-jobs-automation-insight/amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women-idUSKCN1MK08G). Write a short (roughly 250 words), thoughtful response about the themes and cautions that the article brings forth.
-
-
-**Reflection:** Write a short, thoughtful reflection about how things went this week. Feel free to use whichever prompts below resonate most with you, but don't feel limited to these prompts.
-
-- How is your understanding of the material? What ideas/topics have stuck out for you?
-- How is group work going? Any strategies for improving collaboration that you want to try out next week?
-- How is your work/life balance going? Any new activities or strategies that you want to try out for next week?
-
-
-**Note-taking:** Share link(s) to file(s) where you keep your notes on videos/readings and on code from class.
-
-
-**Q & A:** In one short paragraph, summarize your engagement in at least 2 of the 3 following areas: (1) preceptor / instructor office hours, (2) on Slack, (3) in small groups during synchronous class sessions.
-
 
 
 
