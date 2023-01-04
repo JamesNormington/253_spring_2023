@@ -1,11 +1,3 @@
----
-title: "Evaluating Regression Models"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
----
-
 ## Context
 
 We'll be working with a dataset containing physical measurements on 80 adult males. These measurements include body fat percentage estimates as well as body circumference measurements.
@@ -34,6 +26,9 @@ library(readr)
 library(ggplot2)
 library(dplyr)
 library(broom)
+library(tidymodels)
+tidymodels_prefer()
+
 bodyfat <- read_csv("https://www.dropbox.com/s/js2gxnazybokbzh/bodyfat_train.csv?dl=1")
 
 # Remove the fatBrozek and density variables
@@ -42,8 +37,9 @@ bodyfat <- bodyfat %>%
 ```
 
 ## Class investigations
+We'll work through this section together to review concepts and code. Below, we will replace the "???"s below with code to accomplish the desired task.
 
-We'll work through this section together to review concepts and code. You'll then work on the remainder of the exercises in your groups.
+You'll then work on the remainder of the exercises in your groups.
 
 ```{r}
 # Exploratory plots
@@ -69,36 +65,51 @@ mod1_output <- broom::augment(mod1, newdata = bodyfat)
 head(mod1_output)
 ```
 
-We can use the `augment()` output to compute error metrics...
+We can use the `augment()` output to compute error metrics, and glance() to obtain R^2:
 
 ```{r}
-# MSE - what is the interpretation with units?
-mean(mod1_output$.resid^2)
-
-# RMSE - what is the interpretation with units?
-mean(mod1_output$.resid^2) %>% sqrt()
-
-# MAE - what is the interpretation with units?
-mean(abs(mod1_output$.resid))
+mod1 %>%
+  augment() %>%
+  summarize(
+    mse = mean((fatSiri - .fitted)^2),
+    rmse = sqrt(mse),
+    mae = mean(abs(fatSiri - .fitted))
+  )
 
 # R-squared - interpretation? (unit-less)
-1 - (var(mod1_output$.resid) / var(mod1_output$fatSiri))
+mod1 %>%
+  glance() %>%
+  select(r.squared)
 ```
 
 ...and to create residual plots:
 
 ```{r}
-# Quick plot
-ggplot(mod1_output, aes(x = .fitted, y = .resid)) +
-    geom_point() +
-    geom_smooth() +
-    geom_hline(yintercept = 0, color = "red")
+# Univariate plot of residuals
+mod1 %>%
+  augment() %>%
+  ggplot(aes(x = ???)) +
+  geom_histogram() +
+  theme_minimal()
 
-# Residuals vs. predictors
-ggplot(mod1_output, aes(x = height, y = .resid)) +
-    geom_point() +
-    geom_smooth() +
-    geom_hline(yintercept = 0, color = "red")
+# Fitted vs. Residual plot
+mod1 %>%
+  augment() %>%
+  ggplot(aes(x = ???, y = ???)) +
+  geom_point() +
+  geom_smooth() +
+  geom_hline(yintercept = 0) +
+  theme_minimal()
+
+# Predictor vs. Residual plot
+mod1 %>% 
+  augment() %>%
+  left_join(bodyfat) %>% #Merge the remaining variables into data set
+  ggplot(aes(x = height, y = ???)) + #note patterns in residual/error with height
+  geom_point() +
+  geom_smooth() +
+  geom_hline(yintercept = 0) +
+  theme_minimal()  
 ```
 
 

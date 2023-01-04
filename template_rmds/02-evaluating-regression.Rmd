@@ -37,8 +37,9 @@ bodyfat <- bodyfat %>%
 ```
 
 ## Class investigations
+We'll work through this section together to review concepts and code. Below, we will replace the "???"s below with code to accomplish the desired task.
 
-We'll work through this section together to review concepts and code. You'll then work on the remainder of the exercises in your groups.
+You'll then work on the remainder of the exercises in your groups.
 
 ```{r}
 # Exploratory plots
