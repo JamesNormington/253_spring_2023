@@ -1,3 +1,18 @@
+---
+title: "02-evaluating-regression_SOLS.Rmd"
+output:
+  html_document:
+    pandoc_args: [
+      "--title-prefix", "Foo",
+      "--id-prefix", "Bar"
+    ]
+date: "2023-01-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 ## Context
 
 We'll be working with a dataset containing physical measurements on 80 adult males. These measurements include body fat percentage estimates as well as body circumference measurements.
@@ -119,18 +134,46 @@ First decide on what you think would be a good model by picking variables based 
 
 ```{r}
 # Code to fit initial model
+model_initial = lm(fatSiri ~ weight + hip + biceps, data = bodyfat)
 ```
 
 Use residual plot explorations to check if you need to update your model.
 
 ```{r}
 # Residual plot explorations
+model_initial %>%
+  augment() %>%
+  ggplot(aes(x = .resid)) +
+  geom_histogram() +
+  theme_minimal()
+
+# Fitted vs. Residual plot
+model_initial %>%
+  augment() %>%
+  ggplot(aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_smooth() +
+  geom_hline(yintercept = 0) +
+  theme_minimal()
+
+# Predictor vs. Residual plot
+model_initial %>% 
+  augment() %>%
+  left_join(bodyfat) %>% #Merge the remaining variables into data set
+  ggplot(aes(x = height, y = .resid)) + #note patterns in residual/error with height
+  geom_point() +
+  geom_smooth() +
+  geom_hline(yintercept = 0) +
+  theme_minimal()  
 ```
 
 Fit your updated model, and call it `model_updated`.
 
+The model seems fine! 'height', while making some contextual sense, doesn't seem to be
+strongly predictive of the residuals, so I will keep it out.
 ```{r}
 # Code to fit updated model
+model_updated = lm(fatSiri ~ weight + hip + biceps, data = bodyfat)
 ```
 
 
@@ -143,6 +186,18 @@ Compute and contextually interpret relevant evaluation metrics for your model.
 
 ```{r}
 # Code to compute evaluation metrics
+model_updated %>%
+  augment() %>%
+  summarize(
+    mse = mean((fatSiri - .fitted)^2),
+    rmse = sqrt(mse),
+    mae = mean(abs(fatSiri - .fitted))
+  )
+
+# R-squared - interpretation? (unit-less)
+model_updated %>%
+  glance() %>%
+  select(r.squared)
 ```
 
 
@@ -159,11 +214,29 @@ bodyfat_test <- read_csv("https://www.dropbox.com/s/7gizws208u0oywq/bodyfat_test
 
 a. Compare your evaluation metrics from Exercise 2 the metrics here. What do you notice? (Note: this observation is just based on your one particular fitted model. You'll make some more comprehensive observations in the next exercise.)
 
+```{r}
+model_updated_test = lm(fatSiri ~ weight + hip + biceps, data = bodyfat_test)
+
+model_updated_test %>%
+  augment() %>%
+  summarize(
+    mse = mean((fatSiri - .fitted)^2),
+    rmse = sqrt(mse),
+    mae = mean(abs(fatSiri - .fitted))
+  )
+
+model_updated_test %>%
+  glance() %>%
+  select(r.squared)
+```
+
+The MSE, RMSE, and MAE went slightly down, which suggests the updated model fits the data better. However, the R^2 value went slightly down, which suggests the opposite! The differences are slight, so the models are comparable.
+
 b. In general, do you think that models with more or less variables would perform better in this comparison? Explain.
 
+If we re-fit the model using the same (original, or training) data, more variables will lead to better predictions in general. Adding another predictor in does not decrease the predictive performance on the same dataset (e.g., R^2 never decreases with additional predictors).
 
-
-
+However, if we re-fit the model using the new (test) data, more variables can either improve or worsen prediction. Whether it improves is a function of (i) how predictive the predictor is of the outcome, and (ii) which variables are already in the model. 
 
 ## Exercise 4
 
@@ -214,3 +287,7 @@ ggplot(results, aes(x = train_mae, y = test_mae, color = num_predictors)) +
     labs(x = "MAE on original data", y = "MAE on new data on 172 men") +
     theme_classic()
 ```
+
+As the number of predictors increases, the MAE on the original data gets obviously smaller (the points move left). This suggests, that more complicated models will lead to better predictions on the same dataset.
+
+However, as the number of predictors increases, the MAE on the testing data gets smaller rather slowly (the points move down). This suggests that in this instance (with these predictors), the more complicated models lead to better predictions on new datasets. But, *this is not always true*. In many cases (including perhaps in your selected model), more predictors will lead to worsening MAE. We will discuss this more when we talk about Overfitting and the Bias-Variance Tradeoff
