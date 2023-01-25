@@ -171,66 +171,46 @@ b. Explain how mod5 is different than mod4. You may want to look at bf_recipe %>
 
 c. Which model will have the lowest training RMSE, and why? Explain before calculating (that is part d).
 
-d. Compute the training RMSE for models 1 through 5 to check your answer for part c. Write a sentence interpreting one of values of RMSE in context.
+d. Compute the training RMSE for models 1 through 5 to check your answer for part c. Write a sentence interpreting one of values of RMSE in context. Below is a coding example to get you started.
+
+```{r}
+reg_metrics = metric_set(rmse)
+
+mod1 %>%
+  predict(new_data = bodyfat_train) %>% 
+  reg_metrics(truth = bodyfat_train$fatSiri, estimate = .pred)
+```
+
 
 e. Which model do you think is the “best”? You may calculate MAE and R squared as well to justify your answer.
 
 f, Which model do you think will perform worst on new test data? Why?
 
 
-### Exercise 2: Visualizing Predictions {-}
-a. Sequentially run the code below, ending before pipe, comma, or +. For each row of code below, discuss what it does. Add comments to the end of the line after the pipe (with # in front) to explain what each line does.
-
-```{r}
-mod5 %>% #comment here
-  tidy() %>% #
-  slice(-1) %>% # 
-  mutate(lower = estimate - 1.96*std.error, upper = estimate + 1.96*std.error) %>% #
-  ggplot() + # 
-    geom_vline(xintercept=0, linetype=4) + # 
-    geom_point(aes(x=estimate, y=term)) + # 
-    geom_segment(aes(y=term, yend=term, x=lower, xend=upper), arrow = arrow(angle=90, ends='both', length = unit(0.1, 'cm'))) + # 
-    labs(x = 'Coefficient estimate (95% CI)', y = 'Feature') +  #
-    theme_classic() #
-```
-
-b. Sequentially run each line of code (below), end before pipe or comma. For each row of code below, discuss what it does. Add comments to the end of the line after the pipe (with # in front) to explain what each line does.
-
-```{r}
-bodyfat_train %>% # 
-  mutate(id = row_number()) %>% # 
-  pivot_longer(-c(fatSiri, id), names_to = 'key', values_to = 'value') %>% # 
-  right_join(  # 
-    (mod4 %>%  tidy() %>% slice(-1) %>% select(term, estimate)), # 
-    by = c('key'='term')
-  ) %>% #right_join finishes here
-  mutate(effect = value * estimate) %>% # 
-  ggplot(aes(x = effect, y = key)) + # 
-    geom_boxplot() + # 
-    geom_vline(xintercept = 0, color = 'grey') + # 
-    labs(x = 'Effect/Contribution to Predicted BodyFat Percent', y = 'Feature') +  # 
-    theme_classic() #
-```
-
-### Exercise 3: Evaluating the Test Data {-}
+### Exercise 2: Evaluating the Test Data {-}
 Now that you’ve thought about how well the models might perform on test data, deploy it in the real world by applying it to a new set of 172 adult males. You’ll need to update the `new_data` to use `bodyfat_test` instead of `bodyfat_train`.
 
 ```{r}
 bodyfat_test <- read_csv("https://www.dropbox.com/s/7gizws208u0oywq/bodyfat_test.csv?dl=1")
 ```
 
+a. Calculate the test RMSE, MAE, and R squared for all five of the models.
+
+Here is some code to get you started.
 ```{r}
 # Use fit/trained models and evaluate on test data
+reg_metrics = metric_set(rmse, mae, rsq)
 
+mod1 %>%
+  predict(new_data = bodyfat_test) %>% 
+  reg_metrics(truth = bodyfat_test$fatSiri, estimate = .pred)
 ```
-
-a. Calculate the test RMSE, MAE, and R squared for all five of the models.
 
 b. Look back to Exercise 1 and see which model you thought was “best” based on the training data. Is that the “best” model in terms of predicting on new data? Explain.
 
 c. In “real life” we only have one data set. To get a sense of predictive performance on new test data, we could split our data into two groups. Discuss pros and cons of ways you might split the data. How big should the training set be? How big should the testing set be?
 
-### Exercise 4: Overfitting {-}
+### Exercise 3: Overfitting {-}
 If you have time, consider the following relationship. Imagine a set of predictions that is overfit to this training data. You are not limited to lines. Draw a picture of that function of predictions on a piece of paper.
 
 ```{r}
