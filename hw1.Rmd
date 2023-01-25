@@ -54,9 +54,8 @@ Read the article [Amazon scraps secret AI recruiting tool that showed bias again
 
 ## Portfolio Work {-}
 
-**Setup:** In addition to your submission here, you'll want to collect your Portfolio work in a single document. To do so, complete the following steps:
-1. Make a copy of [this document](https://docs.google.com/document/d/1YADwQ2g8YOuJsq25ByAoJzwSBydr5RHGSMCOcFC_ymg/edit). 
-2. For each Homework submission, copy your Portfolio responses into the appropriate space. For example, Homework 1 has three prompts: Overfitting, Evaluating Regression Models, and Cross-validation. In your portfolio, copy and paste your responses under the appropriate header. 
+**Setup:** In addition to your submission here, you'll want to collect your Portfolio work in a single document. James shared a Google doc link with you on January 24th where you should keep your Portfolio responses.
+For each Homework submission, copy your Portfolio responses into the appropriate space. For example, Homework 1 has three prompts: Overfitting, Evaluating Regression Models, and Cross-validation. In your portfolio, copy and paste your responses under the appropriate header. 
 
 **Page maximum:** 2 pages **of text** (pictures don't count)
 
