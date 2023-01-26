@@ -10,100 +10,13 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 - Accurately describe all steps of cross-validation to estimate the test/out-of-sample version of a model evaluation metric
 - Explain what role CV has in a predictive modeling analysis and its connection to overfitting
 - Explain the pros/cons of higher vs. lower k in k-fold CV in terms of sample size and computing time
-- Implement cross-validation in R using the `caret` package
+- Implement cross-validation in R using the `tidymodels` package
 
 <br>
 
-Slides from today are available [here](https://docs.google.com/presentation/d/1dHajTeYPS09Fs1MvUQgGUVpPomkaNqIKWHfYjT7fwF8/edit?usp=sharing).
+Slides from today are available [here](https://docs.google.com/presentation/d/1HgzaPxxQ9bNqYSens313rDk2etRdZno5/edit?usp=sharing&ouid=115583691606860124358&rtpof=true&sd=true).
 
 
-<br><br><br>
-
-
-## The `caret` package {-}
-
-(If you have not already installed the `caret` package, install it with `install.packages("caret")`.)
-
-Over this course, we will looking at a broad but linked set of specialized tools applied in statistical machine learning. Specialized tools generally require specialized code. The `caret` (**C**lassification **A**nd **RE**gression **T**raining) package helps us *streamline* much of this specialized code.
-
-We'll learn some tweaks along the way, but the majority of our `caret` code will use the `train()` function, which allows us to build and evaluate various models. It looks like a lot, but remember that we'll be using this over and over:
-
-```{r}
-# Load the package
-library(caret)
-
-# Set the seed for the random number generator
-set.seed(___)
-
-# Run the algorithm
-my_model <- train(
-    y ~ x,
-    data = ___,
-    method = ___,
-    tuneGrid = data.frame(___), 
-    trControl = trainControl(method = ___, number = ___, selectionFunction = ___),
-    metric = ___,
-    na.action = na.omit
-)
-```
-
-Argument      Meaning
-------------- -----------------
-`y ~ x`       Specifies the outcome and predictor variables (just like `lm()`).
-`data`        Sample data
-`method`      Modeling method to use (e.g., `"lm"`, `"knn"`)
-`tuneGrid`    Modeling method's tuning parameters (parameters which define how it works)
-`trControl`   Method by which to train and test the model (typically cross-validation). When we build multiple models, `selectionFunction` describes the process by which to select a final model.
-`metric`      When we build multiple models, this is the metric by which we’ll evaluate and compare them (e.g., RMSE, MAE).
-`na.action`   What to do about missing data values. We typically set `na.action = na.omit` to prevent errors if the data has missing values.
-
-
-<br>
-
-The power of `caret` is that it allows us to streamline the vast world of machine learning techniques into one common syntax. On top of `"lm"`, check out the different machine learning methods that we can use in `caret`. We'll see several of these throughout the course:
-
-```{r collapse=TRUE}
-names(getModelInfo())
-```
-
-You can find more detailed descriptions of these methods [here](https://rdrr.io/cran/caret/man/models.html) and in a searchable table [here](https://topepo.github.io/caret/available-models.html).
-
-<br>
-
-In the exercises below, you’ll need to adapt the following code to perform the CV procedure on a linear regression model (`"lm"`):
-
-```{r}
-# Regression model with CV error
-my_model <- train(
-    y ~ x,
-    data = ___,
-    method = "lm",
-    trControl = trainControl(method = "cv", number = your_k),
-    na.action = na.omit
-)
-```
-
-Notice how this specifies the general caret code:
-
-- `method = "lm"` indicates that we want to fit a linear regression model
-- `trControl = trainControl(method = "cv", number = your_k)` indicates that we want to train and test the model using cross validation (`"cv"`). You need to specify the number of folds, `your_k`.
-- `tuneGrid`: absent    
-    Linear regression doesn't depend upon any tuning parameters (we're just minimizing the sum of squared residuals).
-- `selectionFunction` and `metric`: absent    
-    We're only building one model, not comparing multiple models, so we don't need a metric by which to compare models or a method by which to select a model.
-
-After building the model, you can check out the results:
-
-```{r}
-# Summarize the model
-summary(my_model)
-
-# Get model evaluation metrics for each fold
-my_model$resample
-
-# Get CV evaluation metrics
-my_model$results
-```
 
 
 <br><br><br>
@@ -111,7 +24,7 @@ my_model$results
 
 ## Exercises {-}
 
-**You can download a template RMarkdown file to start from [here](template_rmds/03-overfitting-cv.Rmd).**
+**You can download a template RMarkdown file to start from [here](template_rmds/04-cv.Rmd).**
 
 ### Context {-}
 
@@ -141,44 +54,73 @@ library(readr)
 library(ggplot2)
 library(dplyr)
 library(broom)
-library(caret)
+library(tidymodels)
 bodyfat_train <- read_csv("https://www.dropbox.com/s/js2gxnazybokbzh/bodyfat_train.csv?dl=1")
 
-# Remove the fatBrozek and density variables
+# Remove the fatBrozek, density, and hipin variables
 bodyfat_train <- bodyfat_train %>%
-    select(-fatBrozek, -density)
+    select(-fatBrozek, -density, -hipin)
 ```
 
-### Exercise 1: 4 models {-}
-
-Consider the 4 models below:
+and consider the first four models we built on Thursday:
 
 ```{r}
-mod1 <- lm(fatSiri ~ age+weight+neck+abdomen+thigh+forearm, data = bodyfat_train)
-mod2 <- lm(fatSiri ~ age+weight+neck+abdomen+thigh+forearm+biceps, data = bodyfat_train)
-mod3 <- lm(fatSiri ~ age+weight+neck+abdomen+thigh+forearm+biceps+chest+hip, data = bodyfat_train)
-mod4 <- lm(fatSiri ~ ., data = bodyfat_train) # The . means all predictors
+lm_spec <-
+    linear_reg() %>% 
+    set_engine(engine = 'lm') %>% 
+    set_mode('regression')
+
+mod1 <- fit(lm_spec,
+            fatSiri ~ age+weight+neck+abdomen+thigh+forearm, 
+            data = bodyfat_train)
+
+mod2 <- fit(lm_spec,
+            fatSiri ~ age+weight+neck+abdomen+thigh+forearm+biceps, 
+            data = bodyfat_train)
+
+mod3 <- fit(lm_spec,
+            fatSiri ~ age+weight+neck+abdomen+thigh+forearm+biceps+chest+hip, 
+            data = bodyfat_train)
+
+mod4 <- fit(lm_spec,
+            fatSiri ~ .,  # The . means all predictors
+            data = bodyfat_train) 
 ```
 
-a. Which model will have the lowest training RMSE, and why?
-b. Compute the RMSE for models 1 and 4 to (partially) check your answer for part a.
-c. Which model do you think will perform worst on new test data? Why?
+### Exercise 1: Cross-validation in Concept {-}
+
+We are going to repeat what we did last week but use cross-validation to help us evaluate models in terms of the predictive performance.
+
+Explain to your table-mates the steps of cross validation (CV) in concept and then how you might use 10-fold CV with these 80 individual data points.
 
 
-
-### Exercise 2: Cross-validation with `caret` {-}
+### Exercise 2: Cross-validation with `tidymodels` {-}
 
 a. Complete the code below to perform 10-fold cross-validation for `mod1` to estimate the test RMSE ($\text{CV}_{(10)}$). Do we need to use `set.seed()`? Why or why not? (Is there a number of folds for which we would not need to set the seed?)    
     ```{r}
-    # Do we need to use set.seed()?
+# Do we need to use set.seed()?
+bodyfat_cv <- vfold_cv(??, v = 10)
 
-    mod1_cv <- train(
-        
-    )
-    ```
-b. **STAT 155 review:** Look at the `summary()` of `mod1_cv`. Contextually interpret the coefficient for the weight predictor. Is anything surprising? Why might this be?
-c. Look at `mod1_cv$resample`, and use this to calculate the 10-fold cross-validated RMSE by hand (the idea is the same as when using MSE). (Note: We haven't done this together, but how can you adapt code that we've used before?)
-d. Check your answer to part c by directly printing out the CV metrics: `mod1_cv$results`. Interpret this metric.
+model_wf <- workflow() %>%
+  add_formula(??) %>%
+  add_model(lm_spec)
+
+mod1_cv <- fit_resamples(model_wf,
+  resamples = bodyfat_cv, 
+  metrics = metric_set(rmse, rsq, mae)
+)
+```
+
+b. Run the code below, and use this to calculate the 10-fold cross-validated RMSE "by hand" (you can use R code, but apply the formula mathematically).
+```{r}
+mod1_cv %>% unnest(.metrics)
+```
+
+
+c. Run the code below, and compare your answer to part b.
+```{r}
+mod1_cv %>% collect_metrics()
+```
 
 
 
@@ -211,14 +153,10 @@ c. If possible, it is advisable to choose $k$ to be a divisor of the sample size
 
 ### Digging deeper {-}
 
-If you have time, consider these exercises to further explore concepts related to today's ideas.
+If you have time, consider these exercises to further explore concepts related to today's ideas. Consider leave-one-out-cross-validation (LOOCV)
 
-1. `caret`'s `trainControl()` function also has a `"repeatedcv"` method. Just from the name, how do you think this method differs from `"cv"`? What are the pros/cons of `"repeatedcv"` as compared to `"cv"`?
-
-2. Adapt the `train()` code to perform leave-one-out-cross-validation (LOOCV).
-    - Hint: `nrow(dataset)` obtains the number of cases in the dataset.
-    - Do we need `set.seed()`? Why or why not?
-    - Using the information from `your_output$resample` (which is a dataset), construct a visualization to examine the variability of RMSE from case to case. What might explain any very large values? What does this highlight about the quality of estimation of the LOOCV process?
+- Would two different `seed`s make a difference in the results (using `set.seed`)? Why or why not?
+- Using the information from `your_output %>% unnest(.metrics)`, construct a visualization to examine the variability of RMSE from case to case. What might explain any large values? What does this highlight about the quality of estimation of LOOCV?
 
 
 

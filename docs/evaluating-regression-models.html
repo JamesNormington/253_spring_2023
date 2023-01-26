@@ -172,6 +172,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-3-overfitting"><i class="fa fa-check"></i>Exercise 3: Overfitting</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="cross-validation.html"><a href="cross-validation.html"><i class="fa fa-check"></i><b>4</b> Cross-validation</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercises-2"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#context-2"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-1-cross-validation-in-concept"><i class="fa fa-check"></i>Exercise 1: Cross-validation in Concept</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-2-cross-validation-with-tidymodels"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>II Homework</b></span></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
 <ul>
@@ -448,6 +461,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

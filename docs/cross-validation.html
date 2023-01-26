@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 4 Cross-validation | STAT 253: Statistical Machine Learning</title>
+  <meta name="description" content="This is the class website for Statistical Machine Learning at Macalester College." />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 4 Cross-validation | STAT 253: Statistical Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
+  <meta name="github-repo" content="JamesNormington/253_spring_2023" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 4 Cross-validation | STAT 253: Statistical Machine Learning" />
+  
+  <meta name="twitter:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="overfitting.html"/>
+<link rel="next" href="homework-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="custom_styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href = "./">STAT 253: Statistical Machine Learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="" data-path="schedule-syllabus.html"><a href="schedule-syllabus.html"><i class="fa fa-check"></i>Schedule &amp; Syllabus</a></li>
+<li class="chapter" data-level="" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="r-and-rstudio-setup.html"><a href="r-and-rstudio-setup.html"><i class="fa fa-check"></i>R and RStudio Setup</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-and-rstudio-setup.html"><a href="r-and-rstudio-setup.html#troubleshooting"><i class="fa fa-check"></i>Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introductions.html"><a href="introductions.html"><i class="fa fa-check"></i><b>1</b> Introductions</a>
+<ul>
+<li class="chapter" data-level="" data-path="introductions.html"><a href="introductions.html#envisioning-a-community-of-learners"><i class="fa fa-check"></i>Envisioning a Community of Learners</a></li>
+<li class="chapter" data-level="" data-path="introductions.html"><a href="introductions.html#explorations"><i class="fa fa-check"></i>Explorations</a></li>
+</ul></li>
+<li class="part"><span><b>I Regression: Evaluation</b></span></li>
+<li class="chapter" data-level="2" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html"><i class="fa fa-check"></i><b>2</b> Evaluating Regression Models</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#learning-goals"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#exercises"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#context"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#class-investigations"><i class="fa fa-check"></i>Class investigations</a></li>
+<li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+<li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+<li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i><b>3</b> Overfitting</a>
+<ul>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#the-tidymodels-package"><i class="fa fa-check"></i>The <code>tidymodels</code> package</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercises-1"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#context-1"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-1-5-models"><i class="fa fa-check"></i>Exercise 1: 5 models</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-2-evaluating-the-test-data"><i class="fa fa-check"></i>Exercise 2: Evaluating the Test Data</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-3-overfitting"><i class="fa fa-check"></i>Exercise 3: Overfitting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cross-validation.html"><a href="cross-validation.html"><i class="fa fa-check"></i><b>4</b> Cross-validation</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercises-2"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#context-2"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-1-cross-validation-in-concept"><i class="fa fa-check"></i>Exercise 1: Cross-validation in Concept</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-2-cross-validation-with-tidymodels"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Homework</b></span></li>
+<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#project-work"><i class="fa fa-check"></i>Project Work</a></li>
+<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#ethics-in-ml"><i class="fa fa-check"></i>Ethics in ML</a></li>
+<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#portfolio-work"><i class="fa fa-check"></i>Portfolio Work</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i>R Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#outside-resources"><i class="fa fa-check"></i>Outside resources</a></li>
+<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#example-code"><i class="fa fa-check"></i>Example code</a></li>
+</ul></li>
+<li class="part"><span><b>III Project</b></span></li>
+<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html"><i class="fa fa-check"></i>Final Project</a>
+<ul>
+<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#requirements"><i class="fa fa-check"></i>Requirements</a></li>
+<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#grading-rubric"><i class="fa fa-check"></i>Grading Rubric</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STAT 253: Statistical Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cross-validation" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Topic 4</span> Cross-validation<a href="cross-validation.html#cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-2" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="cross-validation.html#learning-goals-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Explain why training/in-sample model evaluation metrics can provide a misleading view of true test/out-of-sample performance</li>
+<li>Accurately describe all steps of cross-validation to estimate the test/out-of-sample version of a model evaluation metric</li>
+<li>Explain what role CV has in a predictive modeling analysis and its connection to overfitting</li>
+<li>Explain the pros/cons of higher vs. lower k in k-fold CV in terms of sample size and computing time</li>
+<li>Implement cross-validation in R using the <code>tidymodels</code> package</li>
+</ul>
+<p><br></p>
+<p>Slides from today are available <a href="https://docs.google.com/presentation/d/1HgzaPxxQ9bNqYSens313rDk2etRdZno5/edit?usp=sharing&amp;ouid=115583691606860124358&amp;rtpof=true&amp;sd=true">here</a>.</p>
+<p><br><br><br></p>
+</div>
+<div id="exercises-2" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="cross-validation.html#exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/04-cv.Rmd">here</a>.</strong></p>
+<div id="context-2" class="section level3 unnumbered hasAnchor">
+<h3>Context<a href="cross-validation.html#context-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We’ll be working with a dataset containing physical measurements on 80 adult males. These measurements include body fat percentage estimates as well as body circumference measurements.</p>
+<ul>
+<li><code>fatBrozek</code>: Percent body fat using Brozek’s equation: 457/Density - 414.2</li>
+<li><code>fatSiri</code>: Percent body fat using Siri’s equation: 495/Density - 450</li>
+<li><code>density</code>: Density determined from underwater weighing (gm/cm^3).</li>
+<li><code>age</code>: Age (years)</li>
+<li><code>weight</code>: Weight (lbs)</li>
+<li><code>height</code>: Height (inches)</li>
+<li><code>neck</code>: Neck circumference (cm)</li>
+<li><code>chest</code>: Chest circumference (cm)</li>
+<li><code>abdomen</code>: Abdomen circumference (cm)</li>
+<li><code>hip</code>: Hip circumference (cm)</li>
+<li><code>thigh</code>: Thigh circumference (cm)</li>
+<li><code>knee</code>: Knee circumference (cm)</li>
+<li><code>ankle</code>: Ankle circumference (cm)</li>
+<li><code>biceps</code>: Biceps (extended) circumference (cm)</li>
+<li><code>forearm</code>: Forearm circumference (cm)</li>
+<li><code>wrist</code>: Wrist circumference (cm)</li>
+</ul>
+<p>It takes a lot of effort to estimate body fat percentage accurately through underwater weighing. The goal is to build the best predictive model for <code>fatSiri</code> using just circumference measurements, which are more easily attainable. (We won’t use <code>fatBrozek</code> or <code>density</code> as predictors because they’re other outcome variables.)</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="cross-validation.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb23-2"><a href="cross-validation.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb23-3"><a href="cross-validation.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb23-4"><a href="cross-validation.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb23-5"><a href="cross-validation.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb23-6"><a href="cross-validation.html#cb23-6" aria-hidden="true" tabindex="-1"></a>bodyfat_train <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/js2gxnazybokbzh/bodyfat_train.csv?dl=1&quot;</span>)</span>
+<span id="cb23-7"><a href="cross-validation.html#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="cross-validation.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the fatBrozek, density, and hipin variables</span></span>
+<span id="cb23-9"><a href="cross-validation.html#cb23-9" aria-hidden="true" tabindex="-1"></a>bodyfat_train <span class="ot">&lt;-</span> bodyfat_train <span class="sc">%&gt;%</span></span>
+<span id="cb23-10"><a href="cross-validation.html#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>fatBrozek, <span class="sc">-</span>density, <span class="sc">-</span>hipin)</span></code></pre></div>
+<p>and consider the first four models we built on Thursday:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="cross-validation.html#cb24-1" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span></span>
+<span id="cb24-2"><a href="cross-validation.html#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="cross-validation.html#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a href="cross-validation.html#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>)</span>
+<span id="cb24-5"><a href="cross-validation.html#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="cross-validation.html#cb24-6" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">fit</span>(lm_spec,</span>
+<span id="cb24-7"><a href="cross-validation.html#cb24-7" aria-hidden="true" tabindex="-1"></a>            fatSiri <span class="sc">~</span> age<span class="sc">+</span>weight<span class="sc">+</span>neck<span class="sc">+</span>abdomen<span class="sc">+</span>thigh<span class="sc">+</span>forearm, </span>
+<span id="cb24-8"><a href="cross-validation.html#cb24-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> bodyfat_train)</span>
+<span id="cb24-9"><a href="cross-validation.html#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="cross-validation.html#cb24-10" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">fit</span>(lm_spec,</span>
+<span id="cb24-11"><a href="cross-validation.html#cb24-11" aria-hidden="true" tabindex="-1"></a>            fatSiri <span class="sc">~</span> age<span class="sc">+</span>weight<span class="sc">+</span>neck<span class="sc">+</span>abdomen<span class="sc">+</span>thigh<span class="sc">+</span>forearm<span class="sc">+</span>biceps, </span>
+<span id="cb24-12"><a href="cross-validation.html#cb24-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> bodyfat_train)</span>
+<span id="cb24-13"><a href="cross-validation.html#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="cross-validation.html#cb24-14" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">fit</span>(lm_spec,</span>
+<span id="cb24-15"><a href="cross-validation.html#cb24-15" aria-hidden="true" tabindex="-1"></a>            fatSiri <span class="sc">~</span> age<span class="sc">+</span>weight<span class="sc">+</span>neck<span class="sc">+</span>abdomen<span class="sc">+</span>thigh<span class="sc">+</span>forearm<span class="sc">+</span>biceps<span class="sc">+</span>chest<span class="sc">+</span>hip, </span>
+<span id="cb24-16"><a href="cross-validation.html#cb24-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> bodyfat_train)</span>
+<span id="cb24-17"><a href="cross-validation.html#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="cross-validation.html#cb24-18" aria-hidden="true" tabindex="-1"></a>mod4 <span class="ot">&lt;-</span> <span class="fu">fit</span>(lm_spec,</span>
+<span id="cb24-19"><a href="cross-validation.html#cb24-19" aria-hidden="true" tabindex="-1"></a>            fatSiri <span class="sc">~</span> .,  <span class="co"># The . means all predictors</span></span>
+<span id="cb24-20"><a href="cross-validation.html#cb24-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> bodyfat_train) </span></code></pre></div>
+</div>
+<div id="exercise-1-cross-validation-in-concept" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 1: Cross-validation in Concept<a href="cross-validation.html#exercise-1-cross-validation-in-concept" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are going to repeat what we did last week but use cross-validation to help us evaluate models in terms of the predictive performance.</p>
+<p>Explain to your table-mates the steps of cross validation (CV) in concept and then how you might use 10-fold CV with these 80 individual data points.</p>
+</div>
+<div id="exercise-2-cross-validation-with-tidymodels" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 2: Cross-validation with <code>tidymodels</code><a href="cross-validation.html#exercise-2-cross-validation-with-tidymodels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: lower-alpha">
+<li><p>Complete the code below to perform 10-fold cross-validation for <code>mod1</code> to estimate the test RMSE (<span class="math inline">\(\text{CV}_{(10)}\)</span>). Do we need to use <code>set.seed()</code>? Why or why not? (Is there a number of folds for which we would not need to set the seed?)</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="cross-validation.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do we need to use set.seed()?</span></span>
+<span id="cb25-2"><a href="cross-validation.html#cb25-2" aria-hidden="true" tabindex="-1"></a>bodyfat_cv <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(??, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb25-3"><a href="cross-validation.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="cross-validation.html#cb25-4" aria-hidden="true" tabindex="-1"></a>model_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="cross-validation.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_formula</span>(??) <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="cross-validation.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_spec)</span>
+<span id="cb25-7"><a href="cross-validation.html#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="cross-validation.html#cb25-8" aria-hidden="true" tabindex="-1"></a>mod1_cv <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(model_wf,</span>
+<span id="cb25-9"><a href="cross-validation.html#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> bodyfat_cv, </span>
+<span id="cb25-10"><a href="cross-validation.html#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, rsq, mae)</span>
+<span id="cb25-11"><a href="cross-validation.html#cb25-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div></li>
+<li><p>Run the code below, and use this to calculate the 10-fold cross-validated RMSE “by hand” (you can use R code, but apply the formula mathematically).</p></li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="cross-validation.html#cb26-1" aria-hidden="true" tabindex="-1"></a>mod1_cv <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(.metrics)</span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Run the code below, and compare your answer to part b.</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="cross-validation.html#cb27-1" aria-hidden="true" tabindex="-1"></a>mod1_cv <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>()</span></code></pre></div>
+</div>
+<div id="exercise-3-looking-at-the-evaluation-metrics" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 3: Looking at the evaluation metrics<a href="cross-validation.html#exercise-3-looking-at-the-evaluation-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Look at the completed table below of evaluation metrics for the 4 models.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Which model performed the best on the training data?</li>
+<li>Which model performed best on the test set?</li>
+<li>Explain why there’s a discrepancy between these 2 answers and why CV, in general, can help prevent overfitting.</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Model</th>
+<th align="center">Training RMSE</th>
+<th align="center"><span class="math inline">\(\text{CV}_{(10)}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>mod1</code></td>
+<td align="center">3.810712</td>
+<td align="center">4.389568</td>
+</tr>
+<tr class="even">
+<td align="left"><code>mod2</code></td>
+<td align="center">3.766645</td>
+<td align="center">4.438637</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mod3</code></td>
+<td align="center">3.752362</td>
+<td align="center">4.517281</td>
+</tr>
+<tr class="even">
+<td align="left"><code>mod4</code></td>
+<td align="center">3.572299</td>
+<td align="center">4.543343</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="exercise-4-practical-issues-choosing-k" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span><a href="cross-validation.html#exercise-4-practical-issues-choosing-k" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: lower-alpha">
+<li>In terms of sample size, what are the pros/cons of low vs. high <span class="math inline">\(k\)</span>?</li>
+<li>In terms of computational time, what are the pros/cons of low vs. high <span class="math inline">\(k\)</span>?</li>
+<li>If possible, it is advisable to choose <span class="math inline">\(k\)</span> to be a divisor of the sample size. Why do you think that is?</li>
+</ol>
+</div>
+<div id="digging-deeper" class="section level3 unnumbered hasAnchor">
+<h3>Digging deeper<a href="cross-validation.html#digging-deeper" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you have time, consider these exercises to further explore concepts related to today’s ideas. Consider leave-one-out-cross-validation (LOOCV)</p>
+<ul>
+<li>Would two different <code>seed</code>s make a difference in the results (using <code>set.seed</code>)? Why or why not?</li>
+<li>Using the information from <code>your_output %&gt;% unnest(.metrics)</code>, construct a visualization to examine the variability of RMSE from case to case. What might explain any large values? What does this highlight about the quality of estimation of LOOCV?</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="overfitting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
