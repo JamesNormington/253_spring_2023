@@ -1,32 +1,12 @@
-```{r 03_setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
-```
+---
+title: "Overfitting and Cross-validation"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
 
-# Cross-validation
-
-## Learning Goals {-}
-
-- Explain why training/in-sample model evaluation metrics can provide a misleading view of true test/out-of-sample performance
-- Accurately describe all steps of cross-validation to estimate the test/out-of-sample version of a model evaluation metric
-- Explain what role CV has in a predictive modeling analysis and its connection to overfitting
-- Explain the pros/cons of higher vs. lower k in k-fold CV in terms of sample size and computing time
-- Implement cross-validation in R using the `tidymodels` package
-
-<br>
-
-Slides from today are available [here](https://docs.google.com/presentation/d/1HgzaPxxQ9bNqYSens313rDk2etRdZno5/edit?usp=sharing&ouid=115583691606860124358&rtpof=true&sd=true).
-
-
-
-
-<br><br><br>
-
-
-## Exercises {-}
-
-**You can download a template RMarkdown file to start from [here](template_rmds/04-cv.Rmd).**
-
-### Context {-}
+## Context
 
 We'll be working with a dataset containing physical measurements on 80 adult males. These measurements include body fat percentage estimates as well as body circumference measurements.
 
@@ -61,6 +41,8 @@ bodyfat_train <- read_csv("https://www.dropbox.com/s/js2gxnazybokbzh/bodyfat_tra
 bodyfat_train <- bodyfat_train %>%
     select(-fatBrozek, -density, -hipin)
 ```
+
+## Exercise 1: 4 models
 
 and consider the first four models we built on Thursday:
 
@@ -100,6 +82,7 @@ a. Complete the code below to perform 10-fold cross-validation for `mod1` to est
     ```{r}
 # Do we need to use set.seed()?
 set.seed(2023)
+#set.seed(2024)
 bodyfat_cv <- vfold_cv(??, v = 10)
 
 model_wf <- workflow() %>%
@@ -108,7 +91,7 @@ model_wf <- workflow() %>%
 
 mod1_cv <- fit_resamples(model_wf,
   resamples = bodyfat_cv, 
-  metrics = metric_set(rmse, rsq,  mae)
+  metrics = metric_set(rmse, rsq, mae)
 )
 ```
 

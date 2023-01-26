@@ -313,7 +313,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb25-7"><a href="cross-validation.html#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-8"><a href="cross-validation.html#cb25-8" aria-hidden="true" tabindex="-1"></a>mod1_cv <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(model_wf,</span>
 <span id="cb25-9"><a href="cross-validation.html#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> bodyfat_cv, </span>
-<span id="cb25-10"><a href="cross-validation.html#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, rsq, mae)</span>
+<span id="cb25-10"><a href="cross-validation.html#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, rsq,  mae)</span>
 <span id="cb25-11"><a href="cross-validation.html#cb25-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div></li>
 <li><p>Run the code below, and use this to calculate the 10-fold cross-validated RMSE “by hand” (you can use R code, but apply the formula mathematically).</p></li>
 </ol>
@@ -325,12 +325,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="exercise-3-looking-at-the-evaluation-metrics" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 3: Looking at the evaluation metrics<a href="cross-validation.html#exercise-3-looking-at-the-evaluation-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Perform 10-fold CV using mod2, mod3, and mod4 by running the code below:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="cross-validation.html#cb28-1" aria-hidden="true" tabindex="-1"></a>model2_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="cross-validation.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_formula</span>(fatSiri <span class="sc">~</span> age<span class="sc">+</span>weight<span class="sc">+</span>neck<span class="sc">+</span>abdomen<span class="sc">+</span>thigh<span class="sc">+</span>forearm<span class="sc">+</span>biceps) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="cross-validation.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_spec)</span>
+<span id="cb28-4"><a href="cross-validation.html#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="cross-validation.html#cb28-5" aria-hidden="true" tabindex="-1"></a>mod2_cv <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(model2_wf,</span>
+<span id="cb28-6"><a href="cross-validation.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> bodyfat_cv, </span>
+<span id="cb28-7"><a href="cross-validation.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, rsq, mae)</span>
+<span id="cb28-8"><a href="cross-validation.html#cb28-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-9"><a href="cross-validation.html#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="cross-validation.html#cb28-10" aria-hidden="true" tabindex="-1"></a>model3_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-11"><a href="cross-validation.html#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_formula</span>(fatSiri <span class="sc">~</span> age<span class="sc">+</span>weight<span class="sc">+</span>neck<span class="sc">+</span>abdomen<span class="sc">+</span>thigh<span class="sc">+</span>forearm<span class="sc">+</span>biceps<span class="sc">+</span>chest<span class="sc">+</span>hip) <span class="sc">%&gt;%</span></span>
+<span id="cb28-12"><a href="cross-validation.html#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_spec)</span>
+<span id="cb28-13"><a href="cross-validation.html#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="cross-validation.html#cb28-14" aria-hidden="true" tabindex="-1"></a>mod3_cv <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(model3_wf,</span>
+<span id="cb28-15"><a href="cross-validation.html#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> bodyfat_cv, </span>
+<span id="cb28-16"><a href="cross-validation.html#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, rsq, mae)</span>
+<span id="cb28-17"><a href="cross-validation.html#cb28-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-18"><a href="cross-validation.html#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="cross-validation.html#cb28-19" aria-hidden="true" tabindex="-1"></a>model4_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-20"><a href="cross-validation.html#cb28-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_formula</span>(fatSiri <span class="sc">~</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb28-21"><a href="cross-validation.html#cb28-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_spec)</span>
+<span id="cb28-22"><a href="cross-validation.html#cb28-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-23"><a href="cross-validation.html#cb28-23" aria-hidden="true" tabindex="-1"></a>mod4_cv <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(model4_wf,</span>
+<span id="cb28-24"><a href="cross-validation.html#cb28-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> bodyfat_cv, </span>
+<span id="cb28-25"><a href="cross-validation.html#cb28-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, rsq, mae)</span>
+<span id="cb28-26"><a href="cross-validation.html#cb28-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-27"><a href="cross-validation.html#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-28"><a href="cross-validation.html#cb28-28" aria-hidden="true" tabindex="-1"></a>mod1_cv <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&quot;rmse&quot;</span>)</span>
+<span id="cb28-29"><a href="cross-validation.html#cb28-29" aria-hidden="true" tabindex="-1"></a>mod2_cv <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&quot;rmse&quot;</span>)</span>
+<span id="cb28-30"><a href="cross-validation.html#cb28-30" aria-hidden="true" tabindex="-1"></a>mod3_cv <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&quot;rmse&quot;</span>)</span>
+<span id="cb28-31"><a href="cross-validation.html#cb28-31" aria-hidden="true" tabindex="-1"></a>mod4_cv <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&quot;rmse&quot;</span>)</span></code></pre></div>
 <p>Look at the completed table below of evaluation metrics for the 4 models.</p>
-<ol style="list-style-type: lower-alpha">
-<li>Which model performed the best on the training data?</li>
-<li>Which model performed best on the test set?</li>
-<li>Explain why there’s a discrepancy between these 2 answers and why CV, in general, can help prevent overfitting.</li>
-</ol>
 <table>
 <thead>
 <tr class="header">
@@ -342,26 +369,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td align="left"><code>mod1</code></td>
-<td align="center">3.810712</td>
-<td align="center">4.389568</td>
+<td align="center">3.811</td>
+<td align="center">4.193</td>
 </tr>
 <tr class="even">
 <td align="left"><code>mod2</code></td>
-<td align="center">3.766645</td>
-<td align="center">4.438637</td>
+<td align="center">3.767</td>
+<td align="center">4.305</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>mod3</code></td>
-<td align="center">3.752362</td>
-<td align="center">4.517281</td>
+<td align="center">3.752</td>
+<td align="center">4.368</td>
 </tr>
 <tr class="even">
 <td align="left"><code>mod4</code></td>
-<td align="center">3.572299</td>
-<td align="center">4.543343</td>
+<td align="center">3.572</td>
+<td align="center">4.438</td>
 </tr>
 </tbody>
 </table>
+<ol style="list-style-type: lower-alpha">
+<li>Which model performed the best on the training data?</li>
+<li>Which model performed best on the test set?</li>
+<li>Explain why there’s a discrepancy between these 2 answers and why CV, in general, can help reduce the impact overfitting.</li>
+</ol>
 </div>
 <div id="exercise-4-practical-issues-choosing-k" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span><a href="cross-validation.html#exercise-4-practical-issues-choosing-k" class="anchor-section" aria-label="Anchor link to header"></a></h3>
