@@ -81,6 +81,8 @@ Explain to your table-mates the steps of cross validation (CV) in concept and th
 a. Complete the code below to perform 10-fold cross-validation for `mod1` to estimate the test RMSE ($\text{CV}_{(10)}$). Do we need to use `set.seed()`? Why or why not? (Is there a number of folds for which we would not need to set the seed?)    
     ```{r}
 # Do we need to use set.seed()?
+set.seed(2023)
+#set.seed(2024)
 bodyfat_cv <- vfold_cv(??, v = 10)
 
 model_wf <- workflow() %>%

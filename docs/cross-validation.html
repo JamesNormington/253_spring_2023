@@ -305,16 +305,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li><p>Complete the code below to perform 10-fold cross-validation for <code>mod1</code> to estimate the test RMSE (<span class="math inline">\(\text{CV}_{(10)}\)</span>). Do we need to use <code>set.seed()</code>? Why or why not? (Is there a number of folds for which we would not need to set the seed?)</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="cross-validation.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do we need to use set.seed()?</span></span>
-<span id="cb25-2"><a href="cross-validation.html#cb25-2" aria-hidden="true" tabindex="-1"></a>bodyfat_cv <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(??, <span class="at">v =</span> <span class="dv">10</span>)</span>
-<span id="cb25-3"><a href="cross-validation.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="cross-validation.html#cb25-4" aria-hidden="true" tabindex="-1"></a>model_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-5"><a href="cross-validation.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_formula</span>(??) <span class="sc">%&gt;%</span></span>
-<span id="cb25-6"><a href="cross-validation.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_spec)</span>
-<span id="cb25-7"><a href="cross-validation.html#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="cross-validation.html#cb25-8" aria-hidden="true" tabindex="-1"></a>mod1_cv <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(model_wf,</span>
-<span id="cb25-9"><a href="cross-validation.html#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> bodyfat_cv, </span>
-<span id="cb25-10"><a href="cross-validation.html#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, rsq,  mae)</span>
-<span id="cb25-11"><a href="cross-validation.html#cb25-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div></li>
+<span id="cb25-2"><a href="cross-validation.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb25-3"><a href="cross-validation.html#cb25-3" aria-hidden="true" tabindex="-1"></a>bodyfat_cv <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(??, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb25-4"><a href="cross-validation.html#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="cross-validation.html#cb25-5" aria-hidden="true" tabindex="-1"></a>model_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="cross-validation.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_formula</span>(??) <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="cross-validation.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_spec)</span>
+<span id="cb25-8"><a href="cross-validation.html#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="cross-validation.html#cb25-9" aria-hidden="true" tabindex="-1"></a>mod1_cv <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(model_wf,</span>
+<span id="cb25-10"><a href="cross-validation.html#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> bodyfat_cv, </span>
+<span id="cb25-11"><a href="cross-validation.html#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, rsq,  mae)</span>
+<span id="cb25-12"><a href="cross-validation.html#cb25-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div></li>
 <li><p>Run the code below, and use this to calculate the 10-fold cross-validated RMSE “by hand” (you can use R code, but apply the formula mathematically).</p></li>
 </ol>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="cross-validation.html#cb26-1" aria-hidden="true" tabindex="-1"></a>mod1_cv <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(.metrics)</span></code></pre></div>
