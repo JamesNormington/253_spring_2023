@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 # Homework 1 {-}
 
 <center>
-**Submit by Friday, Feb 3 at 11:59pm to Moodle.
+**Submit by Sunday, Feb. 5th at 11:59pm to Moodle.
 
 Please turn in a **single PDF document** containing (1) your responses for the Project Work and Ethics in ML sections and (2) a LINK to the Google Doc with your responses for the Portfolio Work section.
 </center>
