@@ -474,7 +474,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="exercise-3-examining-output-plot-of-coefficient-paths" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 3: Examining output: plot of coefficient paths<a href="lasso-shrinkageregularization.html#exercise-3-examining-output-plot-of-coefficient-paths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once we’ved used cross validation, a useful plot allows us to examine coefficient paths resulting from the final fitted LASSO models: coefficient estimates as a function of <span class="math inline">\(\lambda\)</span>.</p>
+<p>Once we’ve used cross validation, a useful plot allows us to examine coefficient paths resulting from the final fitted LASSO models: coefficient estimates as a function of <span class="math inline">\(\lambda\)</span>.</p>
 <p>Before running the code, run install.packages(“stringr”) and install.packages(“purrr”) in the Console.</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="lasso-shrinkageregularization.html#cb48-1" aria-hidden="true" tabindex="-1"></a>glmnet_output <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span> <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="co"># get the original glmnet output</span></span>
 <span id="cb48-2"><a href="lasso-shrinkageregularization.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>

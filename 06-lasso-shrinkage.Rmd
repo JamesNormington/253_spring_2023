@@ -281,7 +281,7 @@ tidy(final_fit_se)
 
 ### Exercise 3: Examining output: plot of coefficient paths {-}
 
-Once we’ved used cross validation, a useful plot allows us to examine coefficient paths resulting from the final fitted LASSO models: coefficient estimates as a function of $\lambda$.
+Once we’ve used cross validation, a useful plot allows us to examine coefficient paths resulting from the final fitted LASSO models: coefficient estimates as a function of $\lambda$.
 
 Before running the code, run install.packages("stringr") and install.packages("purrr") in the Console.
 
