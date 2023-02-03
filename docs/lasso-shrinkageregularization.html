@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 5 LASSO: Shrinkage/Regularization | STAT 253: Statistical Machine Learning</title>
+  <title>Topic 6 LASSO: Shrinkage/Regularization | STAT 253: Statistical Machine Learning</title>
   <meta name="description" content="This is the class website for Statistical Machine Learning at Macalester College." />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 5 LASSO: Shrinkage/Regularization | STAT 253: Statistical Machine Learning" />
+  <meta property="og:title" content="Topic 6 LASSO: Shrinkage/Regularization | STAT 253: Statistical Machine Learning" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
   <meta name="github-repo" content="JamesNormington/253_spring_2023" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 5 LASSO: Shrinkage/Regularization | STAT 253: Statistical Machine Learning" />
+  <meta name="twitter:title" content="Topic 6 LASSO: Shrinkage/Regularization | STAT 253: Statistical Machine Learning" />
   
   <meta name="twitter:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
   
@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="variable-subset-selection.html"/>
-<link rel="next" href="knn-regression-and-the-bias-variance-tradeoff.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
-<li class="chapter" data-level="" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="schedule-syllabus.html"><a href="schedule-syllabus.html"><i class="fa fa-check"></i>Schedule &amp; Syllabus</a></li>
 <li class="chapter" data-level="" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i>Learning Objectives</a></li>
 <li class="chapter" data-level="" data-path="r-and-rstudio-setup.html"><a href="r-and-rstudio-setup.html"><i class="fa fa-check"></i>R and RStudio Setup</a>
 <ul>
@@ -143,7 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1" data-path="introductions.html"><a href="introductions.html"><i class="fa fa-check"></i><b>1</b> Introductions</a>
 <ul>
-<li class="chapter" data-level="" data-path="introductions.html"><a href="introductions.html#envisioning-an-ideal-module-4"><i class="fa fa-check"></i>Envisioning an Ideal Module 4</a></li>
+<li class="chapter" data-level="" data-path="introductions.html"><a href="introductions.html#envisioning-a-community-of-learners"><i class="fa fa-check"></i>Envisioning a Community of Learners</a></li>
 <li class="chapter" data-level="" data-path="introductions.html"><a href="introductions.html#explorations"><i class="fa fa-check"></i>Explorations</a></li>
 </ul></li>
 <li class="part"><span><b>I Regression: Evaluation</b></span></li>
@@ -160,25 +160,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html"><i class="fa fa-check"></i><b>3</b> Overfitting &amp; Cross-validation</a>
+<li class="chapter" data-level="3" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i><b>3</b> Overfitting</a>
 <ul>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#the-caret-package"><i class="fa fa-check"></i>The <code>caret</code> package</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercises-1"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#the-tidymodels-package"><i class="fa fa-check"></i>The <code>tidymodels</code> package</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercises-1"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#context-1"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-1-4-models"><i class="fa fa-check"></i>Exercise 1: 4 models</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#context-1"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-1-5-models"><i class="fa fa-check"></i>Exercise 1: 5 models</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-2-evaluating-the-test-data"><i class="fa fa-check"></i>Exercise 2: Evaluating the Test Data</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-3-overfitting"><i class="fa fa-check"></i>Exercise 3: Overfitting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cross-validation.html"><a href="cross-validation.html"><i class="fa fa-check"></i><b>4</b> Cross-validation</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercises-2"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#context-2"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-1-cross-validation-in-concept"><i class="fa fa-check"></i>Exercise 1: Cross-validation in Concept</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-2-cross-validation-with-tidymodels"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Regression: Building Models</b></span></li>
-<li class="chapter" data-level="4" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Subset Selection</a>
+<li class="chapter" data-level="5" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html"><i class="fa fa-check"></i><b>5</b> Variable Subset Selection</a>
 <ul>
-<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercises-2"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#learning-goals-3"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercises-3"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-1-backward-stepwise-selection-by-hand"><i class="fa fa-check"></i>Exercise 1: Backward stepwise selection: by hand</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-2-interpreting-the-results"><i class="fa fa-check"></i>Exercise 2: Interpreting the results</a></li>
@@ -188,207 +199,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#digging-deeper-1"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html"><i class="fa fa-check"></i><b>5</b> LASSO: Shrinkage/Regularization</a>
+<li class="chapter" data-level="6" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html"><i class="fa fa-check"></i><b>6</b> LASSO: Shrinkage/Regularization</a>
 <ul>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#learning-goals-3"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#lasso-models-in-caret"><i class="fa fa-check"></i>LASSO models in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercises-3"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#learning-goals-4"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#lasso-models-in-tidymodels"><i class="fa fa-check"></i>LASSO models in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-1-a-least-squares-model"><i class="fa fa-check"></i>Exercise 1: A least squares model</a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret"><i class="fa fa-check"></i>Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-tidymodels"><i class="fa fa-check"></i>Exercise 2: Fitting a LASSO model in <code>tidymodels</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-3-examining-output-plot-of-coefficient-paths"><i class="fa fa-check"></i>Exercise 3: Examining output: plot of coefficient paths</a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda"><i class="fa fa-check"></i>Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-5-examining-and-evaluating-the-best-lasso-model"><i class="fa fa-check"></i>Exercise 5: Examining and evaluating the best LASSO model</a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-4-examining-and-evaluating-the-best-lasso-model."><i class="fa fa-check"></i>Exercise 4: Examining and evaluating the best LASSO model.</a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#digging-deeper-2"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>III Regression: Building Flexible Models</b></span></li>
-<li class="chapter" data-level="6" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html"><i class="fa fa-check"></i><b>6</b> KNN Regression and the Bias-Variance Tradeoff</a>
-<ul>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#learning-goals-4"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret"><i class="fa fa-check"></i>KNN models in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#hello-how-are-things"><i class="fa fa-check"></i>Hello, how are things?</a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-1-bias-variance-tradeoff-warmup"><i class="fa fa-check"></i>Exercise 1: Bias-variance tradeoff warmup</a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-2-impact-of-distance-metric"><i class="fa fa-check"></i>Exercise 2: Impact of distance metric</a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret"><i class="fa fa-check"></i>Exercise 3: Implementing KNN in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-4-inspecting-the-results"><i class="fa fa-check"></i>Exercise 4: Inspecting the results</a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-5-curse-of-dimensionality"><i class="fa fa-check"></i>Exercise 5: Curse of dimensionality</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>7</b> Splines</a>
-<ul>
-<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#learning-goals-5"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#splines-in-caret"><i class="fa fa-check"></i>Splines in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercises-5"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-1-evaluating-a-fully-linear-model"><i class="fa fa-check"></i>Exercise 1: Evaluating a fully linear model</a></li>
-<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-2-evaluating-a-spline-model"><i class="fa fa-check"></i>Exercise 2: Evaluating a spline model</a></li>
-<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#extra-variable-scaling"><i class="fa fa-check"></i>Extra! Variable scaling</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="local-regression-gams.html"><a href="local-regression-gams.html"><i class="fa fa-check"></i><b>8</b> Local Regression &amp; GAMs</a>
-<ul>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#learning-goals-6"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#gams-in-caret"><i class="fa fa-check"></i>GAMs in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercises-6"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-1-conceptual-warmup"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret"><i class="fa fa-check"></i>Exercise 2: Building a GAM in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-3-identifying-the-best-gam"><i class="fa fa-check"></i>Exercise 3: Identifying the “best” GAM</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-4-interpreting-the-gam"><i class="fa fa-check"></i>Exercise 4: Interpreting the GAM</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-5-comparison-of-methods"><i class="fa fa-check"></i>Exercise 5: Comparison of methods</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#just-for-fun"><i class="fa fa-check"></i>Just for fun!</a></li>
-</ul></li>
-</ul></li>
-<li class="part"><span><b>IV Classification</b></span></li>
-<li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic Regression</a>
-<ul>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#learning-goals-7"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression-in-caret"><i class="fa fa-check"></i>Logistic regression in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercises-7"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#context-2"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#hello-how-are-things-1"><i class="fa fa-check"></i>Hello, how are things?</a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-1-visualization-warmup"><i class="fa fa-check"></i>Exercise 1: Visualization warmup</a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-3-interpreting-the-model"><i class="fa fa-check"></i>Exercise 3: Interpreting the model</a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-4-making-predictions"><i class="fa fa-check"></i>Exercise 4: Making predictions</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html"><i class="fa fa-check"></i><b>10</b> Evaluating Classification Models</a>
-<ul>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#learning-goals-8"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret"><i class="fa fa-check"></i>LASSO for logistic regression in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercises-8"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#context-3"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-1-conceptual-warmup-1"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-3-inspecting-the-model"><i class="fa fa-check"></i>Exercise 3: Inspecting the model</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-4-interpreting-evaluation-metrics"><i class="fa fa-check"></i>Exercise 4: Interpreting evaluation metrics</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-5-algorithmic-understanding-for-evaluation-metrics"><i class="fa fa-check"></i>Exercise 5: Algorithmic understanding for evaluation metrics</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="trees-part-1.html"><a href="trees-part-1.html"><i class="fa fa-check"></i><b>11</b> Trees (Part 1)</a>
-<ul>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#learning-goals-9"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#trees-in-caret"><i class="fa fa-check"></i>Trees in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercises-9"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#context-4"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-1-core-theme-parametricnonparametric"><i class="fa fa-check"></i>Exercise 1: Core theme: parametric/nonparametric</a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-2-core-theme-tuning-parameters-and-the-bvt"><i class="fa fa-check"></i>Exercise 2: Core theme: Tuning parameters and the BVT</a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-3-building-trees-in-caret"><i class="fa fa-check"></i>Exercise 3: Building trees in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-4-visualizing-trees"><i class="fa fa-check"></i>Exercise 4: Visualizing trees</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="trees-part-2.html"><a href="trees-part-2.html"><i class="fa fa-check"></i><b>12</b> Trees (Part 2)</a>
-<ul>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercises-10"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#context-5"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercise-1-predictions-from-trees"><i class="fa fa-check"></i>Exercise 1: Predictions from trees</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercise-2-reinforcing-the-bvt"><i class="fa fa-check"></i>Exercise 2: Reinforcing the BVT</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercise-3-variable-importance-in-trees"><i class="fa fa-check"></i>Exercise 3: Variable importance in trees</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercise-4-regression-trees"><i class="fa fa-check"></i>Exercise 4: Regression trees</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#extra"><i class="fa fa-check"></i>Extra!</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html"><i class="fa fa-check"></i><b>13</b> Bagging and Random Forests</a>
-<ul>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#learning-goals-10"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercises-11"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#hello-how-are-things-2"><i class="fa fa-check"></i>Hello, how are things?</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-1-preparing-to-build-a-random-forest"><i class="fa fa-check"></i>Exercise 1: Preparing to build a random forest</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-2-more-preparation-to-build-a-random-forest"><i class="fa fa-check"></i>Exercise 2: More preparation to build a random forest</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-3-building-the-random-forest"><i class="fa fa-check"></i>Exercise 3: Building the random forest</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-4-preliminary-interpretation"><i class="fa fa-check"></i>Exercise 4: Preliminary interpretation</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-5-evaluating-the-forest"><i class="fa fa-check"></i>Exercise 5: Evaluating the forest</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-6-variable-importance-measures"><i class="fa fa-check"></i>Exercise 6: Variable importance measures</a></li>
-</ul></li>
-</ul></li>
-<li class="part"><span><b>V Unsupervised Learning</b></span></li>
-<li class="chapter" data-level="14" data-path="k-means-clustering.html"><a href="k-means-clustering.html"><i class="fa fa-check"></i><b>14</b> K-Means Clustering</a>
-<ul>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#learning-goals-11"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercises-12"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-1-visual-explorations"><i class="fa fa-check"></i>Exercise 1: Visual explorations</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-2-k-means-clustering-on-bill-length-and-depth"><i class="fa fa-check"></i>Exercise 2: K-means clustering on bill length and depth</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-3-addressing-variable-scale"><i class="fa fa-check"></i>Exercise 3: Addressing variable scale</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-4-clustering-on-more-variables"><i class="fa fa-check"></i>Exercise 4: Clustering on more variables</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-5-interpreting-the-clusters"><i class="fa fa-check"></i>Exercise 5: Interpreting the clusters</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-6-picking-k"><i class="fa fa-check"></i>Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i><b>15</b> Hierarchical Clustering</a>
-<ul>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#learning-goals-12"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercises-13"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-1-hierarchical-clustering-by-hand"><i class="fa fa-check"></i>Exercise 1: Hierarchical clustering by hand</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-2-exploring-penguin-dendrograms"><i class="fa fa-check"></i>Exercise 2: Exploring penguin dendrograms</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-3-interpreting-the-clusters-visually"><i class="fa fa-check"></i>Exercise 3: Interpreting the clusters visually</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-4-tree-cutting-and-interpretation"><i class="fa fa-check"></i>Exercise 4: Tree-cutting and interpretation</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-5-k-means-vs.-hierarchical"><i class="fa fa-check"></i>Exercise 5: K-means vs. hierarchical</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html"><i class="fa fa-check"></i><b>16</b> Principal Components Analysis</a>
-<ul>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#learning-goals-13"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercises-14"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-1-core-concepts"><i class="fa fa-check"></i>Exercise 1: Core concepts</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-2-exploring-pc-loadings"><i class="fa fa-check"></i>Exercise 2: Exploring PC loadings</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-3-exploring-pc-scores"><i class="fa fa-check"></i>Exercise 3: Exploring PC scores</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-4-scree-plots-and-dimension-reduction"><i class="fa fa-check"></i>Exercise 4: Scree plots and dimension reduction</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-5-variable-scaling"><i class="fa fa-check"></i>Exercise 5: Variable scaling</a></li>
-</ul></li>
-</ul></li>
-<li class="part"><span><b>VI Homework</b></span></li>
+<li class="part"><span><b>III Homework</b></span></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
 <ul>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#project-work"><i class="fa fa-check"></i>Project Work</a></li>
+<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#ethics-in-ml"><i class="fa fa-check"></i>Ethics in ML</a></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#portfolio-work"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#course-engagement"><i class="fa fa-check"></i>Course Engagement</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html"><i class="fa fa-check"></i>Homework 2</a>
-<ul>
-<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#project-work-1"><i class="fa fa-check"></i>Project Work</a></li>
-<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#portfolio-work-1"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#course-engagement-1"><i class="fa fa-check"></i>Course Engagement</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html"><i class="fa fa-check"></i>Homework 3</a>
-<ul>
-<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#project-work-2"><i class="fa fa-check"></i>Project Work</a></li>
-<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#portfolio-work-2"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#course-engagement-2"><i class="fa fa-check"></i>Course Engagement</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html"><i class="fa fa-check"></i>Homework 4</a>
-<ul>
-<li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#project-work-3"><i class="fa fa-check"></i>Project Work</a></li>
-<li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#portfolio-work-3"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#course-engagement-3"><i class="fa fa-check"></i>Course Engagement</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html"><i class="fa fa-check"></i>Homework 5</a>
-<ul>
-<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#project-work-4"><i class="fa fa-check"></i>Project Work</a></li>
-<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#portfolio-work-4"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#course-engagement-4"><i class="fa fa-check"></i>Course Engagement</a></li>
-</ul></li>
-<li class="part"><span><b>VII Project</b></span></li>
-<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html"><i class="fa fa-check"></i>Final Project</a>
-<ul>
-<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#requirements"><i class="fa fa-check"></i>Requirements</a></li>
-<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#grading-rubric"><i class="fa fa-check"></i>Grading Rubric</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i>R Resources</a>
 <ul>
 <li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#outside-resources"><i class="fa fa-check"></i>Outside resources</a></li>
 <li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#example-code"><i class="fa fa-check"></i>Example code</a></li>
+</ul></li>
+<li class="part"><span><b>IV Project</b></span></li>
+<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html"><i class="fa fa-check"></i>Final Project</a>
+<ul>
+<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#requirements"><i class="fa fa-check"></i>Requirements</a></li>
+<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#grading-rubric"><i class="fa fa-check"></i>Grading Rubric</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -410,10 +250,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lasso-shrinkageregularization" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Topic 5</span> LASSO: Shrinkage/Regularization<a href="lasso-shrinkageregularization.html#lasso-shrinkageregularization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="learning-goals-3" class="section level2 unnumbered hasAnchor">
-<h2>Learning Goals<a href="lasso-shrinkageregularization.html#learning-goals-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="lasso-shrinkageregularization" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Topic 6</span> LASSO: Shrinkage/Regularization<a href="lasso-shrinkageregularization.html#lasso-shrinkageregularization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goals-4" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="lasso-shrinkageregularization.html#learning-goals-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Explain how ordinary and penalized least squares are similar and different with regard to (1) the form of the objective function and (2) the goal of variable selection</li>
 <li>Explain why variable scaling is important for the performance of shrinkage methods</li>
@@ -421,123 +261,147 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Describe how output from LASSO models can give a measure of <em>variable importance</em></li>
 </ul>
 <p><br></p>
-<p>Slides from today are available <a href="https://docs.google.com/presentation/d/11fkvGakaXnFrCV5AsB54iUB4DfwA4jF2jDNmfjWIONY/edit?usp=sharing">here</a>.</p>
+<p>Slides from today are available <a href="https://docs.google.com/presentation/d/1eXXvuQZdrVvAf65_4J0GABuYwE7EbXGi/edit?usp=sharing&amp;ouid=115583691606860124358&amp;rtpof=true&amp;sd=true">here</a>.</p>
 <p><br><br><br></p>
 </div>
-<div id="lasso-models-in-caret" class="section level2 unnumbered hasAnchor">
-<h2>LASSO models in <code>caret</code><a href="lasso-shrinkageregularization.html#lasso-models-in-caret" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To build LASSO models in <code>caret</code>, first load the package and set the seed for the random number generator to ensure reproducible results:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="lasso-shrinkageregularization.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb29-2"><a href="lasso-shrinkageregularization.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___) <span class="co"># Pick your favorite number to fill in the parentheses</span></span></code></pre></div>
+<div id="lasso-models-in-tidymodels" class="section level2 unnumbered hasAnchor">
+<h2>LASSO models in <code>tidymodels</code><a href="lasso-shrinkageregularization.html#lasso-models-in-tidymodels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To build LASSO models in <code>tidymodels</code>, first load the package and set the seed for the random number generator to ensure reproducible results:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="lasso-shrinkageregularization.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb37-2"><a href="lasso-shrinkageregularization.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb37-3"><a href="lasso-shrinkageregularization.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb37-4"><a href="lasso-shrinkageregularization.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb37-5"><a href="lasso-shrinkageregularization.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels) </span>
+<span id="cb37-6"><a href="lasso-shrinkageregularization.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>() <span class="co"># Resolves conflicts, prefers tidymodel functions</span></span>
+<span id="cb37-7"><a href="lasso-shrinkageregularization.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___) <span class="co"># Pick your favorite number to fill in the parentheses</span></span></code></pre></div>
 <p>Then adapt the following code:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="lasso-shrinkageregularization.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform LASSO</span></span>
-<span id="cb30-2"><a href="lasso-shrinkageregularization.html#cb30-2" aria-hidden="true" tabindex="-1"></a>lasso_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb30-3"><a href="lasso-shrinkageregularization.html#cb30-3" aria-hidden="true" tabindex="-1"></a>    y <span class="sc">~</span> .,</span>
-<span id="cb30-4"><a href="lasso-shrinkageregularization.html#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ___,</span>
-<span id="cb30-5"><a href="lasso-shrinkageregularization.html#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;glmnet&quot;</span>,</span>
-<span id="cb30-6"><a href="lasso-shrinkageregularization.html#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">tuneGrid =</span> <span class="fu">data.frame</span>(<span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="fu">seq</span>(___, ___, <span class="at">length.out =</span> ___)),</span>
-<span id="cb30-7"><a href="lasso-shrinkageregularization.html#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> ___, <span class="at">selectionFunction =</span> ___),</span>
-<span id="cb30-8"><a href="lasso-shrinkageregularization.html#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;MAE&quot;</span>,</span>
-<span id="cb30-9"><a href="lasso-shrinkageregularization.html#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.action =</span> na.omit</span>
-<span id="cb30-10"><a href="lasso-shrinkageregularization.html#cb30-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Argument</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><code>y ~ .</code></td>
-<td align="left">Shorthand for the model of <code>y</code> by all possible predictors <code>x</code> in the data (every other variable in the dataset except <code>y</code>)</td>
-</tr>
-<tr class="even">
-<td align="left"><code>data</code></td>
-<td align="left">Sample data which only includes <code>y</code> and potential predictors <code>x</code>. (Make sure to remove unneeded variables with <code>select(-variable)</code> first.)</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>method</code></td>
-<td align="left"><code>"glmnet"</code> implements the LASSO and other regularization methods</td>
-</tr>
-<tr class="even">
-<td align="left"><code>tuneGrid</code></td>
-<td align="left">A mini-dataset (<code>data.frame</code>) of tuning parameters. <code>alpha = 1</code> specifies that we’re interested in the LASSO (not a different regularization method, like ridge regression). <code>lambda = seq(begin, end, length.out = # values in sequence)</code> specifies that LASSO should be run for each tuning parameter value in the specified sequence.</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>trControl</code></td>
-<td align="left">Use cross-validation to estimate test performance for each LASSO model fit (corresponding to each tuning parameter in <code>tuneGrid</code>). The process used to pick a final model from among these is indicated by the <code>selectionFunction</code> argument, options including <code>"best"</code> and <code>"oneSE"</code>. The <code>best</code> option will pick the model with the best metric. The <code>oneSE</code> option will pick the simplest model for which the metric is within one standard error of the best metric.</td>
-</tr>
-<tr class="even">
-<td align="left"><code>metric</code></td>
-<td align="left">Evaluate and compare competing LASSO models with respect to their CV-MAE.</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>na.action</code></td>
-<td align="left">Set <code>na.action = na.omit</code> to prevent errors if the data has missing values.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p><strong>Note:</strong> <code>caret</code> automatically implements variable standardization (scaling variables to have mean 0 and standard deviation 1) when using the <code>"glmnet"</code> method.</p>
-<p><br></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="lasso-shrinkageregularization.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lasso Model Spec</span></span>
+<span id="cb38-2"><a href="lasso-shrinkageregularization.html#cb38-2" aria-hidden="true" tabindex="-1"></a>lm_lasso_spec <span class="ot">&lt;-</span> </span>
+<span id="cb38-3"><a href="lasso-shrinkageregularization.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="lasso-shrinkageregularization.html#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_args</span>(<span class="at">mixture =</span> <span class="dv">1</span>, <span class="at">penalty =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="do">## mixture = 1 indicates Lasso, we&#39;ll choose penalty later</span></span>
+<span id="cb38-5"><a href="lasso-shrinkageregularization.html#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;glmnet&#39;</span>) <span class="sc">%&gt;%</span> <span class="co"># glmnet does regularization (LASSO, ridge, elastic net)</span></span>
+<span id="cb38-6"><a href="lasso-shrinkageregularization.html#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
+<span id="cb38-7"><a href="lasso-shrinkageregularization.html#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="lasso-shrinkageregularization.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Recipe with standardization (!)</span></span>
+<span id="cb38-9"><a href="lasso-shrinkageregularization.html#cb38-9" aria-hidden="true" tabindex="-1"></a>data_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>( ___ <span class="sc">~</span> ___ , <span class="at">data =</span> ___) <span class="sc">%&gt;%</span></span>
+<span id="cb38-10"><a href="lasso-shrinkageregularization.html#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_nzv</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span> <span class="co"># removes variables with the same value</span></span>
+<span id="cb38-11"><a href="lasso-shrinkageregularization.html#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_novel</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> <span class="co"># important if you have rare categorical variables </span></span>
+<span id="cb38-12"><a href="lasso-shrinkageregularization.html#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span>  <span class="co"># important standardization step for LASSO</span></span>
+<span id="cb38-13"><a href="lasso-shrinkageregularization.html#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())  <span class="co"># creates indicator variables for categorical variables</span></span>
+<span id="cb38-14"><a href="lasso-shrinkageregularization.html#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="lasso-shrinkageregularization.html#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
+<span id="cb38-16"><a href="lasso-shrinkageregularization.html#cb38-16" aria-hidden="true" tabindex="-1"></a>lasso_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb38-17"><a href="lasso-shrinkageregularization.html#cb38-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(data_rec) <span class="sc">%&gt;%</span></span>
+<span id="cb38-18"><a href="lasso-shrinkageregularization.html#cb38-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_lasso_spec)</span>
+<span id="cb38-19"><a href="lasso-shrinkageregularization.html#cb38-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-20"><a href="lasso-shrinkageregularization.html#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Model</span></span>
+<span id="cb38-21"><a href="lasso-shrinkageregularization.html#cb38-21" aria-hidden="true" tabindex="-1"></a>lasso_fit <span class="ot">&lt;-</span> lasso_wf <span class="sc">%&gt;%</span> </span>
+<span id="cb38-22"><a href="lasso-shrinkageregularization.html#cb38-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> ___) <span class="co"># Fit to data</span></span></code></pre></div>
 <p><strong>Examining the LASSO model for each <span class="math inline">\(\lambda\)</span></strong></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="lasso-shrinkageregularization.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot coefficient paths as a function of lambda</span></span>
-<span id="cb31-2"><a href="lasso-shrinkageregularization.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso_mod<span class="sc">$</span>finalModel, <span class="at">xvar =</span> <span class="st">&quot;lambda&quot;</span>, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">20</span>))</span>
-<span id="cb31-3"><a href="lasso-shrinkageregularization.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="lasso-shrinkageregularization.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Codebook for which variables the numbers correspond to</span></span>
-<span id="cb31-5"><a href="lasso-shrinkageregularization.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(lasso_mod<span class="sc">$</span>finalModel<span class="sc">$</span>beta)</span></code></pre></div>
+<p>The <code>glmnet</code> engine fits models for each <span class="math inline">\(\lambda\)</span> automatically, so we can visualize the estimates for each penalty value.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="lasso-shrinkageregularization.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso_fit <span class="sc">%&gt;%</span> <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>), <span class="co"># way to get the original glmnet output</span></span>
+<span id="cb39-2"><a href="lasso-shrinkageregularization.html#cb39-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xvar =</span> <span class="st">&quot;lambda&quot;</span>) <span class="co"># glmnet fits the model with a variety of lambda penalty values</span></span></code></pre></div>
 <p><strong>Identifying the “best” LASSO model</strong></p>
-<p>The “best” model in the sequence of models fit is defined relative to the chosen <code>selectionFunction</code> and <code>metric</code>.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="lasso-shrinkageregularization.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot CV-estimated test performance versus the tuning parameter (lambda)</span></span>
-<span id="cb32-2"><a href="lasso-shrinkageregularization.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso_mod)</span>
-<span id="cb32-3"><a href="lasso-shrinkageregularization.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="lasso-shrinkageregularization.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># CV metrics for each LASSO model</span></span>
-<span id="cb32-5"><a href="lasso-shrinkageregularization.html#cb32-5" aria-hidden="true" tabindex="-1"></a>lasso_mod<span class="sc">$</span>results</span>
-<span id="cb32-6"><a href="lasso-shrinkageregularization.html#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="lasso-shrinkageregularization.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify which tuning parameter (lambda) is &quot;best&quot;</span></span>
-<span id="cb32-8"><a href="lasso-shrinkageregularization.html#cb32-8" aria-hidden="true" tabindex="-1"></a>lasso_mod<span class="sc">$</span>bestTune</span>
-<span id="cb32-9"><a href="lasso-shrinkageregularization.html#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-10"><a href="lasso-shrinkageregularization.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain the predictors and coefficients of the &quot;best&quot; model</span></span>
-<span id="cb32-11"><a href="lasso-shrinkageregularization.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co"># The .&#39;s indicate that the coefficient is 0</span></span>
-<span id="cb32-12"><a href="lasso-shrinkageregularization.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso_mod<span class="sc">$</span>finalModel, lasso_mod<span class="sc">$</span>bestTune<span class="sc">$</span>lambda)</span>
-<span id="cb32-13"><a href="lasso-shrinkageregularization.html#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-14"><a href="lasso-shrinkageregularization.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain the predictors and coefficients of LASSO model w/ different lambda</span></span>
-<span id="cb32-15"><a href="lasso-shrinkageregularization.html#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g., lambda = 1 (roughly)</span></span>
-<span id="cb32-16"><a href="lasso-shrinkageregularization.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso_mod<span class="sc">$</span>finalModel, <span class="dv">1</span>)</span>
-<span id="cb32-17"><a href="lasso-shrinkageregularization.html#cb32-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-18"><a href="lasso-shrinkageregularization.html#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Get information from all CV iterations for the &quot;best&quot; model</span></span>
-<span id="cb32-19"><a href="lasso-shrinkageregularization.html#cb32-19" aria-hidden="true" tabindex="-1"></a>lasso_mod<span class="sc">$</span>resample</span></code></pre></div>
+<p>To identify the best model, we need to tune the model using cross validation. Adapt the following code to tune a Lasso Model to choose Lambda:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="lasso-shrinkageregularization.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create CV folds</span></span>
+<span id="cb40-2"><a href="lasso-shrinkageregularization.html#cb40-2" aria-hidden="true" tabindex="-1"></a>data_cv10 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(___, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb40-3"><a href="lasso-shrinkageregularization.html#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="lasso-shrinkageregularization.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Lasso Model Spec with tune</span></span>
+<span id="cb40-5"><a href="lasso-shrinkageregularization.html#cb40-5" aria-hidden="true" tabindex="-1"></a>lm_lasso_spec_tune <span class="ot">&lt;-</span> </span>
+<span id="cb40-6"><a href="lasso-shrinkageregularization.html#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-7"><a href="lasso-shrinkageregularization.html#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_args</span>(<span class="at">mixture =</span> <span class="dv">1</span>, <span class="at">penalty =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> <span class="do">## mixture = 1 indicates Lasso</span></span>
+<span id="cb40-8"><a href="lasso-shrinkageregularization.html#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;glmnet&#39;</span>) <span class="sc">%&gt;%</span> <span class="co">#note we are using a different engine</span></span>
+<span id="cb40-9"><a href="lasso-shrinkageregularization.html#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
+<span id="cb40-10"><a href="lasso-shrinkageregularization.html#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="lasso-shrinkageregularization.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
+<span id="cb40-12"><a href="lasso-shrinkageregularization.html#cb40-12" aria-hidden="true" tabindex="-1"></a>lasso_wf_tune <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb40-13"><a href="lasso-shrinkageregularization.html#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(data_rec) <span class="sc">%&gt;%</span></span>
+<span id="cb40-14"><a href="lasso-shrinkageregularization.html#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_lasso_spec_tune) </span>
+<span id="cb40-15"><a href="lasso-shrinkageregularization.html#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-16"><a href="lasso-shrinkageregularization.html#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune Model (trying a variety of values of Lambda penalty)</span></span>
+<span id="cb40-17"><a href="lasso-shrinkageregularization.html#cb40-17" aria-hidden="true" tabindex="-1"></a>penalty_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(</span>
+<span id="cb40-18"><a href="lasso-shrinkageregularization.html#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">penalty</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">3</span>)), <span class="co">#log10 transformed 10^-5 to 10^3</span></span>
+<span id="cb40-19"><a href="lasso-shrinkageregularization.html#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">30</span>)</span>
+<span id="cb40-20"><a href="lasso-shrinkageregularization.html#cb40-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-21"><a href="lasso-shrinkageregularization.html#cb40-21" aria-hidden="true" tabindex="-1"></a>tune_res <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>( <span class="co"># new function for tuning parameters</span></span>
+<span id="cb40-22"><a href="lasso-shrinkageregularization.html#cb40-22" aria-hidden="true" tabindex="-1"></a>  lasso_wf_tune, <span class="co"># workflow</span></span>
+<span id="cb40-23"><a href="lasso-shrinkageregularization.html#cb40-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> data_cv10, <span class="co"># cv folds</span></span>
+<span id="cb40-24"><a href="lasso-shrinkageregularization.html#cb40-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, mae),</span>
+<span id="cb40-25"><a href="lasso-shrinkageregularization.html#cb40-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">grid =</span> penalty_grid <span class="co"># penalty grid defined above</span></span>
+<span id="cb40-26"><a href="lasso-shrinkageregularization.html#cb40-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-27"><a href="lasso-shrinkageregularization.html#cb40-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-28"><a href="lasso-shrinkageregularization.html#cb40-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Model Evaluation Metrics from Tuning</span></span>
+<span id="cb40-29"><a href="lasso-shrinkageregularization.html#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(tune_res) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb40-30"><a href="lasso-shrinkageregularization.html#cb40-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-31"><a href="lasso-shrinkageregularization.html#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize Model Evaluation Metrics (CV)</span></span>
+<span id="cb40-32"><a href="lasso-shrinkageregularization.html#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(tune_res) <span class="sc">%&gt;%</span></span>
+<span id="cb40-33"><a href="lasso-shrinkageregularization.html#cb40-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;rmse&#39;</span>) <span class="sc">%&gt;%</span> <span class="co"># or choose mae</span></span>
+<span id="cb40-34"><a href="lasso-shrinkageregularization.html#cb40-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(penalty, <span class="at">rmse =</span> mean) </span>
+<span id="cb40-35"><a href="lasso-shrinkageregularization.html#cb40-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-36"><a href="lasso-shrinkageregularization.html#cb40-36" aria-hidden="true" tabindex="-1"></a>best_penalty <span class="ot">&lt;-</span> <span class="fu">select_best</span>(tune_res, <span class="at">metric =</span> <span class="st">&#39;rmse&#39;</span>) <span class="co"># choose penalty value based on lowest mae or rmse</span></span>
+<span id="cb40-37"><a href="lasso-shrinkageregularization.html#cb40-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-38"><a href="lasso-shrinkageregularization.html#cb40-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Final Model</span></span>
+<span id="cb40-39"><a href="lasso-shrinkageregularization.html#cb40-39" aria-hidden="true" tabindex="-1"></a>final_wf <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(lasso_wf_tune, best_penalty) <span class="co"># incorporates penalty value to workflow</span></span>
+<span id="cb40-40"><a href="lasso-shrinkageregularization.html#cb40-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-41"><a href="lasso-shrinkageregularization.html#cb40-41" aria-hidden="true" tabindex="-1"></a>final_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(final_wf, <span class="at">data =</span> ___)</span>
+<span id="cb40-42"><a href="lasso-shrinkageregularization.html#cb40-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-43"><a href="lasso-shrinkageregularization.html#cb40-43" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(final_fit)</span></code></pre></div>
 <p><br><br><br></p>
 </div>
-<div id="exercises-3" class="section level2 unnumbered hasAnchor">
-<h2>Exercises<a href="lasso-shrinkageregularization.html#exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/05-lasso-shrinkage.Rmd">here</a>.</strong></p>
-<p>We’ll continue using the body fat dataset to explore LASSO modeling.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="lasso-shrinkageregularization.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb33-2"><a href="lasso-shrinkageregularization.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb33-3"><a href="lasso-shrinkageregularization.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb33-4"><a href="lasso-shrinkageregularization.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb33-5"><a href="lasso-shrinkageregularization.html#cb33-5" aria-hidden="true" tabindex="-1"></a>bodyfat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;http://www.macalester.edu/~ajohns24/data/bodyfatsub.csv&quot;</span>)</span>
-<span id="cb33-6"><a href="lasso-shrinkageregularization.html#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="lasso-shrinkageregularization.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Take out the redundant Density and HeightFt variables</span></span>
-<span id="cb33-8"><a href="lasso-shrinkageregularization.html#cb33-8" aria-hidden="true" tabindex="-1"></a>bodyfat <span class="ot">&lt;-</span> bodyfat <span class="sc">%&gt;%</span> </span>
-<span id="cb33-9"><a href="lasso-shrinkageregularization.html#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>Density, <span class="sc">-</span>HeightFt)</span></code></pre></div>
+<div id="exercises-4" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="lasso-shrinkageregularization.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/06-lasso-shrinkage.Rmd">here</a>.</strong></p>
+<p>We’ll use a new data set to explore LASSO modeling. This data comes from the US Department of Energy. You will predict the fuel efficiency of modern cars from characteristics of these cars, like transmission and engine displacement. Fuel efficiency is a numeric value that ranges smoothly from about 15 to 40 miles per gallon.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="lasso-shrinkageregularization.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb41-2"><a href="lasso-shrinkageregularization.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb41-3"><a href="lasso-shrinkageregularization.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb41-4"><a href="lasso-shrinkageregularization.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb41-5"><a href="lasso-shrinkageregularization.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels) </span>
+<span id="cb41-6"><a href="lasso-shrinkageregularization.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>() <span class="co"># Resolves conflicts, prefers tidymodel functions</span></span>
+<span id="cb41-7"><a href="lasso-shrinkageregularization.html#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="lasso-shrinkageregularization.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb41-9"><a href="lasso-shrinkageregularization.html#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="lasso-shrinkageregularization.html#cb41-10" aria-hidden="true" tabindex="-1"></a>cars2018 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/juliasilge/supervised-ML-case-studies-course/master/data/cars2018.csv&quot;</span>)</span>
+<span id="cb41-11"><a href="lasso-shrinkageregularization.html#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="lasso-shrinkageregularization.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cars2018)</span>
+<span id="cb41-13"><a href="lasso-shrinkageregularization.html#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="lasso-shrinkageregularization.html#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Cleaning</span></span>
+<span id="cb41-15"><a href="lasso-shrinkageregularization.html#cb41-15" aria-hidden="true" tabindex="-1"></a>cars2018 <span class="ot">&lt;-</span> cars2018 <span class="sc">%&gt;%</span></span>
+<span id="cb41-16"><a href="lasso-shrinkageregularization.html#cb41-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>model_index)</span></code></pre></div>
 <div id="exercise-1-a-least-squares-model" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 1: A least squares model<a href="lasso-shrinkageregularization.html#exercise-1-a-least-squares-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Let’s start by building an ordinary (not penalized) least squares model to review important concepts. We’ll fit a model with all possible predictors.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="lasso-shrinkageregularization.html#cb34-1" aria-hidden="true" tabindex="-1"></a>ls_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(BodyFat <span class="sc">~</span> ., <span class="at">data =</span> bodyfat)</span></code></pre></div>
+<p>Let’s start by building an ordinary (not penalized) least squares model to review important concepts. We’ll fit a model to predict fuel efficiency measured in miles per gallon (mpg) with all possible predictors.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="lasso-shrinkageregularization.html#cb42-1" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span></span>
+<span id="cb42-2"><a href="lasso-shrinkageregularization.html#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb42-3"><a href="lasso-shrinkageregularization.html#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-4"><a href="lasso-shrinkageregularization.html#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>)</span>
+<span id="cb42-5"><a href="lasso-shrinkageregularization.html#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="lasso-shrinkageregularization.html#cb42-6" aria-hidden="true" tabindex="-1"></a>full_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(mpg <span class="sc">~</span> ., <span class="at">data =</span> cars2018) <span class="sc">%&gt;%</span></span>
+<span id="cb42-7"><a href="lasso-shrinkageregularization.html#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">update_role</span>(model, <span class="at">new_role =</span> <span class="st">&#39;ID&#39;</span>) <span class="sc">%&gt;%</span> <span class="co"># we want to keep the name of the car model but not as a predictor or outcome</span></span>
+<span id="cb42-8"><a href="lasso-shrinkageregularization.html#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_nzv</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span> <span class="co"># removes variables with the same value</span></span>
+<span id="cb42-9"><a href="lasso-shrinkageregularization.html#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> <span class="co"># important standardization step for LASSO</span></span>
+<span id="cb42-10"><a href="lasso-shrinkageregularization.html#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())  <span class="co"># creates indicator variables for categorical variables</span></span>
+<span id="cb42-11"><a href="lasso-shrinkageregularization.html#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="lasso-shrinkageregularization.html#cb42-12" aria-hidden="true" tabindex="-1"></a>full_lm_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb42-13"><a href="lasso-shrinkageregularization.html#cb42-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_recipe</span>(full_rec) <span class="sc">%&gt;%</span></span>
+<span id="cb42-14"><a href="lasso-shrinkageregularization.html#cb42-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_model</span>(lm_spec)</span>
+<span id="cb42-15"><a href="lasso-shrinkageregularization.html#cb42-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-16"><a href="lasso-shrinkageregularization.html#cb42-16" aria-hidden="true" tabindex="-1"></a>full_model <span class="ot">&lt;-</span> <span class="fu">fit</span>(full_lm_wf, <span class="at">data =</span> cars2018) </span>
+<span id="cb42-17"><a href="lasso-shrinkageregularization.html#cb42-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-18"><a href="lasso-shrinkageregularization.html#cb42-18" aria-hidden="true" tabindex="-1"></a>full_model <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
-<li><p>Use <code>caret</code> to perform 10-fold cross-validation to estimate test MAE for this model.</p></li>
+<li><p>Use <code>tidymodels</code> to perform 10-fold cross-validation to estimate test MAE for this model.</p></li>
 <li><p>How do you think the estimated test error would change with fewer predictors?</p></li>
 <li><p>This model fit with ordinary least squares corresponds to a special case of penalized least squares. What is the value of <span class="math inline">\(\lambda\)</span> in this special case?</p></li>
 <li><p>As <span class="math inline">\(\lambda\)</span> increases, what would you expect to happen to the number of predictors that remain in the model?</p></li>
 </ol>
 <p><br><br></p>
 </div>
-<div id="exercise-2-fitting-a-lasso-model-in-caret" class="section level3 unnumbered hasAnchor">
-<h3>Exercise 2: Fitting a LASSO model in <code>caret</code><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Adapt our general LASSO code to fit a set of LASSO models with the following parameters:</p>
+<div id="exercise-2-fitting-a-lasso-model-in-tidymodels" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 2: Fitting a LASSO model in <code>tidymodels</code><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-tidymodels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: lower-alpha">
+<li>Adapt our general LASSO code to fit a set of LASSO models with the following parameters:</li>
+</ol>
 <ul>
 <li>Use 10-fold CV.</li>
 <li>Use mean absolute error (MAE) to select a final model.</li>
@@ -545,108 +409,155 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Use a sequence of 100 <span class="math inline">\(\lambda\)</span> values from 0 to 10.</li>
 </ul>
 <p>Before running the code, enter <code>install.packages("glmnet")</code> in the Console.</p>
-<p>We’ll explore output from <code>lasso_mod</code> in the next exercises.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="lasso-shrinkageregularization.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit LASSO models for a grid of lambda values</span></span>
-<span id="cb35-2"><a href="lasso-shrinkageregularization.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">74</span>)</span>
-<span id="cb35-3"><a href="lasso-shrinkageregularization.html#cb35-3" aria-hidden="true" tabindex="-1"></a>lasso_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb35-4"><a href="lasso-shrinkageregularization.html#cb35-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb35-5"><a href="lasso-shrinkageregularization.html#cb35-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Save the CV-fit models from <code>tune_grid()</code> as <code>tune_output</code>.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="lasso-shrinkageregularization.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit LASSO models for a grid of lambda values</span></span>
+<span id="cb43-2"><a href="lasso-shrinkageregularization.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune and fit a LASSO model to the data (with CV)</span></span>
+<span id="cb43-3"><a href="lasso-shrinkageregularization.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb43-4"><a href="lasso-shrinkageregularization.html#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="lasso-shrinkageregularization.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create CV folds</span></span>
+<span id="cb43-6"><a href="lasso-shrinkageregularization.html#cb43-6" aria-hidden="true" tabindex="-1"></a>data_cv10 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(??, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb43-7"><a href="lasso-shrinkageregularization.html#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="lasso-shrinkageregularization.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Lasso Model Spec with tune</span></span>
+<span id="cb43-9"><a href="lasso-shrinkageregularization.html#cb43-9" aria-hidden="true" tabindex="-1"></a>lm_lasso_spec_tune <span class="ot">&lt;-</span> </span>
+<span id="cb43-10"><a href="lasso-shrinkageregularization.html#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb43-11"><a href="lasso-shrinkageregularization.html#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_args</span>(<span class="at">mixture =</span> <span class="dv">1</span>, <span class="at">penalty =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> <span class="do">## mixture = 1 indicates Lasso</span></span>
+<span id="cb43-12"><a href="lasso-shrinkageregularization.html#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;glmnet&#39;</span>) <span class="sc">%&gt;%</span> <span class="co">#note we are using a different engine</span></span>
+<span id="cb43-13"><a href="lasso-shrinkageregularization.html#cb43-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
+<span id="cb43-14"><a href="lasso-shrinkageregularization.html#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="lasso-shrinkageregularization.html#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
+<span id="cb43-16"><a href="lasso-shrinkageregularization.html#cb43-16" aria-hidden="true" tabindex="-1"></a>lasso_wf_tune <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb43-17"><a href="lasso-shrinkageregularization.html#cb43-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(full_rec) <span class="sc">%&gt;%</span> <span class="co"># recipe defined above</span></span>
+<span id="cb43-18"><a href="lasso-shrinkageregularization.html#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_lasso_spec_tune) </span>
+<span id="cb43-19"><a href="lasso-shrinkageregularization.html#cb43-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-20"><a href="lasso-shrinkageregularization.html#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune Model (trying a variety of values of Lambda penalty)</span></span>
+<span id="cb43-21"><a href="lasso-shrinkageregularization.html#cb43-21" aria-hidden="true" tabindex="-1"></a>penalty_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(</span>
+<span id="cb43-22"><a href="lasso-shrinkageregularization.html#cb43-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">penalty</span>(<span class="at">range =</span> <span class="fu">c</span>(??, ??)), <span class="co">#log10 transformed </span></span>
+<span id="cb43-23"><a href="lasso-shrinkageregularization.html#cb43-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> ??)</span>
+<span id="cb43-24"><a href="lasso-shrinkageregularization.html#cb43-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-25"><a href="lasso-shrinkageregularization.html#cb43-25" aria-hidden="true" tabindex="-1"></a>tune_output <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>( <span class="co"># new function for tuning parameters</span></span>
+<span id="cb43-26"><a href="lasso-shrinkageregularization.html#cb43-26" aria-hidden="true" tabindex="-1"></a>  lasso_wf_tune, <span class="co"># workflow</span></span>
+<span id="cb43-27"><a href="lasso-shrinkageregularization.html#cb43-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> data_cv10, <span class="co"># cv folds</span></span>
+<span id="cb43-28"><a href="lasso-shrinkageregularization.html#cb43-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, mae),</span>
+<span id="cb43-29"><a href="lasso-shrinkageregularization.html#cb43-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">grid =</span> penalty_grid <span class="co"># penalty grid defined above</span></span>
+<span id="cb43-30"><a href="lasso-shrinkageregularization.html#cb43-30" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Let’s visualize the model evaluation metrics from tuning. We can use <code>autoplot()</code>.</li>
+</ol>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="lasso-shrinkageregularization.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Model Evaluation Metrics from Tuning</span></span>
+<span id="cb44-2"><a href="lasso-shrinkageregularization.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(tune_output) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p>Try replicating that MAE plot with the data below using <code>ggplot</code>. Use <code>scale_x_log10()</code>.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="lasso-shrinkageregularization.html#cb45-1" aria-hidden="true" tabindex="-1"></a>metrics_output <span class="ot">&lt;-</span> <span class="fu">collect_metrics</span>(tune_output) <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="lasso-shrinkageregularization.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;mae&#39;</span>) </span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>Inspect the shape of the plot. The errors go down at the very beginning then start going back up. Based on this, what are the consequences of picking a <span class="math inline">\(\lambda\)</span> that is too small or too large? (This is an example of a very important idea that we’ll see shortly: the bias-variance tradeoff.)</p></li>
+<li><p>Next, we need to choose the lambda that leads to the best model. We can choose the lambda penalty value that leads to the lowest cv MAE or we can take into account the variation of the cv MAE and choose the largest lambda penalty value that is within 1 standard error of the lowest cv MAE. How might the models that result from these two penalties differ?</p></li>
+</ol>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="lasso-shrinkageregularization.html#cb46-1" aria-hidden="true" tabindex="-1"></a>best_penalty <span class="ot">&lt;-</span> <span class="fu">select_best</span>(tune_output, <span class="at">metric =</span> <span class="st">&#39;mae&#39;</span>) <span class="co"># choose penalty value based on lowest cv mae</span></span>
+<span id="cb46-2"><a href="lasso-shrinkageregularization.html#cb46-2" aria-hidden="true" tabindex="-1"></a>best_penalty</span>
+<span id="cb46-3"><a href="lasso-shrinkageregularization.html#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="lasso-shrinkageregularization.html#cb46-4" aria-hidden="true" tabindex="-1"></a>best_se_penalty <span class="ot">&lt;-</span> <span class="fu">select_by_one_std_err</span>(tune_output, <span class="at">metric =</span> <span class="st">&#39;mae&#39;</span>, <span class="fu">desc</span>(penalty)) <span class="co"># choose largest penalty value within 1 se of the lowest cv mae</span></span>
+<span id="cb46-5"><a href="lasso-shrinkageregularization.html#cb46-5" aria-hidden="true" tabindex="-1"></a>best_se_penalty</span></code></pre></div>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Now check your understanding by fitting both “final” models and comparing the coefficients. How are these two models different?</li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="lasso-shrinkageregularization.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Final Model</span></span>
+<span id="cb47-2"><a href="lasso-shrinkageregularization.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="lasso-shrinkageregularization.html#cb47-3" aria-hidden="true" tabindex="-1"></a>final_wf <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(lasso_wf_tune, best_penalty) <span class="co"># incorporates penalty value to workflow</span></span>
+<span id="cb47-4"><a href="lasso-shrinkageregularization.html#cb47-4" aria-hidden="true" tabindex="-1"></a>final_wf_se <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(lasso_wf_tune, best_se_penalty) <span class="co"># incorporates penalty value to workflow</span></span>
+<span id="cb47-5"><a href="lasso-shrinkageregularization.html#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="lasso-shrinkageregularization.html#cb47-6" aria-hidden="true" tabindex="-1"></a>final_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(final_wf, <span class="at">data =</span> cars2018)</span>
+<span id="cb47-7"><a href="lasso-shrinkageregularization.html#cb47-7" aria-hidden="true" tabindex="-1"></a>final_fit_se <span class="ot">&lt;-</span> <span class="fu">fit</span>(final_wf_se, <span class="at">data =</span> cars2018)</span>
+<span id="cb47-8"><a href="lasso-shrinkageregularization.html#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="lasso-shrinkageregularization.html#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(final_fit)</span>
+<span id="cb47-10"><a href="lasso-shrinkageregularization.html#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(final_fit_se)</span></code></pre></div>
 <p><br><br></p>
 </div>
 <div id="exercise-3-examining-output-plot-of-coefficient-paths" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 3: Examining output: plot of coefficient paths<a href="lasso-shrinkageregularization.html#exercise-3-examining-output-plot-of-coefficient-paths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A useful first plot allows us to examine <strong>coefficient paths</strong> resulting from the fitted LASSO models: coefficient estimates as a function of <span class="math inline">\(\lambda\)</span>.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="lasso-shrinkageregularization.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot coefficient paths as a function of lambda</span></span>
-<span id="cb36-2"><a href="lasso-shrinkageregularization.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso_mod<span class="sc">$</span>finalModel, <span class="at">xvar =</span> <span class="st">&quot;lambda&quot;</span>, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">20</span>))</span>
-<span id="cb36-3"><a href="lasso-shrinkageregularization.html#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="lasso-shrinkageregularization.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Codebook for which variables the numbers correspond to</span></span>
-<span id="cb36-5"><a href="lasso-shrinkageregularization.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(lasso_mod<span class="sc">$</span>finalModel<span class="sc">$</span>beta)</span>
-<span id="cb36-6"><a href="lasso-shrinkageregularization.html#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="lasso-shrinkageregularization.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g., What are variables 2 and 4?</span></span>
-<span id="cb36-8"><a href="lasso-shrinkageregularization.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(lasso_mod<span class="sc">$</span>finalModel<span class="sc">$</span>beta)[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)]</span></code></pre></div>
+<p>Once we’ved used cross validation, a useful plot allows us to examine coefficient paths resulting from the final fitted LASSO models: coefficient estimates as a function of <span class="math inline">\(\lambda\)</span>.</p>
+<p>Before running the code, run install.packages(“stringr”) and install.packages(“purrr”) in the Console.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="lasso-shrinkageregularization.html#cb48-1" aria-hidden="true" tabindex="-1"></a>glmnet_output <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span> <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="co"># get the original glmnet output</span></span>
+<span id="cb48-2"><a href="lasso-shrinkageregularization.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="lasso-shrinkageregularization.html#cb48-3" aria-hidden="true" tabindex="-1"></a>lambdas <span class="ot">&lt;-</span> glmnet_output<span class="sc">$</span>lambda</span>
+<span id="cb48-4"><a href="lasso-shrinkageregularization.html#cb48-4" aria-hidden="true" tabindex="-1"></a>coefs_lambdas <span class="ot">&lt;-</span> </span>
+<span id="cb48-5"><a href="lasso-shrinkageregularization.html#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coefficients</span>(glmnet_output, <span class="at">s =</span> lambdas )  <span class="sc">%&gt;%</span> </span>
+<span id="cb48-6"><a href="lasso-shrinkageregularization.html#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">%&gt;%</span>  </span>
+<span id="cb48-7"><a href="lasso-shrinkageregularization.html#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb48-8"><a href="lasso-shrinkageregularization.html#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb48-9"><a href="lasso-shrinkageregularization.html#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lambda =</span> lambdas ) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-10"><a href="lasso-shrinkageregularization.html#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(lambda, <span class="fu">everything</span>(), <span class="sc">-</span><span class="st">`</span><span class="at">(Intercept)</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-11"><a href="lasso-shrinkageregularization.html#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>lambda, </span>
+<span id="cb48-12"><a href="lasso-shrinkageregularization.html#cb48-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;term&quot;</span>, </span>
+<span id="cb48-13"><a href="lasso-shrinkageregularization.html#cb48-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;coef&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-14"><a href="lasso-shrinkageregularization.html#cb48-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">var =</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(stringr<span class="sc">::</span><span class="fu">str_split</span>(term,<span class="st">&quot;_&quot;</span>),<span class="sc">~</span>.[<span class="dv">1</span>]))</span>
+<span id="cb48-15"><a href="lasso-shrinkageregularization.html#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-16"><a href="lasso-shrinkageregularization.html#cb48-16" aria-hidden="true" tabindex="-1"></a>coefs_lambdas <span class="sc">%&gt;%</span></span>
+<span id="cb48-17"><a href="lasso-shrinkageregularization.html#cb48-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lambda, <span class="at">y =</span> coef, <span class="at">group =</span> term, <span class="at">color =</span> var)) <span class="sc">+</span></span>
+<span id="cb48-18"><a href="lasso-shrinkageregularization.html#cb48-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb48-19"><a href="lasso-shrinkageregularization.html#cb48-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> best_se_penalty <span class="sc">%&gt;%</span> <span class="fu">pull</span>(penalty), <span class="at">linetype =</span> <span class="st">&#39;dashed&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb48-20"><a href="lasso-shrinkageregularization.html#cb48-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb48-21"><a href="lasso-shrinkageregularization.html#cb48-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>, <span class="at">legend.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">8</span>))</span></code></pre></div>
 <p>There’s a lot of information in this plot!</p>
 <ul>
-<li>Each colored line corresponds to a different predictor. The small number to the left of each line indicates a predictor by its position in <code>rownames(lasso_mod$finalModel$beta)</code>.</li>
-<li>The x-axis reflects the range of different <span class="math inline">\(\lambda\)</span> values (on the log-scale) considered in <code>lasso_mod</code> (in <code>tuneGrid</code>).</li>
+<li>Each colored line corresponds to a different predictor.</li>
+<li>The x-axis reflects the range of different <span class="math inline">\(\lambda\)</span> values.</li>
 <li>At each <span class="math inline">\(\lambda\)</span>, the y-axis reflects the coefficient estimates for the predictors in the corresponding LASSO model.</li>
-<li>At each <span class="math inline">\(\lambda\)</span>, the numbers at the top of the plot indicate how many predictors remain in the corresponding model.</li>
+<li>The vertical dashed line shows where the best penalty value (using the SE method) based on cross-validated MAE.</li>
 </ul>
 <p><br></p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Very roughly eyeball the coefficient estimates at the smallest value of <span class="math inline">\(\lambda\)</span>. Do they look like they correspond to the coefficient estimates from ordinary least squares in exercise 2?</p></li>
 <li><p>Why do all of the lines head toward y = 0 on the far right of the plot?</p></li>
-<li><p>We can zoom in on the plot by setting the y-axis limits to go from -0.5 to 1 with <code>ylim</code> as below. Compare the lines for variables 6 and 12. What are variables 6 and 12? Which seems to be a more “important” or “persistent” (persistently present in the model) variable? Does this make sense in context?</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="lasso-shrinkageregularization.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zoom in</span></span>
-<span id="cb37-2"><a href="lasso-shrinkageregularization.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso_mod<span class="sc">$</span>finalModel, <span class="at">xvar =</span> <span class="st">&quot;lambda&quot;</span>, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">20</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="dv">1</span>))</span></code></pre></div></li>
-<li><p>Which predictor seems least “persistent”? In general, how might we use these coefficient paths to measure the predictive importance of our predictors?</p></li>
+<li><p>What variables seem to be more “important” or “persistent” (persistently present in the model) variable? Does this make sense in context?</p></li>
+<li><p>Which predictor seems least “persistent”? Does this make sense in context?</p></li>
 </ol>
-<p><strong>Note:</strong> If you’re curious about code to automate this visual inspection of <em>variable importance</em>, look at Digging Deeper Exercise 2.</p>
+<p><strong>Note:</strong> If you’re curious about code to automate this visual inspection of <em>variable importance</em>, look at Digging Deeper.</p>
 <p><br><br></p>
 </div>
-<div id="exercise-4-tuning-lambda" class="section level3 unnumbered hasAnchor">
-<h3>Exercise 4: Tuning <span class="math inline">\(\lambda\)</span><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In order to pick which <span class="math inline">\(\lambda\)</span> (hence LASSO model) is “best”, we can plot CV error estimates for the different models:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="lasso-shrinkageregularization.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a summary of the performance of the different models</span></span>
-<span id="cb38-2"><a href="lasso-shrinkageregularization.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso_mod)</span></code></pre></div>
+<div id="exercise-4-examining-and-evaluating-the-best-lasso-model." class="section level3 unnumbered hasAnchor">
+<h3>Exercise 4: Examining and evaluating the best LASSO model.<a href="lasso-shrinkageregularization.html#exercise-4-examining-and-evaluating-the-best-lasso-model." class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: lower-alpha">
-<li><p>Inspect the shape of the plot. The errors go down at the very beginning then start going back up. Based on this, what are the consequences of picking a <span class="math inline">\(\lambda\)</span> that is too small or too large? (This is an example of a very important idea that we’ll see shortly: the <strong>bias-variance tradeoff</strong>.)</p></li>
-<li><p>Based on visual inspection, roughly what value of <span class="math inline">\(\lambda\)</span> results in the best model? (Remind yourself of the interpretation of “best” as defined by our <code>selectionFunction</code> of <code>"oneSE"</code>.)</p></li>
-<li><p>Identify the “best” <span class="math inline">\(\lambda\)</span>.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="lasso-shrinkageregularization.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify which tuning parameter (lambda) is &quot;best&quot;</span></span>
-<span id="cb39-2"><a href="lasso-shrinkageregularization.html#cb39-2" aria-hidden="true" tabindex="-1"></a>lasso_mod<span class="sc">$</span>bestTune</span></code></pre></div></li>
+<li>Take a look at the predictors and coefficients for the “best” LASSO model. Are the predictors that remain in the model sensible? Do the coefficient signs make sense?</li>
 </ol>
-<p><strong>Note:</strong> If you’re curious about making plots that show both test error <em>estimates</em> and their <em>uncertainty</em>, look at Digging Deeper Exercise 1.</p>
-<p><br><br></p>
-</div>
-<div id="exercise-5-examining-and-evaluating-the-best-lasso-model" class="section level3 unnumbered hasAnchor">
-<h3>Exercise 5: Examining and evaluating the best LASSO model<a href="lasso-shrinkageregularization.html#exercise-5-examining-and-evaluating-the-best-lasso-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: lower-alpha">
-<li><p>Take a look at the predictors and coefficients for the “best” LASSO model. Are the predictors that remain in the model sensible? Do the coefficient signs make sense?</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="lasso-shrinkageregularization.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain the predictors and coefficients of the &quot;best&quot; model</span></span>
-<span id="cb40-2"><a href="lasso-shrinkageregularization.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The .&#39;s indicate that the coefficient is 0</span></span>
-<span id="cb40-3"><a href="lasso-shrinkageregularization.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso_mod<span class="sc">$</span>finalModel, lasso_mod<span class="sc">$</span>bestTune<span class="sc">$</span>lambda)</span>
-<span id="cb40-4"><a href="lasso-shrinkageregularization.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="lasso-shrinkageregularization.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain the predictors and coefficients of LASSO model w/ different lambda</span></span>
-<span id="cb40-6"><a href="lasso-shrinkageregularization.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># In case it&#39;s of interest to look at a slightly different model</span></span>
-<span id="cb40-7"><a href="lasso-shrinkageregularization.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g., lambda = 1 (roughly)</span></span>
-<span id="cb40-8"><a href="lasso-shrinkageregularization.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso_mod<span class="sc">$</span>finalModel, <span class="dv">1</span>)</span></code></pre></div></li>
-<li><p>Evaluate the best LASSO model:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="lasso-shrinkageregularization.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain the predictors and coefficients of the &quot;best&quot; model</span></span>
+<span id="cb49-2"><a href="lasso-shrinkageregularization.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out the coefficient are 0</span></span>
+<span id="cb49-3"><a href="lasso-shrinkageregularization.html#cb49-3" aria-hidden="true" tabindex="-1"></a>final_fit_se <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(estimate <span class="sc">!=</span> <span class="dv">0</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Evaluate the best LASSO model:</li>
+</ol>
 <ul>
-<li>Contextually interpret (with units) the CV error for the model by inspecting <code>lasso_mod$resample</code> or <code>lasso_mod$results</code>.</li>
-<li>Make residual plots for the model by creating a dataset called <code>lasso_mod_out</code> which contains the original data as well as predicted values and residuals (<code>fitted</code> and <code>resid</code>).</li>
+<li>Contextually interpret (with units) the CV MAE error for the best model by inspecting <code>tune_output %&gt;% collect_metrics() %&gt;% filter(penalty == (best_se_penalty %&gt;% pull(penalty)))</code>.</li>
+<li>Make residual plots for the model by creating a dataset called <code>lasso_mod_out</code> which contains the original data as well as predicted values and residuals (<code>.pred</code> and <code>.resid</code>).</li>
 </ul>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="lasso-shrinkageregularization.html#cb41-1" aria-hidden="true" tabindex="-1"></a>lasso_mod_out <span class="ot">&lt;-</span> bodyfat <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a href="lasso-shrinkageregularization.html#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb41-3"><a href="lasso-shrinkageregularization.html#cb41-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">fitted =</span> <span class="fu">predict</span>(lasso_mod, <span class="at">newdata =</span> bodyfat),</span>
-<span id="cb41-4"><a href="lasso-shrinkageregularization.html#cb41-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">resid =</span> BodyFat <span class="sc">-</span> fitted</span>
-<span id="cb41-5"><a href="lasso-shrinkageregularization.html#cb41-5" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div></li>
-</ol>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="lasso-shrinkageregularization.html#cb50-1" aria-hidden="true" tabindex="-1"></a>lasso_mod_out <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="lasso-shrinkageregularization.html#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> cars2018) <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="lasso-shrinkageregularization.html#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_cols</span>(cars2018) <span class="sc">%&gt;%</span></span>
+<span id="cb50-4"><a href="lasso-shrinkageregularization.html#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">resid =</span> mpg <span class="sc">-</span> .pred)</span></code></pre></div>
+<p><strong>Note:</strong> If you’re curious about making plots that show both test error <em>estimates</em> and their <em>uncertainty</em>, look at Digging Deeper.</p>
 <p><br><br></p>
 </div>
 <div id="digging-deeper-2" class="section level3 unnumbered hasAnchor">
 <h3>Digging deeper<a href="lasso-shrinkageregularization.html#digging-deeper-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>These exercises are recommended for further exploring code useful in an applied analysis.</p>
-<ol style="list-style-type: decimal">
-<li><p><code>plot(lasso_mod)</code> only shows <em>estimates</em> of test error but doesn’t show the uncertainty in those estimates. Use <code>lasso_mod$results</code> to plot both <code>MAE</code> and its standard deviation (<code>MAESD</code>). Using this <a href="https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">ggplot2 cheat sheet</a> might help.</p></li>
-<li><p>In Exercise 3, we used the plot of coefficient paths to evaluate the <em>variable importance</em> of our predictors. The code below does this systematically for each predictor so that we don’t have to eyeball. Step through and work out what each part is doing. It may help to look up function documentation with <code>?function_name</code> in the Console.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="lasso-shrinkageregularization.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a boolean matrix (predictors x lambdas) of variable exclusion</span></span>
-<span id="cb42-2"><a href="lasso-shrinkageregularization.html#cb42-2" aria-hidden="true" tabindex="-1"></a>bool_predictor_exclude <span class="ot">&lt;-</span> lasso_mod<span class="sc">$</span>finalModel<span class="sc">$</span>beta<span class="sc">==</span><span class="dv">0</span></span>
-<span id="cb42-3"><a href="lasso-shrinkageregularization.html#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="lasso-shrinkageregularization.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each variable</span></span>
-<span id="cb42-5"><a href="lasso-shrinkageregularization.html#cb42-5" aria-hidden="true" tabindex="-1"></a>var_imp <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(bool_predictor_exclude)), <span class="cf">function</span>(row) {</span>
-<span id="cb42-6"><a href="lasso-shrinkageregularization.html#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract coefficient path (sorted from highest to lowest lambda)</span></span>
-<span id="cb42-7"><a href="lasso-shrinkageregularization.html#cb42-7" aria-hidden="true" tabindex="-1"></a>    this_coeff_path <span class="ot">&lt;-</span> bool_predictor_exclude[row,]</span>
-<span id="cb42-8"><a href="lasso-shrinkageregularization.html#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute and return the # of lambdas until this variable is out forever</span></span>
-<span id="cb42-9"><a href="lasso-shrinkageregularization.html#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ncol</span>(bool_predictor_exclude)<span class="sc">-</span><span class="fu">which.min</span>(this_coeff_path)<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb42-10"><a href="lasso-shrinkageregularization.html#cb42-10" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb42-11"><a href="lasso-shrinkageregularization.html#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-12"><a href="lasso-shrinkageregularization.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset of this information and sort</span></span>
-<span id="cb42-13"><a href="lasso-shrinkageregularization.html#cb42-13" aria-hidden="true" tabindex="-1"></a>var_imp_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb42-14"><a href="lasso-shrinkageregularization.html#cb42-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_name =</span> <span class="fu">rownames</span>(bool_predictor_exclude),</span>
-<span id="cb42-15"><a href="lasso-shrinkageregularization.html#cb42-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_imp =</span> var_imp</span>
-<span id="cb42-16"><a href="lasso-shrinkageregularization.html#cb42-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-17"><a href="lasso-shrinkageregularization.html#cb42-17" aria-hidden="true" tabindex="-1"></a>var_imp_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(var_imp))</span></code></pre></div></li>
-</ol>
+<p>We used the plot of coefficient paths to evaluate the variable importance of our predictors. The code below does this systematically for each predictor so that we don’t have to eyeball. Step through and work out what each part is doing. It may help to look up function documentation with ?function_name in the Console.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="lasso-shrinkageregularization.html#cb51-1" aria-hidden="true" tabindex="-1"></a>glmnet_output <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span> <span class="fu">extract_fit_engine</span>()</span>
+<span id="cb51-2"><a href="lasso-shrinkageregularization.html#cb51-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb51-3"><a href="lasso-shrinkageregularization.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a boolean matrix (predictors x lambdas) of variable exclusion</span></span>
+<span id="cb51-4"><a href="lasso-shrinkageregularization.html#cb51-4" aria-hidden="true" tabindex="-1"></a>bool_predictor_exclude <span class="ot">&lt;-</span> glmnet_output<span class="sc">$</span>beta<span class="sc">==</span><span class="dv">0</span></span>
+<span id="cb51-5"><a href="lasso-shrinkageregularization.html#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="lasso-shrinkageregularization.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each variable</span></span>
+<span id="cb51-7"><a href="lasso-shrinkageregularization.html#cb51-7" aria-hidden="true" tabindex="-1"></a>var_imp <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(bool_predictor_exclude)), <span class="cf">function</span>(row) {</span>
+<span id="cb51-8"><a href="lasso-shrinkageregularization.html#cb51-8" aria-hidden="true" tabindex="-1"></a>    this_coeff_path <span class="ot">&lt;-</span> bool_predictor_exclude[row,]</span>
+<span id="cb51-9"><a href="lasso-shrinkageregularization.html#cb51-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">sum</span>(this_coeff_path) <span class="sc">==</span> <span class="fu">ncol</span>(bool_predictor_exclude)){ <span class="fu">return</span>(<span class="dv">0</span>)}<span class="cf">else</span>{</span>
+<span id="cb51-10"><a href="lasso-shrinkageregularization.html#cb51-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">ncol</span>(bool_predictor_exclude) <span class="sc">-</span> <span class="fu">which.min</span>(this_coeff_path) <span class="sc">+</span> <span class="dv">1</span>)}</span>
+<span id="cb51-11"><a href="lasso-shrinkageregularization.html#cb51-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb51-12"><a href="lasso-shrinkageregularization.html#cb51-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-13"><a href="lasso-shrinkageregularization.html#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset of this information and sort</span></span>
+<span id="cb51-14"><a href="lasso-shrinkageregularization.html#cb51-14" aria-hidden="true" tabindex="-1"></a>var_imp_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb51-15"><a href="lasso-shrinkageregularization.html#cb51-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_name =</span> <span class="fu">rownames</span>(bool_predictor_exclude),</span>
+<span id="cb51-16"><a href="lasso-shrinkageregularization.html#cb51-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_imp =</span> var_imp</span>
+<span id="cb51-17"><a href="lasso-shrinkageregularization.html#cb51-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-18"><a href="lasso-shrinkageregularization.html#cb51-18" aria-hidden="true" tabindex="-1"></a>var_imp_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(var_imp))</span></code></pre></div>
+<p>If you want more practice, the <code>Hitters</code> data in the <code>ISLR</code> package (be sure to to install and load) contains the salaries and performance measures for 322 Major League Baseball players. Use LASSO to determine the “best” predictive model of <code>Salary</code>.</p>
 
 </div>
 </div>
@@ -660,7 +571,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="variable-subset-selection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="knn-regression-and-the-bias-variance-tradeoff.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
