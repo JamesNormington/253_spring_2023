@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 
 <br>
 
-Slides from today are available [here](https://docs.google.com/presentation/d/1aNEw_cF4Vj8whvFovEtuU8Eh-qxTejK4DXoiTJGb3Rc/edit?usp=sharing).
+Slides from today are available [here](https://docs.google.com/presentation/d/1pg3_OPbcb9ZbWwlNg3P_tXeM3WDkUST7/edit?usp=sharing&ouid=115583691606860124358&rtpof=true&sd=true).
 
 
 
@@ -23,28 +23,54 @@ Slides from today are available [here](https://docs.google.com/presentation/d/1a
 
 
 
-## KNN models in `caret` {-}
+## KNN models in `tidymodels` {-}
 
-To build KNN models in `caret`, first load the package and set the seed for the random number generator to ensure reproducible results:
+To build KNN models in `tidymodels`, first load the package and set the seed for the random number generator to ensure reproducible results:
 
 ```{r}
-library(caret)
-set.seed(___) # Pick your favorite number to fill in the parentheses
+library(dplyr)
+library(readr)
+library(broom)
+library(ggplot2)
+library(tidymodels) 
+tidymodels_prefer() # Resolves conflicts, prefers tidymodel functions
+set.seed(2023) # or choose your favorite number! 
 ```
 
 Then adapt the following code:
 
 ```{r}
-knn_mod <- train(
-    y ~ .,
-    data = ___,
-    preProcess = "scale",
-    method = "knn",
-    tuneGrid = data.frame(k = seq(___, ___, by = ___)),
-    trControl = trainControl(method = "cv", number = ___, selectionFunction = ___),
-    metric = "MAE",
-    na.action = na.omit
-)
+# CV Folds
+data_cv10 <- vfold_cv(___, v = 10)
+
+# Model Specification
+knn_spec <- 
+  nearest_neighbor() %>% # new type of model!
+  set_args(neighbors = tune()) %>% # tuning parameter is neighbor; tuning spec
+  set_engine(engine = 'kknn') %>% # new engine
+  set_mode('regression') 
+
+# Recipe with standardization (!)
+data_rec <- recipe( ___ ~ ___ , data = ___) %>%
+    step_nzv(all_predictors()) %>% # removes variables with the same value
+    step_novel(all_nominal_predictors()) %>% # important if you have rare categorical variables 
+    step_normalize(all_numeric_predictors()) %>%  # important standardization step for KNN
+    step_dummy(all_nominal_predictors())  # creates indicator variables for categorical variables (important for KNN!)
+
+# Workflow (Recipe + Model)
+knn_wf <- workflow() %>%
+  add_model(knn_spec) %>% 
+  add_recipe(data_rec)
+
+# Tune model trying a variety of values for neighbors (using 10-fold CV)
+penalty_grid <- grid_regular(
+  neighbors(range = c(1, 50)), #  min and max of values for neighbors
+  levels = 50) # number of neighbors values
+
+knn_fit_cv <- tune_grid(knn_wf, # workflow
+              resamples = data_cv10, #CV folds
+              grid = penalty_grid, # grid specified above
+              metrics = metric_set(rmse, mae))
 ```
 
 Argument      Meaning
@@ -60,7 +86,7 @@ Argument      Meaning
 
 <br>
 
-Note: When including categorical predictors, `caret` automatically creates the corresponding indicator variables to allow Euclidean distance to still be used. You'll think about the pros/cons of this in the exercises.
+Note: When including categorical predictors, `tidymodels` automatically creates the corresponding indicator variables to allow Euclidean distance to still be used. You'll think about the pros/cons of this in the exercises.
 
 An alternative to creating indicator variables is to use **Gower distance**. We'll explore Gower distance more when we talk about clustering.
 
@@ -71,21 +97,22 @@ An alternative to creating indicator variables is to use **Gower distance**. We'
 The "best" model in the sequence of models fit is defined relative to the chosen `selectionFunction` and `metric`.
 
 ```{r}
-# Plot CV-estimated test performance versus the tuning parameter
-plot(knn_mod)
+knn_fit_cv %>% autoplot() # Visualize Trained Model using CV
 
-# CV metrics for each model
-knn_mod$results
+knn_fit_cv %>% show_best(metric = 'mae') # Show evaluation metrics for different values of neighbors, ordered
 
-# Identify which tuning parameter is "best"
-knn_mod$bestTune
+# Choose value of Tuning Parameter (neighbors)
+tuned_knn_wf <- knn_fit_cv %>% 
+  select_by_one_std_err(metric = 'mae',desc(neighbors)) %>%  # Choose neighbors value that leads to the highest neighbors within 1 se of the lowest CV MAE
+  finalize_workflow(knn_wf, .)
 
-# Get information from all CV iterations for the "best" model
-knn_mod$resample
+# Fit final KNN model to data
+knn_fit_final <- tuned_knn_wf %>%
+  fit(data = __) 
 
 # Use the best model to make predictions
-# newdata should be a data.frame with required predictors
-predict(knn_mod, newdata = ___)
+# new_data should be a data.frame with required predictors
+predict(knn_fit_final, new_data = ___)
 ```
 
 
@@ -96,30 +123,28 @@ predict(knn_mod, newdata = ___)
 
 ## Exercises {-}
 
-**You can download a template RMarkdown file to start from [here](template_rmds/06-knn-bvt.Rmd).**
+**You can download a template RMarkdown file to start from [here](template_rmds/07-knn-bvt.Rmd).**
 
-We'll explore KNN regression using the `College` dataset in the `ISLR` package (install it with `install.packages("caret")` in the Console). You can use `?College` in the Console to look at the data codebook.
+We'll explore KNN regression using the `College` dataset in the `ISLR` package (install it with `install.packages("tidymodels")` in the Console). You can use `?College` in the Console to look at the data codebook.
 
 ```{r}
-library(caret)
-library(ggplot2)
+library(ISLR)
 library(dplyr)
 library(readr)
-library(ISLR)
+library(broom)
+library(ggplot2)
+library(tidymodels) 
+tidymodels_prefer() # Resolves conflicts, prefers tidymodel functions
+
 
 data(College)
 
-# A little data cleaning
+# data cleaning
 college_clean <- College %>% 
-    mutate(school = rownames(College)) %>% 
+    mutate(school = rownames(College)) %>% # creates variable with school name
     filter(Grad.Rate <= 100) # Remove one school with grad rate of 118%
 rownames(college_clean) <- NULL # Remove school names as row names
 ```
-
-
-### Hello, how are things? {-}
-
-We're about a week and a half into our last module of the year - how are you feeling? What's on your mind?
 
 
 ### Exercise 1: Bias-variance tradeoff warmup {-}
@@ -148,7 +173,7 @@ a. We have a test case whose number of applications is 13,530 and is a private s
 b. Do you have any concerns about the resulting prediction? Based on this, comment on the impact of the distance metric chosen on KNN performance. How might you change the distance calculation (or correspondingly rescale the data) to generate a more sensible prediction in this situation?
 
 
-### Exercise 3: Implementing KNN in `caret` {-}
+### Exercise 3: Implementing KNN in `tidymodels` {-}
 
 Adapt our general KNN code to "fit" a set of KNN models with the following specifications:
 

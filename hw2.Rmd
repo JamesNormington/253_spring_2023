@@ -5,7 +5,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 # Homework 2 {-}
 
 <center>
-**Due Friday, April 2 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=49968)**
+**Due Monday, February 27th @ 11:59pm CST on Moodle**
 </center>
 
 **Deliverables:** Please use [this template](template_rmds/hw2.Rmd) to knit an HTML document. Convert this HTML document to a PDF by opening the HTML document in your web browser. *Print* the document (Ctrl/Cmd-P) and change the destination to "Save as PDF". Submit this one PDF to Moodle.
@@ -13,13 +13,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed.
 
 
-
 <br><br><br>
-
-<span style="color: red; font-size: 30px; font-weight: bold; text-align: center;">
-If you don't have time to work on Project Work, work on it for HW3. I won't include a Project Work section on HW3 (only Portfolio + CE).
-</span>
-
 
 
 ## Project Work {-}
@@ -88,16 +82,23 @@ If you don't have time to work on Project Work, work on it for HW3. I won't incl
 <br><br><br>
 
 
+## Ethics in ML {-}
+
+
+Read the article [Automated background checks are deciding who's fit for a home](https://www.theverge.com/platform/amp/2019/2/1/18205174/automation-background-check-criminal-records-corelogic). Write a short (roughly 250 words), thoughtful response about the ideas that the article brings forth. What themes recur from last week's article (on an old Amazon recruiting tool)? What aspects are more particular to the context of equity in housing access?
+
+
+**Reflection:** Write a short, thoughtful reflection about how things went this week. Feel free to use whichever prompts below resonate most with you, but don't feel limited to these prompts.
+
+- How are class-related things going? Is there anything that you need from the instructor? What new strategies for watching videos, reading, reviewing, gaining insights from class work have you tried or would like to try?
+- How is group work going? Did you try out any new collaboration strategies with your new group? How did they go?
+- How is your work/life balance going? Did you try out any new activities or strategies for staying well? How did they go?
+
 
 ## Portfolio Work {-}
 
-**Length requirements:** Detailed for each section below.
 
-**Organization:** To help the instructor and preceptors grade, please organize your document as shown in [this example](https://docs.google.com/document/d/1lS_7UBmWQkXtS21hd9gb842KV42U24A3QhiifP2nf-E/edit?usp=sharing). Clear section headers and new pages for each method help a lot. Thank you!
-
-**Deliverables:** Continue writing your responses in the same Google Doc that you set up for Homework 1. Include the URL for the Google Doc in your submission.
-
-**Note:** Some prompts below may seem very open-ended. This is intentional. Crafting good responses requires looking back through our material to organize the concepts in a coherent, thematic way, which is extremely useful for your learning.
+**Deliverables:** Continue writing your responses in the same Google Doc that you set up for Assignment 1. Include the URL for the Google Doc in your submission.
 
 <br>
 
@@ -174,27 +175,6 @@ The following prompts are shared for all methods:
 <br><br><br>
 
 
-
-## Course Engagement {-}
-
-The **Ethics** component below is the only required piece. The others are optional depending on the modes of engagement you wish to pursue consistently throughout the module.
-
-<br>
-
-**Ethics: (REQUIRED)** Read the article [Automated background checks are deciding who's fit for a home](https://www.theverge.com/platform/amp/2019/2/1/18205174/automation-background-check-criminal-records-corelogic). Write a short (roughly 250 words), thoughtful response about the ideas that the article brings forth. What themes recur from last week's article (on an old Amazon recruiting tool)? What aspects are more particular to the context of equity in housing access?
-
-
-**Reflection:** Write a short, thoughtful reflection about how things went this week. Feel free to use whichever prompts below resonate most with you, but don't feel limited to these prompts.
-
-- How are class-related things going? Is there anything that you need from the instructor? What new strategies for watching videos, reading, reviewing, gaining insights from class work have you tried or would like to try?
-- How is group work going? Did you try out any new collaboration strategies with your new group? How did they go?
-- How is your work/life balance going? Did you try out any new activities or strategies for staying well? How did they go?
-
-
-**Note-taking:** Share link(s) to file(s) where you keep your notes on videos/readings and on code from class.
-
-
-**Q & A:** In one short paragraph, summarize your engagement in at least 2 of the 3 following areas: (1) preceptor / instructor office hours, (2) on Slack, (3) in small groups during synchronous class sessions.
 
 
 

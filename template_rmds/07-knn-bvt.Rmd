@@ -8,28 +8,26 @@ output:
 
 ## Context and Data
 
-We'll explore KNN regression using the `College` dataset in the `ISLR` package (install it with `install.packages("caret")` in the Console). You can use `?College` in the Console to look at the data codebook.
+We'll explore KNN regression using the `College` dataset in the `ISLR` package (install it with `install.packages("tidymodels")` in the Console). You can use `?College` in the Console to look at the data codebook.
 
 ```{r}
-library(caret)
-library(ggplot2)
+library(ISLR)
 library(dplyr)
 library(readr)
-library(ISLR)
+library(broom)
+library(ggplot2)
+library(tidymodels) 
+tidymodels_prefer() # Resolves conflicts, prefers tidymodel functions
+
 
 data(College)
 
-# A little data cleaning
+# data cleaning
 college_clean <- College %>% 
-    mutate(school = rownames(College)) %>% 
+    mutate(school = rownames(College)) %>% # creates variable with school name
     filter(Grad.Rate <= 100) # Remove one school with grad rate of 118%
 rownames(college_clean) <- NULL # Remove school names as row names
 ```
-
-
-## Hello, how are things?
-
-We're about a week and a half into our last module of the year - how are you feeling? What's on your mind?
 
 
 ## Exercise 1: Bias-variance tradeoff warmup
@@ -54,12 +52,14 @@ a. We have a test case whose number of applications is 13,530 and is a private s
 college_clean %>%
     filter(school %in% c("Princeton University", "SUNY at Albany")) %>%
     select(Apps, Private, Grad.Rate, school)
+
+sqrt( (13530 - ?)^2 + (1 - ?)^2) # Euclidean distance
 ```
 
 b. Do you have any concerns about the resulting prediction? Based on this, comment on the impact of the distance metric chosen on KNN performance. How might you change the distance calculation (or correspondingly rescale the data) to generate a more sensible prediction in this situation?
 
 
-## Exercise 3: Implementing KNN in `caret`
+## Exercise 3: Implementing KNN in `tidymodels`
 
 Adapt our general KNN code to "fit" a set of KNN models with the following specifications:
 
@@ -67,21 +67,42 @@ Adapt our general KNN code to "fit" a set of KNN models with the following speci
 - Use 8-fold CV. (Why 8? Take a look at the sample size.)
 - Use mean absolute error (MAE) to select a final model.
 - Select the simplest model for which the metric is within one standard error of the best metric.
-- Use a sequence of $K$ values from 1 to 100 in increments of 5.
-- Should you use `preProcess = "scale"`?
+- Use a sequence of $K$ values from 1 to 100 in increments of 5 (20 values in total).
 
-After adapting the code (but before inspecting any output), answer the following conceptual questions:
-
-- Explain your choice for using or not using `preProcess = "scale"`.
-- Why is "fit" in quotes? Does KNN actually fit a model as part of training? (This feature of KNN is known as "lazy learning".)
-- How is test MAE estimated? What are the steps of the KNN algorithm with cross-validation?
-- Draw a picture of how you expect test MAE to vary with $K$. In terms of the bias-variance tradeoff, why do you expect the plot to look this way?
+After adapting the code below (but before inspecting any output), draw a picture of how you expect test MAE to vary with $K$. In terms of the bias-variance tradeoff, why do you expect the plot to look this way?
 
 ```{r}
 set.seed(2021)
-knn_mod <- train(
-    
-)
+data_cv10 <- vfold_cv(___, v = 10)
+
+# Model Specification
+knn_spec <- 
+  nearest_neighbor() %>% # new type of model!
+  set_args(neighbors = tune()) %>% # tuning parameter is neighbor; tuning spec
+  set_engine(engine = 'kknn') %>% # new engine
+  set_mode('regression') 
+
+# Recipe with standardization (!)
+data_rec <- recipe( ___ ~ ___ , data = ___) %>%
+    step_nzv(all_predictors()) %>% # removes variables with the same value
+    step_novel(all_nominal_predictors()) %>% # important if you have rare categorical variables 
+    step_normalize(all_numeric_predictors()) %>%  # important standardization step for KNN
+    step_dummy(all_nominal_predictors())  # creates indicator variables for categorical variables (important for KNN!)
+
+# Workflow (Recipe + Model)
+knn_wf <- workflow() %>%
+  add_model(knn_spec) %>% 
+  add_recipe(data_rec)
+
+# Tune model trying a variety of values for neighbors (using 10-fold CV)
+penalty_grid <- grid_regular(
+  neighbors(range = c(______, _____)), #  min and max of values for neighbors
+  levels = _______) # number of neighbors values
+
+knn_fit_cv <- tune_grid(knn_wf, # workflow
+              resamples = data_cv10, #CV folds
+              grid = penalty_grid, # grid specified above
+              metrics = metric_set(rmse, mae))
 ```
 
 ## Exercise 4: Inspecting the results
