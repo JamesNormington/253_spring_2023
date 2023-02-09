@@ -62,7 +62,7 @@ knn_wf <- workflow() %>%
   add_model(knn_spec) %>% 
   add_recipe(data_rec)
 
-# Tune model trying a variety of values for neighbors (using 10-fold CV)
+# Tune model trying a variety of values for neighbors (using 8-fold CV)
 penalty_grid <- grid_regular(
   neighbors(range = c(1, 50)), #  min and max of values for neighbors
   levels = 50) # number of neighbors values
@@ -178,6 +178,7 @@ b. Do you have any concerns about the resulting prediction? Based on this, comme
 Adapt our general KNN code to "fit" a set of KNN models with the following specifications:
 
 - Use the predictors `Private`, `Top10perc` (% of new students from top 10% of high school class), and `S.F.Ratio` (student/faculty ratio).
+- Predict values of `Grad.Rate`
 - Use 8-fold CV. (Why 8? Take a look at the sample size.)
 - Use mean absolute error (MAE) to select a final model.
 - Select the simplest model for which the metric is within one standard error of the best metric.
@@ -192,18 +193,46 @@ After adapting the code (but before inspecting any output), answer the following
 - Draw a picture of how you expect test MAE to vary with $K$. In terms of the bias-variance tradeoff, why do you expect the plot to look this way?
 
 ```{r}
-set.seed(2021)
-knn_mod <- train(
-    
-)
+set.seed(2023)
+data_cv8 <- vfold_cv(____, v = ____)
+
+# Model Specification
+knn_spec <- 
+  nearest_neighbor() %>% # new type of model!
+  set_args(neighbors = tune()) %>% # tuning parameter is neighbor; tuning spec
+  set_engine(engine = 'kknn') %>% # new engine
+  set_mode('regression') 
+
+# Recipe with standardization (!)
+data_rec <- recipe( ___ ~ ___ , data = data_cv8) %>%
+    step_nzv(all_predictors()) %>% # removes variables with the same value
+    step_novel(all_nominal_predictors()) %>% # important if you have rare categorical variables 
+    step_normalize(all_numeric_predictors()) %>%  # important standardization step for KNN
+    step_dummy(all_nominal_predictors())  # creates indicator variables for categorical variables (important for KNN!)
+
+# Workflow (Recipe + Model)
+knn_wf <- workflow() %>%
+  add_model(knn_spec) %>% 
+  add_recipe(data_rec)
+
+# Tune model trying a variety of values for neighbors (using 8-fold CV)
+neighbor_grid <- grid_regular(
+  neighbors(range = c(______, _____)), #  min and max of values for neighbors
+  levels = _______) # number of neighbors values
+
+knn_fit_cv <- tune_grid(knn_wf, # workflow
+              resamples = data_cv8, #CV folds
+              grid = neighbor_grid, # grid specified above
+              metrics = metric_set(rmse, mae))
 ```
+
 
 ### Exercise 4: Inspecting the results {-}
 
-- Use `plot(knn_mod)` to verify your expectations about the plot of test MAE vs. $K$.
+- Use `autoplot(knn_mod)` to verify your expectations about the plot of test MAE vs. $K$.
 - Contextually interpret the test MAE.
-- How else could you evaluate the KNN model?
-- Does your KNN model help you understand which predictors of graduation rate are most important? Why or why not?
+- Does anything about the results surprise you?
+
 
 
 ### Exercise 5: Curse of dimensionality {-}

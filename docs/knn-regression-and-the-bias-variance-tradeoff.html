@@ -317,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb52-20"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb52-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(knn_spec) <span class="sc">%&gt;%</span> </span>
 <span id="cb52-21"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb52-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(data_rec)</span>
 <span id="cb52-22"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb52-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-23"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune model trying a variety of values for neighbors (using 10-fold CV)</span></span>
+<span id="cb52-23"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune model trying a variety of values for neighbors (using 8-fold CV)</span></span>
 <span id="cb52-24"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb52-24" aria-hidden="true" tabindex="-1"></a>penalty_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(</span>
 <span id="cb52-25"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb52-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">neighbors</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">50</span>)), <span class="co">#  min and max of values for neighbors</span></span>
 <span id="cb52-26"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb52-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">50</span>) <span class="co"># number of neighbors values</span></span>
@@ -444,6 +444,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Adapt our general KNN code to “fit” a set of KNN models with the following specifications:</p>
 <ul>
 <li>Use the predictors <code>Private</code>, <code>Top10perc</code> (% of new students from top 10% of high school class), and <code>S.F.Ratio</code> (student/faculty ratio).</li>
+<li>Predict values of <code>Grad.Rate</code></li>
 <li>Use 8-fold CV. (Why 8? Take a look at the sample size.)</li>
 <li>Use mean absolute error (MAE) to select a final model.</li>
 <li>Select the simplest model for which the metric is within one standard error of the best metric.</li>
@@ -457,18 +458,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>How is test MAE estimated? What are the steps of the KNN algorithm with cross-validation?</li>
 <li>Draw a picture of how you expect test MAE to vary with <span class="math inline">\(K\)</span>. In terms of the bias-variance tradeoff, why do you expect the plot to look this way?</li>
 </ul>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2021</span>)</span>
-<span id="cb56-2"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-2" aria-hidden="true" tabindex="-1"></a>knn_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb56-3"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb56-4"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb56-2"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-2" aria-hidden="true" tabindex="-1"></a>data_cv8 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(____, <span class="at">v =</span> ____)</span>
+<span id="cb56-3"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Model Specification</span></span>
+<span id="cb56-5"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-5" aria-hidden="true" tabindex="-1"></a>knn_spec <span class="ot">&lt;-</span> </span>
+<span id="cb56-6"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nearest_neighbor</span>() <span class="sc">%&gt;%</span> <span class="co"># new type of model!</span></span>
+<span id="cb56-7"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_args</span>(<span class="at">neighbors =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> <span class="co"># tuning parameter is neighbor; tuning spec</span></span>
+<span id="cb56-8"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;kknn&#39;</span>) <span class="sc">%&gt;%</span> <span class="co"># new engine</span></span>
+<span id="cb56-9"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
+<span id="cb56-10"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-11"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Recipe with standardization (!)</span></span>
+<span id="cb56-12"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-12" aria-hidden="true" tabindex="-1"></a>data_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>( ___ <span class="sc">~</span> ___ , <span class="at">data =</span> data_cv8) <span class="sc">%&gt;%</span></span>
+<span id="cb56-13"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_nzv</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span> <span class="co"># removes variables with the same value</span></span>
+<span id="cb56-14"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_novel</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> <span class="co"># important if you have rare categorical variables </span></span>
+<span id="cb56-15"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span>  <span class="co"># important standardization step for KNN</span></span>
+<span id="cb56-16"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())  <span class="co"># creates indicator variables for categorical variables (important for KNN!)</span></span>
+<span id="cb56-17"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-18"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
+<span id="cb56-19"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-19" aria-hidden="true" tabindex="-1"></a>knn_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb56-20"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(knn_spec) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-21"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(data_rec)</span>
+<span id="cb56-22"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-23"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune model trying a variety of values for neighbors (using 8-fold CV)</span></span>
+<span id="cb56-24"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-24" aria-hidden="true" tabindex="-1"></a>neighbor_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(</span>
+<span id="cb56-25"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">neighbors</span>(<span class="at">range =</span> <span class="fu">c</span>(______, _____)), <span class="co">#  min and max of values for neighbors</span></span>
+<span id="cb56-26"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> _______) <span class="co"># number of neighbors values</span></span>
+<span id="cb56-27"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-28"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-28" aria-hidden="true" tabindex="-1"></a>knn_fit_cv <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(knn_wf, <span class="co"># workflow</span></span>
+<span id="cb56-29"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-29" aria-hidden="true" tabindex="-1"></a>              <span class="at">resamples =</span> data_cv8, <span class="co">#CV folds</span></span>
+<span id="cb56-30"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-30" aria-hidden="true" tabindex="-1"></a>              <span class="at">grid =</span> neighbor_grid, <span class="co"># grid specified above</span></span>
+<span id="cb56-31"><a href="knn-regression-and-the-bias-variance-tradeoff.html#cb56-31" aria-hidden="true" tabindex="-1"></a>              <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, mae))</span></code></pre></div>
 </div>
 <div id="exercise-4-inspecting-the-results" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 4: Inspecting the results<a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-4-inspecting-the-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Use <code>plot(knn_mod)</code> to verify your expectations about the plot of test MAE vs. <span class="math inline">\(K\)</span>.</li>
+<li>Use <code>autoplot(knn_mod)</code> to verify your expectations about the plot of test MAE vs. <span class="math inline">\(K\)</span>.</li>
 <li>Contextually interpret the test MAE.</li>
-<li>How else could you evaluate the KNN model?</li>
-<li>Does your KNN model help you understand which predictors of graduation rate are most important? Why or why not?</li>
+<li>Does anything about the results surprise you?</li>
 </ul>
 </div>
 <div id="exercise-5-curse-of-dimensionality" class="section level3 unnumbered hasAnchor">

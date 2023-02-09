@@ -54,6 +54,8 @@ college_clean %>%
     select(Apps, Private, Grad.Rate, school)
 
 sqrt( (13530 - ?)^2 + (1 - ?)^2) # Euclidean distance
+sqrt( (13530 - ?)^2 + (1 - ?)^2) # Euclidean distance
+
 ```
 
 b. Do you have any concerns about the resulting prediction? Based on this, comment on the impact of the distance metric chosen on KNN performance. How might you change the distance calculation (or correspondingly rescale the data) to generate a more sensible prediction in this situation?
@@ -64,6 +66,7 @@ b. Do you have any concerns about the resulting prediction? Based on this, comme
 Adapt our general KNN code to "fit" a set of KNN models with the following specifications:
 
 - Use the predictors `Private`, `Top10perc` (% of new students from top 10% of high school class), and `S.F.Ratio` (student/faculty ratio).
+- Predict values of `Grad.Rate`
 - Use 8-fold CV. (Why 8? Take a look at the sample size.)
 - Use mean absolute error (MAE) to select a final model.
 - Select the simplest model for which the metric is within one standard error of the best metric.
@@ -72,8 +75,8 @@ Adapt our general KNN code to "fit" a set of KNN models with the following speci
 After adapting the code below (but before inspecting any output), draw a picture of how you expect test MAE to vary with $K$. In terms of the bias-variance tradeoff, why do you expect the plot to look this way?
 
 ```{r}
-set.seed(2021)
-data_cv10 <- vfold_cv(___, v = 10)
+set.seed(2023)
+data_cv8 <- vfold_cv(___, v = ___)
 
 # Model Specification
 knn_spec <- 
@@ -94,23 +97,30 @@ knn_wf <- workflow() %>%
   add_model(knn_spec) %>% 
   add_recipe(data_rec)
 
-# Tune model trying a variety of values for neighbors (using 10-fold CV)
-penalty_grid <- grid_regular(
+# Tune model trying a variety of values for neighbors (using 8-fold CV)
+neighbor_grid <- grid_regular(
   neighbors(range = c(______, _____)), #  min and max of values for neighbors
   levels = _______) # number of neighbors values
 
 knn_fit_cv <- tune_grid(knn_wf, # workflow
-              resamples = data_cv10, #CV folds
-              grid = penalty_grid, # grid specified above
+              resamples = data_cv8, #CV folds
+              grid = neighbor_grid, # grid specified above
               metrics = metric_set(rmse, mae))
 ```
 
 ## Exercise 4: Inspecting the results
+```{r}
+autoplot(knn_fit_cv)
 
-- Use `plot(knn_mod)` to verify your expectations about the plot of test MAE vs. $K$.
+collect_metrics(knn_fit_cv) %>%
+  filter(.metric == "mae") %>%
+  select(neighbors, .metric, mean)
+```
+
+- Use the code above to identify the number of neighbors which led to the lowest MAE.
 - Contextually interpret the test MAE.
-- How else could you evaluate the KNN model?
-- Does your KNN model help you understand which predictors of graduation rate are most important? Why or why not?
+- Does anything about the results surprise you?
+
 
 
 ## Exercise 5: Curse of dimensionality
