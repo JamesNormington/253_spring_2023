@@ -226,6 +226,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-5-curse-of-dimensionality"><i class="fa fa-check"></i>Exercise 5: Curse of dimensionality</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>8</b> Splines</a>
+<ul>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#learning-goals-6"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#splines-in-tidymodels"><i class="fa fa-check"></i>Splines in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercises-6"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-1-evaluating-a-fully-linear-model"><i class="fa fa-check"></i>Exercise 1: Evaluating a fully linear model</a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-2-evaluating-a-spline-model"><i class="fa fa-check"></i>Exercise 2: Evaluating a spline model</a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#extra-variable-scaling"><i class="fa fa-check"></i>Extra! Variable scaling</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IV Homework</b></span></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
 <ul>
@@ -298,37 +309,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Example code<a href="r-resources.html#example-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Creating new variables</strong></p>
 <p><code>case_when()</code> from the <code>dplyr</code> package is a very versatile function for creating new variables based on existing variables. This can be useful for creating categorical or quantitative variables and for creating indices from multiple variables.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="r-resources.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn quant_var into a Low/Med/High version</span></span>
-<span id="cb57-2"><a href="r-resources.html#cb57-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb57-3"><a href="r-resources.html#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cat_var =</span> <span class="fu">case_when</span>(</span>
-<span id="cb57-4"><a href="r-resources.html#cb57-4" aria-hidden="true" tabindex="-1"></a>            quant_var <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">&quot;Low&quot;</span>,</span>
-<span id="cb57-5"><a href="r-resources.html#cb57-5" aria-hidden="true" tabindex="-1"></a>            quant_var <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> quant_var <span class="sc">&lt;=</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">&quot;Med&quot;</span>,</span>
-<span id="cb57-6"><a href="r-resources.html#cb57-6" aria-hidden="true" tabindex="-1"></a>            quant_var <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">&quot;High&quot;</span></span>
-<span id="cb57-7"><a href="r-resources.html#cb57-7" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb57-8"><a href="r-resources.html#cb57-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb57-9"><a href="r-resources.html#cb57-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-10"><a href="r-resources.html#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn cat_var (A, B, C categories) into another categorical variable</span></span>
-<span id="cb57-11"><a href="r-resources.html#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="co"># (collapse A and B into one category)</span></span>
-<span id="cb57-12"><a href="r-resources.html#cb57-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb57-13"><a href="r-resources.html#cb57-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">new_cat_var =</span> <span class="fu">case_when</span>(</span>
-<span id="cb57-14"><a href="r-resources.html#cb57-14" aria-hidden="true" tabindex="-1"></a>            cat_var <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>) <span class="sc">~</span> <span class="st">&quot;A or B&quot;</span></span>
-<span id="cb57-15"><a href="r-resources.html#cb57-15" aria-hidden="true" tabindex="-1"></a>            cat_var<span class="sc">==</span><span class="st">&quot;C&quot;</span> <span class="sc">~</span> <span class="st">&quot;C&quot;</span></span>
-<span id="cb57-16"><a href="r-resources.html#cb57-16" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb57-17"><a href="r-resources.html#cb57-17" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb57-18"><a href="r-resources.html#cb57-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-19"><a href="r-resources.html#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn a categorical variable (x1) encoded as a numerical 0/1/2 variable into a different quantitative variable</span></span>
-<span id="cb57-20"><a href="r-resources.html#cb57-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing this for multiple variables allows you to create an index</span></span>
-<span id="cb57-21"><a href="r-resources.html#cb57-21" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb57-22"><a href="r-resources.html#cb57-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">x1_score =</span> <span class="fu">case_when</span>(</span>
-<span id="cb57-23"><a href="r-resources.html#cb57-23" aria-hidden="true" tabindex="-1"></a>            x1<span class="sc">==</span><span class="dv">0</span> <span class="sc">~</span> <span class="dv">10</span>,</span>
-<span id="cb57-24"><a href="r-resources.html#cb57-24" aria-hidden="true" tabindex="-1"></a>            x1<span class="sc">==</span><span class="dv">1</span> <span class="sc">~</span> <span class="dv">20</span>,</span>
-<span id="cb57-25"><a href="r-resources.html#cb57-25" aria-hidden="true" tabindex="-1"></a>            x1<span class="sc">==</span><span class="dv">2</span> <span class="sc">~</span> <span class="dv">50</span></span>
-<span id="cb57-26"><a href="r-resources.html#cb57-26" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb57-27"><a href="r-resources.html#cb57-27" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb57-28"><a href="r-resources.html#cb57-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-29"><a href="r-resources.html#cb57-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Add together multiple variables with mutate</span></span>
-<span id="cb57-30"><a href="r-resources.html#cb57-30" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb57-31"><a href="r-resources.html#cb57-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> x1_score <span class="sc">+</span> x2_score <span class="sc">+</span> x3_score)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="r-resources.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn quant_var into a Low/Med/High version</span></span>
+<span id="cb65-2"><a href="r-resources.html#cb65-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="r-resources.html#cb65-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cat_var =</span> <span class="fu">case_when</span>(</span>
+<span id="cb65-4"><a href="r-resources.html#cb65-4" aria-hidden="true" tabindex="-1"></a>            quant_var <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">&quot;Low&quot;</span>,</span>
+<span id="cb65-5"><a href="r-resources.html#cb65-5" aria-hidden="true" tabindex="-1"></a>            quant_var <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> quant_var <span class="sc">&lt;=</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">&quot;Med&quot;</span>,</span>
+<span id="cb65-6"><a href="r-resources.html#cb65-6" aria-hidden="true" tabindex="-1"></a>            quant_var <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">&quot;High&quot;</span></span>
+<span id="cb65-7"><a href="r-resources.html#cb65-7" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb65-8"><a href="r-resources.html#cb65-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb65-9"><a href="r-resources.html#cb65-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-10"><a href="r-resources.html#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn cat_var (A, B, C categories) into another categorical variable</span></span>
+<span id="cb65-11"><a href="r-resources.html#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="co"># (collapse A and B into one category)</span></span>
+<span id="cb65-12"><a href="r-resources.html#cb65-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb65-13"><a href="r-resources.html#cb65-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">new_cat_var =</span> <span class="fu">case_when</span>(</span>
+<span id="cb65-14"><a href="r-resources.html#cb65-14" aria-hidden="true" tabindex="-1"></a>            cat_var <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>) <span class="sc">~</span> <span class="st">&quot;A or B&quot;</span></span>
+<span id="cb65-15"><a href="r-resources.html#cb65-15" aria-hidden="true" tabindex="-1"></a>            cat_var<span class="sc">==</span><span class="st">&quot;C&quot;</span> <span class="sc">~</span> <span class="st">&quot;C&quot;</span></span>
+<span id="cb65-16"><a href="r-resources.html#cb65-16" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb65-17"><a href="r-resources.html#cb65-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb65-18"><a href="r-resources.html#cb65-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-19"><a href="r-resources.html#cb65-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn a categorical variable (x1) encoded as a numerical 0/1/2 variable into a different quantitative variable</span></span>
+<span id="cb65-20"><a href="r-resources.html#cb65-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing this for multiple variables allows you to create an index</span></span>
+<span id="cb65-21"><a href="r-resources.html#cb65-21" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb65-22"><a href="r-resources.html#cb65-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">x1_score =</span> <span class="fu">case_when</span>(</span>
+<span id="cb65-23"><a href="r-resources.html#cb65-23" aria-hidden="true" tabindex="-1"></a>            x1<span class="sc">==</span><span class="dv">0</span> <span class="sc">~</span> <span class="dv">10</span>,</span>
+<span id="cb65-24"><a href="r-resources.html#cb65-24" aria-hidden="true" tabindex="-1"></a>            x1<span class="sc">==</span><span class="dv">1</span> <span class="sc">~</span> <span class="dv">20</span>,</span>
+<span id="cb65-25"><a href="r-resources.html#cb65-25" aria-hidden="true" tabindex="-1"></a>            x1<span class="sc">==</span><span class="dv">2</span> <span class="sc">~</span> <span class="dv">50</span></span>
+<span id="cb65-26"><a href="r-resources.html#cb65-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb65-27"><a href="r-resources.html#cb65-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb65-28"><a href="r-resources.html#cb65-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-29"><a href="r-resources.html#cb65-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Add together multiple variables with mutate</span></span>
+<span id="cb65-30"><a href="r-resources.html#cb65-30" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb65-31"><a href="r-resources.html#cb65-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">index =</span> x1_score <span class="sc">+</span> x2_score <span class="sc">+</span> x3_score)</span></code></pre></div>
 
 </div>
 </div>

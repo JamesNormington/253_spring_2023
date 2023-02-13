@@ -1,0 +1,171 @@
+---
+title: "Splines"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+## Context and Data
+
+Before proceeding, install the `splines` package by entering `install.packages("splines")` in the Console.
+
+We'll continue using the `College` dataset in the `ISLR` package to explore splines. You can use `?College` in the Console to look at the data codebook.
+
+```{r}
+library(ISLR)
+library(dplyr)
+library(readr)
+library(broom)
+library(ggplot2)
+library(splines)
+library(tidymodels) 
+tidymodels_prefer() # Resolves conflicts, prefers tidymodel functions
+
+data(College)
+
+# A little data cleaning
+college_clean <- College %>% 
+    mutate(school = rownames(College)) %>% 
+    filter(Grad.Rate <= 100) # Remove one school with grad rate of 118%
+rownames(college_clean) <- NULL # Remove school names as row names
+```
+
+
+### Exercise 1: Evaluating a fully linear model {-}
+
+We will model `Grad.Rate` as a function of 4 predictors: `Private`, `Terminal`, `Expend`, and `S.F.Ratio`.
+
+a. Make scatterplots with 2 different smoothing lines to explore potential nonlinearity. Adding the following to the normal scatterplot code will create a smooth (curved) blue trend line and a red linear trend line.
+```{r}
+ggplot(___, aes(___)) +
+    geom_point() +
+    geom_smooth(color = "blue", se = FALSE) +
+    geom_smooth(method = "lm", color = "red", se = FALSE) +
+    theme_classic()
+```
+
+b. Use `tidymodels` to fit an ordinary linear regression model (no splines yet) with the following specifications:
+    - Use 8-fold CV.
+    - Use CV mean absolute error (MAE) to select a final model.
+    - Use LASSO engine to do variable selection to select the simplest model for which the metric is within one standard error of the best metric.
+    - Fit your "best" models and look at the coefficients of that final model
+```{r}
+set.seed(___)
+
+# Create CV folds
+data_cv8 <- vfold_cv(__, v = 8)
+
+# Lasso Model Spec with tune
+lm_lasso_spec_tune <- 
+  linear_reg() %>%
+  set_args(mixture = 1, penalty = tune()) %>% ## mixture = 1 indicates Lasso
+  set_engine(engine = 'glmnet') %>% 
+  set_mode('regression') 
+
+# Recipe
+full_rec <- recipe(__ ~ ___, data = college_clean) %>%
+  step_normalize(all_numeric_predictors()) %>%
+  step_dummy(all_nominal_predictors())
+
+# Workflow (Recipe + Model)
+lasso_wf_tune <- workflow() %>% 
+  add_recipe(full_rec) %>%
+  add_model(lm_lasso_spec_tune) 
+
+# Tune Model (trying a variety of values of Lambda penalty)
+penalty_grid <- grid_regular(
+  penalty(range = c(-3, 1)), #log10 transformed 
+  levels = 30)
+
+tune_output <- tune_grid( 
+  lasso_wf_tune, # workflow
+  resamples = data_cv8, # cv folds
+  metrics = metric_set(___),
+  grid = penalty_grid # penalty grid defined above
+)
+
+# Select best model & fit
+best_penalty <- tune_output %>% 
+  select_by_one_std_err(metric = 'mae', desc(penalty))
+
+ls_mod <-  best_penalty  %>% 
+  finalize_workflow(lasso_wf_tune,.) %>%
+  fit(data = college_clean) 
+    
+# Note which variable is the "least" important    
+ls_mod %>% tidy()
+```
+
+c. Make plots of the residuals vs. the 3 quantitative predictors to evaluate the appropriateness of linear terms.
+```{r}
+ls_mod_output <- college_clean %>%
+  bind_cols(predict(ls_mod, new_data = college_clean)) %>%
+    mutate(resid = __ - __)
+
+ggplot(ls_mod_output, aes(__)) +
+    ___ +
+    ___ +
+    geom_hline(yintercept = 0, color = "red") + 
+    theme_classic()
+```
+
+
+### Exercise 2: Evaluating a spline model {-}
+
+We'll extend our linear regression model with spline functions of the quantitative predictors (leave `Private` as is).
+
+a. What tuning parameter is associated with splines? How do high/low values of this parameter relate to bias and variance?
+
+b. Update your recipe from Exercise 1 to fit a linear model (with the lm engine rather than lasso) with the 2 best quantitative predictors with natural splines that have 2 knots (= 3 degrees of freedom) and include Private. Fit this model with CV, fit_resamples, (same folds as before) to compare MAE and then fit the model to the whole training data. Call this fit model ns_mod.
+```{r}
+# Model Spec
+lm_spec <-
+  linear_reg() %>%
+  set_engine(engine = 'lm') %>%
+  set_mode('regression')
+
+# New Recipe (remove steps needed for LASSO, add splines)
+
+# Workflow (Recipe + Model)
+
+# CV to Evaluate
+cv_output <- fit_resamples(
+  ___, # workflow
+  resamples = data_cv8, # cv folds
+  metrics = metric_set(___)
+)
+
+cv_output %>% collect_metrics()
+
+# Fit with all data
+ns_mod <- fit(
+  ___, #workflow
+  data = college_clean
+)
+```
+
+c. Make plots of the residuals vs. the 3 quantitative predictors to evaluate if splines improved the model.
+```{r}
+spline_mod_output <- ___
+
+```
+
+d. Compare the CV MAE between models with and without the splines
+```{r}
+tune_output %>% collect_metrics() %>% filter(penalty == (best_penalty %>% pull(penalty)))
+
+cv_output %>% collect_metrics()
+```
+
+
+### Extra! Variable scaling {-}
+
+What is your intuition about whether variable scaling matters for the performance of splines?
+
+Check yourintuition by reusing code from Exercise 2, except by adding in `step_normalize(all_numeric_predictors())` before `step_ns()`. Call this `ns_mod2`.
+
+How do the predictions from `ns_mod` and `ns_mod2` compare? You could use a plot to compare or check out the `all.equal()` function.
+
+
+
