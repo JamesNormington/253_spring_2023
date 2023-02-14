@@ -36,7 +36,7 @@ rownames(college_clean) <- NULL # Remove school names as row names
 
 We will model `Grad.Rate` as a function of 4 predictors: `Private`, `Terminal`, `Expend`, and `S.F.Ratio`.
 
-a. Make scatterplots with 2 different smoothing lines to explore potential nonlinearity. Adding the following to the normal scatterplot code will create a smooth (curved) blue trend line and a red linear trend line.
+a. Make a scatterplot of `Grad.Rate` as a function of `Expend` with 2 different smoothing lines to explore potential nonlinearity. Adding the following to the normal scatterplot code will create a smooth (curved) blue trend line and a red linear trend line.
 ```{r}
 ggplot(___, aes(___)) +
     geom_point() +
@@ -48,10 +48,10 @@ ggplot(___, aes(___)) +
 b. Use `tidymodels` to fit an ordinary linear regression model (no splines yet) with the following specifications:
     - Use 8-fold CV.
     - Use CV mean absolute error (MAE) to select a final model.
-    - Use LASSO engine to do variable selection to select the simplest model for which the metric is within one standard error of the best metric.
+    - Use LASSO engine to do variable selection to select the simplest model for which the MAE is within one standard error of the best MAE
     - Fit your "best" models and look at the coefficients of that final model
 ```{r}
-set.seed(___)
+set.seed(2023)
 
 # Create CV folds
 data_cv8 <- vfold_cv(__, v = 8)
@@ -163,7 +163,7 @@ cv_output %>% collect_metrics()
 
 What is your intuition about whether variable scaling matters for the performance of splines?
 
-Check yourintuition by reusing code from Exercise 2, except by adding in `step_normalize(all_numeric_predictors())` before `step_ns()`. Call this `ns_mod2`.
+Check your intuition by reusing code from Exercise 2, except by adding in `step_normalize(all_numeric_predictors())` before `step_ns()`. Call this `ns_mod2`.
 
 How do the predictions from `ns_mod` and `ns_mod2` compare? You could use a plot to compare or check out the `all.equal()` function.
 

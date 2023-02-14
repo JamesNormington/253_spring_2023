@@ -1,5 +1,5 @@
 ---
-title: "STAT 253 - Homework 2"
+title: "STAT 253 - Homework 2 - due Mon, Feb. 27th @ 11:59pm"
 author: "YOUR NAME"
 output: html_document
 ---

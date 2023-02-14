@@ -366,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Exercise 1: Evaluating a fully linear model<a href="splines.html#exercise-1-evaluating-a-fully-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will model <code>Grad.Rate</code> as a function of 4 predictors: <code>Private</code>, <code>Terminal</code>, <code>Expend</code>, and <code>S.F.Ratio</code>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Make scatterplots with 2 different smoothing lines to explore potential nonlinearity. Adding the following to the normal scatterplot code will create a smooth (curved) blue trend line and a red linear trend line.</li>
+<li>Make a scatterplot of <code>Grad.Rate</code> as a function of <code>Expend</code> with 2 different smoothing lines to explore potential nonlinearity. Adding the following to the normal scatterplot code will create a smooth (curved) blue trend line and a red linear trend line.</li>
 </ol>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="splines.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(___, <span class="fu">aes</span>(___)) <span class="sc">+</span></span>
 <span id="cb59-2"><a href="splines.html#cb59-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -378,11 +378,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Use 8-fold CV.</li>
 <li>Use CV mean absolute error (MAE) to select a final model.</li>
-<li>Use LASSO engine to do variable selection to select the simplest model for which the metric is within one standard error of the best metric.</li>
+<li>Use LASSO engine to do variable selection to select the simplest model for which the MAE is within one standard error of the best MAE</li>
 <li>Fit your “best” models and look at the coefficients of that final model</li>
 </ul></li>
 </ol>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="splines.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___)</span>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="splines.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
 <span id="cb60-2"><a href="splines.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-3"><a href="splines.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create CV folds</span></span>
 <span id="cb60-4"><a href="splines.html#cb60-4" aria-hidden="true" tabindex="-1"></a>data_cv8 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(__, <span class="at">v =</span> <span class="dv">8</span>)</span>
@@ -484,7 +484,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="extra-variable-scaling" class="section level3 unnumbered hasAnchor">
 <h3>Extra! Variable scaling<a href="splines.html#extra-variable-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>What is your intuition about whether variable scaling matters for the performance of splines?</p>
-<p>Check yourintuition by reusing code from Exercise 2, except by adding in <code>step_normalize(all_numeric_predictors())</code> before <code>step_ns()</code>. Call this <code>ns_mod2</code>.</p>
+<p>Check your intuition by reusing code from Exercise 2, except by adding in <code>step_normalize(all_numeric_predictors())</code> before <code>step_ns()</code>. Call this <code>ns_mod2</code>.</p>
 <p>How do the predictions from <code>ns_mod</code> and <code>ns_mod2</code> compare? You could use a plot to compare or check out the <code>all.equal()</code> function.</p>
 
 </div>
