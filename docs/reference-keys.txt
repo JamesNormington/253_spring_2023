@@ -6,3 +6,9 @@ variable-subset-selection
 lasso-shrinkageregularization
 knn-regression-and-the-bias-variance-tradeoff
 splines
+local-regression-gams
+gams
+gams---options-for-fitting
+exercise-2-using-loess
+exercise-3-building-a-gam-in-tidymodels
+exercise-4-adjusting-the-best-gam
