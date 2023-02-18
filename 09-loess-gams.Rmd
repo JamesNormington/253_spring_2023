@@ -141,7 +141,7 @@ c. Do you think that a GAM with all possible predictors will have better or wors
 d. How should we choose predictors to be in a GAM? How could forward and backward stepwise selection and LASSO help with variable selection before a GAM? (Don’t answer right away; think about it as you go along in Exercise 2 and come back to this question.)
 
 
-### Exercise 2: Using LOESS
+### Exercise 2: Using LOESS {-}
 
 a. Use LOESS (`geom_smooth()`) to estimate the relationship between `Apps` and `Grad.Rate`. Try different values of span between 0 and 1. Write one sentence summarizing what you learned about the relationship between `Apps` and `Grad.Rate`.
 
@@ -166,11 +166,10 @@ college_clean %>%
     theme_classic()
 ```
 
-Stop to Consider: Is there an additive relationship for `Private` and `Apps` as it relates to the outcome of `Grad.Rate`?
 
 
 
-### Exercise 3: Building a GAM in `tidymodels`
+### Exercise 3: Building a GAM in `tidymodels` {-}
 
 Suppose that our initial variable selection investigations lead us to using the predictors indicated below in our GAM. Fit a GAM with the following variables in the model.
 
@@ -210,7 +209,7 @@ gam_mod %>% pluck('fit') %>% plot( all.terms = TRUE, pages = 1)
 ```
 
 
-### Exercise 4: Adjusting the “best” GAM
+### Exercise 4: Adjusting the “best” GAM {-}
 
 a. First, let’s consider limiting the training sample given the outliers (the bottom vertical lines on the plot is called a “rug plot” and shows where you have observed values). Look at the outlier colleges.
 
@@ -231,7 +230,7 @@ gam_mod2 <- college_clean %>%
 )
 ```
 
-b. Let’s look at the estimated functions again. Pick 1 or 2 of these plots, and interpret your findings. Anything surprising or interesting?
+b. Let’s look at the estimated functions again. Pick 1 or 2 of these plots, and interpret your findings. 
 
 ```{r, eval=FALSE}
 gam_mod2 %>% pluck('fit') %>% summary() 
@@ -240,11 +239,9 @@ gam_mod2 %>% pluck('fit') %>% plot( all.terms = TRUE, pages = 1)
 ```
 
 
-c. The `PrivateYes` plot might look odd. Not to worry - the GAM is treating this as a categorical (indicator) variable. What do you learn from this plot?
+c. Based on the output above, which variables may not need splines/non-linear relationships? How could we simplify the model?
 
-d. Based on the output above, which variables may not need splines/non-linear relationships? How could we simplify the model?
-
-e. Now try fitting a more simple GAM model with `tidymodels` by only using a non-linear spline function for a variable if the edf is greater than 3 (3 is not a magic number; it is arbitrary). What do you notice from the output?
+d. Now try fitting a more simple GAM model with `tidymodels` by only using a non-linear spline function for a variable if the edf is greater than 3 (3 is not a magic number; it is arbitrary). 
 
 ```{r, eval=FALSE}
 gam_mod3 <- college_clean %>%
@@ -255,7 +252,8 @@ gam_mod3 <- college_clean %>%
 )
 
 gam_mod3 %>% pluck('fit') %>% summary() 
-gam_mod3 %>% pluck('fit') %>% plot( all.terms = TRUE, pages = 1)
+gam_mod3 %>% pluck('fit') %>% plot() 
+
 ```
 
 
@@ -274,10 +272,15 @@ data_cv8 <- college_clean %>%
     filter(___) %>% # remove outliers
     vfold_cv(v = 8)
 
+# Fully linear model
 college_rec <- recipe(Grad.Rate ~ Private + Apps + Top10perc + Top25perc + P.Undergrad + Outstate + Room.Board + Books + Personal + PhD + perc.alumni, data = college_clean)
 
+# With splines
 spline_rec <- college_rec %>%
-    step_ns(__, deg_free = __) 
+    step_ns(Apps, Top25perc, Room.Board, perc.alumni, deg_free = ___) %>%
+    step_ns(P.Undergrad, deg_free = ____) %>%
+    step_ns(Outstate, deg_free = ___) %>%
+    step_ns(Personal, deg_free = ____)
 
 
 college_wf <- workflow() %>%
