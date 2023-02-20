@@ -316,7 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb29-2"><a href="variable-subset-selection.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb29-3"><a href="variable-subset-selection.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb29-4"><a href="variable-subset-selection.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb29-5"><a href="variable-subset-selection.html#cb29-5" aria-hidden="true" tabindex="-1"></a>bodyfat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;http://www.macalester.edu/~ajohns24/data/bodyfatsub.csv&quot;</span>)</span>
+<span id="cb29-5"><a href="variable-subset-selection.html#cb29-5" aria-hidden="true" tabindex="-1"></a>bodyfat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://ajohns24.github.io/portfolio/data/bodyfatsub.csv&quot;</span>)</span>
 <span id="cb29-6"><a href="variable-subset-selection.html#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-7"><a href="variable-subset-selection.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Take out the redundant Density and HeightFt variables</span></span>
 <span id="cb29-8"><a href="variable-subset-selection.html#cb29-8" aria-hidden="true" tabindex="-1"></a>bodyfat <span class="ot">&lt;-</span> bodyfat <span class="sc">%&gt;%</span> </span>
@@ -424,21 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="digging-deeper-1" class="section level3 unnumbered hasAnchor">
 <h3>Digging deeper<a href="variable-subset-selection.html#digging-deeper-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li>As mentioned in Exercise 5c, we have another choice for the <code>selectionFunction</code> used to choose from many possible models. The use of <code>selectionFunction = "oneSE"</code> below picks the simplest model for which the CV MAE is within one standard error of the minimum CV MAE. Compare the output you obtain here with your best model from Exercise 5.</li>
-</ol>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="variable-subset-selection.html#cb36-1" aria-hidden="true" tabindex="-1"></a>back_step_mod_1se <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb36-2"><a href="variable-subset-selection.html#cb36-2" aria-hidden="true" tabindex="-1"></a>    BodyFat <span class="sc">~</span> .,</span>
-<span id="cb36-3"><a href="variable-subset-selection.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> bodyfat,</span>
-<span id="cb36-4"><a href="variable-subset-selection.html#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;leapBackward&quot;</span>,</span>
-<span id="cb36-5"><a href="variable-subset-selection.html#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">tuneGrid =</span> <span class="fu">data.frame</span>(<span class="at">nvmax =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>),</span>
-<span id="cb36-6"><a href="variable-subset-selection.html#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">10</span>, <span class="at">selectionFunction =</span> <span class="st">&quot;oneSE&quot;</span>),</span>
-<span id="cb36-7"><a href="variable-subset-selection.html#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;MAE&quot;</span>,</span>
-<span id="cb36-8"><a href="variable-subset-selection.html#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.action =</span> na.omit</span>
-<span id="cb36-9"><a href="variable-subset-selection.html#cb36-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Forward selection can be implemented in <code>caret</code> with analogous code, except that the method name is <code>"leapForward"</code>. Try implementing forward selection and comparing your results.</li>
-</ol>
+<p>As mentioned in Exercise 5c, we have another choice for the <code>select_by_one_std_err</code> used to choose from many possible models. The use of <code>select_by_one_std_err"</code> picks the simplest model for which the CV MAE is within one standard error of the minimum CV MAE.</p>
 
 </div>
 </div>

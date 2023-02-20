@@ -41,7 +41,7 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
         - These models should not include any transformations to deal with nonlinearity. You'll explore this in the next investigation.
         - Note: If you have highly collinear/redundant variables, you might see the message "Reordering variables and trying again" and associated `warning()`s about linear dependencies being found. Sometimes stepwise selection is able to handle the collinearity/redundancy by modifying the order of the variables tried. If collinearity/redundancy cannot be handled and causes an error, try reducing `nvmax`.
 
-    - Estimate test performance of the models from these different methods. Report and interpret (with units) these estimates along with a measure of uncertainty in the estimate (SD is most readily available from `caret`).
+    - Estimate test performance of the models from these different methods. Report and interpret (with units) these estimates along with a measure of uncertainty in the estimate.
         - Compare estimated test performance across methods. Which method(s) might you prefer?
 
     - Use residual plots to evaluate whether some quantitative predictors might be better modeled with nonlinear relationships.

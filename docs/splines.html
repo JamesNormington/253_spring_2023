@@ -307,29 +307,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Explain how the number of knots relates to the bias-variance tradeoff</li>
 </ul>
 <p><br></p>
-<p>Slides from today are available <a href="https://docs.google.com/presentation/d/1A1QrmwmAXMYSIEwhNGgHRf0GH7vqukcJFemlWLA3yuQ/edit?usp=sharing">here</a>.</p>
+<p>Slides from today are available <a href="https://docs.google.com/presentation/d/1-fs_0UMaD8-cvVpQTUEB0Dd6WlOeNX2i/edit?usp=sharing&amp;ouid=115583691606860124358&amp;rtpof=true&amp;sd=true">here</a>.</p>
 <p><br><br><br></p>
 </div>
 <div id="splines-in-tidymodels" class="section level2 unnumbered hasAnchor">
 <h2>Splines in <code>tidymodels</code><a href="splines.html#splines-in-tidymodels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To build models with splines in <code>tidymodels</code>, we proceed with the same structure we use for ordinary linear regression models but we’ll add some pre-processing steps.</p>
 <p>To work with splines, we’ll use the <code>splines</code> package. The <code>step_ns()</code> function based on <code>ns()</code> in that package creates the transformations needed to create a spline function for a quantitative predictor. The <code>step_bs()</code> function based on <code>bs()</code> in that package creates the transformations needed to create a basis spline (typically called B-splines) function for a quantitative predictor.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="splines.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear Regression Model Spec</span></span>
-<span id="cb57-2"><a href="splines.html#cb57-2" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span> </span>
-<span id="cb57-3"><a href="splines.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb57-4"><a href="splines.html#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb57-5"><a href="splines.html#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
-<span id="cb57-6"><a href="splines.html#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-7"><a href="splines.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Original Recipe</span></span>
-<span id="cb57-8"><a href="splines.html#cb57-8" aria-hidden="true" tabindex="-1"></a>lm_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(___ <span class="sc">~</span> ___, <span class="at">data =</span> ___)</span>
-<span id="cb57-9"><a href="splines.html#cb57-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-10"><a href="splines.html#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Natural Spline Recipe</span></span>
-<span id="cb57-11"><a href="splines.html#cb57-11" aria-hidden="true" tabindex="-1"></a>ns2_rec <span class="ot">&lt;-</span> lm_rec <span class="sc">%&gt;%</span></span>
-<span id="cb57-12"><a href="splines.html#cb57-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_ns</span>(__, <span class="at">deg_free =</span> __) <span class="co"># natural cubic spline (higher deg_free means more knots)</span></span>
-<span id="cb57-13"><a href="splines.html#cb57-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-14"><a href="splines.html#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Basis Spline Recipe</span></span>
-<span id="cb57-15"><a href="splines.html#cb57-15" aria-hidden="true" tabindex="-1"></a>bs_rec <span class="ot">&lt;-</span> lm_rec <span class="sc">%&gt;%</span></span>
-<span id="cb57-16"><a href="splines.html#cb57-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_bs</span>(__, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">knots =</span> <span class="fu">c</span>(__,__))) <span class="co"># b-spline (cubic by default)</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="splines.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear Regression Model Spec</span></span>
+<span id="cb56-2"><a href="splines.html#cb56-2" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span> </span>
+<span id="cb56-3"><a href="splines.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb56-4"><a href="splines.html#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-5"><a href="splines.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
+<span id="cb56-6"><a href="splines.html#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="splines.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Original Recipe</span></span>
+<span id="cb56-8"><a href="splines.html#cb56-8" aria-hidden="true" tabindex="-1"></a>lm_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(___ <span class="sc">~</span> ___, <span class="at">data =</span> ___)</span>
+<span id="cb56-9"><a href="splines.html#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="splines.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Natural Spline Recipe</span></span>
+<span id="cb56-11"><a href="splines.html#cb56-11" aria-hidden="true" tabindex="-1"></a>ns2_rec <span class="ot">&lt;-</span> lm_rec <span class="sc">%&gt;%</span></span>
+<span id="cb56-12"><a href="splines.html#cb56-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_ns</span>(__, <span class="at">deg_free =</span> __) <span class="co"># natural cubic spline (higher deg_free means more knots)</span></span>
+<span id="cb56-13"><a href="splines.html#cb56-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-14"><a href="splines.html#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Basis Spline Recipe</span></span>
+<span id="cb56-15"><a href="splines.html#cb56-15" aria-hidden="true" tabindex="-1"></a>bs_rec <span class="ot">&lt;-</span> lm_rec <span class="sc">%&gt;%</span></span>
+<span id="cb56-16"><a href="splines.html#cb56-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_bs</span>(__, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">knots =</span> <span class="fu">c</span>(__,__))) <span class="co"># b-spline (cubic by default)</span></span></code></pre></div>
 <ul>
 <li>The deg_free argument in step_ns() stands for degrees of freedom:
 <ul>
@@ -362,33 +362,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/08-splines.Rmd">here</a>.</strong></p>
 <p>Before proceeding, install the <code>splines</code> package by entering <code>install.packages("splines")</code> in the Console.</p>
 <p>We’ll continue using the <code>College</code> dataset in the <code>ISLR</code> package to explore splines. You can use <code>?College</code> in the Console to look at the data codebook.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="splines.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span>
-<span id="cb58-2"><a href="splines.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb58-3"><a href="splines.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb58-4"><a href="splines.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb58-5"><a href="splines.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb58-6"><a href="splines.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
-<span id="cb58-7"><a href="splines.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels) </span>
-<span id="cb58-8"><a href="splines.html#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>() <span class="co"># Resolves conflicts, prefers tidymodel functions</span></span>
-<span id="cb58-9"><a href="splines.html#cb58-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-10"><a href="splines.html#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(College)</span>
-<span id="cb58-11"><a href="splines.html#cb58-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-12"><a href="splines.html#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="co"># A little data cleaning</span></span>
-<span id="cb58-13"><a href="splines.html#cb58-13" aria-hidden="true" tabindex="-1"></a>college_clean <span class="ot">&lt;-</span> College <span class="sc">%&gt;%</span> </span>
-<span id="cb58-14"><a href="splines.html#cb58-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">school =</span> <span class="fu">rownames</span>(College)) <span class="sc">%&gt;%</span> </span>
-<span id="cb58-15"><a href="splines.html#cb58-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Grad.Rate <span class="sc">&lt;=</span> <span class="dv">100</span>) <span class="co"># Remove one school with grad rate of 118%</span></span>
-<span id="cb58-16"><a href="splines.html#cb58-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(college_clean) <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Remove school names as row names</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="splines.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span>
+<span id="cb57-2"><a href="splines.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb57-3"><a href="splines.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb57-4"><a href="splines.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb57-5"><a href="splines.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb57-6"><a href="splines.html#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
+<span id="cb57-7"><a href="splines.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels) </span>
+<span id="cb57-8"><a href="splines.html#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>() <span class="co"># Resolves conflicts, prefers tidymodel functions</span></span>
+<span id="cb57-9"><a href="splines.html#cb57-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-10"><a href="splines.html#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(College)</span>
+<span id="cb57-11"><a href="splines.html#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="splines.html#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="co"># A little data cleaning</span></span>
+<span id="cb57-13"><a href="splines.html#cb57-13" aria-hidden="true" tabindex="-1"></a>college_clean <span class="ot">&lt;-</span> College <span class="sc">%&gt;%</span> </span>
+<span id="cb57-14"><a href="splines.html#cb57-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">school =</span> <span class="fu">rownames</span>(College)) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-15"><a href="splines.html#cb57-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Grad.Rate <span class="sc">&lt;=</span> <span class="dv">100</span>) <span class="co"># Remove one school with grad rate of 118%</span></span>
+<span id="cb57-16"><a href="splines.html#cb57-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(college_clean) <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Remove school names as row names</span></span></code></pre></div>
 <div id="exercise-1-evaluating-a-fully-linear-model" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 1: Evaluating a fully linear model<a href="splines.html#exercise-1-evaluating-a-fully-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will model <code>Grad.Rate</code> as a function of 4 predictors: <code>Private</code>, <code>Terminal</code>, <code>Expend</code>, and <code>S.F.Ratio</code>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Make a scatterplot of <code>Grad.Rate</code> as a function of <code>Expend</code> with 2 different smoothing lines to explore potential nonlinearity. Adding the following to the normal scatterplot code will create a smooth (curved) blue trend line and a red linear trend line.</li>
 </ol>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="splines.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(___, <span class="fu">aes</span>(___)) <span class="sc">+</span></span>
-<span id="cb59-2"><a href="splines.html#cb59-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb59-3"><a href="splines.html#cb59-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb59-4"><a href="splines.html#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb59-5"><a href="splines.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="splines.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(___, <span class="fu">aes</span>(___)) <span class="sc">+</span></span>
+<span id="cb58-2"><a href="splines.html#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb58-3"><a href="splines.html#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb58-4"><a href="splines.html#cb58-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb58-5"><a href="splines.html#cb58-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Use <code>tidymodels</code> to fit an ordinary linear regression model (no splines yet) with the following specifications:
 <ul>
@@ -398,62 +398,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Fit your “best” models and look at the coefficients of that final model</li>
 </ul></li>
 </ol>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="splines.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
-<span id="cb60-2"><a href="splines.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-3"><a href="splines.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create CV folds</span></span>
-<span id="cb60-4"><a href="splines.html#cb60-4" aria-hidden="true" tabindex="-1"></a>data_cv8 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(__, <span class="at">v =</span> <span class="dv">8</span>)</span>
-<span id="cb60-5"><a href="splines.html#cb60-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-6"><a href="splines.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Lasso Model Spec with tune</span></span>
-<span id="cb60-7"><a href="splines.html#cb60-7" aria-hidden="true" tabindex="-1"></a>lm_lasso_spec_tune <span class="ot">&lt;-</span> </span>
-<span id="cb60-8"><a href="splines.html#cb60-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb60-9"><a href="splines.html#cb60-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_args</span>(<span class="at">mixture =</span> <span class="dv">1</span>, <span class="at">penalty =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> <span class="do">## mixture = 1 indicates Lasso</span></span>
-<span id="cb60-10"><a href="splines.html#cb60-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;glmnet&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb60-11"><a href="splines.html#cb60-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
-<span id="cb60-12"><a href="splines.html#cb60-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-13"><a href="splines.html#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Recipe</span></span>
-<span id="cb60-14"><a href="splines.html#cb60-14" aria-hidden="true" tabindex="-1"></a>full_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(__ <span class="sc">~</span> ___, <span class="at">data =</span> college_clean) <span class="sc">%&gt;%</span></span>
-<span id="cb60-15"><a href="splines.html#cb60-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb60-16"><a href="splines.html#cb60-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
-<span id="cb60-17"><a href="splines.html#cb60-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-18"><a href="splines.html#cb60-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
-<span id="cb60-19"><a href="splines.html#cb60-19" aria-hidden="true" tabindex="-1"></a>lasso_wf_tune <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb60-20"><a href="splines.html#cb60-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(full_rec) <span class="sc">%&gt;%</span></span>
-<span id="cb60-21"><a href="splines.html#cb60-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_lasso_spec_tune) </span>
-<span id="cb60-22"><a href="splines.html#cb60-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-23"><a href="splines.html#cb60-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune Model (trying a variety of values of Lambda penalty)</span></span>
-<span id="cb60-24"><a href="splines.html#cb60-24" aria-hidden="true" tabindex="-1"></a>penalty_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(</span>
-<span id="cb60-25"><a href="splines.html#cb60-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">penalty</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">1</span>)), <span class="co">#log10 transformed </span></span>
-<span id="cb60-26"><a href="splines.html#cb60-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">30</span>)</span>
-<span id="cb60-27"><a href="splines.html#cb60-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-28"><a href="splines.html#cb60-28" aria-hidden="true" tabindex="-1"></a>tune_output <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>( </span>
-<span id="cb60-29"><a href="splines.html#cb60-29" aria-hidden="true" tabindex="-1"></a>  lasso_wf_tune, <span class="co"># workflow</span></span>
-<span id="cb60-30"><a href="splines.html#cb60-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> data_cv8, <span class="co"># cv folds</span></span>
-<span id="cb60-31"><a href="splines.html#cb60-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(___),</span>
-<span id="cb60-32"><a href="splines.html#cb60-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">grid =</span> penalty_grid <span class="co"># penalty grid defined above</span></span>
-<span id="cb60-33"><a href="splines.html#cb60-33" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb60-34"><a href="splines.html#cb60-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-35"><a href="splines.html#cb60-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Select best model &amp; fit</span></span>
-<span id="cb60-36"><a href="splines.html#cb60-36" aria-hidden="true" tabindex="-1"></a>best_penalty <span class="ot">&lt;-</span> tune_output <span class="sc">%&gt;%</span> </span>
-<span id="cb60-37"><a href="splines.html#cb60-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_by_one_std_err</span>(<span class="at">metric =</span> <span class="st">&#39;mae&#39;</span>, <span class="fu">desc</span>(penalty))</span>
-<span id="cb60-38"><a href="splines.html#cb60-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-39"><a href="splines.html#cb60-39" aria-hidden="true" tabindex="-1"></a>ls_mod <span class="ot">&lt;-</span>  best_penalty  <span class="sc">%&gt;%</span> </span>
-<span id="cb60-40"><a href="splines.html#cb60-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(lasso_wf_tune,.) <span class="sc">%&gt;%</span></span>
-<span id="cb60-41"><a href="splines.html#cb60-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> college_clean) </span>
-<span id="cb60-42"><a href="splines.html#cb60-42" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb60-43"><a href="splines.html#cb60-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Note which variable is the &quot;least&quot; important    </span></span>
-<span id="cb60-44"><a href="splines.html#cb60-44" aria-hidden="true" tabindex="-1"></a>ls_mod <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="splines.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>)</span>
+<span id="cb59-2"><a href="splines.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="splines.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create CV folds</span></span>
+<span id="cb59-4"><a href="splines.html#cb59-4" aria-hidden="true" tabindex="-1"></a>data_cv8 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(__, <span class="at">v =</span> <span class="dv">8</span>)</span>
+<span id="cb59-5"><a href="splines.html#cb59-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="splines.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Lasso Model Spec with tune</span></span>
+<span id="cb59-7"><a href="splines.html#cb59-7" aria-hidden="true" tabindex="-1"></a>lm_lasso_spec_tune <span class="ot">&lt;-</span> </span>
+<span id="cb59-8"><a href="splines.html#cb59-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb59-9"><a href="splines.html#cb59-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_args</span>(<span class="at">mixture =</span> <span class="dv">1</span>, <span class="at">penalty =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> <span class="do">## mixture = 1 indicates Lasso</span></span>
+<span id="cb59-10"><a href="splines.html#cb59-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;glmnet&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-11"><a href="splines.html#cb59-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
+<span id="cb59-12"><a href="splines.html#cb59-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-13"><a href="splines.html#cb59-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Recipe</span></span>
+<span id="cb59-14"><a href="splines.html#cb59-14" aria-hidden="true" tabindex="-1"></a>full_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(__ <span class="sc">~</span> ___, <span class="at">data =</span> college_clean) <span class="sc">%&gt;%</span></span>
+<span id="cb59-15"><a href="splines.html#cb59-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb59-16"><a href="splines.html#cb59-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb59-17"><a href="splines.html#cb59-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-18"><a href="splines.html#cb59-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
+<span id="cb59-19"><a href="splines.html#cb59-19" aria-hidden="true" tabindex="-1"></a>lasso_wf_tune <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb59-20"><a href="splines.html#cb59-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(full_rec) <span class="sc">%&gt;%</span></span>
+<span id="cb59-21"><a href="splines.html#cb59-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_lasso_spec_tune) </span>
+<span id="cb59-22"><a href="splines.html#cb59-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-23"><a href="splines.html#cb59-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune Model (trying a variety of values of Lambda penalty)</span></span>
+<span id="cb59-24"><a href="splines.html#cb59-24" aria-hidden="true" tabindex="-1"></a>penalty_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(</span>
+<span id="cb59-25"><a href="splines.html#cb59-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">penalty</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">1</span>)), <span class="co">#log10 transformed </span></span>
+<span id="cb59-26"><a href="splines.html#cb59-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">30</span>)</span>
+<span id="cb59-27"><a href="splines.html#cb59-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-28"><a href="splines.html#cb59-28" aria-hidden="true" tabindex="-1"></a>tune_output <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>( </span>
+<span id="cb59-29"><a href="splines.html#cb59-29" aria-hidden="true" tabindex="-1"></a>  lasso_wf_tune, <span class="co"># workflow</span></span>
+<span id="cb59-30"><a href="splines.html#cb59-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> data_cv8, <span class="co"># cv folds</span></span>
+<span id="cb59-31"><a href="splines.html#cb59-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(___),</span>
+<span id="cb59-32"><a href="splines.html#cb59-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">grid =</span> penalty_grid <span class="co"># penalty grid defined above</span></span>
+<span id="cb59-33"><a href="splines.html#cb59-33" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb59-34"><a href="splines.html#cb59-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-35"><a href="splines.html#cb59-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Select best model &amp; fit</span></span>
+<span id="cb59-36"><a href="splines.html#cb59-36" aria-hidden="true" tabindex="-1"></a>best_penalty <span class="ot">&lt;-</span> tune_output <span class="sc">%&gt;%</span> </span>
+<span id="cb59-37"><a href="splines.html#cb59-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_by_one_std_err</span>(<span class="at">metric =</span> <span class="st">&#39;mae&#39;</span>, <span class="fu">desc</span>(penalty))</span>
+<span id="cb59-38"><a href="splines.html#cb59-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-39"><a href="splines.html#cb59-39" aria-hidden="true" tabindex="-1"></a>ls_mod <span class="ot">&lt;-</span>  best_penalty  <span class="sc">%&gt;%</span> </span>
+<span id="cb59-40"><a href="splines.html#cb59-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(lasso_wf_tune,.) <span class="sc">%&gt;%</span></span>
+<span id="cb59-41"><a href="splines.html#cb59-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> college_clean) </span>
+<span id="cb59-42"><a href="splines.html#cb59-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb59-43"><a href="splines.html#cb59-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Note which variable is the &quot;least&quot; important    </span></span>
+<span id="cb59-44"><a href="splines.html#cb59-44" aria-hidden="true" tabindex="-1"></a>ls_mod <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Make plots of the residuals vs. the 3 quantitative predictors to evaluate the appropriateness of linear terms.</li>
 </ol>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="splines.html#cb61-1" aria-hidden="true" tabindex="-1"></a>ls_mod_output <span class="ot">&lt;-</span> college_clean <span class="sc">%&gt;%</span></span>
-<span id="cb61-2"><a href="splines.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="fu">predict</span>(ls_mod, <span class="at">new_data =</span> college_clean)) <span class="sc">%&gt;%</span></span>
-<span id="cb61-3"><a href="splines.html#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">resid =</span> __ <span class="sc">-</span> __)</span>
-<span id="cb61-4"><a href="splines.html#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-5"><a href="splines.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ls_mod_output, <span class="fu">aes</span>(__)) <span class="sc">+</span></span>
-<span id="cb61-6"><a href="splines.html#cb61-6" aria-hidden="true" tabindex="-1"></a>    ___ <span class="sc">+</span></span>
-<span id="cb61-7"><a href="splines.html#cb61-7" aria-hidden="true" tabindex="-1"></a>    ___ <span class="sc">+</span></span>
-<span id="cb61-8"><a href="splines.html#cb61-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb61-9"><a href="splines.html#cb61-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="splines.html#cb60-1" aria-hidden="true" tabindex="-1"></a>ls_mod_output <span class="ot">&lt;-</span> college_clean <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a href="splines.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="fu">predict</span>(ls_mod, <span class="at">new_data =</span> college_clean)) <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="splines.html#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">resid =</span> __ <span class="sc">-</span> __)</span>
+<span id="cb60-4"><a href="splines.html#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="splines.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ls_mod_output, <span class="fu">aes</span>(__)) <span class="sc">+</span></span>
+<span id="cb60-6"><a href="splines.html#cb60-6" aria-hidden="true" tabindex="-1"></a>    ___ <span class="sc">+</span></span>
+<span id="cb60-7"><a href="splines.html#cb60-7" aria-hidden="true" tabindex="-1"></a>    ___ <span class="sc">+</span></span>
+<span id="cb60-8"><a href="splines.html#cb60-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb60-9"><a href="splines.html#cb60-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
 </div>
 <div id="exercise-2-evaluating-a-spline-model" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 2: Evaluating a spline model<a href="splines.html#exercise-2-evaluating-a-spline-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -462,40 +462,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>What tuning parameter is associated with splines? How do high/low values of this parameter relate to bias and variance?</p></li>
 <li><p>Update your recipe from Exercise 1 to fit a linear model (with the lm engine rather than lasso) with the 2 best quantitative predictors with natural splines that have 2 knots (= 3 degrees of freedom) and include Private. Fit this model with CV, fit_resamples, (same folds as before) to compare MAE and then fit the model to the whole training data. Call this fit model ns_mod.</p></li>
 </ol>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="splines.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model Spec</span></span>
-<span id="cb62-2"><a href="splines.html#cb62-2" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span></span>
-<span id="cb62-3"><a href="splines.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb62-4"><a href="splines.html#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-5"><a href="splines.html#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>)</span>
-<span id="cb62-6"><a href="splines.html#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="splines.html#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co"># New Recipe (remove steps needed for LASSO, add splines)</span></span>
-<span id="cb62-8"><a href="splines.html#cb62-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-9"><a href="splines.html#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
-<span id="cb62-10"><a href="splines.html#cb62-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-11"><a href="splines.html#cb62-11" aria-hidden="true" tabindex="-1"></a><span class="co"># CV to Evaluate</span></span>
-<span id="cb62-12"><a href="splines.html#cb62-12" aria-hidden="true" tabindex="-1"></a>cv_output <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(</span>
-<span id="cb62-13"><a href="splines.html#cb62-13" aria-hidden="true" tabindex="-1"></a>  ___, <span class="co"># workflow</span></span>
-<span id="cb62-14"><a href="splines.html#cb62-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> data_cv8, <span class="co"># cv folds</span></span>
-<span id="cb62-15"><a href="splines.html#cb62-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(___)</span>
-<span id="cb62-16"><a href="splines.html#cb62-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb62-17"><a href="splines.html#cb62-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-18"><a href="splines.html#cb62-18" aria-hidden="true" tabindex="-1"></a>cv_output <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>()</span>
-<span id="cb62-19"><a href="splines.html#cb62-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-20"><a href="splines.html#cb62-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit with all data</span></span>
-<span id="cb62-21"><a href="splines.html#cb62-21" aria-hidden="true" tabindex="-1"></a>ns_mod <span class="ot">&lt;-</span> <span class="fu">fit</span>(</span>
-<span id="cb62-22"><a href="splines.html#cb62-22" aria-hidden="true" tabindex="-1"></a>  ___, <span class="co">#workflow</span></span>
-<span id="cb62-23"><a href="splines.html#cb62-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> college_clean</span>
-<span id="cb62-24"><a href="splines.html#cb62-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="splines.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model Spec</span></span>
+<span id="cb61-2"><a href="splines.html#cb61-2" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span></span>
+<span id="cb61-3"><a href="splines.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="splines.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb61-5"><a href="splines.html#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>)</span>
+<span id="cb61-6"><a href="splines.html#cb61-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-7"><a href="splines.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co"># New Recipe (remove steps needed for LASSO, add splines)</span></span>
+<span id="cb61-8"><a href="splines.html#cb61-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-9"><a href="splines.html#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
+<span id="cb61-10"><a href="splines.html#cb61-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-11"><a href="splines.html#cb61-11" aria-hidden="true" tabindex="-1"></a><span class="co"># CV to Evaluate</span></span>
+<span id="cb61-12"><a href="splines.html#cb61-12" aria-hidden="true" tabindex="-1"></a>cv_output <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(</span>
+<span id="cb61-13"><a href="splines.html#cb61-13" aria-hidden="true" tabindex="-1"></a>  ___, <span class="co"># workflow</span></span>
+<span id="cb61-14"><a href="splines.html#cb61-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> data_cv8, <span class="co"># cv folds</span></span>
+<span id="cb61-15"><a href="splines.html#cb61-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(___)</span>
+<span id="cb61-16"><a href="splines.html#cb61-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb61-17"><a href="splines.html#cb61-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-18"><a href="splines.html#cb61-18" aria-hidden="true" tabindex="-1"></a>cv_output <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>()</span>
+<span id="cb61-19"><a href="splines.html#cb61-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-20"><a href="splines.html#cb61-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit with all data</span></span>
+<span id="cb61-21"><a href="splines.html#cb61-21" aria-hidden="true" tabindex="-1"></a>ns_mod <span class="ot">&lt;-</span> <span class="fu">fit</span>(</span>
+<span id="cb61-22"><a href="splines.html#cb61-22" aria-hidden="true" tabindex="-1"></a>  ___, <span class="co">#workflow</span></span>
+<span id="cb61-23"><a href="splines.html#cb61-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> college_clean</span>
+<span id="cb61-24"><a href="splines.html#cb61-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Make plots of the residuals vs. the 3 quantitative predictors to evaluate if splines improved the model.</li>
 </ol>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="splines.html#cb63-1" aria-hidden="true" tabindex="-1"></a>spline_mod_output <span class="ot">&lt;-</span> ___</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="splines.html#cb62-1" aria-hidden="true" tabindex="-1"></a>spline_mod_output <span class="ot">&lt;-</span> ___</span></code></pre></div>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Compare the CV MAE between models with and without the splines</li>
 </ol>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="splines.html#cb64-1" aria-hidden="true" tabindex="-1"></a>tune_output <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(penalty <span class="sc">==</span> (best_penalty <span class="sc">%&gt;%</span> <span class="fu">pull</span>(penalty)))</span>
-<span id="cb64-2"><a href="splines.html#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-3"><a href="splines.html#cb64-3" aria-hidden="true" tabindex="-1"></a>cv_output <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="splines.html#cb63-1" aria-hidden="true" tabindex="-1"></a>tune_output <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(penalty <span class="sc">==</span> (best_penalty <span class="sc">%&gt;%</span> <span class="fu">pull</span>(penalty)))</span>
+<span id="cb63-2"><a href="splines.html#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="splines.html#cb63-3" aria-hidden="true" tabindex="-1"></a>cv_output <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>()</span></code></pre></div>
 </div>
 <div id="extra-variable-scaling" class="section level3 unnumbered hasAnchor">
 <h3>Extra! Variable scaling<a href="splines.html#extra-variable-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h3>

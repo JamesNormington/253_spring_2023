@@ -338,37 +338,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gams-in-tidymodels" class="section level2 unnumbered hasAnchor">
 <h2>GAMs in <code>tidymodels</code><a href="local-regression-gams.html#gams-in-tidymodels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To build GAMs in <code>tidymodels</code>, first load the package:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="local-regression-gams.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb65-2"><a href="local-regression-gams.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb65-3"><a href="local-regression-gams.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb65-4"><a href="local-regression-gams.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb65-5"><a href="local-regression-gams.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels) </span>
-<span id="cb65-6"><a href="local-regression-gams.html#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>() <span class="co"># Resolves conflicts, prefers tidymodel functions</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="local-regression-gams.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb64-2"><a href="local-regression-gams.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb64-3"><a href="local-regression-gams.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb64-4"><a href="local-regression-gams.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb64-5"><a href="local-regression-gams.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels) </span>
+<span id="cb64-6"><a href="local-regression-gams.html#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>() <span class="co"># Resolves conflicts, prefers tidymodel functions</span></span></code></pre></div>
 <p>Then adapt the following code:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="local-regression-gams.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generalized Additive Regression (GAM) Model</span></span>
-<span id="cb66-2"><a href="local-regression-gams.html#cb66-2" aria-hidden="true" tabindex="-1"></a>gam_spec <span class="ot">&lt;-</span> </span>
-<span id="cb66-3"><a href="local-regression-gams.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gen_additive_mod</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb66-4"><a href="local-regression-gams.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;mgcv&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb66-5"><a href="local-regression-gams.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
-<span id="cb66-6"><a href="local-regression-gams.html#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-7"><a href="local-regression-gams.html#cb66-7" aria-hidden="true" tabindex="-1"></a>fit_gam_model <span class="ot">&lt;-</span> gam_spec <span class="sc">%&gt;%</span> <span class="co"># can&#39;t use a recipe with gam (yet)</span></span>
-<span id="cb66-8"><a href="local-regression-gams.html#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(y <span class="sc">~</span> <span class="fu">s</span>(x1) <span class="sc">+</span> x2 <span class="sc">+</span> <span class="fu">s</span>(x3), <span class="at">data =</span> train_data) <span class="co"># s() stands for splines, indicating a non-linear relationship  </span></span>
-<span id="cb66-9"><a href="local-regression-gams.html#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-10"><a href="local-regression-gams.html#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="co"># To specify the number of knots, update the formula: s(x1, k = __)</span></span>
-<span id="cb66-11"><a href="local-regression-gams.html#cb66-11" aria-hidden="true" tabindex="-1"></a><span class="co"># To specify the degree of smoothing, update the formula: s(x1, sp = __)</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="local-regression-gams.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generalized Additive Regression (GAM) Model</span></span>
+<span id="cb65-2"><a href="local-regression-gams.html#cb65-2" aria-hidden="true" tabindex="-1"></a>gam_spec <span class="ot">&lt;-</span> </span>
+<span id="cb65-3"><a href="local-regression-gams.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gen_additive_mod</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb65-4"><a href="local-regression-gams.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;mgcv&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-5"><a href="local-regression-gams.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
+<span id="cb65-6"><a href="local-regression-gams.html#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="local-regression-gams.html#cb65-7" aria-hidden="true" tabindex="-1"></a>fit_gam_model <span class="ot">&lt;-</span> gam_spec <span class="sc">%&gt;%</span> <span class="co"># can&#39;t use a recipe with gam (yet)</span></span>
+<span id="cb65-8"><a href="local-regression-gams.html#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(y <span class="sc">~</span> <span class="fu">s</span>(x1) <span class="sc">+</span> x2 <span class="sc">+</span> <span class="fu">s</span>(x3), <span class="at">data =</span> train_data) <span class="co"># s() stands for splines, indicating a non-linear relationship  </span></span>
+<span id="cb65-9"><a href="local-regression-gams.html#cb65-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-10"><a href="local-regression-gams.html#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="co"># To specify the number of knots, update the formula: s(x1, k = __)</span></span>
+<span id="cb65-11"><a href="local-regression-gams.html#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="co"># To specify the degree of smoothing, update the formula: s(x1, sp = __)</span></span></code></pre></div>
 <p><strong>Ensuring a good fit for GAM</strong>
 The <code>mgcv</code> engine uses generalized cross-validation to select the degree of smoothness for a default number of knots, if these two tuning parameters aren’t specified by the user.</p>
 <p>Note: the number of knots must be large enough to capture the true “wiggliness” of the relationship, and the <span class="math inline">\(λ\)</span> penalty does the rest of the work. In <code>mgcv</code>, the default number of knots is arbitrary so you need to run <code>gam.check</code> to make sure there are enough knots.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="local-regression-gams.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary: Parameter (linear) estimates and then Smooth Terms (H0: no relationship)</span></span>
-<span id="cb67-2"><a href="local-regression-gams.html#cb67-2" aria-hidden="true" tabindex="-1"></a>fit_gam_model <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">summary</span>() </span>
-<span id="cb67-3"><a href="local-regression-gams.html#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-4"><a href="local-regression-gams.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics: Check to see if the number of knots is large enough (if p-value is low, increase number of knots)</span></span>
-<span id="cb67-5"><a href="local-regression-gams.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb67-6"><a href="local-regression-gams.html#cb67-6" aria-hidden="true" tabindex="-1"></a>fit_gam_model <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> mgcv<span class="sc">::</span><span class="fu">gam.check</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="local-regression-gams.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary: Parameter (linear) estimates and then Smooth Terms (H0: no relationship)</span></span>
+<span id="cb66-2"><a href="local-regression-gams.html#cb66-2" aria-hidden="true" tabindex="-1"></a>fit_gam_model <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">summary</span>() </span>
+<span id="cb66-3"><a href="local-regression-gams.html#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="local-regression-gams.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics: Check to see if the number of knots is large enough (if p-value is low, increase number of knots)</span></span>
+<span id="cb66-5"><a href="local-regression-gams.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb66-6"><a href="local-regression-gams.html#cb66-6" aria-hidden="true" tabindex="-1"></a>fit_gam_model <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> mgcv<span class="sc">::</span><span class="fu">gam.check</span>() </span></code></pre></div>
 <p><strong>Visualizing the GAM</strong></p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="local-regression-gams.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot functions for each predictor</span></span>
-<span id="cb68-2"><a href="local-regression-gams.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Dashed lines are +/- 2 SEs</span></span>
-<span id="cb68-3"><a href="local-regression-gams.html#cb68-3" aria-hidden="true" tabindex="-1"></a>fit_gam_model <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="local-regression-gams.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot functions for each predictor</span></span>
+<span id="cb67-2"><a href="local-regression-gams.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Dashed lines are +/- 2 SEs</span></span>
+<span id="cb67-3"><a href="local-regression-gams.html#cb67-3" aria-hidden="true" tabindex="-1"></a>fit_gam_model <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code></pre></div>
 <p><br><br><br></p>
 </div>
 <div id="exercises-7" class="section level2 unnumbered hasAnchor">
@@ -376,21 +376,21 @@ The <code>mgcv</code> engine uses generalized cross-validation to select the deg
 <p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/09-loess-gams.Rmd">here</a>.</strong></p>
 <p>Before proceeding, install the <code>mgcv</code> package by entering <code>install.packages("mgcv")</code> in the Console.</p>
 <p>We’ll continue using the <code>College</code> dataset in the <code>ISLR</code> package to explore splines. You can use <code>?College</code> in the Console to look at the data codebook.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="local-regression-gams.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span>
-<span id="cb69-2"><a href="local-regression-gams.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb69-3"><a href="local-regression-gams.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb69-4"><a href="local-regression-gams.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb69-5"><a href="local-regression-gams.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb69-6"><a href="local-regression-gams.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels) </span>
-<span id="cb69-7"><a href="local-regression-gams.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>() <span class="co"># Resolves conflicts, prefers tidymodel functions</span></span>
-<span id="cb69-8"><a href="local-regression-gams.html#cb69-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-9"><a href="local-regression-gams.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(College)</span>
-<span id="cb69-10"><a href="local-regression-gams.html#cb69-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-11"><a href="local-regression-gams.html#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A little data cleaning</span></span>
-<span id="cb69-12"><a href="local-regression-gams.html#cb69-12" aria-hidden="true" tabindex="-1"></a>college_clean <span class="ot">&lt;-</span> College <span class="sc">%&gt;%</span> </span>
-<span id="cb69-13"><a href="local-regression-gams.html#cb69-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">school =</span> <span class="fu">rownames</span>(College)) <span class="sc">%&gt;%</span> </span>
-<span id="cb69-14"><a href="local-regression-gams.html#cb69-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Grad.Rate <span class="sc">&lt;=</span> <span class="dv">100</span>) <span class="co"># Remove one school with grad rate of 118%</span></span>
-<span id="cb69-15"><a href="local-regression-gams.html#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(college_clean) <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Remove school names as row names</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="local-regression-gams.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span>
+<span id="cb68-2"><a href="local-regression-gams.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb68-3"><a href="local-regression-gams.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb68-4"><a href="local-regression-gams.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb68-5"><a href="local-regression-gams.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb68-6"><a href="local-regression-gams.html#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels) </span>
+<span id="cb68-7"><a href="local-regression-gams.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>() <span class="co"># Resolves conflicts, prefers tidymodel functions</span></span>
+<span id="cb68-8"><a href="local-regression-gams.html#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="local-regression-gams.html#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(College)</span>
+<span id="cb68-10"><a href="local-regression-gams.html#cb68-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-11"><a href="local-regression-gams.html#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A little data cleaning</span></span>
+<span id="cb68-12"><a href="local-regression-gams.html#cb68-12" aria-hidden="true" tabindex="-1"></a>college_clean <span class="ot">&lt;-</span> College <span class="sc">%&gt;%</span> </span>
+<span id="cb68-13"><a href="local-regression-gams.html#cb68-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">school =</span> <span class="fu">rownames</span>(College)) <span class="sc">%&gt;%</span> </span>
+<span id="cb68-14"><a href="local-regression-gams.html#cb68-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Grad.Rate <span class="sc">&lt;=</span> <span class="dv">100</span>) <span class="co"># Remove one school with grad rate of 118%</span></span>
+<span id="cb68-15"><a href="local-regression-gams.html#cb68-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(college_clean) <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Remove school names as row names</span></span></code></pre></div>
 <div id="exercise-1-conceptual-warmup" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 1: Conceptual warmup<a href="local-regression-gams.html#exercise-1-conceptual-warmup" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: lower-alpha">
@@ -405,128 +405,128 @@ The <code>mgcv</code> engine uses generalized cross-validation to select the deg
 <ol style="list-style-type: lower-alpha">
 <li>Use LOESS (<code>geom_smooth()</code>) to estimate the relationship between <code>Apps</code> and <code>Grad.Rate</code>. Try different values of span between 0 and 1. Write one sentence summarizing what you learned about the relationship between <code>Apps</code> and <code>Grad.Rate</code>.</li>
 </ol>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="local-regression-gams.html#cb69-1" aria-hidden="true" tabindex="-1"></a>college_clean <span class="sc">%&gt;%</span></span>
+<span id="cb69-2"><a href="local-regression-gams.html#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Apps, <span class="at">y =</span> Grad.Rate)) <span class="sc">+</span> </span>
+<span id="cb69-3"><a href="local-regression-gams.html#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb69-4"><a href="local-regression-gams.html#cb69-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="fl">0.2</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb69-5"><a href="local-regression-gams.html#cb69-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20000</span>)) <span class="sc">+</span></span>
+<span id="cb69-6"><a href="local-regression-gams.html#cb69-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use LOESS (<code>geom_smooth()</code>) to estimate the relationship between <code>Apps and Grad.Rate</code>, separately for <code>Private</code> and <code>Non-Private</code> colleges. Try different values of span between 0 and 1. Write one sentence summarizing what you learned about the relationship between <code>Apps</code> and <code>Grad.Rate</code>.</li>
+</ol>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="local-regression-gams.html#cb70-1" aria-hidden="true" tabindex="-1"></a>college_clean <span class="sc">%&gt;%</span></span>
-<span id="cb70-2"><a href="local-regression-gams.html#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Apps, <span class="at">y =</span> Grad.Rate)) <span class="sc">+</span> </span>
+<span id="cb70-2"><a href="local-regression-gams.html#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Apps, <span class="at">y =</span> Grad.Rate, <span class="at">color =</span> Private)) <span class="sc">+</span> </span>
 <span id="cb70-3"><a href="local-regression-gams.html#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
 <span id="cb70-4"><a href="local-regression-gams.html#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="fl">0.2</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb70-5"><a href="local-regression-gams.html#cb70-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20000</span>)) <span class="sc">+</span></span>
 <span id="cb70-6"><a href="local-regression-gams.html#cb70-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Use LOESS (<code>geom_smooth()</code>) to estimate the relationship between <code>Apps and Grad.Rate</code>, separately for <code>Private</code> and <code>Non-Private</code> colleges. Try different values of span between 0 and 1. Write one sentence summarizing what you learned about the relationship between <code>Apps</code> and <code>Grad.Rate</code>.</li>
-</ol>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="local-regression-gams.html#cb71-1" aria-hidden="true" tabindex="-1"></a>college_clean <span class="sc">%&gt;%</span></span>
-<span id="cb71-2"><a href="local-regression-gams.html#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Apps, <span class="at">y =</span> Grad.Rate, <span class="at">color =</span> Private)) <span class="sc">+</span> </span>
-<span id="cb71-3"><a href="local-regression-gams.html#cb71-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb71-4"><a href="local-regression-gams.html#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="fl">0.2</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb71-5"><a href="local-regression-gams.html#cb71-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20000</span>)) <span class="sc">+</span></span>
-<span id="cb71-6"><a href="local-regression-gams.html#cb71-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
 </div>
 <div id="exercise-3-building-a-gam-in-tidymodels" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 3: Building a GAM in <code>tidymodels</code><a href="local-regression-gams.html#exercise-3-building-a-gam-in-tidymodels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suppose that our initial variable selection investigations lead us to using the predictors indicated below in our GAM. Fit a GAM with the following variables in the model.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="local-regression-gams.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb72-2"><a href="local-regression-gams.html#cb72-2" aria-hidden="true" tabindex="-1"></a>gam_spec <span class="ot">&lt;-</span> </span>
-<span id="cb72-3"><a href="local-regression-gams.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gen_additive_mod</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb72-4"><a href="local-regression-gams.html#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;mgcv&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb72-5"><a href="local-regression-gams.html#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
-<span id="cb72-6"><a href="local-regression-gams.html#cb72-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-7"><a href="local-regression-gams.html#cb72-7" aria-hidden="true" tabindex="-1"></a>gam_mod <span class="ot">&lt;-</span> <span class="fu">fit</span>(gam_spec,</span>
-<span id="cb72-8"><a href="local-regression-gams.html#cb72-8" aria-hidden="true" tabindex="-1"></a>    Grad.Rate <span class="sc">~</span> Private <span class="sc">+</span> <span class="fu">s</span>(Apps) <span class="sc">+</span> <span class="fu">s</span>(Top10perc) <span class="sc">+</span> <span class="fu">s</span>(Top25perc) <span class="sc">+</span> <span class="fu">s</span>(P.Undergrad) <span class="sc">+</span> <span class="fu">s</span>(Outstate) <span class="sc">+</span> <span class="fu">s</span>(Room.Board) <span class="sc">+</span> <span class="fu">s</span>(Books) <span class="sc">+</span> <span class="fu">s</span>(Personal) <span class="sc">+</span> <span class="fu">s</span>(PhD) <span class="sc">+</span> <span class="fu">s</span>(perc.alumni),</span>
-<span id="cb72-9"><a href="local-regression-gams.html#cb72-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> college_clean</span>
-<span id="cb72-10"><a href="local-regression-gams.html#cb72-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="local-regression-gams.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb71-2"><a href="local-regression-gams.html#cb71-2" aria-hidden="true" tabindex="-1"></a>gam_spec <span class="ot">&lt;-</span> </span>
+<span id="cb71-3"><a href="local-regression-gams.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gen_additive_mod</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb71-4"><a href="local-regression-gams.html#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;mgcv&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb71-5"><a href="local-regression-gams.html#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>) </span>
+<span id="cb71-6"><a href="local-regression-gams.html#cb71-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-7"><a href="local-regression-gams.html#cb71-7" aria-hidden="true" tabindex="-1"></a>gam_mod <span class="ot">&lt;-</span> <span class="fu">fit</span>(gam_spec,</span>
+<span id="cb71-8"><a href="local-regression-gams.html#cb71-8" aria-hidden="true" tabindex="-1"></a>    Grad.Rate <span class="sc">~</span> Private <span class="sc">+</span> <span class="fu">s</span>(Apps) <span class="sc">+</span> <span class="fu">s</span>(Top10perc) <span class="sc">+</span> <span class="fu">s</span>(Top25perc) <span class="sc">+</span> <span class="fu">s</span>(P.Undergrad) <span class="sc">+</span> <span class="fu">s</span>(Outstate) <span class="sc">+</span> <span class="fu">s</span>(Room.Board) <span class="sc">+</span> <span class="fu">s</span>(Books) <span class="sc">+</span> <span class="fu">s</span>(Personal) <span class="sc">+</span> <span class="fu">s</span>(PhD) <span class="sc">+</span> <span class="fu">s</span>(perc.alumni),</span>
+<span id="cb71-9"><a href="local-regression-gams.html#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> college_clean</span>
+<span id="cb71-10"><a href="local-regression-gams.html#cb71-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>First, let’s look to see if the default number of knots (10) is large enough for each variable. The <code>edf</code> is the effective degrees of freedom; the larger the <code>edf</code> value, the more wiggly the estimated function is. If <code>edf</code> = 1, it is a straight line. Comment on the diagnostic plots and output.</li>
 </ol>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="local-regression-gams.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics: Check to see if the number of knots is large enough (if p-value is low, increase number of knots)</span></span>
-<span id="cb73-2"><a href="local-regression-gams.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb73-3"><a href="local-regression-gams.html#cb73-3" aria-hidden="true" tabindex="-1"></a>gam_mod <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> mgcv<span class="sc">::</span><span class="fu">gam.check</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="local-regression-gams.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics: Check to see if the number of knots is large enough (if p-value is low, increase number of knots)</span></span>
+<span id="cb72-2"><a href="local-regression-gams.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb72-3"><a href="local-regression-gams.html#cb72-3" aria-hidden="true" tabindex="-1"></a>gam_mod <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> mgcv<span class="sc">::</span><span class="fu">gam.check</span>() </span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Next, look at the summary of the output. For parametric (linear) estimates, the coefficients and standard errors are interpreted in the same way as OLS output. The approximate significance of smooth terms is a bit different. The edf is listed for each variable. The p-value is for the null hypothesis that there is no relationship between that predictor and the outcome (meaning the relationship is horizontal line). Do you think we should make any adjustments to the model? Do we need splines for all of these variables?</li>
 </ol>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="local-regression-gams.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary: Parameter (linear) estimates and then Smooth Terms (H0: no relationship)</span></span>
-<span id="cb74-2"><a href="local-regression-gams.html#cb74-2" aria-hidden="true" tabindex="-1"></a>gam_mod <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">summary</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="local-regression-gams.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary: Parameter (linear) estimates and then Smooth Terms (H0: no relationship)</span></span>
+<span id="cb73-2"><a href="local-regression-gams.html#cb73-2" aria-hidden="true" tabindex="-1"></a>gam_mod <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">summary</span>() </span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Lastly, before we make changes to the model, let’s visualize the estimated non-linear functions. What do you notice? What about these plots indicates that using GAM instead of ordinary linear regression was probably a good choice?</li>
 </ol>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="local-regression-gams.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize: Look at the estimated non-linear functions</span></span>
-<span id="cb75-2"><a href="local-regression-gams.html#cb75-2" aria-hidden="true" tabindex="-1"></a>gam_mod <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>( <span class="at">all.terms =</span> <span class="cn">TRUE</span>, <span class="at">pages =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="local-regression-gams.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize: Look at the estimated non-linear functions</span></span>
+<span id="cb74-2"><a href="local-regression-gams.html#cb74-2" aria-hidden="true" tabindex="-1"></a>gam_mod <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>( <span class="at">all.terms =</span> <span class="cn">TRUE</span>, <span class="at">pages =</span> <span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="exercise-4-adjusting-the-best-gam" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 4: Adjusting the “best” GAM<a href="local-regression-gams.html#exercise-4-adjusting-the-best-gam" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: lower-alpha">
 <li>First, let’s consider limiting the training sample given the outliers (the bottom vertical lines on the plot is called a “rug plot” and shows where you have observed values). Look at the outlier colleges.</li>
 </ol>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="local-regression-gams.html#cb76-1" aria-hidden="true" tabindex="-1"></a>college_clean <span class="sc">%&gt;%</span></span>
-<span id="cb76-2"><a href="local-regression-gams.html#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Apps <span class="sc">&gt;</span> <span class="dv">30000</span> <span class="sc">|</span> P.Undergrad <span class="sc">&gt;</span> <span class="dv">20000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="local-regression-gams.html#cb75-1" aria-hidden="true" tabindex="-1"></a>college_clean <span class="sc">%&gt;%</span></span>
+<span id="cb75-2"><a href="local-regression-gams.html#cb75-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Apps <span class="sc">&gt;</span> <span class="dv">30000</span> <span class="sc">|</span> P.Undergrad <span class="sc">&gt;</span> <span class="dv">20000</span>)</span></code></pre></div>
 <p>Now that you’ve seen which colleges we are setting aside, let’s refit the model without these two colleges.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="local-regression-gams.html#cb77-1" aria-hidden="true" tabindex="-1"></a>gam_mod2 <span class="ot">&lt;-</span> college_clean <span class="sc">%&gt;%</span></span>
-<span id="cb77-2"><a href="local-regression-gams.html#cb77-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(________) <span class="sc">%&gt;%</span></span>
-<span id="cb77-3"><a href="local-regression-gams.html#cb77-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit</span>(gam_spec,</span>
-<span id="cb77-4"><a href="local-regression-gams.html#cb77-4" aria-hidden="true" tabindex="-1"></a>    Grad.Rate <span class="sc">~</span> Private <span class="sc">+</span> <span class="fu">s</span>(Apps) <span class="sc">+</span> <span class="fu">s</span>(Top10perc) <span class="sc">+</span> <span class="fu">s</span>(Top25perc) <span class="sc">+</span> <span class="fu">s</span>(P.Undergrad) <span class="sc">+</span> <span class="fu">s</span>(Outstate) <span class="sc">+</span> <span class="fu">s</span>(Room.Board) <span class="sc">+</span> <span class="fu">s</span>(Books) <span class="sc">+</span> <span class="fu">s</span>(Personal) <span class="sc">+</span> <span class="fu">s</span>(PhD) <span class="sc">+</span> <span class="fu">s</span>(perc.alumni),</span>
-<span id="cb77-5"><a href="local-regression-gams.html#cb77-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> .</span>
-<span id="cb77-6"><a href="local-regression-gams.html#cb77-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="local-regression-gams.html#cb76-1" aria-hidden="true" tabindex="-1"></a>gam_mod2 <span class="ot">&lt;-</span> college_clean <span class="sc">%&gt;%</span></span>
+<span id="cb76-2"><a href="local-regression-gams.html#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(________) <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="local-regression-gams.html#cb76-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit</span>(gam_spec,</span>
+<span id="cb76-4"><a href="local-regression-gams.html#cb76-4" aria-hidden="true" tabindex="-1"></a>    Grad.Rate <span class="sc">~</span> Private <span class="sc">+</span> <span class="fu">s</span>(Apps) <span class="sc">+</span> <span class="fu">s</span>(Top10perc) <span class="sc">+</span> <span class="fu">s</span>(Top25perc) <span class="sc">+</span> <span class="fu">s</span>(P.Undergrad) <span class="sc">+</span> <span class="fu">s</span>(Outstate) <span class="sc">+</span> <span class="fu">s</span>(Room.Board) <span class="sc">+</span> <span class="fu">s</span>(Books) <span class="sc">+</span> <span class="fu">s</span>(Personal) <span class="sc">+</span> <span class="fu">s</span>(PhD) <span class="sc">+</span> <span class="fu">s</span>(perc.alumni),</span>
+<span id="cb76-5"><a href="local-regression-gams.html#cb76-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> .</span>
+<span id="cb76-6"><a href="local-regression-gams.html#cb76-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Let’s look at the estimated functions again. Pick 1 or 2 of these plots, and interpret your findings.</li>
 </ol>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="local-regression-gams.html#cb78-1" aria-hidden="true" tabindex="-1"></a>gam_mod2 <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">summary</span>() </span>
-<span id="cb78-2"><a href="local-regression-gams.html#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-3"><a href="local-regression-gams.html#cb78-3" aria-hidden="true" tabindex="-1"></a>gam_mod2 <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>( <span class="at">all.terms =</span> <span class="cn">TRUE</span>, <span class="at">pages =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="local-regression-gams.html#cb77-1" aria-hidden="true" tabindex="-1"></a>gam_mod2 <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">summary</span>() </span>
+<span id="cb77-2"><a href="local-regression-gams.html#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="local-regression-gams.html#cb77-3" aria-hidden="true" tabindex="-1"></a>gam_mod2 <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>( <span class="at">all.terms =</span> <span class="cn">TRUE</span>, <span class="at">pages =</span> <span class="dv">1</span>)</span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li><p>Based on the output above, which variables may not need splines/non-linear relationships? How could we simplify the model?</p></li>
 <li><p>Now try fitting a more simple GAM model with <code>tidymodels</code> by only using a non-linear spline function for a variable if the edf is greater than 3 (3 is not a magic number; it is arbitrary).</p></li>
 </ol>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="local-regression-gams.html#cb79-1" aria-hidden="true" tabindex="-1"></a>gam_mod3 <span class="ot">&lt;-</span> college_clean <span class="sc">%&gt;%</span></span>
-<span id="cb79-2"><a href="local-regression-gams.html#cb79-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(_____) <span class="sc">%&gt;%</span> <span class="co"># remove outliers</span></span>
-<span id="cb79-3"><a href="local-regression-gams.html#cb79-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit</span>(gam_spec,</span>
-<span id="cb79-4"><a href="local-regression-gams.html#cb79-4" aria-hidden="true" tabindex="-1"></a>    Grad.Rate <span class="sc">~</span>  ______, <span class="co"># add in the formula</span></span>
-<span id="cb79-5"><a href="local-regression-gams.html#cb79-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> .</span>
-<span id="cb79-6"><a href="local-regression-gams.html#cb79-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb79-7"><a href="local-regression-gams.html#cb79-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-8"><a href="local-regression-gams.html#cb79-8" aria-hidden="true" tabindex="-1"></a>gam_mod3 <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">summary</span>() </span>
-<span id="cb79-9"><a href="local-regression-gams.html#cb79-9" aria-hidden="true" tabindex="-1"></a>gam_mod3 <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="local-regression-gams.html#cb78-1" aria-hidden="true" tabindex="-1"></a>gam_mod3 <span class="ot">&lt;-</span> college_clean <span class="sc">%&gt;%</span></span>
+<span id="cb78-2"><a href="local-regression-gams.html#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(_____) <span class="sc">%&gt;%</span> <span class="co"># remove outliers</span></span>
+<span id="cb78-3"><a href="local-regression-gams.html#cb78-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit</span>(gam_spec,</span>
+<span id="cb78-4"><a href="local-regression-gams.html#cb78-4" aria-hidden="true" tabindex="-1"></a>    Grad.Rate <span class="sc">~</span>  ______, <span class="co"># add in the formula</span></span>
+<span id="cb78-5"><a href="local-regression-gams.html#cb78-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> .</span>
+<span id="cb78-6"><a href="local-regression-gams.html#cb78-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb78-7"><a href="local-regression-gams.html#cb78-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-8"><a href="local-regression-gams.html#cb78-8" aria-hidden="true" tabindex="-1"></a>gam_mod3 <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">summary</span>() </span>
+<span id="cb78-9"><a href="local-regression-gams.html#cb78-9" aria-hidden="true" tabindex="-1"></a>gam_mod3 <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;fit&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>() </span></code></pre></div>
 </div>
 <div id="exercise-5-gam-with-recipes" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 5: GAM with recipes<a href="local-regression-gams.html#exercise-5-gam-with-recipes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Use the edf (round to integer) from above to create a recipe by adding step_ns() for the variables you want model with a non-linear relationship and do CV. Compare this model to one without any splines.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="local-regression-gams.html#cb80-1" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span></span>
-<span id="cb80-2"><a href="local-regression-gams.html#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb80-3"><a href="local-regression-gams.html#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb80-4"><a href="local-regression-gams.html#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>)</span>
-<span id="cb80-5"><a href="local-regression-gams.html#cb80-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-6"><a href="local-regression-gams.html#cb80-6" aria-hidden="true" tabindex="-1"></a>data_cv8 <span class="ot">&lt;-</span> college_clean <span class="sc">%&gt;%</span> </span>
-<span id="cb80-7"><a href="local-regression-gams.html#cb80-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(___) <span class="sc">%&gt;%</span> <span class="co"># remove outliers</span></span>
-<span id="cb80-8"><a href="local-regression-gams.html#cb80-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vfold_cv</span>(<span class="at">v =</span> <span class="dv">8</span>)</span>
-<span id="cb80-9"><a href="local-regression-gams.html#cb80-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-10"><a href="local-regression-gams.html#cb80-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Fully linear model</span></span>
-<span id="cb80-11"><a href="local-regression-gams.html#cb80-11" aria-hidden="true" tabindex="-1"></a>college_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Grad.Rate <span class="sc">~</span> Private <span class="sc">+</span> Apps <span class="sc">+</span> Top10perc <span class="sc">+</span> Top25perc <span class="sc">+</span> P.Undergrad <span class="sc">+</span> Outstate <span class="sc">+</span> Room.Board <span class="sc">+</span> Books <span class="sc">+</span> Personal <span class="sc">+</span> PhD <span class="sc">+</span> perc.alumni, <span class="at">data =</span> college_clean)</span>
-<span id="cb80-12"><a href="local-regression-gams.html#cb80-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-13"><a href="local-regression-gams.html#cb80-13" aria-hidden="true" tabindex="-1"></a><span class="co"># With splines</span></span>
-<span id="cb80-14"><a href="local-regression-gams.html#cb80-14" aria-hidden="true" tabindex="-1"></a>spline_rec <span class="ot">&lt;-</span> college_rec <span class="sc">%&gt;%</span></span>
-<span id="cb80-15"><a href="local-regression-gams.html#cb80-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_ns</span>(Apps, Top25perc, Room.Board, perc.alumni, <span class="at">deg_free =</span> ___) <span class="sc">%&gt;%</span></span>
-<span id="cb80-16"><a href="local-regression-gams.html#cb80-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_ns</span>(P.Undergrad, <span class="at">deg_free =</span> ____) <span class="sc">%&gt;%</span></span>
-<span id="cb80-17"><a href="local-regression-gams.html#cb80-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_ns</span>(Outstate, <span class="at">deg_free =</span> ___) <span class="sc">%&gt;%</span></span>
-<span id="cb80-18"><a href="local-regression-gams.html#cb80-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_ns</span>(Personal, <span class="at">deg_free =</span> ____)</span>
-<span id="cb80-19"><a href="local-regression-gams.html#cb80-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-20"><a href="local-regression-gams.html#cb80-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-21"><a href="local-regression-gams.html#cb80-21" aria-hidden="true" tabindex="-1"></a>college_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb80-22"><a href="local-regression-gams.html#cb80-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_model</span>(lm_spec) <span class="sc">%&gt;%</span></span>
-<span id="cb80-23"><a href="local-regression-gams.html#cb80-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_recipe</span>(college_rec)</span>
-<span id="cb80-24"><a href="local-regression-gams.html#cb80-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-25"><a href="local-regression-gams.html#cb80-25" aria-hidden="true" tabindex="-1"></a>spline_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb80-26"><a href="local-regression-gams.html#cb80-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_model</span>(lm_spec) <span class="sc">%&gt;%</span></span>
-<span id="cb80-27"><a href="local-regression-gams.html#cb80-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_recipe</span>(spline_rec)</span>
-<span id="cb80-28"><a href="local-regression-gams.html#cb80-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-29"><a href="local-regression-gams.html#cb80-29" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_resamples</span>(</span>
-<span id="cb80-30"><a href="local-regression-gams.html#cb80-30" aria-hidden="true" tabindex="-1"></a>    college_wf,</span>
-<span id="cb80-31"><a href="local-regression-gams.html#cb80-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">resamples =</span> data_cv8, <span class="co"># cv folds</span></span>
-<span id="cb80-32"><a href="local-regression-gams.html#cb80-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">metrics =</span> <span class="fu">metric_set</span>(mae,rmse,rsq)                     </span>
-<span id="cb80-33"><a href="local-regression-gams.html#cb80-33" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>()</span>
-<span id="cb80-34"><a href="local-regression-gams.html#cb80-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-35"><a href="local-regression-gams.html#cb80-35" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_resamples</span>(</span>
-<span id="cb80-36"><a href="local-regression-gams.html#cb80-36" aria-hidden="true" tabindex="-1"></a>    spline_wf,</span>
-<span id="cb80-37"><a href="local-regression-gams.html#cb80-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">resamples =</span> data_cv8, <span class="co"># cv folds</span></span>
-<span id="cb80-38"><a href="local-regression-gams.html#cb80-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">metrics =</span> <span class="fu">metric_set</span>(mae,rmse,rsq)                     </span>
-<span id="cb80-39"><a href="local-regression-gams.html#cb80-39" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="local-regression-gams.html#cb79-1" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span></span>
+<span id="cb79-2"><a href="local-regression-gams.html#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb79-3"><a href="local-regression-gams.html#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb79-4"><a href="local-regression-gams.html#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>)</span>
+<span id="cb79-5"><a href="local-regression-gams.html#cb79-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-6"><a href="local-regression-gams.html#cb79-6" aria-hidden="true" tabindex="-1"></a>data_cv8 <span class="ot">&lt;-</span> college_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb79-7"><a href="local-regression-gams.html#cb79-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(___) <span class="sc">%&gt;%</span> <span class="co"># remove outliers</span></span>
+<span id="cb79-8"><a href="local-regression-gams.html#cb79-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vfold_cv</span>(<span class="at">v =</span> <span class="dv">8</span>)</span>
+<span id="cb79-9"><a href="local-regression-gams.html#cb79-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-10"><a href="local-regression-gams.html#cb79-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Fully linear model</span></span>
+<span id="cb79-11"><a href="local-regression-gams.html#cb79-11" aria-hidden="true" tabindex="-1"></a>college_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Grad.Rate <span class="sc">~</span> Private <span class="sc">+</span> Apps <span class="sc">+</span> Top10perc <span class="sc">+</span> Top25perc <span class="sc">+</span> P.Undergrad <span class="sc">+</span> Outstate <span class="sc">+</span> Room.Board <span class="sc">+</span> Books <span class="sc">+</span> Personal <span class="sc">+</span> PhD <span class="sc">+</span> perc.alumni, <span class="at">data =</span> college_clean)</span>
+<span id="cb79-12"><a href="local-regression-gams.html#cb79-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-13"><a href="local-regression-gams.html#cb79-13" aria-hidden="true" tabindex="-1"></a><span class="co"># With splines</span></span>
+<span id="cb79-14"><a href="local-regression-gams.html#cb79-14" aria-hidden="true" tabindex="-1"></a>spline_rec <span class="ot">&lt;-</span> college_rec <span class="sc">%&gt;%</span></span>
+<span id="cb79-15"><a href="local-regression-gams.html#cb79-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_ns</span>(Apps, Top25perc, Room.Board, perc.alumni, <span class="at">deg_free =</span> ___) <span class="sc">%&gt;%</span></span>
+<span id="cb79-16"><a href="local-regression-gams.html#cb79-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_ns</span>(P.Undergrad, <span class="at">deg_free =</span> ____) <span class="sc">%&gt;%</span></span>
+<span id="cb79-17"><a href="local-regression-gams.html#cb79-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_ns</span>(Outstate, <span class="at">deg_free =</span> ___) <span class="sc">%&gt;%</span></span>
+<span id="cb79-18"><a href="local-regression-gams.html#cb79-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_ns</span>(Personal, <span class="at">deg_free =</span> ____)</span>
+<span id="cb79-19"><a href="local-regression-gams.html#cb79-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-20"><a href="local-regression-gams.html#cb79-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-21"><a href="local-regression-gams.html#cb79-21" aria-hidden="true" tabindex="-1"></a>college_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb79-22"><a href="local-regression-gams.html#cb79-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_model</span>(lm_spec) <span class="sc">%&gt;%</span></span>
+<span id="cb79-23"><a href="local-regression-gams.html#cb79-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_recipe</span>(college_rec)</span>
+<span id="cb79-24"><a href="local-regression-gams.html#cb79-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-25"><a href="local-regression-gams.html#cb79-25" aria-hidden="true" tabindex="-1"></a>spline_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb79-26"><a href="local-regression-gams.html#cb79-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_model</span>(lm_spec) <span class="sc">%&gt;%</span></span>
+<span id="cb79-27"><a href="local-regression-gams.html#cb79-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_recipe</span>(spline_rec)</span>
+<span id="cb79-28"><a href="local-regression-gams.html#cb79-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-29"><a href="local-regression-gams.html#cb79-29" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_resamples</span>(</span>
+<span id="cb79-30"><a href="local-regression-gams.html#cb79-30" aria-hidden="true" tabindex="-1"></a>    college_wf,</span>
+<span id="cb79-31"><a href="local-regression-gams.html#cb79-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">resamples =</span> data_cv8, <span class="co"># cv folds</span></span>
+<span id="cb79-32"><a href="local-regression-gams.html#cb79-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">metrics =</span> <span class="fu">metric_set</span>(mae,rmse,rsq)                     </span>
+<span id="cb79-33"><a href="local-regression-gams.html#cb79-33" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>()</span>
+<span id="cb79-34"><a href="local-regression-gams.html#cb79-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-35"><a href="local-regression-gams.html#cb79-35" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_resamples</span>(</span>
+<span id="cb79-36"><a href="local-regression-gams.html#cb79-36" aria-hidden="true" tabindex="-1"></a>    spline_wf,</span>
+<span id="cb79-37"><a href="local-regression-gams.html#cb79-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">resamples =</span> data_cv8, <span class="co"># cv folds</span></span>
+<span id="cb79-38"><a href="local-regression-gams.html#cb79-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">metrics =</span> <span class="fu">metric_set</span>(mae,rmse,rsq)                     </span>
+<span id="cb79-39"><a href="local-regression-gams.html#cb79-39" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>()</span></code></pre></div>
 <p>What do you observe? What do you conclude about these models?</p>
 </div>
 <div id="exercise-6-putting-a-bow-on-regression" class="section level3 unnumbered hasAnchor">
