@@ -37,7 +37,7 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
 **Required Analyses:**
 
 1. **Initial investigation: ignoring nonlinearity (for now)**
-    - Use ordinary least squares (OLS) regression, forward and/or backward selection, and LASSO to build initial models for your quantitative outcome as a function of the predictors of interest. (As part of data cleaning, exclude any variables that you don't want to consider as predictors.)
+    - Use ordinary least squares (OLS) regression and LASSO to build initial models for your quantitative outcome as a function of the predictors of interest. (As part of data cleaning, exclude any variables that you don't want to consider as predictors.)
         - These models should not include any transformations to deal with nonlinearity. You'll explore this in the next investigation.
         - Note: If you have highly collinear/redundant variables, you might see the message "Reordering variables and trying again" and associated `warning()`s about linear dependencies being found. Sometimes stepwise selection is able to handle the collinearity/redundancy by modifying the order of the variables tried. If collinearity/redundancy cannot be handled and causes an error, try reducing `nvmax`.
 
@@ -46,8 +46,7 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
 
     - Use residual plots to evaluate whether some quantitative predictors might be better modeled with nonlinear relationships.
 
-    - Compare insights from variable importance analyses from the different methods (stepwise and LASSO, but not OLS). Are there variables for which the methods reach consensus? What insights are expected? Surprising?
-        - Note that if some (but not all) of the indicator terms for a categorical predictor are selected in the final models, the whole predictor should be treated as selected.
+    - Note that if some (but not all) of the indicator terms for a categorical predictor are selected in the final models, the whole predictor should be treated as selected.
 
 <br>
 
