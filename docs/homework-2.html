@@ -322,7 +322,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Use ordinary least squares (OLS) regression and LASSO to build initial models for your quantitative outcome as a function of the predictors of interest. (As part of data cleaning, exclude any variables that you don’t want to consider as predictors.)</p>
 <ul>
 <li>These models should not include any transformations to deal with nonlinearity. You’ll explore this in the next investigation.</li>
-<li>Note: If you have highly collinear/redundant variables, you might see the message “Reordering variables and trying again” and associated <code>warning()</code>s about linear dependencies being found. Sometimes stepwise selection is able to handle the collinearity/redundancy by modifying the order of the variables tried. If collinearity/redundancy cannot be handled and causes an error, try reducing <code>nvmax</code>.</li>
 </ul></li>
 <li><p>Estimate test performance of the models from these different methods. Report and interpret (with units) these estimates along with a measure of uncertainty in the estimate.</p>
 <ul>
@@ -336,11 +335,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Accounting for nonlinearity</strong>
 <ul>
-<li>Update your stepwise selection model(s) and LASSO model to use natural splines for the quantitative predictors.
+<li>Update your LASSO model to use natural splines for the quantitative predictors.
 <ul>
 <li>You’ll need to update the model formula from <code>y ~ .</code> to something like <code>y ~ cat_var1 + ns(quant_var1, df) + ...</code>.</li>
 <li>It’s recommended to use few knots (e.g., 2 knots = 3 degrees of freedom).</li>
-<li>Note that <code>ns(x,3)</code> replaces <code>x</code> with 3 transformations of <code>x</code>. Keep this in mind when setting <code>nvmax</code> in stepwise selection.</li>
 </ul></li>
 <li>Compare insights from variable importance analyses here and the corresponding results from Investigation 1. Now after having accounted for nonlinearity, have the most relevant predictors changed?
 <ul>

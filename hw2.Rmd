@@ -39,7 +39,6 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
 1. **Initial investigation: ignoring nonlinearity (for now)**
     - Use ordinary least squares (OLS) regression and LASSO to build initial models for your quantitative outcome as a function of the predictors of interest. (As part of data cleaning, exclude any variables that you don't want to consider as predictors.)
         - These models should not include any transformations to deal with nonlinearity. You'll explore this in the next investigation.
-        - Note: If you have highly collinear/redundant variables, you might see the message "Reordering variables and trying again" and associated `warning()`s about linear dependencies being found. Sometimes stepwise selection is able to handle the collinearity/redundancy by modifying the order of the variables tried. If collinearity/redundancy cannot be handled and causes an error, try reducing `nvmax`.
 
     - Estimate test performance of the models from these different methods. Report and interpret (with units) these estimates along with a measure of uncertainty in the estimate.
         - Compare estimated test performance across methods. Which method(s) might you prefer?
@@ -51,10 +50,9 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
 <br>
 
 2. **Accounting for nonlinearity**
-    - Update your stepwise selection model(s) and LASSO model to use natural splines for the quantitative predictors.
+    - Update your LASSO model to use natural splines for the quantitative predictors.
         - You'll need to update the model formula from `y ~ .` to something like `y ~ cat_var1 + ns(quant_var1, df) + ...`.
         - It's recommended to use few knots (e.g., 2 knots = 3 degrees of freedom).
-        - Note that `ns(x,3)` replaces `x` with 3 transformations of `x`. Keep this in mind when setting `nvmax` in stepwise selection.
 
     - Compare insights from variable importance analyses here and the corresponding results from Investigation 1. Now after having accounted for nonlinearity, have the most relevant predictors changed?
         - Note that if some (but not all) of the spline terms are selected in the final models, the whole predictor should be treated as selected.
@@ -63,7 +61,6 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
         - How does test performance of the GAM compare to other models you explored?
         - Do you gain any insights from the GAM output plots for each predictor?
 
-    - Don't worry about KNN for now.
 
 <br>
 
@@ -87,7 +84,7 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
 Read the article [Automated background checks are deciding who's fit for a home](https://www.theverge.com/platform/amp/2019/2/1/18205174/automation-background-check-criminal-records-corelogic). Write a short (roughly 250 words), thoughtful response about the ideas that the article brings forth. What themes recur from last week's article (on an old Amazon recruiting tool)? What aspects are more particular to the context of equity in housing access?
 
 
-**Reflection:** Write a short, thoughtful reflection about how things went this week. Feel free to use whichever prompts below resonate most with you, but don't feel limited to these prompts.
+**Reflection (not required):** Write a short, thoughtful reflection about how things went this week. Feel free to use whichever prompts below resonate most with you, but don't feel limited to these prompts.
 
 - How are class-related things going? Is there anything that you need from the instructor? What new strategies for watching videos, reading, reviewing, gaining insights from class work have you tried or would like to try?
 - How is group work going? Did you try out any new collaboration strategies with your new group? How did they go?
