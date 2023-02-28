@@ -22,18 +22,17 @@ We'll be working with a [spam dataset](https://archive.ics.uci.edu/ml/datasets/S
 Our goal will be to use email features to predict whether or not an email is spam - essentially, to build a spam filter!
 
 ```{r}
+library(dplyr)
 library(readr)
 library(ggplot2)
-library(dplyr)
-library(caret)
+library(e1071) # install.packages("e1071")
+library(tidymodels)
+library(probably) #install.packages('probably')
+tidymodels_prefer()
 
 spam <- read_csv("https://www.dropbox.com/s/leurr6a30f4l32a/spambase.csv?dl=1")
 ```
 
-
-## Hello, how are things?
-
-We're nearing the halfway point of the module - how are you holding up?
 
 
 ## Exercise 1: Visualization warmup
@@ -53,27 +52,42 @@ ggplot(spam, aes(x = ___, y = ___)) +
 
 
 
-## Exercise 2: Implementing logistic regression in `caret`
+## Exercise 2: Implementing logistic regression in `tidymodels`
 
 Our goal is to fit a logistic regression model with `word_freq_george` and `char_freq_exclam` as predictors.
 
 a. Write down the corresponding logistic regression model formula using general notation.
 
-b. Use `caret` to fit this logistic regression model. Use 10-fold CV to estimate test accuracy. (We'll focus more on interpreting model evaluation metrics next time.)
+b. Use `tidymodels` to fit this logistic regression model. Use 10-fold CV to estimate test accuracy. (We'll focus more on interpreting model evaluation metrics next time.)
 
 *Note:* If you get warning (not error) messages like `fitted probabilities numerically 0 or 1 occurred`, this means that in some of the CV iterations, one or more of the predictors perfectly predicted spam classification.
 
 ```{r}
-set.seed(___)
-logistic_mod <- train(
-    
-)
+# Make sure you set reference level (to the outcome you are NOT interested in)
+spam <- spam %>%
+  mutate(spam = relevel(factor(spam), ref='not spam')) #set reference level
+
+# Logistic Regression Model Spec
+logistic_spec <- logistic_reg() %>%
+    set_engine('glm') %>%
+    set_mode('classification')
+
+# Recipe
+logistic_rec <- recipe(spam ~ _____, data = spam)
+
+# Workflow (Recipe + Model)
+log_wf <- workflow() %>% 
+    add_recipe(logistic_rec) %>%
+    add_model(logistic_spec) 
+
+# Fit Model
+log_fit <- fit(log_wf, data = ___)
 ```
 
 
 ## Exercise 3: Interpreting the model
 
-a. Take a look at the log-scale coefficients with `summary(logistic_mod)`. Do the signs of the coefficients for the 2 predictors agree with your visual inspection from Exercise 1?
+a. Take a look at the log-scale coefficients with `tidy(log_fit)`. Do the signs of the coefficients for the 2 predictors agree with your visual inspection from Exercise 1?
 
 b. Display the exponentiated coefficients, and provide contextual interpretations for them (not the intercept).
 
@@ -90,6 +104,71 @@ b. Check your work from part a by using `predict()`.
 predict(___, newdata = data.frame(word_freq_george = 0.25, char_freq_exclam = 1), ___)
 ```
 
+## Exercise 5: Evaluate the model
+
+a. Visualize the soft predictions and comment on a potential threshold for doing hard predictions.
+
+```{r}
+# Soft predictions
+logistic_output <-  spam %>%
+  bind_cols(predict(log_fit, new_data = spam, type = 'prob')) 
+
+head(logistic_output)
+```
+
+b. Choose a threshold and calculate training metrics based on hard predictions (sensitivity, specificity, accuracy). Write a sentence interpreting these values in context.
+
+```{r}
+# Hard predictions (you pick threshold)
+logistic_output <- logistic_output %>%
+  mutate(.pred_class = make_two_class_pred(`.pred_not spam`, levels(spam), threshold = 1 - ___)) 
+
+# Confusion Matrix
+logistic_output %>%
+  conf_mat(truth = spam, estimate = .pred_class)
+
+# Calculate them by hand first and then confirm below
+#sens: sensitivity = chance of correctly predicting second level, given second level (Spam)
+#spec: specificity = chance of correctly predicting first level, given first level (Not Spam)
+#accuracy: accuracy = chance of correctly predicting outcome
+
+
+
+
+
+
+log_metrics <- metric_set(sens, yardstick::spec, accuracy)
+logistic_output %>% 
+  log_metrics(estimate = .pred_class, truth = spam, event_level = "second")
+```
+
+c. Now visualize the soft predictions using all possible thresholds by visualizing the ROC curve and calculating the area under the roc curve. Discuss what this tells you about how well the model classifies spam emails.
+
+```{r}
+logistic_roc <- logistic_output %>% 
+    roc_curve(spam, .pred_spam, event_level = "second") 
+
+autoplot(logistic_roc) + theme_classic()
+
+logistic_output %>% 
+  roc_auc(spam, .pred_spam, event_level = "second")
+```
+
+d. Now, let’s use CV to evaluate the model on test data. Comment on the difference in CV metrics to the training metrics.
+
+```{r}
+set.seed(123)
+data_cv10 <- vfold_cv(spam, v = 10)
+
+# CV Fit Model
+log_cv_fit <- fit_resamples(
+    log_wf, 
+    resamples = data_cv10,
+    metrics = metric_set(sens, yardstick::spec, accuracy, roc_auc),
+    control = control_resamples(save_pred = TRUE, event_level = 'second'))  # you need predictions for ROC calculations
+
+collect_metrics(log_cv_fit) #default threshold is 0.5
+```
 
 
 

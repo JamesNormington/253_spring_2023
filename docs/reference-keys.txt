@@ -9,3 +9,5 @@ splines
 local-regression-gams
 gams
 gams---options-for-fitting
+logistic-regression
+exercise-5-evaluate-the-model
