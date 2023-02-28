@@ -46,8 +46,11 @@ Create appropriate visualizations to assess the predictive ability of these two 
 # + coord_cartesian(ylim = c(0,1))
 # + coord_cartesian(xlim = c(0,1))
 
-ggplot(spam, aes(x = ___, y = ___)) +
-    geom_???()
+ggplot(spam, aes(x = ___, y = spam)) +
+    geom_point()
+
+ggplot(spam, aes(x = ___, y = spam)) +
+    geom_point()
 ```
 
 
@@ -58,9 +61,7 @@ Our goal is to fit a logistic regression model with `word_freq_george` and `char
 
 a. Write down the corresponding logistic regression model formula using general notation.
 
-b. Use `tidymodels` to fit this logistic regression model. Use 10-fold CV to estimate test accuracy. (We'll focus more on interpreting model evaluation metrics next time.)
-
-*Note:* If you get warning (not error) messages like `fitted probabilities numerically 0 or 1 occurred`, this means that in some of the CV iterations, one or more of the predictors perfectly predicted spam classification.
+b. Use `tidymodels` to fit this logistic regression model.
 
 ```{r}
 # Make sure you set reference level (to the outcome you are NOT interested in)
@@ -101,7 +102,9 @@ a. Use the model summary to make both a soft (probability) and hard (class) pred
 b. Check your work from part a by using `predict()`.
 
 ```{r}
-predict(___, newdata = data.frame(word_freq_george = 0.25, char_freq_exclam = 1), ___)
+predict(___, newdata = data.frame(word_freq_george = 0.25, char_freq_exclam = 1), type = "prob")
+predict(___, newdata = data.frame(word_freq_george = 0.25, char_freq_exclam = 1), type = "class")
+
 ```
 
 ## Exercise 5: Evaluate the model
@@ -111,9 +114,14 @@ a. Visualize the soft predictions and comment on a potential threshold for doing
 ```{r}
 # Soft predictions
 logistic_output <-  spam %>%
-  bind_cols(predict(log_fit, new_data = spam, type = 'prob')) 
+  bind_cols(predict(log_fit, new_data = spam, type = 'prob'))  %>%
+  select(spam, .pred_spam)
 
 head(logistic_output)
+
+logistic_output %>%
+  ggplot(aes(x = spam, y = .pred_spam)) +
+  geom_boxplot()
 ```
 
 b. Choose a threshold and calculate training metrics based on hard predictions (sensitivity, specificity, accuracy). Write a sentence interpreting these values in context.
@@ -133,6 +141,9 @@ logistic_output %>%
 #accuracy: accuracy = chance of correctly predicting outcome
 
 
+sensi =  
+speci =  /
+acc = 
 
 
 
