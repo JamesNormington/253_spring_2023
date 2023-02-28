@@ -5,7 +5,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 # Homework 3 {-}
 
 <center>
-**Due Friday, April 9 at midnight CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=51221)**
+**Due Monday, March 27th at 11:59pm CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=51221)**
 </center>
 
 **Deliverables:** Please use [this template](template_rmds/hw3.Rmd) to knit an HTML document. Convert this HTML document to a PDF by opening the HTML document in your web browser. *Print* the document (Ctrl/Cmd-P) and change the destination to "Save as PDF". Submit this one PDF to Moodle.
@@ -151,16 +151,6 @@ The **Ethics** component below is the only required piece. The others are option
 **Ethics: (REQUIRED)** Read the article [Getting Past Identity to What You Really Want](https://weallcount.com/2021/02/19/getting-past-identity-to-what-you-really-want/). Write a short (roughly 250 words), thoughtful response about the ideas that the article brings forth. What skills do you think are essential for the leaders and data analysts of organizations to have to handle these issues with care?
 
 
-**Reflection:** Write a short, thoughtful reflection about how things went this week. Feel free to use whichever prompts below resonate most with you, but don't feel limited to these prompts.
-
-- What's going well? In school, work, other areas? What do you think would help sustain the things that are going well?
-- What's not going well? In school, work, other areas? What do you think would help improve the things that aren't going as well? Anything that the instructor can do?
-
-
-**Note-taking:** Share link(s) to file(s) where you keep your notes on videos/readings and on code from class.
-
-
-**Q & A:** In one short paragraph, summarize your engagement in at least 2 of the 3 following areas: (1) preceptor / instructor office hours, (2) on Slack, (3) in small groups during synchronous class sessions.
 
 
 
