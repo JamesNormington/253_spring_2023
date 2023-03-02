@@ -296,6 +296,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#ethics-in-ml-1"><i class="fa fa-check"></i>Ethics in ML</a></li>
 <li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#portfolio-work-1"><i class="fa fa-check"></i>Portfolio Work</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html"><i class="fa fa-check"></i>Homework 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#project-work-2"><i class="fa fa-check"></i>Project Work</a>
+<ul>
+<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#note-this-is-a-repeat-of-hw2.-many-of-you-struggled-with-this-section-so-this-gives-you-an-opportunity-to-incorporate-feedback-from-the-preceptors-or-try-additional-models."><i class="fa fa-check"></i>Note: this is a repeat of HW2. Many of you struggled with this section, so this gives you an opportunity to incorporate feedback from the preceptors, or try additional models.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#portfolio-work-2"><i class="fa fa-check"></i>Portfolio Work</a></li>
+<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#ethics-in-ml-2"><i class="fa fa-check"></i>Ethics in ML</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i>R Resources</a>
 <ul>
 <li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#outside-resources"><i class="fa fa-check"></i>Outside resources</a></li>
@@ -351,56 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb96-5"><a href="lasso-logistic-regression.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(probably) <span class="co">#install.packages(&#39;probably&#39;)</span></span>
 <span id="cb96-6"><a href="lasso-logistic-regression.html#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()</span>
 <span id="cb96-7"><a href="lasso-logistic-regression.html#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-8"><a href="lasso-logistic-regression.html#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(___) <span class="co"># Pick your favorite number to fill in the parentheses</span></span></code></pre></div>
-<p>If we would like to use estimates of AUC of the ROC curve to choose our final model, we can adapt the following:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lasso-logistic-regression.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure you set reference level (the outcome you are NOT interested in)</span></span>
-<span id="cb97-2"><a href="lasso-logistic-regression.html#cb97-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb97-3"><a href="lasso-logistic-regression.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">outcome =</span> <span class="fu">relevel</span>(outcome, <span class="at">ref=</span><span class="st">&#39;failure&#39;</span>)) <span class="co">#set reference level</span></span>
-<span id="cb97-4"><a href="lasso-logistic-regression.html#cb97-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-5"><a href="lasso-logistic-regression.html#cb97-5" aria-hidden="true" tabindex="-1"></a>data_cv10 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data, <span class="at">v =</span> <span class="dv">10</span>)</span>
-<span id="cb97-6"><a href="lasso-logistic-regression.html#cb97-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-7"><a href="lasso-logistic-regression.html#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic LASSO Regression Model Spec</span></span>
-<span id="cb97-8"><a href="lasso-logistic-regression.html#cb97-8" aria-hidden="true" tabindex="-1"></a>logistic_lasso_spec_tune <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb97-9"><a href="lasso-logistic-regression.html#cb97-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_engine</span>(<span class="st">&#39;glmnet&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb97-10"><a href="lasso-logistic-regression.html#cb97-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_args</span>(<span class="at">mixture =</span> <span class="dv">1</span>, <span class="at">penalty =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb97-11"><a href="lasso-logistic-regression.html#cb97-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_mode</span>(<span class="st">&#39;classification&#39;</span>)</span>
-<span id="cb97-12"><a href="lasso-logistic-regression.html#cb97-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb97-13"><a href="lasso-logistic-regression.html#cb97-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Recipe</span></span>
-<span id="cb97-14"><a href="lasso-logistic-regression.html#cb97-14" aria-hidden="true" tabindex="-1"></a>logistic_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(outcome <span class="sc">~</span> ., <span class="at">data =</span> data) <span class="sc">%&gt;%</span></span>
-<span id="cb97-15"><a href="lasso-logistic-regression.html#cb97-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb97-16"><a href="lasso-logistic-regression.html#cb97-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
-<span id="cb97-17"><a href="lasso-logistic-regression.html#cb97-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-18"><a href="lasso-logistic-regression.html#cb97-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
-<span id="cb97-19"><a href="lasso-logistic-regression.html#cb97-19" aria-hidden="true" tabindex="-1"></a>log_lasso_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb97-20"><a href="lasso-logistic-regression.html#cb97-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_recipe</span>(logistic_rec) <span class="sc">%&gt;%</span></span>
-<span id="cb97-21"><a href="lasso-logistic-regression.html#cb97-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_model</span>(logistic_lasso_spec_tune)     </span>
-<span id="cb97-22"><a href="lasso-logistic-regression.html#cb97-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-23"><a href="lasso-logistic-regression.html#cb97-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune Model (trying a variety of values of Lambda penalty)</span></span>
-<span id="cb97-24"><a href="lasso-logistic-regression.html#cb97-24" aria-hidden="true" tabindex="-1"></a>penalty_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(</span>
-<span id="cb97-25"><a href="lasso-logistic-regression.html#cb97-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">penalty</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">1</span>)), <span class="co">#log10 transformed </span></span>
-<span id="cb97-26"><a href="lasso-logistic-regression.html#cb97-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">30</span>)</span>
-<span id="cb97-27"><a href="lasso-logistic-regression.html#cb97-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-28"><a href="lasso-logistic-regression.html#cb97-28" aria-hidden="true" tabindex="-1"></a>tune_output <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>( </span>
-<span id="cb97-29"><a href="lasso-logistic-regression.html#cb97-29" aria-hidden="true" tabindex="-1"></a>  log_lasso_wf, <span class="co"># workflow</span></span>
-<span id="cb97-30"><a href="lasso-logistic-regression.html#cb97-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> data_cv10, <span class="co"># cv folds</span></span>
-<span id="cb97-31"><a href="lasso-logistic-regression.html#cb97-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(roc_auc),</span>
-<span id="cb97-32"><a href="lasso-logistic-regression.html#cb97-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>, <span class="at">event_level =</span> <span class="st">&#39;second&#39;</span>),</span>
-<span id="cb97-33"><a href="lasso-logistic-regression.html#cb97-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">grid =</span> penalty_grid <span class="co"># penalty grid defined above</span></span>
-<span id="cb97-34"><a href="lasso-logistic-regression.html#cb97-34" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb97-35"><a href="lasso-logistic-regression.html#cb97-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-36"><a href="lasso-logistic-regression.html#cb97-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Model Evaluation Metrics from Tuning</span></span>
-<span id="cb97-37"><a href="lasso-logistic-regression.html#cb97-37" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(tune_output) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
-<span id="cb97-38"><a href="lasso-logistic-regression.html#cb97-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-39"><a href="lasso-logistic-regression.html#cb97-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Select Penalty</span></span>
-<span id="cb97-40"><a href="lasso-logistic-regression.html#cb97-40" aria-hidden="true" tabindex="-1"></a>best_se_penalty <span class="ot">&lt;-</span> <span class="fu">select_by_one_std_err</span>(tune_output, <span class="at">metric =</span> <span class="st">&#39;roc_auc&#39;</span>, <span class="fu">desc</span>(penalty)) <span class="co"># choose penalty value based on the largest penalty within 1 se of the lowest CV roc_auc</span></span>
-<span id="cb97-41"><a href="lasso-logistic-regression.html#cb97-41" aria-hidden="true" tabindex="-1"></a>best_se_penalty</span>
-<span id="cb97-42"><a href="lasso-logistic-regression.html#cb97-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-43"><a href="lasso-logistic-regression.html#cb97-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Final Model</span></span>
-<span id="cb97-44"><a href="lasso-logistic-regression.html#cb97-44" aria-hidden="true" tabindex="-1"></a>final_fit_se <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(log_lasso_wf, best_se_penalty) <span class="sc">%&gt;%</span> <span class="co"># incorporates penalty value to workflow </span></span>
-<span id="cb97-45"><a href="lasso-logistic-regression.html#cb97-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit</span>(<span class="at">data =</span> data)</span>
-<span id="cb97-46"><a href="lasso-logistic-regression.html#cb97-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-47"><a href="lasso-logistic-regression.html#cb97-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-48"><a href="lasso-logistic-regression.html#cb97-48" aria-hidden="true" tabindex="-1"></a>final_fit_se <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
+<span id="cb96-8"><a href="lasso-logistic-regression.html#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2023</span>) <span class="co"># or pick your favorite number to fill in the parentheses</span></span></code></pre></div>
 <p><br><br><br></p>
 </div>
 <div id="exercises-9" class="section level2 unnumbered hasAnchor">
@@ -419,23 +379,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>capital_run_length_total</code>: sum of length of uninterrupted sequences of capital letters</li>
 </ul>
 <p>Our goal will be to use email features to predict whether or not an email is spam - essentially, to build a spam filter!</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="lasso-logistic-regression.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb98-2"><a href="lasso-logistic-regression.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb98-3"><a href="lasso-logistic-regression.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb98-4"><a href="lasso-logistic-regression.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb98-5"><a href="lasso-logistic-regression.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(probably) <span class="co">#install.packages(&#39;probably&#39;)</span></span>
-<span id="cb98-6"><a href="lasso-logistic-regression.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()</span>
-<span id="cb98-7"><a href="lasso-logistic-regression.html#cb98-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-8"><a href="lasso-logistic-regression.html#cb98-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-9"><a href="lasso-logistic-regression.html#cb98-9" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/leurr6a30f4l32a/spambase.csv?dl=1&quot;</span>)</span>
-<span id="cb98-10"><a href="lasso-logistic-regression.html#cb98-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-11"><a href="lasso-logistic-regression.html#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A little data cleaning to remove the space in &quot;not spam&quot;</span></span>
-<span id="cb98-12"><a href="lasso-logistic-regression.html#cb98-12" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> spam <span class="sc">%&gt;%</span></span>
-<span id="cb98-13"><a href="lasso-logistic-regression.html#cb98-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">spam =</span> <span class="fu">ifelse</span>(spam<span class="sc">==</span><span class="st">&quot;spam&quot;</span>, <span class="st">&quot;spam&quot;</span>, <span class="st">&quot;not_spam&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lasso-logistic-regression.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb97-2"><a href="lasso-logistic-regression.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb97-3"><a href="lasso-logistic-regression.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb97-4"><a href="lasso-logistic-regression.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb97-5"><a href="lasso-logistic-regression.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(probably) <span class="co">#install.packages(&#39;probably&#39;)</span></span>
+<span id="cb97-6"><a href="lasso-logistic-regression.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb97-7"><a href="lasso-logistic-regression.html#cb97-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-8"><a href="lasso-logistic-regression.html#cb97-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-9"><a href="lasso-logistic-regression.html#cb97-9" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.dropbox.com/s/leurr6a30f4l32a/spambase.csv?dl=1&quot;</span>)</span>
+<span id="cb97-10"><a href="lasso-logistic-regression.html#cb97-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-11"><a href="lasso-logistic-regression.html#cb97-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A little data cleaning to remove the space in &quot;not spam&quot;</span></span>
+<span id="cb97-12"><a href="lasso-logistic-regression.html#cb97-12" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> spam <span class="sc">%&gt;%</span></span>
+<span id="cb97-13"><a href="lasso-logistic-regression.html#cb97-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">spam =</span> <span class="fu">ifelse</span>(spam<span class="sc">==</span><span class="st">&quot;spam&quot;</span>, <span class="st">&quot;spam&quot;</span>, <span class="st">&quot;not_spam&quot;</span>))</span></code></pre></div>
 </div>
 <div id="exercise-1-conceptual-warmup-1" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 1: Conceptual warmup<a href="lasso-logistic-regression.html#exercise-1-conceptual-warmup-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>LASSO for the logistic regression setting works analogously to the regression setting. How would you expect a plot of test <strong>roc_auc</strong> vs. <span class="math inline">\(\lambda\)</span> to look, and why? (Draw it!)</p>
+<p>LASSO for the logistic regression setting works analogously to the regression setting. How would you expect a plot of test <strong>roc_auc</strong> vs. <span class="math inline">\(\lambda\)</span> to look, and why?</p>
 </div>
 <div id="exercise-2-implementing-lasso-logistic-regression-in-tidymodels" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 2: Implementing LASSO logistic regression in <code>tidymodels</code><a href="lasso-logistic-regression.html#exercise-2-implementing-lasso-logistic-regression-in-tidymodels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -448,46 +408,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>If needed, adjust the max or min value in the sequence up or down by a factor of 10. (You’ll be able to determine from the plot whether to adjust up or down.)</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="lasso-logistic-regression.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb99-2"><a href="lasso-logistic-regression.html#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-3"><a href="lasso-logistic-regression.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure you set reference level (to the outcome you are NOT interested in)</span></span>
-<span id="cb99-4"><a href="lasso-logistic-regression.html#cb99-4" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> spam <span class="sc">%&gt;%</span></span>
-<span id="cb99-5"><a href="lasso-logistic-regression.html#cb99-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spam =</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(spam), <span class="at">ref=</span><span class="st">&#39;not_spam&#39;</span>)) <span class="co">#set reference level</span></span>
-<span id="cb99-6"><a href="lasso-logistic-regression.html#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-7"><a href="lasso-logistic-regression.html#cb99-7" aria-hidden="true" tabindex="-1"></a>data_cv10 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(spam, <span class="at">v =</span> <span class="dv">10</span>)</span>
-<span id="cb99-8"><a href="lasso-logistic-regression.html#cb99-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-9"><a href="lasso-logistic-regression.html#cb99-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-10"><a href="lasso-logistic-regression.html#cb99-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic LASSO Regression Model Spec</span></span>
-<span id="cb99-11"><a href="lasso-logistic-regression.html#cb99-11" aria-hidden="true" tabindex="-1"></a>logistic_lasso_spec_tune <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb99-12"><a href="lasso-logistic-regression.html#cb99-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_engine</span>(<span class="st">&#39;glmnet&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb99-13"><a href="lasso-logistic-regression.html#cb99-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_args</span>(<span class="at">mixture =</span> <span class="dv">1</span>, <span class="at">penalty =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb99-14"><a href="lasso-logistic-regression.html#cb99-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_mode</span>(<span class="st">&#39;classification&#39;</span>)</span>
-<span id="cb99-15"><a href="lasso-logistic-regression.html#cb99-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-16"><a href="lasso-logistic-regression.html#cb99-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Recipe</span></span>
-<span id="cb99-17"><a href="lasso-logistic-regression.html#cb99-17" aria-hidden="true" tabindex="-1"></a>logistic_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(_____, <span class="at">data =</span> spam) <span class="sc">%&gt;%</span></span>
-<span id="cb99-18"><a href="lasso-logistic-regression.html#cb99-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb99-19"><a href="lasso-logistic-regression.html#cb99-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
-<span id="cb99-20"><a href="lasso-logistic-regression.html#cb99-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-21"><a href="lasso-logistic-regression.html#cb99-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
-<span id="cb99-22"><a href="lasso-logistic-regression.html#cb99-22" aria-hidden="true" tabindex="-1"></a>log_lasso_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb99-23"><a href="lasso-logistic-regression.html#cb99-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_recipe</span>(logistic_rec) <span class="sc">%&gt;%</span></span>
-<span id="cb99-24"><a href="lasso-logistic-regression.html#cb99-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_model</span>(logistic_lasso_spec_tune) </span>
-<span id="cb99-25"><a href="lasso-logistic-regression.html#cb99-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-26"><a href="lasso-logistic-regression.html#cb99-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune Model (trying a variety of values of Lambda penalty)</span></span>
-<span id="cb99-27"><a href="lasso-logistic-regression.html#cb99-27" aria-hidden="true" tabindex="-1"></a>penalty_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(</span>
-<span id="cb99-28"><a href="lasso-logistic-regression.html#cb99-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">penalty</span>(<span class="at">range =</span> <span class="fu">c</span>(__,__)), <span class="co">#log10 transformed </span></span>
-<span id="cb99-29"><a href="lasso-logistic-regression.html#cb99-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">100</span>)</span>
-<span id="cb99-30"><a href="lasso-logistic-regression.html#cb99-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-31"><a href="lasso-logistic-regression.html#cb99-31" aria-hidden="true" tabindex="-1"></a>tune_output <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>( </span>
-<span id="cb99-32"><a href="lasso-logistic-regression.html#cb99-32" aria-hidden="true" tabindex="-1"></a>  log_lasso_wf, <span class="co"># workflow</span></span>
-<span id="cb99-33"><a href="lasso-logistic-regression.html#cb99-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> data_cv10, <span class="co"># cv folds</span></span>
-<span id="cb99-34"><a href="lasso-logistic-regression.html#cb99-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(roc_auc,accuracy),</span>
-<span id="cb99-35"><a href="lasso-logistic-regression.html#cb99-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>, <span class="at">event_level =</span> <span class="st">&#39;second&#39;</span>),</span>
-<span id="cb99-36"><a href="lasso-logistic-regression.html#cb99-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">grid =</span> penalty_grid <span class="co"># penalty grid defined above</span></span>
-<span id="cb99-37"><a href="lasso-logistic-regression.html#cb99-37" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb99-38"><a href="lasso-logistic-regression.html#cb99-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-39"><a href="lasso-logistic-regression.html#cb99-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Model Evaluation Metrics from Tuning</span></span>
-<span id="cb99-40"><a href="lasso-logistic-regression.html#cb99-40" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(tune_output) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="lasso-logistic-regression.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb98-2"><a href="lasso-logistic-regression.html#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-3"><a href="lasso-logistic-regression.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure you set reference level (to the outcome you are NOT interested in)</span></span>
+<span id="cb98-4"><a href="lasso-logistic-regression.html#cb98-4" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> spam <span class="sc">%&gt;%</span></span>
+<span id="cb98-5"><a href="lasso-logistic-regression.html#cb98-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spam =</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(spam), <span class="at">ref=</span><span class="st">&#39;not_spam&#39;</span>)) <span class="co">#set reference level</span></span>
+<span id="cb98-6"><a href="lasso-logistic-regression.html#cb98-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-7"><a href="lasso-logistic-regression.html#cb98-7" aria-hidden="true" tabindex="-1"></a>data_cv10 <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(spam, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb98-8"><a href="lasso-logistic-regression.html#cb98-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-9"><a href="lasso-logistic-regression.html#cb98-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-10"><a href="lasso-logistic-regression.html#cb98-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic LASSO Regression Model Spec</span></span>
+<span id="cb98-11"><a href="lasso-logistic-regression.html#cb98-11" aria-hidden="true" tabindex="-1"></a>logistic_lasso_spec_tune <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb98-12"><a href="lasso-logistic-regression.html#cb98-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_engine</span>(<span class="st">&#39;glmnet&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb98-13"><a href="lasso-logistic-regression.html#cb98-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_args</span>(<span class="at">mixture =</span> <span class="dv">1</span>, <span class="at">penalty =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb98-14"><a href="lasso-logistic-regression.html#cb98-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_mode</span>(<span class="st">&#39;classification&#39;</span>)</span>
+<span id="cb98-15"><a href="lasso-logistic-regression.html#cb98-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-16"><a href="lasso-logistic-regression.html#cb98-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Recipe</span></span>
+<span id="cb98-17"><a href="lasso-logistic-regression.html#cb98-17" aria-hidden="true" tabindex="-1"></a>logistic_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(_____, <span class="at">data =</span> spam) <span class="sc">%&gt;%</span></span>
+<span id="cb98-18"><a href="lasso-logistic-regression.html#cb98-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-19"><a href="lasso-logistic-regression.html#cb98-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb98-20"><a href="lasso-logistic-regression.html#cb98-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-21"><a href="lasso-logistic-regression.html#cb98-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow (Recipe + Model)</span></span>
+<span id="cb98-22"><a href="lasso-logistic-regression.html#cb98-22" aria-hidden="true" tabindex="-1"></a>log_lasso_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb98-23"><a href="lasso-logistic-regression.html#cb98-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_recipe</span>(logistic_rec) <span class="sc">%&gt;%</span></span>
+<span id="cb98-24"><a href="lasso-logistic-regression.html#cb98-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_model</span>(logistic_lasso_spec_tune) </span>
+<span id="cb98-25"><a href="lasso-logistic-regression.html#cb98-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-26"><a href="lasso-logistic-regression.html#cb98-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Tune Model (trying a variety of values of Lambda penalty)</span></span>
+<span id="cb98-27"><a href="lasso-logistic-regression.html#cb98-27" aria-hidden="true" tabindex="-1"></a>penalty_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(</span>
+<span id="cb98-28"><a href="lasso-logistic-regression.html#cb98-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">penalty</span>(<span class="at">range =</span> <span class="fu">c</span>(__,__)), <span class="co">#log10 transformed </span></span>
+<span id="cb98-29"><a href="lasso-logistic-regression.html#cb98-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">100</span>)</span>
+<span id="cb98-30"><a href="lasso-logistic-regression.html#cb98-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-31"><a href="lasso-logistic-regression.html#cb98-31" aria-hidden="true" tabindex="-1"></a>tune_output <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>( </span>
+<span id="cb98-32"><a href="lasso-logistic-regression.html#cb98-32" aria-hidden="true" tabindex="-1"></a>  log_lasso_wf, <span class="co"># workflow</span></span>
+<span id="cb98-33"><a href="lasso-logistic-regression.html#cb98-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> data_cv10, <span class="co"># cv folds</span></span>
+<span id="cb98-34"><a href="lasso-logistic-regression.html#cb98-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(roc_auc,accuracy),</span>
+<span id="cb98-35"><a href="lasso-logistic-regression.html#cb98-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>, <span class="at">event_level =</span> <span class="st">&#39;second&#39;</span>),</span>
+<span id="cb98-36"><a href="lasso-logistic-regression.html#cb98-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">grid =</span> penalty_grid <span class="co"># penalty grid defined above</span></span>
+<span id="cb98-37"><a href="lasso-logistic-regression.html#cb98-37" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb98-38"><a href="lasso-logistic-regression.html#cb98-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-39"><a href="lasso-logistic-regression.html#cb98-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Model Evaluation Metrics from Tuning</span></span>
+<span id="cb98-40"><a href="lasso-logistic-regression.html#cb98-40" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(tune_output) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
 </div>
 <div id="exercise-3-inspecting-the-model" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 3: Inspecting the model<a href="lasso-logistic-regression.html#exercise-3-inspecting-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -495,55 +455,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Inspect the plot of CV AUC vs. <span class="math inline">\(\lambda\)</span> once more (after adjusting the penalty grid).</li>
 </ol>
 <p>Is anything surprising about the results relative to your expectations from Exercise 1? Brainstorm some possible explanations in consideration of the data context.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="lasso-logistic-regression.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Model Evaluation Metrics from Tuning</span></span>
-<span id="cb100-2"><a href="lasso-logistic-regression.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(tune_output) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="lasso-logistic-regression.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Model Evaluation Metrics from Tuning</span></span>
+<span id="cb99-2"><a href="lasso-logistic-regression.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(tune_output) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Choose a final model whose CV AUC is within one standard error of the overall best metric. Comment on the variables that are removed from the model.</li>
 </ol>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="lasso-logistic-regression.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select Penalty</span></span>
-<span id="cb101-2"><a href="lasso-logistic-regression.html#cb101-2" aria-hidden="true" tabindex="-1"></a>best_se_penalty <span class="ot">&lt;-</span> <span class="fu">select_by_one_std_err</span>(tune_output, <span class="at">metric =</span> <span class="st">&#39;roc_auc&#39;</span>, <span class="fu">desc</span>(penalty)) <span class="co"># choose penalty value based on the largest penalty within 1 se of the highest CV roc_auc</span></span>
-<span id="cb101-3"><a href="lasso-logistic-regression.html#cb101-3" aria-hidden="true" tabindex="-1"></a>best_se_penalty</span>
-<span id="cb101-4"><a href="lasso-logistic-regression.html#cb101-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-5"><a href="lasso-logistic-regression.html#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Final Model</span></span>
-<span id="cb101-6"><a href="lasso-logistic-regression.html#cb101-6" aria-hidden="true" tabindex="-1"></a>final_fit_se <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(log_lasso_wf, best_se_penalty) <span class="sc">%&gt;%</span> <span class="co"># incorporates penalty value to workflow </span></span>
-<span id="cb101-7"><a href="lasso-logistic-regression.html#cb101-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit</span>(<span class="at">data =</span> spam)</span>
-<span id="cb101-8"><a href="lasso-logistic-regression.html#cb101-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-9"><a href="lasso-logistic-regression.html#cb101-9" aria-hidden="true" tabindex="-1"></a>final_fit_se <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="lasso-logistic-regression.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select Penalty</span></span>
+<span id="cb100-2"><a href="lasso-logistic-regression.html#cb100-2" aria-hidden="true" tabindex="-1"></a>best_se_penalty <span class="ot">&lt;-</span> <span class="fu">select_by_one_std_err</span>(tune_output, <span class="at">metric =</span> <span class="st">&#39;roc_auc&#39;</span>, <span class="fu">desc</span>(penalty)) <span class="co"># choose penalty value based on the largest penalty within 1 se of the highest CV roc_auc</span></span>
+<span id="cb100-3"><a href="lasso-logistic-regression.html#cb100-3" aria-hidden="true" tabindex="-1"></a>best_se_penalty</span>
+<span id="cb100-4"><a href="lasso-logistic-regression.html#cb100-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-5"><a href="lasso-logistic-regression.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Final Model</span></span>
+<span id="cb100-6"><a href="lasso-logistic-regression.html#cb100-6" aria-hidden="true" tabindex="-1"></a>final_fit_se <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(log_lasso_wf, best_se_penalty) <span class="sc">%&gt;%</span> <span class="co"># incorporates penalty value to workflow </span></span>
+<span id="cb100-7"><a href="lasso-logistic-regression.html#cb100-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit</span>(<span class="at">data =</span> spam)</span>
+<span id="cb100-8"><a href="lasso-logistic-regression.html#cb100-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-9"><a href="lasso-logistic-regression.html#cb100-9" aria-hidden="true" tabindex="-1"></a>final_fit_se <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
-<li>Comment on the variable importance based on the how long a variable stayed in the model. Connect the output to the data context.</li>
+<li>Compute the variable importance by how long it stayed in the model (with increasing <span class="math inline">\(\lambda\)</span>).</li>
 </ol>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="lasso-logistic-regression.html#cb102-1" aria-hidden="true" tabindex="-1"></a>glmnet_output <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span> <span class="fu">extract_fit_engine</span>()</span>
-<span id="cb102-2"><a href="lasso-logistic-regression.html#cb102-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb102-3"><a href="lasso-logistic-regression.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a boolean matrix (predictors x lambdas) of variable exclusion</span></span>
-<span id="cb102-4"><a href="lasso-logistic-regression.html#cb102-4" aria-hidden="true" tabindex="-1"></a>bool_predictor_exclude <span class="ot">&lt;-</span> glmnet_output<span class="sc">$</span>beta<span class="sc">==</span><span class="dv">0</span></span>
-<span id="cb102-5"><a href="lasso-logistic-regression.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-6"><a href="lasso-logistic-regression.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each variable</span></span>
-<span id="cb102-7"><a href="lasso-logistic-regression.html#cb102-7" aria-hidden="true" tabindex="-1"></a>var_imp <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(bool_predictor_exclude)), <span class="cf">function</span>(row) {</span>
-<span id="cb102-8"><a href="lasso-logistic-regression.html#cb102-8" aria-hidden="true" tabindex="-1"></a>    this_coeff_path <span class="ot">&lt;-</span> bool_predictor_exclude[row,]</span>
-<span id="cb102-9"><a href="lasso-logistic-regression.html#cb102-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">sum</span>(this_coeff_path) <span class="sc">==</span> <span class="fu">ncol</span>(bool_predictor_exclude)){ <span class="fu">return</span>(<span class="dv">0</span>)}<span class="cf">else</span>{</span>
-<span id="cb102-10"><a href="lasso-logistic-regression.html#cb102-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">ncol</span>(bool_predictor_exclude) <span class="sc">-</span> <span class="fu">which.min</span>(this_coeff_path) <span class="sc">+</span> <span class="dv">1</span>)}</span>
-<span id="cb102-11"><a href="lasso-logistic-regression.html#cb102-11" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb102-12"><a href="lasso-logistic-regression.html#cb102-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-13"><a href="lasso-logistic-regression.html#cb102-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset of this information and sort</span></span>
-<span id="cb102-14"><a href="lasso-logistic-regression.html#cb102-14" aria-hidden="true" tabindex="-1"></a>var_imp_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb102-15"><a href="lasso-logistic-regression.html#cb102-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_name =</span> <span class="fu">rownames</span>(bool_predictor_exclude),</span>
-<span id="cb102-16"><a href="lasso-logistic-regression.html#cb102-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_imp =</span> var_imp</span>
-<span id="cb102-17"><a href="lasso-logistic-regression.html#cb102-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb102-18"><a href="lasso-logistic-regression.html#cb102-18" aria-hidden="true" tabindex="-1"></a>var_imp_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(var_imp))</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="lasso-logistic-regression.html#cb101-1" aria-hidden="true" tabindex="-1"></a>glmnet_output <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span> <span class="fu">extract_fit_engine</span>()</span>
+<span id="cb101-2"><a href="lasso-logistic-regression.html#cb101-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb101-3"><a href="lasso-logistic-regression.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a boolean matrix (predictors x lambdas) of variable exclusion</span></span>
+<span id="cb101-4"><a href="lasso-logistic-regression.html#cb101-4" aria-hidden="true" tabindex="-1"></a>bool_predictor_exclude <span class="ot">&lt;-</span> glmnet_output<span class="sc">$</span>beta<span class="sc">==</span><span class="dv">0</span></span>
+<span id="cb101-5"><a href="lasso-logistic-regression.html#cb101-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-6"><a href="lasso-logistic-regression.html#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each variable</span></span>
+<span id="cb101-7"><a href="lasso-logistic-regression.html#cb101-7" aria-hidden="true" tabindex="-1"></a>var_imp <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(bool_predictor_exclude)), <span class="cf">function</span>(row) {</span>
+<span id="cb101-8"><a href="lasso-logistic-regression.html#cb101-8" aria-hidden="true" tabindex="-1"></a>    this_coeff_path <span class="ot">&lt;-</span> bool_predictor_exclude[row,]</span>
+<span id="cb101-9"><a href="lasso-logistic-regression.html#cb101-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">sum</span>(this_coeff_path) <span class="sc">==</span> <span class="fu">ncol</span>(bool_predictor_exclude)){ <span class="fu">return</span>(<span class="dv">0</span>)}<span class="cf">else</span>{</span>
+<span id="cb101-10"><a href="lasso-logistic-regression.html#cb101-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">ncol</span>(bool_predictor_exclude) <span class="sc">-</span> <span class="fu">which.min</span>(this_coeff_path) <span class="sc">+</span> <span class="dv">1</span>)}</span>
+<span id="cb101-11"><a href="lasso-logistic-regression.html#cb101-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb101-12"><a href="lasso-logistic-regression.html#cb101-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-13"><a href="lasso-logistic-regression.html#cb101-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset of this information and sort</span></span>
+<span id="cb101-14"><a href="lasso-logistic-regression.html#cb101-14" aria-hidden="true" tabindex="-1"></a>var_imp_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb101-15"><a href="lasso-logistic-regression.html#cb101-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_name =</span> <span class="fu">rownames</span>(bool_predictor_exclude),</span>
+<span id="cb101-16"><a href="lasso-logistic-regression.html#cb101-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_imp =</span> var_imp</span>
+<span id="cb101-17"><a href="lasso-logistic-regression.html#cb101-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb101-18"><a href="lasso-logistic-regression.html#cb101-18" aria-hidden="true" tabindex="-1"></a>var_imp_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(var_imp))</span></code></pre></div>
 </div>
 <div id="exercise-4-interpreting-evaluation-metrics" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 4: Interpreting evaluation metrics<a href="lasso-logistic-regression.html#exercise-4-interpreting-evaluation-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Inspect the overall CV results for the “best” <span class="math inline">\(\lambda\)</span>, and compute the no-information rate (NIR):</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="lasso-logistic-regression.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CV results for &quot;best lambda&quot;</span></span>
-<span id="cb103-2"><a href="lasso-logistic-regression.html#cb103-2" aria-hidden="true" tabindex="-1"></a>tune_output <span class="sc">%&gt;%</span></span>
-<span id="cb103-3"><a href="lasso-logistic-regression.html#cb103-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb103-4"><a href="lasso-logistic-regression.html#cb103-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(penalty <span class="sc">==</span> best_se_penalty <span class="sc">%&gt;%</span> <span class="fu">pull</span>(penalty))</span>
-<span id="cb103-5"><a href="lasso-logistic-regression.html#cb103-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-6"><a href="lasso-logistic-regression.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Count up number of spam and not_spam emails in the training data</span></span>
-<span id="cb103-7"><a href="lasso-logistic-regression.html#cb103-7" aria-hidden="true" tabindex="-1"></a>spam <span class="sc">%&gt;%</span></span>
-<span id="cb103-8"><a href="lasso-logistic-regression.html#cb103-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(spam) <span class="co"># Name of the outcome variable goes inside count()</span></span>
-<span id="cb103-9"><a href="lasso-logistic-regression.html#cb103-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-10"><a href="lasso-logistic-regression.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the NIR</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="lasso-logistic-regression.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CV results for &quot;best lambda&quot;</span></span>
+<span id="cb102-2"><a href="lasso-logistic-regression.html#cb102-2" aria-hidden="true" tabindex="-1"></a>tune_output <span class="sc">%&gt;%</span></span>
+<span id="cb102-3"><a href="lasso-logistic-regression.html#cb102-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb102-4"><a href="lasso-logistic-regression.html#cb102-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(penalty <span class="sc">==</span> best_se_penalty <span class="sc">%&gt;%</span> <span class="fu">pull</span>(penalty))</span>
+<span id="cb102-5"><a href="lasso-logistic-regression.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-6"><a href="lasso-logistic-regression.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Count up number of spam and not_spam emails in the training data</span></span>
+<span id="cb102-7"><a href="lasso-logistic-regression.html#cb102-7" aria-hidden="true" tabindex="-1"></a>spam <span class="sc">%&gt;%</span></span>
+<span id="cb102-8"><a href="lasso-logistic-regression.html#cb102-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(spam) <span class="co"># Name of the outcome variable goes inside count()</span></span>
+<span id="cb102-9"><a href="lasso-logistic-regression.html#cb102-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-10"><a href="lasso-logistic-regression.html#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the NIR</span></span></code></pre></div>
 <ul>
 <li>Why is an AUC of 1 the best possible value for this metric? How does the AUC for our spam model look relative to this best value?</li>
 </ul>
@@ -551,15 +511,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercise-5-using-the-final-model-choosing-a-threshold" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 5: Using the final model (choosing a threshold)<a href="lasso-logistic-regression.html#exercise-5-using-the-final-model-choosing-a-threshold" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once we’ve used LASSO to do model selection (to balance bias and variance), we need to use the final model to make predictions.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="lasso-logistic-regression.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Soft Predictions on Training Data</span></span>
-<span id="cb104-2"><a href="lasso-logistic-regression.html#cb104-2" aria-hidden="true" tabindex="-1"></a>final_output <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span> <span class="fu">predict</span>(<span class="at">new_data =</span> spam, <span class="at">type=</span><span class="st">&#39;prob&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(spam)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="lasso-logistic-regression.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Soft Predictions on Training Data</span></span>
+<span id="cb103-2"><a href="lasso-logistic-regression.html#cb103-2" aria-hidden="true" tabindex="-1"></a>final_output <span class="ot">&lt;-</span> final_fit_se <span class="sc">%&gt;%</span> <span class="fu">predict</span>(<span class="at">new_data =</span> spam, <span class="at">type=</span><span class="st">&#39;prob&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(spam)</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>Make an ROC curve of the sensitivity and specificity for the final model. First, consider sensitivity and specificity - what do these numbers mean? Do you think higher sensitivity or specificity would be more important in designing a spam filter? Comment about the shape of the ROC curve and what that tells you about the model.</li>
 </ol>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="lasso-logistic-regression.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use soft predictions</span></span>
-<span id="cb105-2"><a href="lasso-logistic-regression.html#cb105-2" aria-hidden="true" tabindex="-1"></a>final_output <span class="sc">%&gt;%</span></span>
-<span id="cb105-3"><a href="lasso-logistic-regression.html#cb105-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">roc_curve</span>(spam,.pred_spam,<span class="at">event_level =</span> <span class="st">&#39;second&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb105-4"><a href="lasso-logistic-regression.html#cb105-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">autoplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="lasso-logistic-regression.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use soft predictions</span></span>
+<span id="cb104-2"><a href="lasso-logistic-regression.html#cb104-2" aria-hidden="true" tabindex="-1"></a>final_output <span class="sc">%&gt;%</span></span>
+<span id="cb104-3"><a href="lasso-logistic-regression.html#cb104-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">roc_curve</span>(spam,.pred_spam,<span class="at">event_level =</span> <span class="st">&#39;second&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-4"><a href="lasso-logistic-regression.html#cb104-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">autoplot</span>()</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Similar to the ROC curve, we can calculate the sensitivity and specificity for a variety of threshold values. Then we will calculate two measures.</li>
 </ol>
@@ -568,43 +528,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>distance (Euclidean distance to [false positive = 0, sens = 1]): (1 - sensitivity) ^ 2 + (1 - specificity) ^ 2</li>
 </ul>
 <p>We can use these measures to help us choose an optimal threshold.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="lasso-logistic-regression.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># thresholds in terms of reference level</span></span>
-<span id="cb106-2"><a href="lasso-logistic-regression.html#cb106-2" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="ot">&lt;-</span> final_output <span class="sc">%&gt;%</span></span>
-<span id="cb106-3"><a href="lasso-logistic-regression.html#cb106-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">threshold_perf</span>(<span class="at">truth =</span> spam, <span class="at">estimate =</span> .pred_not_spam, <span class="at">thresholds =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">by=</span>.<span class="dv">01</span>)) </span>
-<span id="cb106-4"><a href="lasso-logistic-regression.html#cb106-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-5"><a href="lasso-logistic-regression.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co"># J-index v. threshold for not_spam</span></span>
-<span id="cb106-6"><a href="lasso-logistic-regression.html#cb106-6" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="sc">%&gt;%</span></span>
-<span id="cb106-7"><a href="lasso-logistic-regression.html#cb106-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;j_index&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb106-8"><a href="lasso-logistic-regression.html#cb106-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .threshold, <span class="at">y =</span> .estimate)) <span class="sc">+</span></span>
-<span id="cb106-9"><a href="lasso-logistic-regression.html#cb106-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb106-10"><a href="lasso-logistic-regression.html#cb106-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&#39;J-index&#39;</span>, <span class="at">x =</span> <span class="st">&#39;threshold&#39;</span>) <span class="sc">+</span></span>
-<span id="cb106-11"><a href="lasso-logistic-regression.html#cb106-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span>
-<span id="cb106-12"><a href="lasso-logistic-regression.html#cb106-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-13"><a href="lasso-logistic-regression.html#cb106-13" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="sc">%&gt;%</span></span>
-<span id="cb106-14"><a href="lasso-logistic-regression.html#cb106-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;j_index&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb106-15"><a href="lasso-logistic-regression.html#cb106-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(.estimate))</span>
-<span id="cb106-16"><a href="lasso-logistic-regression.html#cb106-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-17"><a href="lasso-logistic-regression.html#cb106-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-18"><a href="lasso-logistic-regression.html#cb106-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance v. threshold for not_spam</span></span>
-<span id="cb106-19"><a href="lasso-logistic-regression.html#cb106-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-20"><a href="lasso-logistic-regression.html#cb106-20" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="sc">%&gt;%</span></span>
-<span id="cb106-21"><a href="lasso-logistic-regression.html#cb106-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;distance&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb106-22"><a href="lasso-logistic-regression.html#cb106-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .threshold, <span class="at">y =</span> .estimate)) <span class="sc">+</span></span>
-<span id="cb106-23"><a href="lasso-logistic-regression.html#cb106-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb106-24"><a href="lasso-logistic-regression.html#cb106-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&#39;Distance&#39;</span>, <span class="at">x =</span> <span class="st">&#39;threshold&#39;</span>) <span class="sc">+</span></span>
-<span id="cb106-25"><a href="lasso-logistic-regression.html#cb106-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span>
-<span id="cb106-26"><a href="lasso-logistic-regression.html#cb106-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-27"><a href="lasso-logistic-regression.html#cb106-27" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="sc">%&gt;%</span></span>
-<span id="cb106-28"><a href="lasso-logistic-regression.html#cb106-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;distance&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb106-29"><a href="lasso-logistic-regression.html#cb106-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(.estimate)</span>
-<span id="cb106-30"><a href="lasso-logistic-regression.html#cb106-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-31"><a href="lasso-logistic-regression.html#cb106-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-32"><a href="lasso-logistic-regression.html#cb106-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-33"><a href="lasso-logistic-regression.html#cb106-33" aria-hidden="true" tabindex="-1"></a>log_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(accuracy,sens,yardstick<span class="sc">::</span>spec)</span>
-<span id="cb106-34"><a href="lasso-logistic-regression.html#cb106-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-35"><a href="lasso-logistic-regression.html#cb106-35" aria-hidden="true" tabindex="-1"></a>final_output <span class="sc">%&gt;%</span></span>
-<span id="cb106-36"><a href="lasso-logistic-regression.html#cb106-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">.pred_class =</span> <span class="fu">make_two_class_pred</span>(.pred_not_spam, <span class="fu">levels</span>(spam), <span class="at">threshold =</span> ___ )) <span class="sc">%&gt;%</span></span>
-<span id="cb106-37"><a href="lasso-logistic-regression.html#cb106-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log_metrics</span>(<span class="at">truth =</span> spam, <span class="at">estimate =</span> .pred_class, <span class="at">event_level =</span> <span class="st">&#39;second&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="lasso-logistic-regression.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># thresholds in terms of reference level</span></span>
+<span id="cb105-2"><a href="lasso-logistic-regression.html#cb105-2" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="ot">&lt;-</span> final_output <span class="sc">%&gt;%</span></span>
+<span id="cb105-3"><a href="lasso-logistic-regression.html#cb105-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">threshold_perf</span>(<span class="at">truth =</span> spam, <span class="at">estimate =</span> .pred_not_spam, <span class="at">thresholds =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">by=</span>.<span class="dv">01</span>)) </span>
+<span id="cb105-4"><a href="lasso-logistic-regression.html#cb105-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-5"><a href="lasso-logistic-regression.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="co"># J-index v. threshold for not_spam</span></span>
+<span id="cb105-6"><a href="lasso-logistic-regression.html#cb105-6" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="sc">%&gt;%</span></span>
+<span id="cb105-7"><a href="lasso-logistic-regression.html#cb105-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;j_index&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb105-8"><a href="lasso-logistic-regression.html#cb105-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .threshold, <span class="at">y =</span> .estimate)) <span class="sc">+</span></span>
+<span id="cb105-9"><a href="lasso-logistic-regression.html#cb105-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb105-10"><a href="lasso-logistic-regression.html#cb105-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&#39;J-index&#39;</span>, <span class="at">x =</span> <span class="st">&#39;threshold&#39;</span>) <span class="sc">+</span></span>
+<span id="cb105-11"><a href="lasso-logistic-regression.html#cb105-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span>
+<span id="cb105-12"><a href="lasso-logistic-regression.html#cb105-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-13"><a href="lasso-logistic-regression.html#cb105-13" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="sc">%&gt;%</span></span>
+<span id="cb105-14"><a href="lasso-logistic-regression.html#cb105-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;j_index&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb105-15"><a href="lasso-logistic-regression.html#cb105-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(.estimate))</span>
+<span id="cb105-16"><a href="lasso-logistic-regression.html#cb105-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-17"><a href="lasso-logistic-regression.html#cb105-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-18"><a href="lasso-logistic-regression.html#cb105-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance v. threshold for not_spam</span></span>
+<span id="cb105-19"><a href="lasso-logistic-regression.html#cb105-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-20"><a href="lasso-logistic-regression.html#cb105-20" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="sc">%&gt;%</span></span>
+<span id="cb105-21"><a href="lasso-logistic-regression.html#cb105-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;distance&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb105-22"><a href="lasso-logistic-regression.html#cb105-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> .threshold, <span class="at">y =</span> .estimate)) <span class="sc">+</span></span>
+<span id="cb105-23"><a href="lasso-logistic-regression.html#cb105-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb105-24"><a href="lasso-logistic-regression.html#cb105-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&#39;Distance&#39;</span>, <span class="at">x =</span> <span class="st">&#39;threshold&#39;</span>) <span class="sc">+</span></span>
+<span id="cb105-25"><a href="lasso-logistic-regression.html#cb105-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span>
+<span id="cb105-26"><a href="lasso-logistic-regression.html#cb105-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-27"><a href="lasso-logistic-regression.html#cb105-27" aria-hidden="true" tabindex="-1"></a>threshold_output <span class="sc">%&gt;%</span></span>
+<span id="cb105-28"><a href="lasso-logistic-regression.html#cb105-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;distance&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb105-29"><a href="lasso-logistic-regression.html#cb105-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(.estimate)</span>
+<span id="cb105-30"><a href="lasso-logistic-regression.html#cb105-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-31"><a href="lasso-logistic-regression.html#cb105-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-32"><a href="lasso-logistic-regression.html#cb105-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-33"><a href="lasso-logistic-regression.html#cb105-33" aria-hidden="true" tabindex="-1"></a>log_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(accuracy,sens,yardstick<span class="sc">::</span>spec)</span>
+<span id="cb105-34"><a href="lasso-logistic-regression.html#cb105-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-35"><a href="lasso-logistic-regression.html#cb105-35" aria-hidden="true" tabindex="-1"></a>final_output <span class="sc">%&gt;%</span></span>
+<span id="cb105-36"><a href="lasso-logistic-regression.html#cb105-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">.pred_class =</span> <span class="fu">make_two_class_pred</span>(.pred_not_spam, <span class="fu">levels</span>(spam), <span class="at">threshold =</span> ___ )) <span class="sc">%&gt;%</span></span>
+<span id="cb105-37"><a href="lasso-logistic-regression.html#cb105-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log_metrics</span>(<span class="at">truth =</span> spam, <span class="at">estimate =</span> .pred_class, <span class="at">event_level =</span> <span class="st">&#39;second&#39;</span>)</span></code></pre></div>
 <p>Choose a threshold and interpret overall accuracy - does this seem high? How can the no-information rate (NIR) help us interpret the overall accuracy?</p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>There are data contexts in which you might want to weigh the relative cost of a false negative to a false positive and incorporate that into your choice of threshold.</li>
@@ -623,13 +583,13 @@ This value <span class="math inline">\(r\)</span> gives a measure of the relativ
 <li>Weighted distance: (1 - sensitivity) ^ 2 + r*(1 - specificity) ^ 2</li>
 </ul>
 <p><strong>Computational Thinking Exercise</strong>: If you were to implement these weighted measures (j-index and distance), how would you go about using the following ROC output to calculate the measures and find the optimal threshold. Write our the steps in words using the names of functions you might use, but don’t actually code it up.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="lasso-logistic-regression.html#cb107-1" aria-hidden="true" tabindex="-1"></a>final_output <span class="sc">%&gt;%</span></span>
-<span id="cb107-2"><a href="lasso-logistic-regression.html#cb107-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">roc_curve</span>(spam,.pred_spam,<span class="at">event_level =</span> <span class="st">&#39;second&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="lasso-logistic-regression.html#cb106-1" aria-hidden="true" tabindex="-1"></a>final_output <span class="sc">%&gt;%</span></span>
+<span id="cb106-2"><a href="lasso-logistic-regression.html#cb106-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">roc_curve</span>(spam,.pred_spam,<span class="at">event_level =</span> <span class="st">&#39;second&#39;</span>)</span></code></pre></div>
 </div>
 <div id="exercise-6-algorithmic-understanding-for-evaluation-metrics" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 6: Algorithmic understanding for evaluation metrics<a href="lasso-logistic-regression.html#exercise-6-algorithmic-understanding-for-evaluation-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Inspect the iteration specific information from tuning the LASSO model (focus on the “best” penalty term).</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="lasso-logistic-regression.html#cb108-1" aria-hidden="true" tabindex="-1"></a>tune_output <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>(<span class="at">summarize =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(penalty <span class="sc">==</span> best_se_penalty <span class="sc">%&gt;%</span> <span class="fu">pull</span>(penalty))</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="lasso-logistic-regression.html#cb107-1" aria-hidden="true" tabindex="-1"></a>tune_output <span class="sc">%&gt;%</span> <span class="fu">collect_metrics</span>(<span class="at">summarize =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(penalty <span class="sc">==</span> best_se_penalty <span class="sc">%&gt;%</span> <span class="fu">pull</span>(penalty))</span></code></pre></div>
 <p>How is one row of information computed? Carefully describe (in words) the CV process for a single iteration to estimate each of CV <code>roc_auc</code> and <code>accuracy</code> (overall accuracy). Use a generic confusion matrix (filled with TP, TP, FP, FN instead of hard numbers) to illustrate the underlying computations.</p>
 
 </div>

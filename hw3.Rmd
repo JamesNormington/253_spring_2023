@@ -5,13 +5,10 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 # Homework 3 {-}
 
 <center>
-**Due Monday, March 27th at 11:59pm CST on [Moodle](https://moodle.macalester.edu/mod/assign/view.php?id=51221)**
+**Due Monday, March 27th at 11:59pm CST**
 </center>
 
-**Deliverables:** Please use [this template](template_rmds/hw3.Rmd) to knit an HTML document. Convert this HTML document to a PDF by opening the HTML document in your web browser. *Print* the document (Ctrl/Cmd-P) and change the destination to "Save as PDF". Submit this one PDF to Moodle.
-
-Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed.
-
+**Deliverables:** Please use [this template](template_rmds/hw3.Rmd) to knit an HTML or PDF document, and submit to Moodle.
 
 
 <br><br><br>
@@ -20,38 +17,21 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
 
 ## Project Work {-}
 
-(Note: This is a repeat of the [Homework 2] investigations.)
+### Note: this is a repeat of HW2. Many of you struggled with this section, so this gives you an opportunity to incorporate feedback from the preceptors, or try additional models. {-}
 
-**Goal:** Begin an analysis of your dataset to answer your **regression** research question.
-
-<br>
-
-**Collaboration:** If you have already formed a team (of at most 3 members) for the project, this part can be done as a team. *Only one team member should submit a Project Work section.*
-
-<br>
-
-**Grading:** Completing this Project Work section is a required part of the final project. Rather than receiving a grade for the analyses below, you will get qualitative feedback from the instructor. It is the **synthesis** of the analyses across homework assignments that will determine the final project grade.
-
-<br>
-
-**Data cleaning:** If your dataset requires any cleaning (e.g., merging datasets, creation of new variables), first consult the [R Resources page](r-resources.html) to see if your questions are answered there. If not, post on the `#rcode-questions` channel in our Slack workspace to ask for help. *Please ask for help early and regularly* to avoid stressful workloads.
+**Goal:** Finish an analysis of your dataset to answer your **regression** research question.
 
 <br>
 
 **Required Analyses:**
 
 1. **Initial investigation: ignoring nonlinearity (for now)**
-    - Use ordinary least squares (OLS) regression, forward and/or backward selection, and LASSO to build initial models for your quantitative outcome as a function of the predictors of interest. (As part of data cleaning, exclude any variables that you don't want to consider as predictors.)
+    - Use ordinary least squares (OLS) regression and LASSO to build initial models for your quantitative outcome as a function of the predictors of interest. (As part of data cleaning, exclude any variables that you don't want to consider as predictors.)
         - These models should not include any transformations to deal with nonlinearity. You'll explore this in the next investigation.
-        - Note: If you have highly collinear/redundant variables, you might see the message "Reordering variables and trying again" and associated `warning()`s about linear dependencies being found. Sometimes stepwise selection is able to handle the collinearity/redundancy by modifying the order of the variables tried. If collinearity/redundancy cannot be handled and causes an error, try reducing `nvmax`.
 
-    - Estimate test performance of the models from these different methods. Report and interpret (with units) these estimates along with a measure of uncertainty in the estimate (SD is most readily available from `caret`).
-        - Compare estimated test performance across methods. Which method(s) might you prefer?
-
-    - Use residual plots to evaluate whether some quantitative predictors might be better modeled with nonlinear relationships.
-
-    - Compare insights from variable importance analyses from the different methods (stepwise and LASSO, but not OLS). Are there variables for which the methods reach consensus? What insights are expected? Surprising?
-        - Note that if some (but not all) of the indicator terms for a categorical predictor are selected in the final models, the whole predictor should be treated as selected.
+    - Estimate test performance of the models from these different methods. Report and interpret (with units) these estimates along with a measure of uncertainty in the estimate.
+    - Compare estimated test performance across methods. Which method(s) might you prefer?
+    - Note that if some (but not all) of the indicator terms for a categorical predictor are selected in the final models, the whole predictor should be treated as selected.
 
 <br>
 
@@ -59,7 +39,6 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
     - Update your stepwise selection model(s) and LASSO model to use natural splines for the quantitative predictors.
         - You'll need to update the model formula from `y ~ .` to something like `y ~ cat_var1 + ns(quant_var1, df) + ...`.
         - It's recommended to use few knots (e.g., 2 knots = 3 degrees of freedom).
-        - Note that `ns(x,3)` replaces `x` with 3 transformations of `x`. Keep this in mind when setting `nvmax` in stepwise selection.
 
     - Compare insights from variable importance analyses here and the corresponding results from Investigation 1. Now after having accounted for nonlinearity, have the most relevant predictors changed?
         - Note that if some (but not all) of the spline terms are selected in the final models, the whole predictor should be treated as selected.
@@ -67,8 +46,6 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
     - Fit a GAM using LOESS terms using the set of variables deemed to be most relevant based on your investigations so far.
         - How does test performance of the GAM compare to other models you explored?
         - Do you gain any insights from the GAM output plots for each predictor?
-
-    - Don't worry about KNN for now.
 
 <br>
 
@@ -88,21 +65,6 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
 
 
 ## Portfolio Work {-}
-
-**Length requirements:** Detailed for each section below.
-
-<span style="color: red;">
-**Organization:** To help the instructor and preceptors grade, please organize your document as shown in [this example](https://docs.google.com/document/d/1lS_7UBmWQkXtS21hd9gb842KV42U24A3QhiifP2nf-E/edit?usp=sharing). Clear section headers and new pages for each method help a lot. Thank you!
-</span>
-
-<span style="color: red;">
-**Deliverables:** Continue writing your responses in the same Google Doc that you set up for Homework 1. We have recorded the URL from past HWs - you don't need to supply it again.
-</span>
-
-**Note:** Some prompts below may seem very open-ended. This is intentional. Crafting good responses requires looking back through our material to organize the concepts in a coherent, thematic way, which is extremely useful for your learning.
-
-<br>
-
 **Revisions:**
 
 - Make any revisions desired to previous concepts.
@@ -142,13 +104,9 @@ Alternatively, you may knit your Rmd directly to PDF if you have LaTeX installed
 
 
 
-## Course Engagement {-}
+## Ethics in ML {-}
 
-The **Ethics** component below is the only required piece. The others are optional depending on the modes of engagement you wish to pursue consistently throughout the module.
-
-<br>
-
-**Ethics: (REQUIRED)** Read the article [Getting Past Identity to What You Really Want](https://weallcount.com/2021/02/19/getting-past-identity-to-what-you-really-want/). Write a short (roughly 250 words), thoughtful response about the ideas that the article brings forth. What skills do you think are essential for the leaders and data analysts of organizations to have to handle these issues with care?
+Read the article [Getting Past Identity to What You Really Want](https://weallcount.com/2021/02/19/getting-past-identity-to-what-you-really-want/). Write a short (roughly 250 words), thoughtful response about the ideas that the article brings forth. What skills do you think are essential for the leaders and data analysts of organizations to have to handle these issues with care?
 
 
 
