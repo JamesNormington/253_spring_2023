@@ -31,64 +31,10 @@ library(tidymodels)
 library(probably) #install.packages('probably')
 tidymodels_prefer()
 
-set.seed(___) # Pick your favorite number to fill in the parentheses
+set.seed(2023) # or pick your favorite number to fill in the parentheses
 ```
 
-If we would like to use estimates of AUC of the ROC curve to choose our final model, we can adapt the following:
-
-```{r}
-# Make sure you set reference level (the outcome you are NOT interested in)
-data <- data %>%
-  mutate(outcome = relevel(outcome, ref='failure')) #set reference level
-
-data_cv10 <- vfold_cv(data, v = 10)
-
-# Logistic LASSO Regression Model Spec
-logistic_lasso_spec_tune <- logistic_reg() %>%
-    set_engine('glmnet') %>%
-    set_args(mixture = 1, penalty = tune()) %>%
-    set_mode('classification')
-    
-# Recipe
-logistic_rec <- recipe(outcome ~ ., data = data) %>%
-    step_normalize(all_numeric_predictors()) %>% 
-    step_dummy(all_nominal_predictors())
-
-# Workflow (Recipe + Model)
-log_lasso_wf <- workflow() %>% 
-    add_recipe(logistic_rec) %>%
-    add_model(logistic_lasso_spec_tune)     
-
-# Tune Model (trying a variety of values of Lambda penalty)
-penalty_grid <- grid_regular(
-  penalty(range = c(-3, 1)), #log10 transformed 
-  levels = 30)
-
-tune_output <- tune_grid( 
-  log_lasso_wf, # workflow
-  resamples = data_cv10, # cv folds
-  metrics = metric_set(roc_auc),
-  control = control_resamples(save_pred = TRUE, event_level = 'second'),
-  grid = penalty_grid # penalty grid defined above
-)
-
-# Visualize Model Evaluation Metrics from Tuning
-autoplot(tune_output) + theme_classic()
-
-# Select Penalty
-best_se_penalty <- select_by_one_std_err(tune_output, metric = 'roc_auc', desc(penalty)) # choose penalty value based on the largest penalty within 1 se of the lowest CV roc_auc
-best_se_penalty
-
-# Fit Final Model
-final_fit_se <- finalize_workflow(log_lasso_wf, best_se_penalty) %>% # incorporates penalty value to workflow 
-    fit(data = data)
-
-
-final_fit_se %>% tidy()
-```
-
-
-
+ 
 <br><br><br>
 
 
@@ -130,7 +76,7 @@ spam <- spam %>%
 
 ### Exercise 1: Conceptual warmup {-}
 
-LASSO for the logistic regression setting works analogously to the regression setting. How would you expect a plot of test **roc_auc** vs. $\lambda$ to look, and why? (Draw it!)
+LASSO for the logistic regression setting works analogously to the regression setting. How would you expect a plot of test **roc_auc** vs. $\lambda$ to look, and why? 
 
 
 
@@ -213,7 +159,7 @@ final_fit_se <- finalize_workflow(log_lasso_wf, best_se_penalty) %>% # incorpora
 final_fit_se %>% tidy()
 ```
 
-c. Comment on the variable importance based on the how long a variable stayed in the model. Connect the output to the data context.
+c. Compute the variable importance by how long it stayed in the model (with increasing $\lambda$).
 
 ```{r}
 glmnet_output <- final_fit_se %>% extract_fit_engine()

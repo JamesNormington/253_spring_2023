@@ -356,7 +356,7 @@ Inspect the iteration specific information from tuning the LASSO model (focus on
 tune_output %>% collect_metrics(summarize = FALSE) %>% filter(penalty == best_se_penalty %>% pull(penalty))
 ```
 
-How is one row of information computed? Carefully describe (in words) the CV process for a single iteration to estimate each of CV `roc_auc` and `accuracy` (overall accuracy). Use a generic confusion matrix (filled with TP, TP, FP, FN instead of hard numbers) to illustrate the underlying computations.
+How is one row of information computed? Carefully describe (in words) the CV process for a single iteration to estimate each of CV `roc_auc` and `accuracy` (overall accuracy). Use a generic confusion matrix (filled with TP, TN, FP, FN instead of hard numbers) to illustrate the underlying computations.
 
 
 
