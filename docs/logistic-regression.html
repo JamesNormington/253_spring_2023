@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="local-regression-gams.html"/>
-<link rel="next" href="homework-1.html"/>
+<link rel="next" href="lasso-logistic-regression.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -268,6 +268,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.0.1" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-5-evaluate-the-model"><i class="fa fa-check"></i><b>10.0.1</b> Exercise 5: Evaluate the model</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Lasso &amp; Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#learning-goals-9"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#lasso-for-logistic-regression-in-tidymodels"><i class="fa fa-check"></i>LASSO for logistic regression in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercises-9"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#context-3"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-1-conceptual-warmup-1"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-2-implementing-lasso-logistic-regression-in-tidymodels"><i class="fa fa-check"></i>Exercise 2: Implementing LASSO logistic regression in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-3-inspecting-the-model"><i class="fa fa-check"></i>Exercise 3: Inspecting the model</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-4-interpreting-evaluation-metrics"><i class="fa fa-check"></i>Exercise 4: Interpreting evaluation metrics</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-5-using-the-final-model-choosing-a-threshold"><i class="fa fa-check"></i>Exercise 5: Using the final model (choosing a threshold)</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-6-algorithmic-understanding-for-evaluation-metrics"><i class="fa fa-check"></i>Exercise 6: Algorithmic understanding for evaluation metrics</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>V Homework</b></span></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
 <ul>
@@ -362,40 +377,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb81-21"><a href="logistic-regression.html#cb81-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb81-22"><a href="logistic-regression.html#cb81-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Model to Training Data</span></span>
 <span id="cb81-23"><a href="logistic-regression.html#cb81-23" aria-hidden="true" tabindex="-1"></a>log_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(log_wf, <span class="at">data =</span> data)</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Argument</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><code>y ~ x</code></td>
-<td align="left"><code>y</code> must be a <code>character</code> or <code>factor</code></td>
-</tr>
-<tr class="even">
-<td align="left"><code>data</code></td>
-<td align="left">Sample data</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>method</code> &amp; <code>family</code></td>
-<td align="left">The <code>glm</code> method implements various “generalized” linear models. When we specify <code>family = "binomial"</code>, <code>glm</code> performs logistic regression. (BTW: <code>glm</code> with <code>family = "gaussian"</code> is equivalent to using <code>lm</code>!)</td>
-</tr>
-<tr class="even">
-<td align="left"><code>trControl</code></td>
-<td align="left">Use cross-validation to estimate test performance for each model fit.</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>metric</code></td>
-<td align="left">Evaluate and compare competing models with respect to their CV-<code>Accuracy</code>.</td>
-</tr>
-<tr class="even">
-<td align="left"><code>na.action</code></td>
-<td align="left">Set <code>na.action = na.omit</code> to prevent errors if the data has missing values.</td>
-</tr>
-</tbody>
-</table>
 <p><br></p>
 <p><strong>Examining the logistic model</strong></p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="logistic-regression.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out Coefficients</span></span>
@@ -601,16 +582,13 @@ For each threshold level, you can calculate sensitivity and specificity. An ROC 
 </div>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="local-regression-gams.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lasso-logistic-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
