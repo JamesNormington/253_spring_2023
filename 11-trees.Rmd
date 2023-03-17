@@ -130,7 +130,7 @@ In practice, the number of splits is controlled indirectly through the following
 
 - `min_n`: the minimum number of observations that must exist in a node in order for a split to be attempted.
 
-- `cost_complexity`: complexity parameter. Any split that does not increase node purity by `cp` is not attempted.
+- `cost_complexity`: complexity parameter. Any split that does not increase node purity by `cost_complexity` is not attempted.
 
 - `depth`: Set the maximum **depth** of any node of the final tree. The **depth** of a node is the number of branches that need to be followed to get to a given node from the root node. (The root node has depth 0.)
 
@@ -142,7 +142,7 @@ Fit a tree model for the `class` outcome (land type), and allow all possible pre
 - Use 10-fold CV.
 - Choose a final model whose test overall accuracy is within one standard error of the overall best metric.
 - The Gini index impurity measure can be a minimum of zero and has an upper bound of 1. 
-- Try a sequence of 100 `cost_complexity` values from 0.00001 to 0.1.
+- Try a sequence of 30 `cost_complexity` values from 0.00001 to 0.1 (this will take up to 5 minutes).
 
 
 ```{r}
@@ -164,7 +164,7 @@ data_wf_tune <- workflow() %>%
   add_model(ct_spec_tune) %>%
   add_recipe(data_rec)
 
-param_grid <- grid_regular(cost_complexity(range = c(-5, 1)), levels = 10) 
+param_grid <- grid_regular(cost_complexity(range = c(____, ____)), levels = ____) 
 
 tune_res <- tune_grid(
   data_wf_tune, 
@@ -184,7 +184,7 @@ autoplot(tune_res) + theme_classic()
 b. Now choose the cost_complexity value that gives the simplest tree (high or low `cost_complexity`?) within 1 SE of the max accuracy. Pull out the CV accuracy for the chosen `cost_complexity`.
 
 ```{r}
-best_complexity <- select_by_one_std_err(tune_res, metric = 'accuracy', ______)
+best_complexity <- select_by_one_std_err(tune_res, metric = 'accuracy', desc(cost_complexity))
 data_wf_final <- finalize_workflow(data_wf_tune, best_complexity)
 
 land_final_fit <- fit(data_wf_final, data = land)

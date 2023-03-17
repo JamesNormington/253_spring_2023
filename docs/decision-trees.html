@@ -449,7 +449,7 @@ Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" clas
 <p>In practice, the number of splits is controlled indirectly through the following tuning parameters. For each, discuss how low/high parameter settings would affect the number of tree splits.</p>
 <ul>
 <li><p><code>min_n</code>: the minimum number of observations that must exist in a node in order for a split to be attempted.</p></li>
-<li><p><code>cost_complexity</code>: complexity parameter. Any split that does not increase node purity by <code>cp</code> is not attempted.</p></li>
+<li><p><code>cost_complexity</code>: complexity parameter. Any split that does not increase node purity by <code>cost_complexity</code> is not attempted.</p></li>
 <li><p><code>depth</code>: Set the maximum <strong>depth</strong> of any node of the final tree. The <strong>depth</strong> of a node is the number of branches that need to be followed to get to a given node from the root node. (The root node has depth 0.)</p></li>
 </ul>
 </div>
@@ -460,7 +460,7 @@ Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" clas
 <li>Use 10-fold CV.</li>
 <li>Choose a final model whose test overall accuracy is within one standard error of the overall best metric.</li>
 <li>The Gini index impurity measure can be a minimum of zero and has an upper bound of 1.</li>
-<li>Try a sequence of 100 <code>cost_complexity</code> values from 0.00001 to 0.1.</li>
+<li>Try a sequence of 30 <code>cost_complexity</code> values from 0.00001 to 0.1 (this will take up to 5 minutes).</li>
 </ul>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="decision-trees.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure you understand what each line of code is doing</span></span>
 <span id="cb112-2"><a href="decision-trees.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># don&#39;t change this</span></span>
@@ -480,7 +480,7 @@ Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" clas
 <span id="cb112-16"><a href="decision-trees.html#cb112-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(ct_spec_tune) <span class="sc">%&gt;%</span></span>
 <span id="cb112-17"><a href="decision-trees.html#cb112-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(data_rec)</span>
 <span id="cb112-18"><a href="decision-trees.html#cb112-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-19"><a href="decision-trees.html#cb112-19" aria-hidden="true" tabindex="-1"></a>param_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">cost_complexity</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">1</span>)), <span class="at">levels =</span> <span class="dv">10</span>) </span>
+<span id="cb112-19"><a href="decision-trees.html#cb112-19" aria-hidden="true" tabindex="-1"></a>param_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">cost_complexity</span>(<span class="at">range =</span> <span class="fu">c</span>(____, ____)), <span class="at">levels =</span> ____) </span>
 <span id="cb112-20"><a href="decision-trees.html#cb112-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb112-21"><a href="decision-trees.html#cb112-21" aria-hidden="true" tabindex="-1"></a>tune_res <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(</span>
 <span id="cb112-22"><a href="decision-trees.html#cb112-22" aria-hidden="true" tabindex="-1"></a>  data_wf_tune, </span>
@@ -495,7 +495,7 @@ Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" clas
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Now choose the cost_complexity value that gives the simplest tree (high or low <code>cost_complexity</code>?) within 1 SE of the max accuracy. Pull out the CV accuracy for the chosen <code>cost_complexity</code>.</li>
 </ol>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="decision-trees.html#cb114-1" aria-hidden="true" tabindex="-1"></a>best_complexity <span class="ot">&lt;-</span> <span class="fu">select_by_one_std_err</span>(tune_res, <span class="at">metric =</span> <span class="st">&#39;accuracy&#39;</span>, ______)</span>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="decision-trees.html#cb114-1" aria-hidden="true" tabindex="-1"></a>best_complexity <span class="ot">&lt;-</span> <span class="fu">select_by_one_std_err</span>(tune_res, <span class="at">metric =</span> <span class="st">&#39;accuracy&#39;</span>, <span class="fu">desc</span>(cost_complexity))</span>
 <span id="cb114-2"><a href="decision-trees.html#cb114-2" aria-hidden="true" tabindex="-1"></a>data_wf_final <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(data_wf_tune, best_complexity)</span>
 <span id="cb114-3"><a href="decision-trees.html#cb114-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb114-4"><a href="decision-trees.html#cb114-4" aria-hidden="true" tabindex="-1"></a>land_final_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(data_wf_final, <span class="at">data =</span> land)</span>
