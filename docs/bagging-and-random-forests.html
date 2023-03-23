@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Topic 13 Bagging and Random Forests | STAT 253: Statistical Machine Learning</title>
   <meta name="description" content="This is the class website for Statistical Machine Learning at Macalester College." />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Topic 13 Bagging and Random Forests | STAT 253: Statistical Machine Learning" />
   <meta property="og:type" content="book" />
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="trees-part-2.html"/>
-<link rel="next" href="k-means-clustering.html"/>
+<link rel="prev" href="decision-trees.html"/>
+<link rel="next" href="homework-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a></li>
-<li class="chapter" data-level="" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="schedule-syllabus.html"><a href="schedule-syllabus.html"><i class="fa fa-check"></i>Schedule &amp; Syllabus</a></li>
 <li class="chapter" data-level="" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i>Learning Objectives</a></li>
 <li class="chapter" data-level="" data-path="r-and-rstudio-setup.html"><a href="r-and-rstudio-setup.html"><i class="fa fa-check"></i>R and RStudio Setup</a>
 <ul>
@@ -143,7 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1" data-path="introductions.html"><a href="introductions.html"><i class="fa fa-check"></i><b>1</b> Introductions</a>
 <ul>
-<li class="chapter" data-level="" data-path="introductions.html"><a href="introductions.html#envisioning-an-ideal-module-4"><i class="fa fa-check"></i>Envisioning an Ideal Module 4</a></li>
+<li class="chapter" data-level="" data-path="introductions.html"><a href="introductions.html#envisioning-a-community-of-learners"><i class="fa fa-check"></i>Envisioning a Community of Learners</a></li>
 <li class="chapter" data-level="" data-path="introductions.html"><a href="introductions.html#explorations"><i class="fa fa-check"></i>Explorations</a></li>
 </ul></li>
 <li class="part"><span><b>I Regression: Evaluation</b></span></li>
@@ -160,25 +160,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="evaluating-regression-models.html"><a href="evaluating-regression-models.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html"><i class="fa fa-check"></i><b>3</b> Overfitting &amp; Cross-validation</a>
+<li class="chapter" data-level="3" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i><b>3</b> Overfitting</a>
 <ul>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#the-caret-package"><i class="fa fa-check"></i>The <code>caret</code> package</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercises-1"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#learning-goals-1"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#the-tidymodels-package"><i class="fa fa-check"></i>The <code>tidymodels</code> package</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercises-1"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#context-1"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-1-4-models"><i class="fa fa-check"></i>Exercise 1: 4 models</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-2-cross-validation-with-caret"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
-<li class="chapter" data-level="" data-path="overfitting-cross-validation.html"><a href="overfitting-cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#context-1"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-1-5-models"><i class="fa fa-check"></i>Exercise 1: 5 models</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-2-evaluating-the-test-data"><i class="fa fa-check"></i>Exercise 2: Evaluating the Test Data</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html#exercise-3-overfitting"><i class="fa fa-check"></i>Exercise 3: Overfitting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cross-validation.html"><a href="cross-validation.html"><i class="fa fa-check"></i><b>4</b> Cross-validation</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercises-2"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#context-2"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-1-cross-validation-in-concept"><i class="fa fa-check"></i>Exercise 1: Cross-validation in Concept</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-2-cross-validation-with-tidymodels"><i class="fa fa-check"></i>Exercise 2: Cross-validation with <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-3-looking-at-the-evaluation-metrics"><i class="fa fa-check"></i>Exercise 3: Looking at the evaluation metrics</a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#exercise-4-practical-issues-choosing-k"><i class="fa fa-check"></i>Exercise 4: Practical issues: choosing <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="" data-path="cross-validation.html"><a href="cross-validation.html#digging-deeper"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Regression: Building Models</b></span></li>
-<li class="chapter" data-level="4" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Subset Selection</a>
+<li class="chapter" data-level="5" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html"><i class="fa fa-check"></i><b>5</b> Variable Subset Selection</a>
 <ul>
-<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#learning-goals-2"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercises-2"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#learning-goals-3"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercises-3"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-1-backward-stepwise-selection-by-hand"><i class="fa fa-check"></i>Exercise 1: Backward stepwise selection: by hand</a></li>
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#exercise-2-interpreting-the-results"><i class="fa fa-check"></i>Exercise 2: Interpreting the results</a></li>
@@ -188,207 +199,154 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="variable-subset-selection.html"><a href="variable-subset-selection.html#digging-deeper-1"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html"><i class="fa fa-check"></i><b>5</b> LASSO: Shrinkage/Regularization</a>
+<li class="chapter" data-level="6" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html"><i class="fa fa-check"></i><b>6</b> LASSO: Shrinkage/Regularization</a>
 <ul>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#learning-goals-3"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#lasso-models-in-caret"><i class="fa fa-check"></i>LASSO models in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercises-3"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#learning-goals-4"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#lasso-models-in-tidymodels"><i class="fa fa-check"></i>LASSO models in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-1-a-least-squares-model"><i class="fa fa-check"></i>Exercise 1: A least squares model</a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-caret"><i class="fa fa-check"></i>Exercise 2: Fitting a LASSO model in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-2-fitting-a-lasso-model-in-tidymodels"><i class="fa fa-check"></i>Exercise 2: Fitting a LASSO model in <code>tidymodels</code></a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-3-examining-output-plot-of-coefficient-paths"><i class="fa fa-check"></i>Exercise 3: Examining output: plot of coefficient paths</a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-4-tuning-lambda"><i class="fa fa-check"></i>Exercise 4: Tuning <span class="math inline">\(\lambda\)</span></a></li>
-<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-5-examining-and-evaluating-the-best-lasso-model"><i class="fa fa-check"></i>Exercise 5: Examining and evaluating the best LASSO model</a></li>
+<li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#exercise-4-examining-and-evaluating-the-best-lasso-model."><i class="fa fa-check"></i>Exercise 4: Examining and evaluating the best LASSO model.</a></li>
 <li class="chapter" data-level="" data-path="lasso-shrinkageregularization.html"><a href="lasso-shrinkageregularization.html#digging-deeper-2"><i class="fa fa-check"></i>Digging deeper</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Regression: Building Flexible Models</b></span></li>
-<li class="chapter" data-level="6" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html"><i class="fa fa-check"></i><b>6</b> KNN Regression and the Bias-Variance Tradeoff</a>
+<li class="chapter" data-level="7" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html"><i class="fa fa-check"></i><b>7</b> KNN Regression and the Bias-Variance Tradeoff</a>
 <ul>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#learning-goals-4"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-caret"><i class="fa fa-check"></i>KNN models in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#learning-goals-5"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#knn-models-in-tidymodels"><i class="fa fa-check"></i>KNN models in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercises-5"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#hello-how-are-things"><i class="fa fa-check"></i>Hello, how are things?</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-1-bias-variance-tradeoff-warmup"><i class="fa fa-check"></i>Exercise 1: Bias-variance tradeoff warmup</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-2-impact-of-distance-metric"><i class="fa fa-check"></i>Exercise 2: Impact of distance metric</a></li>
-<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-caret"><i class="fa fa-check"></i>Exercise 3: Implementing KNN in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-3-implementing-knn-in-tidymodels"><i class="fa fa-check"></i>Exercise 3: Implementing KNN in <code>tidymodels</code></a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-4-inspecting-the-results"><i class="fa fa-check"></i>Exercise 4: Inspecting the results</a></li>
 <li class="chapter" data-level="" data-path="knn-regression-and-the-bias-variance-tradeoff.html"><a href="knn-regression-and-the-bias-variance-tradeoff.html#exercise-5-curse-of-dimensionality"><i class="fa fa-check"></i>Exercise 5: Curse of dimensionality</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>7</b> Splines</a>
+<li class="chapter" data-level="8" data-path="splines.html"><a href="splines.html"><i class="fa fa-check"></i><b>8</b> Splines</a>
 <ul>
-<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#learning-goals-5"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#splines-in-caret"><i class="fa fa-check"></i>Splines in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercises-5"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#learning-goals-6"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#splines-in-tidymodels"><i class="fa fa-check"></i>Splines in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercises-6"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-1-evaluating-a-fully-linear-model"><i class="fa fa-check"></i>Exercise 1: Evaluating a fully linear model</a></li>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#exercise-2-evaluating-a-spline-model"><i class="fa fa-check"></i>Exercise 2: Evaluating a spline model</a></li>
 <li class="chapter" data-level="" data-path="splines.html"><a href="splines.html#extra-variable-scaling"><i class="fa fa-check"></i>Extra! Variable scaling</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="local-regression-gams.html"><a href="local-regression-gams.html"><i class="fa fa-check"></i><b>8</b> Local Regression &amp; GAMs</a>
+<li class="chapter" data-level="9" data-path="local-regression-gams.html"><a href="local-regression-gams.html"><i class="fa fa-check"></i><b>9</b> Local Regression &amp; GAMs</a>
 <ul>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#learning-goals-6"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#gams-in-caret"><i class="fa fa-check"></i>GAMs in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercises-6"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#learning-goals-7"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="9.1" data-path="local-regression-gams.html"><a href="local-regression-gams.html#gams"><i class="fa fa-check"></i><b>9.1</b> GAMs</a></li>
+<li class="chapter" data-level="9.2" data-path="local-regression-gams.html"><a href="local-regression-gams.html#gams---options-for-fitting"><i class="fa fa-check"></i><b>9.2</b> GAMs - Options for Fitting</a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#gams-in-tidymodels"><i class="fa fa-check"></i>GAMs in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercises-7"><i class="fa fa-check"></i>Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-1-conceptual-warmup"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-2-building-a-gam-in-caret"><i class="fa fa-check"></i>Exercise 2: Building a GAM in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-3-identifying-the-best-gam"><i class="fa fa-check"></i>Exercise 3: Identifying the “best” GAM</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-4-interpreting-the-gam"><i class="fa fa-check"></i>Exercise 4: Interpreting the GAM</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-5-comparison-of-methods"><i class="fa fa-check"></i>Exercise 5: Comparison of methods</a></li>
-<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#just-for-fun"><i class="fa fa-check"></i>Just for fun!</a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-2-using-loess"><i class="fa fa-check"></i>Exercise 2: Using LOESS</a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-3-building-a-gam-in-tidymodels"><i class="fa fa-check"></i>Exercise 3: Building a GAM in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-4-adjusting-the-best-gam"><i class="fa fa-check"></i>Exercise 4: Adjusting the “best” GAM</a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-5-gam-with-recipes"><i class="fa fa-check"></i>Exercise 5: GAM with recipes</a></li>
+<li class="chapter" data-level="" data-path="local-regression-gams.html"><a href="local-regression-gams.html#exercise-6-putting-a-bow-on-regression"><i class="fa fa-check"></i>Exercise 6: putting a bow on regression</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Classification</b></span></li>
-<li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic Regression</a>
+<li class="chapter" data-level="10" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>10</b> Logistic Regression</a>
 <ul>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#learning-goals-7"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression-in-caret"><i class="fa fa-check"></i>Logistic regression in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercises-7"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#learning-goals-8"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#logistic-regression-in-tidymodels"><i class="fa fa-check"></i>Logistic regression in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercises-8"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#context-2"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#hello-how-are-things-1"><i class="fa fa-check"></i>Hello, how are things?</a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#context-and-data"><i class="fa fa-check"></i>Context and Data</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-1-visualization-warmup"><i class="fa fa-check"></i>Exercise 1: Visualization warmup</a></li>
-<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing logistic regression in <code>caret</code></a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-2-implementing-logistic-regression-in-tidymodels"><i class="fa fa-check"></i>Exercise 2: Implementing logistic regression in <code>tidymodels</code></a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-3-interpreting-the-model"><i class="fa fa-check"></i>Exercise 3: Interpreting the model</a></li>
 <li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-4-making-predictions"><i class="fa fa-check"></i>Exercise 4: Making predictions</a></li>
+<li class="chapter" data-level="10.0.1" data-path="logistic-regression.html"><a href="logistic-regression.html#exercise-5-evaluate-the-model"><i class="fa fa-check"></i><b>10.0.1</b> Exercise 5: Evaluate the model</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html"><i class="fa fa-check"></i><b>10</b> Evaluating Classification Models</a>
+<li class="chapter" data-level="11" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html"><i class="fa fa-check"></i><b>11</b> Lasso &amp; Logistic Regression</a>
 <ul>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#learning-goals-8"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#lasso-for-logistic-regression-in-caret"><i class="fa fa-check"></i>LASSO for logistic regression in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercises-8"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#learning-goals-9"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#lasso-for-logistic-regression-in-tidymodels"><i class="fa fa-check"></i>LASSO for logistic regression in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercises-9"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#context-3"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-1-conceptual-warmup-1"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-2-implementing-lasso-logistic-regression-in-caret"><i class="fa fa-check"></i>Exercise 2: Implementing LASSO logistic regression in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-3-inspecting-the-model"><i class="fa fa-check"></i>Exercise 3: Inspecting the model</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-4-interpreting-evaluation-metrics"><i class="fa fa-check"></i>Exercise 4: Interpreting evaluation metrics</a></li>
-<li class="chapter" data-level="" data-path="evaluating-classification-models.html"><a href="evaluating-classification-models.html#exercise-5-algorithmic-understanding-for-evaluation-metrics"><i class="fa fa-check"></i>Exercise 5: Algorithmic understanding for evaluation metrics</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#context-3"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-1-conceptual-warmup-1"><i class="fa fa-check"></i>Exercise 1: Conceptual warmup</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-2-implementing-lasso-logistic-regression-in-tidymodels"><i class="fa fa-check"></i>Exercise 2: Implementing LASSO logistic regression in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-3-inspecting-the-model"><i class="fa fa-check"></i>Exercise 3: Inspecting the model</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-4-interpreting-evaluation-metrics"><i class="fa fa-check"></i>Exercise 4: Interpreting evaluation metrics</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-5-using-the-final-model-choosing-a-threshold"><i class="fa fa-check"></i>Exercise 5: Using the final model (choosing a threshold)</a></li>
+<li class="chapter" data-level="" data-path="lasso-logistic-regression.html"><a href="lasso-logistic-regression.html#exercise-6-algorithmic-understanding-for-evaluation-metrics"><i class="fa fa-check"></i>Exercise 6: Algorithmic understanding for evaluation metrics</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="trees-part-1.html"><a href="trees-part-1.html"><i class="fa fa-check"></i><b>11</b> Trees (Part 1)</a>
+<li class="chapter" data-level="12" data-path="decision-trees.html"><a href="decision-trees.html"><i class="fa fa-check"></i><b>12</b> Decision Trees</a>
 <ul>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#learning-goals-9"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#trees-in-caret"><i class="fa fa-check"></i>Trees in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercises-9"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#learning-goals-10"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#trees-in-tidymodels"><i class="fa fa-check"></i>Trees in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#exercises-part-1"><i class="fa fa-check"></i>Exercises Part 1</a>
 <ul>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#context-4"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-1-core-theme-parametricnonparametric"><i class="fa fa-check"></i>Exercise 1: Core theme: parametric/nonparametric</a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-2-core-theme-tuning-parameters-and-the-bvt"><i class="fa fa-check"></i>Exercise 2: Core theme: Tuning parameters and the BVT</a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-3-building-trees-in-caret"><i class="fa fa-check"></i>Exercise 3: Building trees in <code>caret</code></a></li>
-<li class="chapter" data-level="" data-path="trees-part-1.html"><a href="trees-part-1.html#exercise-4-visualizing-trees"><i class="fa fa-check"></i>Exercise 4: Visualizing trees</a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#context-4"><i class="fa fa-check"></i>Context</a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#exercise-1-core-theme-parametricnonparametric"><i class="fa fa-check"></i>Exercise 1: Core theme: parametric/nonparametric</a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#exercise-2-core-theme-tuning-parameters-and-the-bvt"><i class="fa fa-check"></i>Exercise 2: Core theme: Tuning parameters and the BVT</a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#exercise-3-building-trees-in-tidymodels"><i class="fa fa-check"></i>Exercise 3: Building trees in <code>tidymodels</code></a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#exercise-4-visualizing-trees"><i class="fa fa-check"></i>Exercise 4: Visualizing trees</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="trees-part-2.html"><a href="trees-part-2.html"><i class="fa fa-check"></i><b>12</b> Trees (Part 2)</a>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#exercises-part-2"><i class="fa fa-check"></i>Exercises Part 2</a>
 <ul>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercises-10"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#context-5"><i class="fa fa-check"></i>Context</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercise-1-predictions-from-trees"><i class="fa fa-check"></i>Exercise 1: Predictions from trees</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercise-2-reinforcing-the-bvt"><i class="fa fa-check"></i>Exercise 2: Reinforcing the BVT</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercise-3-variable-importance-in-trees"><i class="fa fa-check"></i>Exercise 3: Variable importance in trees</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#exercise-4-regression-trees"><i class="fa fa-check"></i>Exercise 4: Regression trees</a></li>
-<li class="chapter" data-level="" data-path="trees-part-2.html"><a href="trees-part-2.html#extra"><i class="fa fa-check"></i>Extra!</a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#exercise-5-predictions-from-trees"><i class="fa fa-check"></i>Exercise 5: Predictions from Trees</a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#exercise-6-variable-importance-in-trees"><i class="fa fa-check"></i>Exercise 6: Variable importance in trees</a></li>
+<li class="chapter" data-level="" data-path="decision-trees.html"><a href="decision-trees.html#exercise-7-regression-trees"><i class="fa fa-check"></i>Exercise 7: REGRESSION trees?!</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html"><i class="fa fa-check"></i><b>13</b> Bagging and Random Forests</a>
 <ul>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#learning-goals-10"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercises-11"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#learning-goals-11"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercises-10"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#hello-how-are-things-2"><i class="fa fa-check"></i>Hello, how are things?</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-1-preparing-to-build-a-random-forest"><i class="fa fa-check"></i>Exercise 1: Preparing to build a random forest</a></li>
-<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-2-more-preparation-to-build-a-random-forest"><i class="fa fa-check"></i>Exercise 2: More preparation to build a random forest</a></li>
+<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-1-bagging-bootstrap-aggregation"><i class="fa fa-check"></i>Exercise 1: Bagging: <em>B</em>ootstrap <em>AGG</em>regation</a></li>
+<li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-2-random-forest-groundwork"><i class="fa fa-check"></i>Exercise 2: Random forest groundwork</a></li>
 <li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-3-building-the-random-forest"><i class="fa fa-check"></i>Exercise 3: Building the random forest</a></li>
 <li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-4-preliminary-interpretation"><i class="fa fa-check"></i>Exercise 4: Preliminary interpretation</a></li>
 <li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-5-evaluating-the-forest"><i class="fa fa-check"></i>Exercise 5: Evaluating the forest</a></li>
 <li class="chapter" data-level="" data-path="bagging-and-random-forests.html"><a href="bagging-and-random-forests.html#exercise-6-variable-importance-measures"><i class="fa fa-check"></i>Exercise 6: Variable importance measures</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>V Unsupervised Learning</b></span></li>
-<li class="chapter" data-level="14" data-path="k-means-clustering.html"><a href="k-means-clustering.html"><i class="fa fa-check"></i><b>14</b> K-Means Clustering</a>
-<ul>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#learning-goals-11"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercises-12"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-1-visual-explorations"><i class="fa fa-check"></i>Exercise 1: Visual explorations</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-2-k-means-clustering-on-bill-length-and-depth"><i class="fa fa-check"></i>Exercise 2: K-means clustering on bill length and depth</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-3-addressing-variable-scale"><i class="fa fa-check"></i>Exercise 3: Addressing variable scale</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-4-clustering-on-more-variables"><i class="fa fa-check"></i>Exercise 4: Clustering on more variables</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-5-interpreting-the-clusters"><i class="fa fa-check"></i>Exercise 5: Interpreting the clusters</a></li>
-<li class="chapter" data-level="" data-path="k-means-clustering.html"><a href="k-means-clustering.html#exercise-6-picking-k"><i class="fa fa-check"></i>Exercise 6: Picking <span class="math inline">\(k\)</span></a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i><b>15</b> Hierarchical Clustering</a>
-<ul>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#learning-goals-12"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercises-13"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-1-hierarchical-clustering-by-hand"><i class="fa fa-check"></i>Exercise 1: Hierarchical clustering by hand</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-2-exploring-penguin-dendrograms"><i class="fa fa-check"></i>Exercise 2: Exploring penguin dendrograms</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-3-interpreting-the-clusters-visually"><i class="fa fa-check"></i>Exercise 3: Interpreting the clusters visually</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-4-tree-cutting-and-interpretation"><i class="fa fa-check"></i>Exercise 4: Tree-cutting and interpretation</a></li>
-<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-5-k-means-vs.-hierarchical"><i class="fa fa-check"></i>Exercise 5: K-means vs. hierarchical</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html"><i class="fa fa-check"></i><b>16</b> Principal Components Analysis</a>
-<ul>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#learning-goals-13"><i class="fa fa-check"></i>Learning Goals</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercises-14"><i class="fa fa-check"></i>Exercises</a>
-<ul>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-1-core-concepts"><i class="fa fa-check"></i>Exercise 1: Core concepts</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-2-exploring-pc-loadings"><i class="fa fa-check"></i>Exercise 2: Exploring PC loadings</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-3-exploring-pc-scores"><i class="fa fa-check"></i>Exercise 3: Exploring PC scores</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-4-scree-plots-and-dimension-reduction"><i class="fa fa-check"></i>Exercise 4: Scree plots and dimension reduction</a></li>
-<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-5-variable-scaling"><i class="fa fa-check"></i>Exercise 5: Variable scaling</a></li>
-</ul></li>
-</ul></li>
-<li class="part"><span><b>VI Homework</b></span></li>
+<li class="part"><span><b>V Homework</b></span></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
 <ul>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#project-work"><i class="fa fa-check"></i>Project Work</a></li>
+<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#ethics-in-ml"><i class="fa fa-check"></i>Ethics in ML</a></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#portfolio-work"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html#course-engagement"><i class="fa fa-check"></i>Course Engagement</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html"><i class="fa fa-check"></i>Homework 2</a>
 <ul>
 <li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#project-work-1"><i class="fa fa-check"></i>Project Work</a></li>
+<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#ethics-in-ml-1"><i class="fa fa-check"></i>Ethics in ML</a></li>
 <li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#portfolio-work-1"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-2.html"><a href="homework-2.html#course-engagement-1"><i class="fa fa-check"></i>Course Engagement</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html"><i class="fa fa-check"></i>Homework 3</a>
 <ul>
-<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#project-work-2"><i class="fa fa-check"></i>Project Work</a></li>
+<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#project-work-2"><i class="fa fa-check"></i>Project Work</a>
+<ul>
+<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#note-this-is-a-repeat-of-hw2.-many-of-you-struggled-with-this-section-so-this-gives-you-an-opportunity-to-incorporate-feedback-from-the-preceptors-or-try-additional-models."><i class="fa fa-check"></i>Note: this is a repeat of HW2. Many of you struggled with this section, so this gives you an opportunity to incorporate feedback from the preceptors, or try additional models.</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#portfolio-work-2"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#course-engagement-2"><i class="fa fa-check"></i>Course Engagement</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html"><i class="fa fa-check"></i>Homework 4</a>
-<ul>
-<li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#project-work-3"><i class="fa fa-check"></i>Project Work</a></li>
-<li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#portfolio-work-3"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#course-engagement-3"><i class="fa fa-check"></i>Course Engagement</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html"><i class="fa fa-check"></i>Homework 5</a>
-<ul>
-<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#project-work-4"><i class="fa fa-check"></i>Project Work</a></li>
-<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#portfolio-work-4"><i class="fa fa-check"></i>Portfolio Work</a></li>
-<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#course-engagement-4"><i class="fa fa-check"></i>Course Engagement</a></li>
-</ul></li>
-<li class="part"><span><b>VII Project</b></span></li>
-<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html"><i class="fa fa-check"></i>Final Project</a>
-<ul>
-<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#requirements"><i class="fa fa-check"></i>Requirements</a></li>
-<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#grading-rubric"><i class="fa fa-check"></i>Grading Rubric</a></li>
+<li class="chapter" data-level="" data-path="homework-3.html"><a href="homework-3.html#ethics-in-ml-2"><i class="fa fa-check"></i>Ethics in ML</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i>R Resources</a>
 <ul>
 <li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#outside-resources"><i class="fa fa-check"></i>Outside resources</a></li>
 <li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#example-code"><i class="fa fa-check"></i>Example code</a></li>
+</ul></li>
+<li class="part"><span><b>VI Project</b></span></li>
+<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html"><i class="fa fa-check"></i>Final Project</a>
+<ul>
+<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#requirements"><i class="fa fa-check"></i>Requirements</a></li>
+<li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#grading-rubric"><i class="fa fa-check"></i>Grading Rubric</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -412,8 +370,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="bagging-and-random-forests" class="section level1 hasAnchor" number="13">
 <h1><span class="header-section-number">Topic 13</span> Bagging and Random Forests<a href="bagging-and-random-forests.html#bagging-and-random-forests" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="learning-goals-10" class="section level2 unnumbered hasAnchor">
-<h2>Learning Goals<a href="bagging-and-random-forests.html#learning-goals-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="learning-goals-11" class="section level2 unnumbered hasAnchor">
+<h2>Learning Goals<a href="bagging-and-random-forests.html#learning-goals-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Explain the rationale for bagging</li>
 <li>Explain the rationale for selecting a random subset of predictors at each split (random forests)</li>
@@ -421,91 +379,139 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Explain the rationale for and implement out-of-bag error estimation for both regression and classification</li>
 <li>Explain the rationale behind the random forest variable importance measure and why it is biased towards quantitative predictors</li>
 </ul>
-<p><br></p>
-<p>Slides from today are available <a href="https://docs.google.com/presentation/d/1DdOWDYDt-fzJ1TIicFyWmdadGRGm_hMIxgAhLQ6fipk/edit?usp=sharing">here</a>.</p>
 <p><br><br><br></p>
 </div>
-<div id="exercises-11" class="section level2 unnumbered hasAnchor">
-<h2>Exercises<a href="bagging-and-random-forests.html#exercises-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-10" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="bagging-and-random-forests.html#exercises-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>You can download a template RMarkdown file to start from <a href="template_rmds/13-bagging-rf.Rmd">here</a>.</strong></p>
-<p>Before proceeding, install the <code>randomForest</code> package by entering <code>install.packages("randomForest")</code> in the Console.</p>
+<p>Before proceeding, install the <code>ranger</code> and <code>vip</code> packages.</p>
 <p>Our goal will be to classify types of urban land cover in small subregions within a high resolution aerial image of a land region. Data from the <a href="https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover">UCI Machine Learning Repository</a> include the observed type of land cover (determined by human eye) and “spectral, size, shape, and texture information” computed from the image. See <a href="https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover">this page</a> for the data codebook.</p>
 <center>
 <img src="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg"><br>
 Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" class="uri">https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg</a>
 </center>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="bagging-and-random-forests.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb94-2"><a href="bagging-and-random-forests.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb94-3"><a href="bagging-and-random-forests.html#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb94-4"><a href="bagging-and-random-forests.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb94-5"><a href="bagging-and-random-forests.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
-<span id="cb94-6"><a href="bagging-and-random-forests.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
-<span id="cb94-7"><a href="bagging-and-random-forests.html#cb94-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-8"><a href="bagging-and-random-forests.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
-<span id="cb94-9"><a href="bagging-and-random-forests.html#cb94-9" aria-hidden="true" tabindex="-1"></a>land <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://www.macalester.edu/~ajohns24/data/land_cover.csv&quot;</span>)</span>
-<span id="cb94-10"><a href="bagging-and-random-forests.html#cb94-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-11"><a href="bagging-and-random-forests.html#cb94-11" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 9 land types, but we&#39;ll focus on 3 of them</span></span>
-<span id="cb94-12"><a href="bagging-and-random-forests.html#cb94-12" aria-hidden="true" tabindex="-1"></a>land <span class="ot">&lt;-</span> land <span class="sc">%&gt;%</span> </span>
-<span id="cb94-13"><a href="bagging-and-random-forests.html#cb94-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(class <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;asphalt&quot;</span>, <span class="st">&quot;grass&quot;</span>, <span class="st">&quot;tree&quot;</span>))</span></code></pre></div>
-<div id="hello-how-are-things-2" class="section level3 unnumbered hasAnchor">
-<h3>Hello, how are things?<a href="bagging-and-random-forests.html#hello-how-are-things-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>It’s been a hard week. How are all of you doing? Please check in with each other.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="bagging-and-random-forests.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb121-2"><a href="bagging-and-random-forests.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb121-3"><a href="bagging-and-random-forests.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb121-4"><a href="bagging-and-random-forests.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb121-5"><a href="bagging-and-random-forests.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb121-6"><a href="bagging-and-random-forests.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb121-7"><a href="bagging-and-random-forests.html#cb121-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-8"><a href="bagging-and-random-forests.html#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb121-9"><a href="bagging-and-random-forests.html#cb121-9" aria-hidden="true" tabindex="-1"></a>land <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://ajohns24.github.io/portfolio/data/land_cover.csv&quot;</span>)</span>
+<span id="cb121-10"><a href="bagging-and-random-forests.html#cb121-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-11"><a href="bagging-and-random-forests.html#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 9 land types, but we&#39;ll focus on 3 of them</span></span>
+<span id="cb121-12"><a href="bagging-and-random-forests.html#cb121-12" aria-hidden="true" tabindex="-1"></a>land <span class="ot">&lt;-</span> land <span class="sc">%&gt;%</span> </span>
+<span id="cb121-13"><a href="bagging-and-random-forests.html#cb121-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(class <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;asphalt&quot;</span>, <span class="st">&quot;grass&quot;</span>, <span class="st">&quot;tree&quot;</span>))</span></code></pre></div>
+<div id="exercise-1-bagging-bootstrap-aggregation" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 1: Bagging: <em>B</em>ootstrap <em>AGG</em>regation<a href="bagging-and-random-forests.html#exercise-1-bagging-bootstrap-aggregation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: lower-alpha">
+<li><p>First, explain to your table mates what bootstrapping is (the algorithm).</p></li>
+<li><p>Discuss why we might utilize bootstrapping? What do we gain? Why did we use bootstrapping in STAT 155?</p></li>
+</ol>
+<p>Note: In practice, we don’t often use bagged trees as the final classifier because the trees end up looking too similar to each other so we create random forests (bagged trees + use random subset of variables to choose split from).</p>
 </div>
-<div id="exercise-1-preparing-to-build-a-random-forest" class="section level3 unnumbered hasAnchor">
-<h3>Exercise 1: Preparing to build a random forest<a href="bagging-and-random-forests.html#exercise-1-preparing-to-build-a-random-forest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You’ll eventually use the <code>train()</code> function from <code>caret</code> package to build a random forest for the classification model of <code>class ~ .</code>. In this exercise, you’ll take some preliminary steps.</p>
-<p>Visit <code>caret</code>’s (extensive) <a href="https://topepo.github.io/caret/available-models.html">manual</a> and search for “random forest” in the top right search bar. There will be <em>many</em> results. Find the entry that only has <code>randomForest</code> listed in the “Libraries” column, and inspect the information in that row. (The instructor is not familiar with the other packages.)</p>
-<ul>
-<li>What <code>method</code> will we use for random forests (e.g., for single trees, we used <code>method = "rpart"</code>)?</li>
-<li>What is the tuning parameter called, and what does it represent?
-<ul>
-<li>To investigate this, pull up the help file for the <code>randomForest()</code> function in the <code>randomForest</code> package by entering <code>?randomForest::randomForest</code> in the Console.</li>
-</ul></li>
-</ul>
-</div>
-<div id="exercise-2-more-preparation-to-build-a-random-forest" class="section level3 unnumbered hasAnchor">
-<h3>Exercise 2: More preparation to build a random forest<a href="bagging-and-random-forests.html#exercise-2-more-preparation-to-build-a-random-forest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exercise-2-random-forest-groundwork" class="section level3 unnumbered hasAnchor">
+<h3>Exercise 2: Random forest groundwork<a href="bagging-and-random-forests.html#exercise-2-random-forest-groundwork" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suppose we wanted to evaluate the performance of a random forest which uses 500 classification trees.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Describe the 10-fold CV approach to evaluating the random forest. In this process, how many total trees would we need to construct?</p></li>
 <li><p>The <strong>out-of-bag (OOB) error rate</strong> provides an alternative approach to evaluating forests. Unlike CV, OOB summarizes misclassification rates when applying each of the 500 trees to the “test” cases that were not used to build the tree. How many total trees would we need to construct in order to calculate the OOB error estimate?</p></li>
 <li><p>Moving forward, we’ll use OOB and not CV to evaluate forest performance. Explain why.</p></li>
-<li><p>Look at the <code>trainControl()</code> documentation by entering <code>?caret::trainControl</code> in the Console. What is the name of the <code>method</code> to perform OOB error estimation?</p></li>
 </ol>
 </div>
 <div id="exercise-3-building-the-random-forest" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 3: Building the random forest<a href="bagging-and-random-forests.html#exercise-3-building-the-random-forest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We can now put together our work from the previous 2 exercises to train our random forest model. Using <code>train()</code> code for previous methods as a guide, build a set of random forest models with the following specifications:</p>
+<p>We can now put together our work to train our random forest model. Build a set of random forest models with the following specifications:</p>
 <ul>
 <li>Set the seed to 253.</li>
-<li>Run the algorithm with the following number of randomly sampled predictors at each split: 2, 12 (roughly <span class="math inline">\(\sqrt{147}\)</span>), 74 (roughly 147/2), and all 147 predictors
-<ul>
+<li>Run the algorithm with the following number of randomly sampled predictors at each split: 2, 12 (roughly <span class="math inline">\(\sqrt{147}\)</span>), 74 (roughly 147/2), and all 147 predictors</li>
 <li>You can generate a sequence of numbers with <code>c()</code>. e.g., <code>c(2,3)</code>.</li>
-</ul></li>
-<li>Use <code>"oob"</code> instead of <code>"cv"</code> for model evaluation.
-<ul>
-<li>Hint: The <code>number</code> argument is not necessary. (Why?)</li>
-</ul></li>
+<li>Use OOB instead of CV for model evaluation.</li>
 <li>Select the model with the overall best value of estimated test overall accuracy.</li>
 </ul>
-<p>Note: By default, 500 trees are built.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="bagging-and-random-forests.html#cb95-1" aria-hidden="true" tabindex="-1"></a>rf_mod <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
-<span id="cb95-2"><a href="bagging-and-random-forests.html#cb95-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-3"><a href="bagging-and-random-forests.html#cb95-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="bagging-and-random-forests.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure you understand what each line of code is doing</span></span>
+<span id="cb122-2"><a href="bagging-and-random-forests.html#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="bagging-and-random-forests.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Model Specification</span></span>
+<span id="cb122-4"><a href="bagging-and-random-forests.html#cb122-4" aria-hidden="true" tabindex="-1"></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb122-5"><a href="bagging-and-random-forests.html#cb122-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">&#39;ranger&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb122-6"><a href="bagging-and-random-forests.html#cb122-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_args</span>(<span class="at">mtry =</span> <span class="cn">NULL</span>, <span class="co"># size of random subset of variables; default is floor(sqrt(number of total predictors))</span></span>
+<span id="cb122-7"><a href="bagging-and-random-forests.html#cb122-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">trees =</span> <span class="dv">1000</span>, <span class="co"># Number of trees</span></span>
+<span id="cb122-8"><a href="bagging-and-random-forests.html#cb122-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">min_n =</span> <span class="dv">2</span>,</span>
+<span id="cb122-9"><a href="bagging-and-random-forests.html#cb122-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">probability =</span> <span class="cn">FALSE</span>, <span class="co"># FALSE: get hard predictions (not needed for regression)</span></span>
+<span id="cb122-10"><a href="bagging-and-random-forests.html#cb122-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">importance =</span> <span class="st">&#39;impurity&#39;</span>) <span class="sc">%&gt;%</span> <span class="co"># we&#39;ll come back to this at the end</span></span>
+<span id="cb122-11"><a href="bagging-and-random-forests.html#cb122-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&#39;classification&#39;</span>) <span class="co"># change this for regression</span></span>
+<span id="cb122-12"><a href="bagging-and-random-forests.html#cb122-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-13"><a href="bagging-and-random-forests.html#cb122-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Recipe</span></span>
+<span id="cb122-14"><a href="bagging-and-random-forests.html#cb122-14" aria-hidden="true" tabindex="-1"></a>data_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(class <span class="sc">~</span> ., <span class="at">data =</span> land)</span>
+<span id="cb122-15"><a href="bagging-and-random-forests.html#cb122-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-16"><a href="bagging-and-random-forests.html#cb122-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflows</span></span>
+<span id="cb122-17"><a href="bagging-and-random-forests.html#cb122-17" aria-hidden="true" tabindex="-1"></a>data_wf_mtry2 <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb122-18"><a href="bagging-and-random-forests.html#cb122-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(rf_spec <span class="sc">%&gt;%</span> <span class="fu">set_args</span>(<span class="at">mtry =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb122-19"><a href="bagging-and-random-forests.html#cb122-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(data_rec)</span>
+<span id="cb122-20"><a href="bagging-and-random-forests.html#cb122-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-21"><a href="bagging-and-random-forests.html#cb122-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Create workflows for mtry = 12, 74, and 147</span></span>
+<span id="cb122-22"><a href="bagging-and-random-forests.html#cb122-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-23"><a href="bagging-and-random-forests.html#cb122-23" aria-hidden="true" tabindex="-1"></a>data_wf_mtry12 <span class="ot">&lt;-</span> </span>
+<span id="cb122-24"><a href="bagging-and-random-forests.html#cb122-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-25"><a href="bagging-and-random-forests.html#cb122-25" aria-hidden="true" tabindex="-1"></a>data_wf_mtry74 <span class="ot">&lt;-</span> </span>
+<span id="cb122-26"><a href="bagging-and-random-forests.html#cb122-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-27"><a href="bagging-and-random-forests.html#cb122-27" aria-hidden="true" tabindex="-1"></a>data_wf_mtry147 <span class="ot">&lt;-</span> </span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="bagging-and-random-forests.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Models</span></span>
+<span id="cb123-2"><a href="bagging-and-random-forests.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># make sure to run this before each fit so that you have the same 1000 trees</span></span>
+<span id="cb123-3"><a href="bagging-and-random-forests.html#cb123-3" aria-hidden="true" tabindex="-1"></a>data_fit_mtry2 <span class="ot">&lt;-</span> <span class="fu">fit</span>(data_wf_mtry2, <span class="at">data =</span> land)</span>
+<span id="cb123-4"><a href="bagging-and-random-forests.html#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-5"><a href="bagging-and-random-forests.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit models for 12, 74, 147</span></span>
+<span id="cb123-6"><a href="bagging-and-random-forests.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) </span>
+<span id="cb123-7"><a href="bagging-and-random-forests.html#cb123-7" aria-hidden="true" tabindex="-1"></a>data_fit_mtry12 <span class="ot">&lt;-</span> </span>
+<span id="cb123-8"><a href="bagging-and-random-forests.html#cb123-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-9"><a href="bagging-and-random-forests.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb123-10"><a href="bagging-and-random-forests.html#cb123-10" aria-hidden="true" tabindex="-1"></a>data_fit_mtry74 <span class="ot">&lt;-</span> </span>
+<span id="cb123-11"><a href="bagging-and-random-forests.html#cb123-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-12"><a href="bagging-and-random-forests.html#cb123-12" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) </span>
+<span id="cb123-13"><a href="bagging-and-random-forests.html#cb123-13" aria-hidden="true" tabindex="-1"></a>data_fit_mtry147 <span class="ot">&lt;-</span> </span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="bagging-and-random-forests.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom Function to get OOB predictions, true observed outcomes and add a user-provided model label</span></span>
+<span id="cb124-2"><a href="bagging-and-random-forests.html#cb124-2" aria-hidden="true" tabindex="-1"></a>rf_OOB_output <span class="ot">&lt;-</span> <span class="cf">function</span>(fit_model, model_label, truth){</span>
+<span id="cb124-3"><a href="bagging-and-random-forests.html#cb124-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
+<span id="cb124-4"><a href="bagging-and-random-forests.html#cb124-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">.pred_class =</span> fit_model <span class="sc">%&gt;%</span> <span class="fu">extract_fit_engine</span>() <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="st">&#39;predictions&#39;</span>), <span class="co">#OOB predictions</span></span>
+<span id="cb124-5"><a href="bagging-and-random-forests.html#cb124-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">class =</span> truth,</span>
+<span id="cb124-6"><a href="bagging-and-random-forests.html#cb124-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">label =</span> model_label</span>
+<span id="cb124-7"><a href="bagging-and-random-forests.html#cb124-7" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb124-8"><a href="bagging-and-random-forests.html#cb124-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb124-9"><a href="bagging-and-random-forests.html#cb124-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-10"><a href="bagging-and-random-forests.html#cb124-10" aria-hidden="true" tabindex="-1"></a><span class="co">#check out the function output</span></span>
+<span id="cb124-11"><a href="bagging-and-random-forests.html#cb124-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rf_OOB_output</span>(data_fit_mtry2,<span class="dv">2</span>, land <span class="sc">%&gt;%</span> <span class="fu">pull</span>(class))</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="bagging-and-random-forests.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate OOB Metrics</span></span>
+<span id="cb125-2"><a href="bagging-and-random-forests.html#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="bagging-and-random-forests.html#cb125-3" aria-hidden="true" tabindex="-1"></a>data_rf_OOB_output <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb125-4"><a href="bagging-and-random-forests.html#cb125-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rf_OOB_output</span>(data_fit_mtry2,<span class="dv">2</span>, land <span class="sc">%&gt;%</span> <span class="fu">pull</span>(class)),</span>
+<span id="cb125-5"><a href="bagging-and-random-forests.html#cb125-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rf_OOB_output</span>(data_fit_mtry12,<span class="dv">12</span>, land <span class="sc">%&gt;%</span> <span class="fu">pull</span>(class)),</span>
+<span id="cb125-6"><a href="bagging-and-random-forests.html#cb125-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rf_OOB_output</span>(data_fit_mtry74,<span class="dv">74</span>, land <span class="sc">%&gt;%</span> <span class="fu">pull</span>(class)),</span>
+<span id="cb125-7"><a href="bagging-and-random-forests.html#cb125-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rf_OOB_output</span>(data_fit_mtry147,<span class="dv">147</span>, land <span class="sc">%&gt;%</span> <span class="fu">pull</span>(class))</span>
+<span id="cb125-8"><a href="bagging-and-random-forests.html#cb125-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb125-9"><a href="bagging-and-random-forests.html#cb125-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-10"><a href="bagging-and-random-forests.html#cb125-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-11"><a href="bagging-and-random-forests.html#cb125-11" aria-hidden="true" tabindex="-1"></a>data_rf_OOB_output <span class="sc">%&gt;%</span> </span>
+<span id="cb125-12"><a href="bagging-and-random-forests.html#cb125-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(label) <span class="sc">%&gt;%</span></span>
+<span id="cb125-13"><a href="bagging-and-random-forests.html#cb125-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">accuracy</span>(<span class="at">truth =</span> class, <span class="at">estimate =</span> .pred_class)</span></code></pre></div>
 </div>
 <div id="exercise-4-preliminary-interpretation" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 4: Preliminary interpretation<a href="bagging-and-random-forests.html#exercise-4-preliminary-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: lower-alpha">
-<li><p>Plot estimated test performance vs. the tuning parameter with <code>plot(rf_mod)</code>. What tuning parameter would you choose?</p></li>
+<li><p>Plot estimated test performance vs. the tuning parameter, <code>mtry</code>. What tuning parameter would you choose?</p></li>
 <li><p>Describe the bias-variance tradeoff in tuning this forest. For what values of the tuning parameter will forests be the most biased? The most variable?</p></li>
 </ol>
 </div>
 <div id="exercise-5-evaluating-the-forest" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 5: Evaluating the forest<a href="bagging-and-random-forests.html#exercise-5-evaluating-the-forest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The code below prints information pertaining to the “best” forest model.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="bagging-and-random-forests.html#cb96-1" aria-hidden="true" tabindex="-1"></a>rf_mod<span class="sc">$</span>finalModel</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="bagging-and-random-forests.html#cb126-1" aria-hidden="true" tabindex="-1"></a>rf_mod<span class="sc">$</span>finalModel</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
-<li><p>Report and interpret the <code>OOB estimate of error rate</code>. (How does this match up with the plot from the previous exercise?)</p></li>
+<li>Report and interpret the <code>OOB prediction error</code>. (How does this match up with the plot from the previous exercise?)</li>
+</ol>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="bagging-and-random-forests.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rf_OOB_output</span>(data_fit_mtry12,<span class="dv">12</span>, land <span class="sc">%&gt;%</span> <span class="fu">pull</span>(class)) <span class="sc">%&gt;%</span></span>
+<span id="cb127-2"><a href="bagging-and-random-forests.html#cb127-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">conf_mat</span>(<span class="at">truth =</span> class, <span class="at">estimate=</span> .pred_class)</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
 <li><p>The output includes an OOB test confusion matrix (as opposed to a training confusion matrix). Rows are true classes, and columns are predicted classes. How do you think this is constructed? Why is the test confusion matrix preferable to a training confusion matrix?</p></li>
 <li><p>Further inspecting the test confusion matrix, which type of land use is most accurately classified by our forest? Which type of land use is least accurately classified by our forest? Why do you think this is?</p></li>
 <li><p>In our previous activities, our best tree had a cross-validated accuracy rate of around 85%. How does the forest performance compare?</p></li>
@@ -513,25 +519,38 @@ Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" clas
 </div>
 <div id="exercise-6-variable-importance-measures" class="section level3 unnumbered hasAnchor">
 <h3>Exercise 6: Variable importance measures<a href="bagging-and-random-forests.html#exercise-6-variable-importance-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Because bagging and random forests use tons of trees, the nice interpretability of single decision trees is lost. However, we can still get a measure of how important the different predictors were in this classification task. For each of the 147 predictors, the code below gives the “total decrease in node impurities (as measured by the Gini index) from splitting on the variable, averaged over all trees” (package documentation).</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="bagging-and-random-forests.html#cb97-1" aria-hidden="true" tabindex="-1"></a>var_imp_rf <span class="ot">&lt;-</span> randomForest<span class="sc">::</span><span class="fu">importance</span>(rf_mod<span class="sc">$</span>finalModel)</span>
-<span id="cb97-2"><a href="bagging-and-random-forests.html#cb97-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-3"><a href="bagging-and-random-forests.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort by importance with dplyr&#39;s arrange()</span></span>
-<span id="cb97-4"><a href="bagging-and-random-forests.html#cb97-4" aria-hidden="true" tabindex="-1"></a>var_imp_rf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb97-5"><a href="bagging-and-random-forests.html#cb97-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">predictor =</span> <span class="fu">rownames</span>(var_imp_rf),</span>
-<span id="cb97-6"><a href="bagging-and-random-forests.html#cb97-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">MeanDecreaseGini =</span> var_imp_rf[,<span class="st">&quot;MeanDecreaseGini&quot;</span>]</span>
-<span id="cb97-7"><a href="bagging-and-random-forests.html#cb97-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb97-8"><a href="bagging-and-random-forests.html#cb97-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(MeanDecreaseGini))</span>
-<span id="cb97-9"><a href="bagging-and-random-forests.html#cb97-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-10"><a href="bagging-and-random-forests.html#cb97-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Top 20</span></span>
-<span id="cb97-11"><a href="bagging-and-random-forests.html#cb97-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(var_imp_rf, <span class="dv">20</span>)</span>
-<span id="cb97-12"><a href="bagging-and-random-forests.html#cb97-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-13"><a href="bagging-and-random-forests.html#cb97-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Bottom 10</span></span>
-<span id="cb97-14"><a href="bagging-and-random-forests.html#cb97-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(var_imp_rf, <span class="dv">10</span>)</span></code></pre></div>
-<ol style="list-style-type: lower-alpha">
-<li><p>Check out the codebook for these variables <a href="https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover">here</a>. The descriptions of the variables aren’t the greatest, but does this ranking make some contextual sense?</p></li>
+<p>Because bagging and random forests use tons of trees, the nice interpretability of single decision trees is lost. However, we can still get a measure of how important the different predictors were in this classification task.</p>
+<p>There are two main importance measures.</p>
+<p><em>Impurity</em>: For each of the 147 predictors, the code below gives the “total decrease in node impurities (as measured by the Gini index) from splitting on the variable, averaged over all trees”.</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="bagging-and-random-forests.html#cb128-1" aria-hidden="true" tabindex="-1"></a>model_output <span class="ot">&lt;-</span>data_fit_mtry12 <span class="sc">%&gt;%</span> </span>
+<span id="cb128-2"><a href="bagging-and-random-forests.html#cb128-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract_fit_engine</span>() </span>
+<span id="cb128-3"><a href="bagging-and-random-forests.html#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="bagging-and-random-forests.html#cb128-4" aria-hidden="true" tabindex="-1"></a>model_output <span class="sc">%&gt;%</span> </span>
+<span id="cb128-5"><a href="bagging-and-random-forests.html#cb128-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vip</span>(<span class="at">num_features =</span> <span class="dv">30</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="co">#based on impurity</span></span>
+<span id="cb128-6"><a href="bagging-and-random-forests.html#cb128-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-7"><a href="bagging-and-random-forests.html#cb128-7" aria-hidden="true" tabindex="-1"></a>model_output <span class="sc">%&gt;%</span> vip<span class="sc">::</span><span class="fu">vi</span>() <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb128-8"><a href="bagging-and-random-forests.html#cb128-8" aria-hidden="true" tabindex="-1"></a>model_output <span class="sc">%&gt;%</span> vip<span class="sc">::</span><span class="fu">vi</span>() <span class="sc">%&gt;%</span> <span class="fu">tail</span>()</span></code></pre></div>
+<p>*a. Check out the codebook for these variables <a href="https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover">here</a>. The descriptions of the variables aren’t the greatest, but does this ranking make some contextual sense?</p>
+<ol start="2" style="list-style-type: lower-alpha">
 <li><p>Construct some visualizations of the 1 most and 1 least important predictors that support your conclusion in a.</p></li>
 <li><p>It has been found that this random forest measure of variable importance can tend to favor predictors with a lot of unique values. Explain briefly why it makes sense that this can happen by thinking about the recursive binary splitting algorithm for a single tree. (Note: similar cautions arise for variable importance in single trees.)</p></li>
+</ol>
+<p><em>Permutation</em>: We consider a variable important if it has a positive effect on the prediction performance. To evaluate this, first, a tree is grown and the prediction accuracy in the OOB observations is calculated. In the second step, any association between the variable and the outcome is broken by permuting the values of all individuals that vairable, and the prediction accuracy is computed again. The difference between the two accuracy values is the permutation importance the variable from a single tree. The average of all tree importance values in a random forest then gives the random forest permutation importance of this variable. The procedure is repeated for all variables of interest.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="bagging-and-random-forests.html#cb129-1" aria-hidden="true" tabindex="-1"></a>model_output2 <span class="ot">&lt;-</span> data_wf_mtry12 <span class="sc">%&gt;%</span> </span>
+<span id="cb129-2"><a href="bagging-and-random-forests.html#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_model</span>(rf_spec <span class="sc">%&gt;%</span> <span class="fu">set_args</span>(<span class="at">importance =</span> <span class="st">&quot;permutation&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#based on permutation</span></span>
+<span id="cb129-3"><a href="bagging-and-random-forests.html#cb129-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> land) <span class="sc">%&gt;%</span> </span>
+<span id="cb129-4"><a href="bagging-and-random-forests.html#cb129-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract_fit_engine</span>() </span>
+<span id="cb129-5"><a href="bagging-and-random-forests.html#cb129-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-6"><a href="bagging-and-random-forests.html#cb129-6" aria-hidden="true" tabindex="-1"></a>model_output2 <span class="sc">%&gt;%</span> </span>
+<span id="cb129-7"><a href="bagging-and-random-forests.html#cb129-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vip</span>(<span class="at">num_features =</span> <span class="dv">30</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb129-8"><a href="bagging-and-random-forests.html#cb129-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-9"><a href="bagging-and-random-forests.html#cb129-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-10"><a href="bagging-and-random-forests.html#cb129-10" aria-hidden="true" tabindex="-1"></a>model_output2 <span class="sc">%&gt;%</span> vip<span class="sc">::</span><span class="fu">vi</span>() <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb129-11"><a href="bagging-and-random-forests.html#cb129-11" aria-hidden="true" tabindex="-1"></a>model_output2 <span class="sc">%&gt;%</span> vip<span class="sc">::</span><span class="fu">vi</span>() <span class="sc">%&gt;%</span> <span class="fu">tail</span>()</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Check out the codebook for these variables <a href="https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover">here</a>. The descriptions of the variables aren’t the greatest, but do these rankings make some contextual sense?</p></li>
+<li><p>Construct some visualizations of the 1 most and 1 least important predictors that support your conclusion in a.</p></li>
+<li><p>It has been found that the impurity random forest measure of variable importance can tend to favor predictors with a lot of unique values. Explain briefly why it makes sense that this can happen by thinking about the recursive binary splitting algorithm for a single tree. (Note: similar cautions arise for variable importance in single trees.)</p></li>
 </ol>
 
 </div>
@@ -545,8 +564,8 @@ Source: <a href="https://ncap.org.uk/sites/default/files/EK_land_use_0.jpg" clas
           </div>
         </div>
       </div>
-<a href="trees-part-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="k-means-clustering.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="decision-trees.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

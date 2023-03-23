@@ -13,3 +13,4 @@ logistic-regression
 exercise-5-evaluate-the-model
 lasso-logistic-regression
 decision-trees
+bagging-and-random-forests

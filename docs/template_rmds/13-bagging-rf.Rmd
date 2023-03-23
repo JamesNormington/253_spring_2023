@@ -6,21 +6,9 @@ output:
     toc_float: true
 ---
 
-## Hello, how are things?
-
-It's been a hard week. How are all of you doing? Please check in with each other.
-
-
-
-
-
-
-
-
-
 ## Context and Data
 
-Before proceeding, install the `randomForest` package by entering `install.packages("randomForest")` in the Console.
+Before proceeding, install the `ranger` and `vip` packages.
 
 Our goal will be to classify types of urban land cover in small subregions within a high resolution aerial image of a land region. Data from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover) include the observed type of land cover (determined by human eye) and "spectral, size, shape, and texture information" computed from the image. See [this page](https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover) for the data codebook.
 
@@ -33,7 +21,7 @@ library(rpart.plot)
 library(randomForest)
 
 # Read in the data
-land <- read_csv("https://www.macalester.edu/~ajohns24/data/land_cover.csv")
+land <- read_csv("https://ajohns24.github.io/portfolio/data/land_cover.csv")
 
 # There are 9 land types, but we'll focus on 3 of them
 land <- land %>% 
@@ -42,19 +30,17 @@ land <- land %>%
 
 
 
-## Exercise 1: Preparing to build a random forest
+## Exercise 1: Bagging: *B*ootstrap *AGG*regation 
 
-You'll eventually use the `train()` function from `caret` package to build a random forest for the classification model of `class ~ .`. In this exercise, you'll take some preliminary steps.
+a. First, explain to your table mates what bootstrapping is (the algorithm).
 
-Visit `caret`'s (extensive) [manual](https://topepo.github.io/caret/available-models.html) and search for "random forest" in the top right search bar. There will be *many* results. Find the entry that only has `randomForest` listed in the "Libraries" column, and inspect the information in that row. (The instructor is not familiar with the other packages.)
+b. Discuss why we might utilize bootstrapping? What do we gain? Why did we use bootstrapping in STAT 155?
 
-- What `method` will we use for random forests (e.g., for single trees, we used `method = "rpart"`)?
-- What is the tuning parameter called, and what does it represent?
-    - To investigate this, pull up the help file for the `randomForest()` function in the `randomForest` package by entering `?randomForest::randomForest` in the Console.
+Note: In practice, we don’t often use bagged trees as the final classifier because the trees end up looking too similar to each other so we create random forests (bagged trees + use random subset of variables to choose split from).
 
 
 
-## Exercise 2: More preparation to build a random forest
+## Exercise 2: Random forest groundwork
 
 Suppose we wanted to evaluate the performance of a random forest which uses 500 classification trees.
 
@@ -64,36 +50,105 @@ b. The **out-of-bag (OOB) error rate** provides an alternative approach to evalu
 
 c. Moving forward, we'll use OOB and not CV to evaluate forest performance. Explain why.
 
-d. Look at the `trainControl()` documentation by entering `?caret::trainControl` in the Console. What is the name of the `method` to perform OOB error estimation?
-
 
 
 ## Exercise 3: Building the random forest
 
-We can now put together our work from the previous 2 exercises to train our random forest model. Using `train()` code for previous methods as a guide, build a set of random forest models with the following specifications:
+We can now put together our work to train our random forest model. Build a set of random forest models with the following specifications:
+
 
 - Set the seed to 253.
 - Run the algorithm with the following number of randomly sampled predictors at each split: 2, 12 (roughly $\sqrt{147}$), 74 (roughly 147/2), and all 147 predictors
-    - You can generate a sequence of numbers with `c()`. e.g., `c(2,3)`.
-- Use `"oob"` instead of `"cv"` for model evaluation.
-    - Hint: The `number` argument is not necessary. (Why?)
+- You can generate a sequence of numbers with `c()`. e.g., `c(2,3)`.
+- Use OOB  instead of CV for model evaluation.
 - Select the model with the overall best value of estimated test overall accuracy.
 
-Note: By default, 500 trees are built.
 
 ```{r}
-rf_mod <- train(
+# Make sure you understand what each line of code is doing
 
+# Model Specification
+rf_spec <- rand_forest() %>%
+  set_engine(engine = 'ranger') %>% 
+  set_args(mtry = NULL, # size of random subset of variables; default is floor(sqrt(number of total predictors))
+           trees = 1000, # Number of trees
+           min_n = 2,
+           probability = FALSE, # FALSE: get hard predictions (not needed for regression)
+           importance = 'impurity') %>% # we'll come back to this at the end
+  set_mode('classification') # change this for regression
+
+# Recipe
+data_rec <- recipe(class ~ ., data = land)
+
+# Workflows
+data_wf_mtry2 <- workflow() %>%
+  add_model(rf_spec %>% set_args(mtry = 2)) %>%
+  add_recipe(data_rec)
+
+## Create workflows for mtry = 12, 74, and 147
+
+data_wf_mtry12 <- 
+
+data_wf_mtry74 <- 
+
+data_wf_mtry147 <- 
+```
+
+```{r}
+# Fit Models
+set.seed(123) # make sure to run this before each fit so that you have the same 1000 trees
+data_fit_mtry2 <- fit(data_wf_mtry2, data = land)
+
+# Fit models for 12, 74, 147
+set.seed(123) 
+data_fit_mtry12 <- 
+
+set.seed(123)
+data_fit_mtry74 <- 
+
+set.seed(123) 
+data_fit_mtry147 <- 
+```
+
+```{r}
+# Custom Function to get OOB predictions, true observed outcomes and add a user-provided model label
+rf_OOB_output <- function(fit_model, model_label, truth){
+    tibble(
+          .pred_class = fit_model %>% extract_fit_engine() %>% pluck('predictions'), #OOB predictions
+          class = truth,
+          label = model_label
+      )
+}
+
+#check out the function output
+rf_OOB_output(data_fit_mtry2,2, land %>% pull(class))
+```
+
+```{r}
+# Evaluate OOB Metrics
+
+data_rf_OOB_output <- bind_rows(
+    rf_OOB_output(data_fit_mtry2,2, land %>% pull(class)),
+    rf_OOB_output(data_fit_mtry12,12, land %>% pull(class)),
+    rf_OOB_output(data_fit_mtry74,74, land %>% pull(class)),
+    rf_OOB_output(data_fit_mtry147,147, land %>% pull(class))
 )
+
+
+data_rf_OOB_output %>% 
+    group_by(label) %>%
+    accuracy(truth = class, estimate = .pred_class)
 ```
 
 
 
 ## Exercise 4: Preliminary interpretation
 
-a. Plot estimated test performance vs. the tuning parameter with `plot(rf_mod)`. What tuning parameter would you choose?
+a. Plot estimated test performance vs. the tuning parameter, `mtry`. What tuning parameter would you choose?
 
-b. Describe the bias-variance trade-off in tuning this forest. For what values of the tuning parameter will forests be the most biased? The most variable?
+b. Describe the bias-variance tradeoff in tuning this forest. For what values of the tuning parameter will forests be the most biased? The most variable?
+
+
 
 
 
@@ -105,7 +160,13 @@ The code below prints information pertaining to the "best" forest model.
 rf_mod$finalModel
 ```
 
-a. Report and interpret the `OOB estimate of error rate`. (How does this match up with the plot from the previous exercise?)
+a. Report and interpret the `OOB prediction error`. (How does this match up with the plot from the previous exercise?)
+
+```{r}
+rf_OOB_output(data_fit_mtry12,12, land %>% pull(class)) %>%
+    conf_mat(truth = class, estimate= .pred_class)
+```
+
 
 b. The output includes an OOB test confusion matrix (as opposed to a training confusion matrix). Rows are true classes, and columns are predicted classes. How do you think this is constructed? Why is the test confusion matrix preferable to a training confusion matrix?
 
@@ -117,31 +178,47 @@ d. In our previous activities, our best tree had a cross-validated accuracy rate
 
 ## Exercise 6: Variable importance measures
 
-Because bagging and random forests use tons of trees, the nice interpretability of single decision trees is lost. However, we can still get a measure of how important the different predictors were in this classification task. For each of the 147 predictors, the code below gives the "total decrease in node impurities (as measured by the Gini index) from splitting on the variable, averaged over all trees" (package documentation).
+Because bagging and random forests use tons of trees, the nice interpretability of single decision trees is lost. However, we can still get a measure of how important the different predictors were in this classification task.
+
+There are two main importance measures.
+
+*Impurity*: For each of the 147 predictors, the code below gives the “total decrease in node impurities (as measured by the Gini index) from splitting on the variable, averaged over all trees”.
 
 ```{r}
-var_imp_rf <- randomForest::importance(rf_mod$finalModel)
+model_output <-data_fit_mtry12 %>% 
+    extract_fit_engine() 
 
-# Sort by importance with dplyr's arrange()
-var_imp_rf <- data.frame(
-        predictor = rownames(var_imp_rf),
-        MeanDecreaseGini = var_imp_rf[,"MeanDecreaseGini"]
-    ) %>%
-    arrange(desc(MeanDecreaseGini))
+model_output %>% 
+    vip(num_features = 30) + theme_classic() #based on impurity
 
-# Top 20
-head(var_imp_rf, 20)
-
-# Bottom 10
-tail(var_imp_rf, 10)
+model_output %>% vip::vi() %>% head()
+model_output %>% vip::vi() %>% tail()
 ```
 
-a. Check out the codebook for these variables [here](https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover). The descriptions of the variables aren't the greatest, but does this ranking make some contextual sense?
+*a. Check out the codebook for these variables [here](https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover). The descriptions of the variables aren't the greatest, but does this ranking make some contextual sense?
 
 b. Construct some visualizations of the 1 most and 1 least important predictors that support your conclusion in a.
 
 c. It has been found that this random forest measure of variable importance can tend to favor predictors with a lot of unique values. Explain briefly why it makes sense that this can happen by thinking about the recursive binary splitting algorithm for a single tree. (Note: similar cautions arise for variable importance in single trees.)
 
+*Permutation*: We consider a variable important if it has a positive effect on the prediction performance. To evaluate this, first, a tree is grown and the prediction accuracy in the OOB observations is calculated. In the second step, any association between the variable and the outcome is broken by permuting the values of all individuals that vairable, and the prediction accuracy is computed again. The difference between the two accuracy values is the permutation importance the variable from a single tree. The average of all tree importance values in a random forest then gives the random forest permutation importance of this variable. The procedure is repeated for all variables of interest.
+
+```{r}
+model_output2 <- data_wf_mtry12 %>% 
+  update_model(rf_spec %>% set_args(importance = "permutation")) %>% #based on permutation
+  fit(data = land) %>% 
+    extract_fit_engine() 
+
+model_output2 %>% 
+    vip(num_features = 30) + theme_classic()
 
 
+model_output2 %>% vip::vi() %>% head()
+model_output2 %>% vip::vi() %>% tail()
+```
 
+a. Check out the codebook for these variables [here](https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover). The descriptions of the variables aren’t the greatest, but do these rankings make some contextual sense?
+
+b. Construct some visualizations of the 1 most and 1 least important predictors that support your conclusion in a.
+
+c. It has been found that the impurity random forest measure of variable importance can tend to favor predictors with a lot of unique values. Explain briefly why it makes sense that this can happen by thinking about the recursive binary splitting algorithm for a single tree. (Note: similar cautions arise for variable importance in single trees.)

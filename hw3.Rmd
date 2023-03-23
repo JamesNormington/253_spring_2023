@@ -5,7 +5,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 # Homework 3 {-}
 
 <center>
-**Due Monday, March 27th at 11:59pm CST**
+**Due Wednesday, March 29th at 11:59pm CST**
 </center>
 
 **Deliverables:** Please use [this template](template_rmds/hw3.Rmd) to knit an HTML or PDF document, and submit to Moodle.
