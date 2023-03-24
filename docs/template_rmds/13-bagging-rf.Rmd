@@ -13,12 +13,13 @@ Before proceeding, install the `ranger` and `vip` packages.
 Our goal will be to classify types of urban land cover in small subregions within a high resolution aerial image of a land region. Data from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover) include the observed type of land cover (determined by human eye) and "spectral, size, shape, and texture information" computed from the image. See [this page](https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover) for the data codebook.
 
 ```{r}
+library(dplyr)
 library(readr)
 library(ggplot2)
-library(dplyr)
-library(caret)
-library(rpart.plot)
-library(randomForest)
+library(vip)
+library(tidymodels)
+tidymodels_prefer()
+conflicted::conflict_prefer("vi", "vip")
 
 # Read in the data
 land <- read_csv("https://ajohns24.github.io/portfolio/data/land_cover.csv")
@@ -59,7 +60,6 @@ We can now put together our work to train our random forest model. Build a set o
 
 - Set the seed to 253.
 - Run the algorithm with the following number of randomly sampled predictors at each split: 2, 12 (roughly $\sqrt{147}$), 74 (roughly 147/2), and all 147 predictors
-- You can generate a sequence of numbers with `c()`. e.g., `c(2,3)`.
 - Use OOB  instead of CV for model evaluation.
 - Select the model with the overall best value of estimated test overall accuracy.
 
@@ -126,12 +126,11 @@ rf_OOB_output(data_fit_mtry2,2, land %>% pull(class))
 
 ```{r}
 # Evaluate OOB Metrics
-
 data_rf_OOB_output <- bind_rows(
-    rf_OOB_output(data_fit_mtry2,2, land %>% pull(class)),
-    rf_OOB_output(data_fit_mtry12,12, land %>% pull(class)),
-    rf_OOB_output(data_fit_mtry74,74, land %>% pull(class)),
-    rf_OOB_output(data_fit_mtry147,147, land %>% pull(class))
+    rf_OOB_output(data_fit_mtry2,2, land %>% pull(class) %>% factor()),
+    rf_OOB_output(data_fit_mtry12,12, land %>% pull(class) %>% factor()),
+    rf_OOB_output(data_fit_mtry74,74, land %>% pull(class) %>% factor()),
+    rf_OOB_output(data_fit_mtry147,147, land %>% pull(class) %>% factor())
 )
 
 
@@ -146,6 +145,17 @@ data_rf_OOB_output %>%
 
 a. Plot estimated test performance vs. the tuning parameter, `mtry`. What tuning parameter would you choose?
 
+```{r}
+data_rf_OOB_output %>% 
+    group_by(label) %>%
+    accuracy(truth = class, estimate = .pred_class) %>%
+  ggplot(aes(x  = _____, y = _____)) +
+  geom_line() +
+  labs(x = "mtry", y = "Estimated overall test accuracy")
+
+```
+
+
 b. Describe the bias-variance tradeoff in tuning this forest. For what values of the tuning parameter will forests be the most biased? The most variable?
 
 
@@ -157,18 +167,18 @@ b. Describe the bias-variance tradeoff in tuning this forest. For what values of
 The code below prints information pertaining to the "best" forest model.
 
 ```{r}
-rf_mod$finalModel
+data_fit_mtry12
 ```
 
 a. Report and interpret the `OOB prediction error`. (How does this match up with the plot from the previous exercise?)
 
 ```{r}
-rf_OOB_output(data_fit_mtry12,12, land %>% pull(class)) %>%
+rf_OOB_output(data_fit_mtry12,12, land %>% pull(class) %>% factor()) %>%
     conf_mat(truth = class, estimate= .pred_class)
 ```
 
 
-b. The output includes an OOB test confusion matrix (as opposed to a training confusion matrix). Rows are true classes, and columns are predicted classes. How do you think this is constructed? Why is the test confusion matrix preferable to a training confusion matrix?
+b. The output above is an OOB test confusion matrix (as opposed to a training confusion matrix). Rows are prediction classes, and columns are true classes. How do you think this is constructed? Why is the test confusion matrix preferable to a training confusion matrix?
 
 c. Further inspecting the test confusion matrix, which type of land use is most accurately classified by our forest? Which type of land use is least accurately classified by our forest? Why do you think this is?
 
@@ -217,8 +227,4 @@ model_output2 %>% vip::vi() %>% head()
 model_output2 %>% vip::vi() %>% tail()
 ```
 
-a. Check out the codebook for these variables [here](https://archive.ics.uci.edu/ml/datasets/Urban+Land+Cover). The descriptions of the variables aren’t the greatest, but do these rankings make some contextual sense?
-
-b. Construct some visualizations of the 1 most and 1 least important predictors that support your conclusion in a.
-
-c. It has been found that the impurity random forest measure of variable importance can tend to favor predictors with a lot of unique values. Explain briefly why it makes sense that this can happen by thinking about the recursive binary splitting algorithm for a single tree. (Note: similar cautions arise for variable importance in single trees.)
+d. Explain the intuition behind making the permutation step. Specifically, what happens the testing metrics when you permute the values of a truly important variable?
