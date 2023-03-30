@@ -14,12 +14,6 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 - Implement strategies for interpreting / contextualizing the clusters
 
 
-<br>
-
-Slides from today are available [here](https://docs.google.com/presentation/d/1PPvEB3fXf08a8smUAgkct-rz2FDA2BZY3YsOb3GksV0/edit?usp=sharing).
-
-
-
 <br><br><br>
 
 ## Exercises {-}
