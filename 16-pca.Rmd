@@ -10,11 +10,6 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 - Interpret and use the information provided by principal component loadings and scores
 - Interpret and use a scree plot to guide dimension reduction
 
-<br>
-
-Slides from today are available [here](https://docs.google.com/presentation/d/1l-aWarH-N4DWj8vdT__Fs6VT52eIF71AJ01jhgqo0NA/edit?usp=sharing).
-
-
 
 <br><br><br>
 
