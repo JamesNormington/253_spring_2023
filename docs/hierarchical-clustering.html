@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="k-means-clustering.html"/>
-<link rel="next" href="homework-1.html"/>
+<link rel="next" href="principal-components-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -341,6 +341,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-5-k-means-vs.-hierarchical"><i class="fa fa-check"></i>Exercise 5: K-means vs. hierarchical</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="16" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html"><i class="fa fa-check"></i><b>16</b> Principal Components Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#learning-goals-14"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercises-13"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-1-core-concepts"><i class="fa fa-check"></i>Exercise 1: Core concepts</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-2-exploring-pc-loadings"><i class="fa fa-check"></i>Exercise 2: Exploring PC loadings</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-3-exploring-pc-scores"><i class="fa fa-check"></i>Exercise 3: Exploring PC scores</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-4-scree-plots-and-dimension-reduction"><i class="fa fa-check"></i>Exercise 4: Scree plots and dimension reduction</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-5-variable-scaling"><i class="fa fa-check"></i>Exercise 5: Variable scaling</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>VI Homework</b></span></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
 <ul>
@@ -369,16 +381,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#ethics-in-ml-3"><i class="fa fa-check"></i>Ethics in ML</a></li>
 <li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#portfolio-work-3"><i class="fa fa-check"></i>Portfolio Work</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i>R Resources</a>
+<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html"><i class="fa fa-check"></i>Homework 5</a>
 <ul>
-<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#outside-resources"><i class="fa fa-check"></i>Outside resources</a></li>
-<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#example-code"><i class="fa fa-check"></i>Example code</a></li>
+<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#project-work-4"><i class="fa fa-check"></i>Project Work</a></li>
+<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#ethics-in-ml-not-required"><i class="fa fa-check"></i>Ethics in ML (NOT REQUIRED)</a></li>
+<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#portfolio-work-4"><i class="fa fa-check"></i>Portfolio Work</a></li>
 </ul></li>
 <li class="part"><span><b>VII Project</b></span></li>
 <li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html"><i class="fa fa-check"></i>Final Project</a>
 <ul>
 <li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#requirements"><i class="fa fa-check"></i>Requirements</a></li>
 <li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#grading-rubric"><i class="fa fa-check"></i>Grading Rubric</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i>R Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#outside-resources"><i class="fa fa-check"></i>Outside resources</a></li>
+<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#example-code"><i class="fa fa-check"></i>Example code</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -563,16 +581,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="k-means-clustering.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="homework-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="principal-components-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

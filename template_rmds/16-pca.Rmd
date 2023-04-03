@@ -58,7 +58,7 @@ pca_out <- prcomp(train_data, center = TRUE, scale = TRUE)
 a. Use the `head()` function to display the first few rows of the loadings matrix.
 b. Using just the first 3 genes, write out the equation for principal component 4.
 c. Describe how you would use the loadings matrix to find the genes that contribute most to the largest source of variation in the dataset.
-d. In R, we can extract the first column of a matrix object `mat` using `mat[,1]`. Use the `head()`, `sort()`, and `abs()` functions to display the 10 most important genes that contribute to the largest source of variation.
+d. Use the `head()`, `sort()`, `abs()`, and `rowSums` functions to display the 10 most important genes that contribute to the largest source of variation.
 
 
 

@@ -4,7 +4,8 @@ rmd_files: ["index.Rmd", "schedule.Rmd", "learning_objectives.Rmd", "r_rstudio.R
 "01-introductions.Rmd", "02-evaluating-regression.Rmd", "03-overfitting.Rmd", "04-cv.Rmd",
 "05-subset-selection.Rmd", "06-lasso-shrinkage.Rmd", "07-knn-bvt.Rmd", 
 "08-splines.Rmd", "09-loess-gams.Rmd", "09-logistic-regression.Rmd", "10-lasso-logistic.Rmd",
-"11-trees.Rmd", "13-bagging-rf.Rmd", "14-kmeans.Rmd", "15-hclust.Rmd", "hw1.Rmd", "hw2.Rmd", "hw3.Rmd", "hw4.Rmd", "r_resources.Rmd", "project.Rmd"]
+"11-trees.Rmd", "13-bagging-rf.Rmd", "14-kmeans.Rmd", "15-hclust.Rmd", "16-pca.Rmd",
+"hw1.Rmd", "hw2.Rmd", "hw3.Rmd", "hw4.Rmd", "hw5.Rmd", "project.Rmd", "r_resources.Rmd", "project.Rmd"]
 language:
   ui:
     chapter_name: "Topic "

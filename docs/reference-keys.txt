@@ -16,3 +16,4 @@ decision-trees
 bagging-and-random-forests
 k-means-clustering
 hierarchical-clustering
+principal-components-analysis

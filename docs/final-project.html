@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-resources.html"/>
-
+<link rel="prev" href="homework-5.html"/>
+<link rel="next" href="r-resources.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -341,6 +341,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html#exercise-5-k-means-vs.-hierarchical"><i class="fa fa-check"></i>Exercise 5: K-means vs. hierarchical</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="16" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html"><i class="fa fa-check"></i><b>16</b> Principal Components Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#learning-goals-14"><i class="fa fa-check"></i>Learning Goals</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercises-13"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-1-core-concepts"><i class="fa fa-check"></i>Exercise 1: Core concepts</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-2-exploring-pc-loadings"><i class="fa fa-check"></i>Exercise 2: Exploring PC loadings</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-3-exploring-pc-scores"><i class="fa fa-check"></i>Exercise 3: Exploring PC scores</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-4-scree-plots-and-dimension-reduction"><i class="fa fa-check"></i>Exercise 4: Scree plots and dimension reduction</a></li>
+<li class="chapter" data-level="" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#exercise-5-variable-scaling"><i class="fa fa-check"></i>Exercise 5: Variable scaling</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>VI Homework</b></span></li>
 <li class="chapter" data-level="" data-path="homework-1.html"><a href="homework-1.html"><i class="fa fa-check"></i>Homework 1</a>
 <ul>
@@ -369,16 +381,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#ethics-in-ml-3"><i class="fa fa-check"></i>Ethics in ML</a></li>
 <li class="chapter" data-level="" data-path="homework-4.html"><a href="homework-4.html#portfolio-work-3"><i class="fa fa-check"></i>Portfolio Work</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i>R Resources</a>
+<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html"><i class="fa fa-check"></i>Homework 5</a>
 <ul>
-<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#outside-resources"><i class="fa fa-check"></i>Outside resources</a></li>
-<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#example-code"><i class="fa fa-check"></i>Example code</a></li>
+<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#project-work-4"><i class="fa fa-check"></i>Project Work</a></li>
+<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#ethics-in-ml-not-required"><i class="fa fa-check"></i>Ethics in ML (NOT REQUIRED)</a></li>
+<li class="chapter" data-level="" data-path="homework-5.html"><a href="homework-5.html#portfolio-work-4"><i class="fa fa-check"></i>Portfolio Work</a></li>
 </ul></li>
 <li class="part"><span><b>VII Project</b></span></li>
 <li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html"><i class="fa fa-check"></i>Final Project</a>
 <ul>
 <li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#requirements"><i class="fa fa-check"></i>Requirements</a></li>
 <li class="chapter" data-level="" data-path="final-project.html"><a href="final-project.html#grading-rubric"><i class="fa fa-check"></i>Grading Rubric</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i>R Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#outside-resources"><i class="fa fa-check"></i>Outside resources</a></li>
+<li class="chapter" data-level="" data-path="r-resources.html"><a href="r-resources.html#example-code"><i class="fa fa-check"></i>Example code</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -404,24 +422,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Final Project<a href="final-project.html#final-project" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="requirements" class="section level2 unnumbered hasAnchor">
 <h2>Requirements<a href="final-project.html#requirements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You will be analyzing a dataset using a regression and a classification analysis. An unsupervised learning analysis is no longer required for the project.</p>
+<p>You will be analyzing a dataset using a regression and a classification analysis. An unsupervised learning analysis is not required for the project, but could be useful.</p>
 <p><strong>Collaboration:</strong></p>
 <ul>
-<li>You may work in teams of up to 3 members. Individual work is fine.</li>
-<li>The weekly homework assignments will note whether work for that week should be submitted individually or if just one team member should submit work.</li>
-<li>There will be a required synthesis of the weekly homework investigations at the end of the course. If working on a team, this should be done in groups, rather than individually.</li>
+<li>You may work in teams of up to 4 members. Individual work is fine.</li>
 </ul>
 <p><br><br></p>
 <p><strong>Final deliverables:</strong></p>
-<p>Only one team member has to submit these materials to <a href="https://moodle.macalester.edu/mod/assign/view.php?id=56491">Moodle</a>. <strong>The due date is Thursday, May 4th at 11:59pm CST.</strong></p>
+<p>Only one team member has to submit these materials to Moodle. <strong>The due date is Friday, May 5th at 11:59pm CST.</strong></p>
 <ul>
-<li>Submit a final knitted HTML file (must knit without errors) and corresponding Rmd file containing code for your analysis</li>
-<li>Include a 10-15 minute video presentation of your project that addresses the items in the Grading Rubric below. (Recording the presentation over Zoom is a good option for creating the video. You can record to your computer or to the cloud.)
+<li>Submit a final knitted HTML file (must knit without errors) and corresponding Rmd file containing code for your analysis
+<ul>
+<li>For cleanliness, please add this R chunk to the top of your Markdown file:</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="final-project.html#cb152-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">eval =</span> <span class="cn">TRUE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">tidy =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<ul>
+<li>Include a &lt; 15 minute video presentation of your project that addresses the items in the Grading Rubric below.
 <ul>
 <li>Upload the video itself to Moodle. If it’s too large, share a link to a recording on the web or in a shared drive.</li>
 <li>All team members should have an equal speaking role in the presentation.</li>
+<li>Please use a visual aid (that is, something for the viewer to look at). I think the easiest way to do this is to record a Zoom meeting, then share your screen with some slides.</li>
 </ul></li>
-<li>If a video presentation would be difficult for you and your team to make, you may instead submit an annotated set of slides. The speaker notes beneath each slide should contain what you would have said in the video presentation.</li>
 </ul>
 <p><br><br></p>
 </div>
@@ -439,65 +461,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Research question(s) for the regression task make clear the outcome variable and its units.</li>
 <li>Research question(s) for the classification task make clear the outcome variable and its possible categories.</li>
 </ul></li>
-<li>HW3 investigations - Methods (10 points)
+<li>Regression - Methods (10 points)
 <ul>
-<li>Describe the models used in your HW3 project work investigations.</li>
+<li>Describe the regression models you tried.</li>
 <li>Describe what you did to evaluate models.
 <ul>
 <li>Indicate how you estimated quantitative evaluation metrics.</li>
 <li>Indicate what plots you used to evaluate models.</li>
 </ul></li>
-<li>Describe the goals / purpose of the methods used in the overall context of your research investigations.</li>
 </ul></li>
-<li>HW3 investigations - Results - Variable Importance (10 points)
+<li>Regression - Results (10 points)
 <ul>
-<li>Summarize results from HW3 Investigations 1 (and 2, if applicable) on variable importance measures.
+<li>Display evaluation metrics for your different models.</li>
+<li>Summarize your <em>final model</em> and <em>justify your model choice</em> using a combination of the following:
 <ul>
-<li>Note: Investigation 2 won’t be applicable to your project if you only have categorical predictors.</li>
+<li>Analytically: evaluation metrics, plots, variable importance</li>
+<li>Interpretability/simplicity</li>
 </ul></li>
-<li>Summarization should show evidence of acknowledging the data context in thinking about the sensibility of these results.</li>
+<li>Show and interpret some representative examples of residual plots for your final model. Does the model show acceptable results in terms of any systematic trends/biases?</li>
 </ul></li>
-<li>HW3 investigations - Summary (10 points)
+<li>Regression - Summary (10 points)
 <ul>
-<li>If it was appropriate to fit a GAM for your investigations (having some quantitative predictors), show plots of estimated functions for each predictor, and provide some general interpretations.</li>
-<li>Compare the different models tried in HW3 in light of evaluation metrics, plots, variable importance, and data context.
-<ul>
-<li>Display evaluation metrics for different models in a clean, organized way. This display should include both the estimated metric as well as its standard deviation. (Hint: you should be using <code>caret_mod$results</code>.)</li>
-<li>Broadly summarize conclusions from looking at these evaluation metrics and their measures of uncertainty.</li>
-<li>Summarize conclusions from residual plots from initial models (don’t have to display them though).</li>
+<li>Interpret your final model for important predictors, and provide general interpretations about what you learned.</li>
+<li>Interpret evaluation metrics in context, with units. Is this an acceptable amount of error?</li>
+<li>All summarizations should be made in original context of the data.</li>
 </ul></li>
-<li>Decide an overall most preferable model.
+<li>Classification - Methods (10 points)
 <ul>
-<li>Show and interpret some representative examples of residual plots for your final model. Does the model show acceptable results in terms of any systematic biases?</li>
-<li>Interpret evaluation metric(s) for the final model in context with units. Does the model show an acceptable amount of error?</li>
+<li>Describe the classification models you tried.</li>
+<li>Describe what you did to evaluate models.
+<ul>
+<li>Indicate how you estimated classification evaluation metrics.</li>
 </ul></li>
 </ul></li>
-<li>Classification analysis - Methods (10 points)
+<li>Classification - Results - Variable Importance (10 points)
 <ul>
-<li>Indicate 2 different methods used to answer your classification research question.</li>
-<li>Describe what you did to evaluate the 2 models explored.
+<li>Display evaluation metrics for your different models.</li>
+<li>Summarize your <em>final model</em> and <em>justify your model choice</em> using a combination of the following:
 <ul>
-<li>Indicate how you estimated quantitative evaluation metrics.</li>
+<li>Analytically: accuracy metrics, variable importance</li>
+<li>Interpretability/simplicity</li>
+<li>Plots: ROC, grouped boxplots with probability threshold, etc.</li>
 </ul></li>
-<li>Describe the goals / purpose of the methods used in the overall context of your research investigations.</li>
+<li>Does the model show acceptable results in terms of accuracy, sensitivity, or specificity?</li>
 </ul></li>
-<li>Classification analysis - Results - Variable Importance (10 points)
+<li>Classification - Summary (10 points)
 <ul>
-<li>Summarize results about variable importance measures in your classification analysis.</li>
-<li>Summarization should show evidence of acknowledging the data context in thinking about the sensibility of these results.</li>
-</ul></li>
-<li>Classification analysis - Summary (10 points)
-<ul>
-<li>Compare the 2 different classification models tried in light of evaluation metrics, variable importance, and data context.
-<ul>
-<li>Display evaluation metrics for different models in a clean, organized way. This display should include both the estimated metric as well as its standard deviation. (This won’t be available from OOB error estimation. If using OOB, don’t worry about reporting the SD.)</li>
-<li>Broadly summarize conclusions from looking at these evaluation metrics and their measures of uncertainty.</li>
-</ul></li>
-<li>Decide an overall most preferable model.
-<ul>
-<li>Interpret evaluation metric(s) for the final model in context. Does the model show an acceptable amount of error?</li>
-<li>If using OOB error estimation, display the test (OOB) confusion matrix, and use it to interpret the strengths and weaknesses of the final model.</li>
-</ul></li>
+<li>Interpret your final model for important predictors, and provide general interpretations about what you learned.</li>
+<li>Interpret evaluation metrics in context. Is this an acceptable accuracy/sensitivity/specificity, relative to the NIR?</li>
+<li>All summarizations should be made in original context of the data.</li>
 </ul></li>
 <li>Code (20 points)
 <ul>
@@ -513,8 +525,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="r-resources.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="homework-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
