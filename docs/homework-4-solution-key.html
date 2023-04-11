@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | STAT 253: Statistical Machine Learning</title>
+  <title>Homework 4 SOlution Key | STAT 253: Statistical Machine Learning</title>
   <meta name="description" content="This is the class website for Statistical Machine Learning at Macalester College." />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | STAT 253: Statistical Machine Learning" />
+  <meta property="og:title" content="Homework 4 SOlution Key | STAT 253: Statistical Machine Learning" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
   <meta name="github-repo" content="JamesNormington/253_spring_2023" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | STAT 253: Statistical Machine Learning" />
+  <meta name="twitter:title" content="Homework 4 SOlution Key | STAT 253: Statistical Machine Learning" />
   
   <meta name="twitter:description" content="This is the class website for Statistical Machine Learning at Macalester College." />
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="homework-3.html"/>
+<link rel="next" href="homework-5.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -354,19 +354,102 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="homework-4-solution-key" class="section level1 unnumbered hasAnchor">
+<h1>Homework 4 SOlution Key<a href="homework-4-solution-key.html#homework-4-solution-key" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<center>
+**Due Friday, April 14th at 11:59pm CST on Moodle.
+</center>
+<p><strong>Deliverables:</strong> Submit a single PDF containing your responses for Course Engagement.</p>
+<div id="project-work-3" class="section level2 unnumbered hasAnchor">
+<h2>Project Work<a href="homework-4-solution-key.html#project-work-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There is no new project work for this assignment. <em>However</em> – you should begin thinking about some classification models you can use for your Final Project. Take a look at the Final Project page – you’ll need to have explored at least two classification models, and decided on a final “best” model</p>
+<p><br></p>
+</div>
+<div id="ethics-in-ml-3" class="section level2 unnumbered hasAnchor">
+<h2>Ethics in ML<a href="homework-4-solution-key.html#ethics-in-ml-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Read the article <a href="https://weallcount.com/2020/10/24/how-to-support-your-data-interpretations/">How to Support your Data Interpretations</a>. Write a short (roughly 250 words), thoughtful response about the ideas that the article brings forth. Which pillar(s) do you think is/are hardest to do well for groups that rely on data analytics, and why?</p>
+<p>As always, grade on good faith effort.</p>
+</div>
+<div id="portfolio-work-3" class="section level2 unnumbered hasAnchor">
+<h2>Portfolio Work<a href="homework-4-solution-key.html#portfolio-work-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><br></p>
+<p><strong>Revisions:</strong> Make any revisions desired to previous concepts. Make it clear to the preceptors what you want re-read (highlighted, commented, etc.)</p>
+<p><br></p>
+<p><strong>New concepts to address:</strong></p>
+<p><strong>Decision trees:</strong></p>
+<ul>
+<li><p>Algorithmic understanding:</p>
+<ul>
+<li>Consider a dataset with two predictors: <code>x1</code> is categorical with levels A, B, or C. <code>x2</code> is quantitative with integer values from 1 to 100. How many different splits must be considered when recursive binary splitting attempts to make a split? Explain. (2 sentences max.)</li>
+</ul>
+<ol start="103" style="list-style-type: decimal">
+<li>Three for each level of <code>x1</code>, and 100 for each possible value of <code>x2</code>.</li>
+</ol>
+<ul>
+<li>Explain the “recursive”, “binary”, and “splitting” parts of the recursive binary splitting algorithm. Make sure to discuss the Gini index as a measure of node (im)purity and how it is defined differently for classification and regression trees.</li>
+</ul>
+<p>“Splitting” refers to the result of the predictor and predictor value which yields the lowest weighted Gini index (or, highest node purity) when splitting a node in two. For classification, the weighted Gini index measures node purity as the proportion of classes at each node; less variance in classes leads to lower node impurity. For regression, the weighted Gini index measures node purity as the variance of the response values within each node. The algorithm is “recursive” because the splitting decision is made in repeated succession, it is “binary” because each split yields two branches.</p></li>
+<li><p>Bias-variance tradeoff: What tuning parameters control the performance of the method? How do low/high values of the tuning parameters relate to bias and variance of the learned model? (3 sentences max.)</p></li>
+</ul>
+<p>There are several answers here. Students should mention at least <em>one</em> of the following</p>
+<ul>
+<li><p>cost complexity: if this value is too large, too-small of trees will be grown, which will yield low variance but high bias. If it’s too small, too-large trees will be grown, which will yield high variance but low bias.</p></li>
+<li><p>min_n (number of observations needed in a node to attempt a split): if this value is too large, too-small trees will be grown, which will yield low variance but high bias. If it’s too small, too-large trees will be grown, which will yield high variance but low bias.</p></li>
+<li><p>depth: if this value is too large, too-large trees will be grown, which will yield high variance but low bias. If it’s too small, too-small trees will be grown, which will yield low variance but high bias.</p></li>
+<li><p>Parametric / nonparametric: Where (roughly) does this method fall on the parametric-nonparametric spectrum, and why? (3 sentences max.)</p></li>
+</ul>
+<p>This is fully nonparametric. There is no defined form dependent on parameters; it’s a sequence of binary logical checks depending on the predictors present.</p>
+<ul>
+<li>Scaling of variables: Does the scale on which variables are measured matter for the performance of this algorithm? Why or why not? If scale does matter, how should this be addressed when using this method? (3 sentences max.)</li>
+</ul>
+<p>Not really. Assuming an adequate number of predictors values are tested in the binary splitting algorithm, the quality of the splits don’t depend on the scale. The only way scaling does matter is in defining which and how many split values to test.</p>
+<ul>
+<li>Computational time: Recursive binary splitting does not find the overall optimal sequence of splits for a tree. What type of behavior is this? What method have we seen before that also exhibits this type of behavior? Briefly explain the parallels between these methods and what implications this have for computational time. (5 sentences max.)</li>
+</ul>
+<p>Greedy. We saw this type of behavior when studying stepwise (forward/backward) selection. Both methods make the optimal choice in the short term – stepwise regression selects/drops the variable which leads to the next best model (conditional on the current), while decision trees make the optimal split given the previous branches/nodes. Both of these methods perform greedy searches due to computational reasons. In stepwise regression, rather than testing all <span class="math inline">\(2^p\)</span> possible models, only <span class="math inline">\(1 + \frac{p(p+1)}{2}\)</span> models need to be fit. For decision trees, it’s (usually) computationally infeasible to consider all possible decision trees, so the recursive binary splitting algorithm is greedy to reduce the space we search through.</p>
+<ul>
+<li>Interpretation of output: Explain the rationale behind the variable importance measures that decision trees provide. (4 sentences max.)</li>
+</ul>
+<p>Variable importance in trees is measured by the total decrease in node impurities from splitting on that variable. This makes sense, since in the extreme case, if <span class="math inline">\(x_j\)</span> yielded two completely pure nodes, then it means <span class="math inline">\(x_j\)</span> is very important in predicting <span class="math inline">\(y\)</span>, and the total decrease in node impurity in the case will be very high. If instead <span class="math inline">\(x_j\)</span> is not important, the node impurity won’t be decreased.</p>
+<p><strong>Bagging &amp; Random Forests:</strong></p>
+<ul>
+<li>Algorithmic understanding: Explain the rationale for extending single decision trees to bagging models and then to random forest models. What specific improvements to predictive performance are being sought? (5 sentences max.)</li>
+</ul>
+<p>Single decision trees are highly unstable – that is, the predicted values have very high variance. Bagging leverages the fact that average predictions tend to be less variable than single predictions, so we combine several trees to make predictions that will have less variance. However, because bagging relies on bootstrapped samples of our training sample (which themselves are highly correlated), it will often yield highly correlated trees (that is, trees which are very similar). The variance of predicted values from averages across <em>correlated</em> models is still high. To de-correlate these trees, we introduce a step to randomly select a subset of predictor to consider; this gives us a random forest. Again, the goal here is to reduce the variance of the predicted values.</p>
+<ul>
+<li>Bias-variance tradeoff: What tuning parameters control the performance of the method? How do low/high values of the tuning parameters relate to bias and variance of the learned model? (3 sentences max.)</li>
+</ul>
+<p><code>mtry</code>, the number of predictors to randomly choose for consideration at each split of the tree.</p>
+<p>Too large of values for <code>mtry</code> will cause the trees to be highly correlated, which will reduce the variance of within-model trees. However, this will ultimately lead to overfitting. In the extreme case, when <code>mtry = p</code>, this is equivalent to bagging, which has high variance (but low bias).</p>
+<p>Too small of values for <code>mtry</code> will cause the trees to not use enough data in each split, which will reduce the variance but induce bias. In the extreme case, when <code>mtry = 1</code>, you are only using one randomly selected predictor at each split, causing underfitting.</p>
+<ul>
+<li>Parametric / nonparametric: Where (roughly) does this method fall on the parametric-nonparametric spectrum, and why? (3 sentences max.)</li>
+</ul>
+<p>Fully non-parametric. Since these methods are aggregated decision trees, which are nonparametric, this is nonparametric.</p>
+<ul>
+<li>Scaling of variables: Does the scale on which variables are measured matter for the performance of this algorithm? Why or why not? If scale does matter, how should this be addressed when using this method? (3 sentences max.)</li>
+</ul>
+<p>No. Similar to my answer above, the quality of the splits won’t depend on the scale assuming you are searching through an adequate space of predictor values.</p>
+<ul>
+<li>Computational time: Explain why cross-validation is computationally intensive for many-tree algorithms. What method do we have to reduce this computational burden, and why is it faster? (5 sentences max.)</li>
+</ul>
+<p>Recursive binary splitting is a computationally intensive process, since it involves testing splits for (often, hundreds or thousands) <span class="math inline">\(p\)</span> predictors. K-fold cross-validation makes this even more expensive, because you have to grow <span class="math inline">\(K\)</span> trees per bootstrap resample! An alternative which is computationally less expensive is out-of-bag error estimation, which only fits one tree per bootstrap re-sample.</p>
+<ul>
+<li>Interpretation of output: Explain the rationale behind the variable importance measures that random forest models provide. (4 sentences max.)</li>
+</ul>
+<p>Impurity: like decision trees, variable importance in random forests can be thought of as total decreases in node impurities. (see answer above)</p>
+<p>Permutation: Permuting, or shuffling, the values of a truly important predictor destroys its relationship with the response <span class="math inline">\(Y\)</span>. Thus, those predictors which yield significantly poorer testing metrics after permutation must be important to the predictive power of the algorithm.</p>
+<p><br><br><br></p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="homework-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,8 +1,13 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 ```{r hw4_setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 ```
 
-# Homework 4 {-}
+# Homework 4 SOlution Key {-}
 
 <center>
 **Due Friday, April 14th at 11:59pm CST on Moodle.
@@ -14,7 +19,7 @@ knitr::opts_chunk$set(echo=TRUE, eval=FALSE)
 
 ## Project Work {-}
 
-There is no new project work for this assignment. However -- you should begin thinking about some classification models you can use for your Final Project.
+There is no new project work for this assignment. *However* -- you should begin thinking about some classification models you can use for your Final Project. Take a look at the Final Project page -- you'll need to have explored at least two classification models, and decided on a final "best" model
 
 <br>
 
@@ -22,6 +27,8 @@ There is no new project work for this assignment. However -- you should begin th
 ## Ethics in ML {-}
 
 Read the article [How to Support your Data Interpretations](https://weallcount.com/2020/10/24/how-to-support-your-data-interpretations/). Write a short (roughly 250 words), thoughtful response about the ideas that the article brings forth. Which pillar(s) do you think is/are hardest to do well for groups that rely on data analytics, and why?
+
+As always, grade on good faith effort. 
 
 
 ## Portfolio Work {-}
@@ -39,17 +46,22 @@ Read the article [How to Support your Data Interpretations](https://weallcount.c
 
 - Algorithmic understanding:
     - Consider a dataset with two predictors: `x1` is categorical with levels A, B, or C. `x2` is quantitative with integer values from 1 to 100. How many different splits must be considered when recursive binary splitting attempts to make a split? Explain. (2 sentences max.)
-    - Explain the "recursive", "binary", and "splitting" parts of the recursive binary splitting algorithm. Make sure to discuss the Gini index as a measure of node (im)purity and how it is defined differently for classification and regression trees.
+    
+
+- Explain the "recursive", "binary", and "splitting" parts of the recursive binary splitting algorithm. Make sure to discuss the Gini index as a measure of node (im)purity and how it is defined differently for classification and regression trees.
+    
 
 - Bias-variance tradeoff: What tuning parameters control the performance of the method? How do low/high values of the tuning parameters relate to bias and variance of the learned model? (3 sentences max.)
 
 - Parametric / nonparametric: Where (roughly) does this method fall on the parametric-nonparametric spectrum, and why? (3 sentences max.)
+
 
 - Scaling of variables: Does the scale on which variables are measured matter for the performance of this algorithm? Why or why not? If scale does matter, how should this be addressed when using this method? (3 sentences max.)
 
 - Computational time: Recursive binary splitting does not find the overall optimal sequence of splits for a tree. What type of behavior is this? What method have we seen before that also exhibits this type of behavior? Briefly explain the parallels between these methods and what implications this have for computational time. (5 sentences max.)
 
 - Interpretation of output: Explain the rationale behind the variable importance measures that decision trees provide. (4 sentences max.)
+
 
 
 **Bagging & Random Forests:**
@@ -64,8 +76,8 @@ Read the article [How to Support your Data Interpretations](https://weallcount.c
 
 - Computational time: Explain why cross-validation is computationally intensive for many-tree algorithms. What method do we have to reduce this computational burden, and why is it faster? (5 sentences max.)
 
-- Interpretation of output: Explain the rationale behind the variable importance measures that random forest models provide. (4 sentences max.)
 
+- Interpretation of output: Explain the rationale behind the variable importance measures that random forest models provide. (4 sentences max.)
 
 
 <br><br><br>
